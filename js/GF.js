@@ -5,17 +5,16 @@ var sortToggle = [0,0,0,0,0,0,0,0,0,0,0]; //0:none 1:asc 2:desc
 var areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
 var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; //14쌍
 var time_front = 0, time_end = 13;
+var success = 0;
+var sw_sucs = false;
 var chart;
 var chart_time = new Array();
 var now;
 
 $(function (){
     init();
-    callData();
-    loadTable();
-    calcStage();
-})
-    .on('click', '.table-clickable', function(e) {
+    refresh();
+}).on('click', '.table-clickable', function(e) {
         e.preventDefault();
 
         var index = $(this).attr('idx');    //고유값
@@ -67,11 +66,7 @@ $('[id^=btn-area-]').off().on('click', function (e) {
         $('#btn-area-' + id).addClass('btn-success');
         areaToggle[id] = 1;
     }
-    objectList.length = 0;
-    selectedList.length = 0;
-    callData();
-    loadTable();
-    calcStage();
+    refresh();
 });
 $('[id^=btn-times-]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
@@ -99,14 +94,30 @@ $('[id^=btn-timee-]').off().on('click', function (e) {
     }
     dispTime();
 });
+$('#btn_toggle_sucs').off().on('click', function (e) {
+    if($('#btn_toggle_sucs').hasClass('btn-default')){
+        $('#btn_toggle_sucs').removeClass('btn-default');
+        $('#btn_toggle_sucs').addClass('btn-success');
+        $('#per_level').removeClass('btn-default');
+        $('#per_level').addClass('btn-success');
+        $('#btn_toggle_sucs').text('적용');
+        sw_sucs = true;
+    }else{
+        $('#btn_toggle_sucs').removeClass('btn-success');
+        $('#btn_toggle_sucs').addClass('btn-default');
+        $('#per_level').removeClass('btn-success');
+        $('#per_level').addClass('btn-default');
+        $('#btn_toggle_sucs').text('미적용');
+        sw_sucs = false;
+    }
+    refresh();
+});
 function dispTime(){
     $('#scr-times').text(timeToggle[time_front] + '시간');
     $('#scr-timee').text(timeToggle[time_end] + '시간');
     objectList.length = 0;
     selectedList.length = 0;
-    callData();
-    loadTable();
-    calcStage();
+    refresh();
 }
 function sortInit(d){
     for(var i in sortToggle){
@@ -449,24 +460,29 @@ function callData(){
         tmp.Area = arr[i][0];
         tmp.Stage = arr[i][1];
         tmp.Time = arr[i][2];
-        tmp.Human = arr[i][3];
-        tmp.Ammo = arr[i][4];
-        tmp.Food = arr[i][5];
-        tmp.Part = arr[i][6];
-        tmp.Ticket_makeDoll = arr[i][7];
-        tmp.Ticket_makeTool = arr[i][8];
-        tmp.Ticket_fastMake = arr[i][9];
-        tmp.Ticket_fastRepair = arr[i][10];
-        tmp.Ticket_Tokken = arr[i][11];
+        tmp.Human = sw_sucs ? arr[i][3] * (0.5 * success + 1): arr[i][3];
+        tmp.Ammo = sw_sucs ? arr[i][4] * (0.5 * success + 1): arr[i][4];
+        tmp.Food = sw_sucs ? arr[i][5] * (0.5 * success + 1): arr[i][5];
+        tmp.Part = sw_sucs ? arr[i][6] * (0.5 * success + 1): arr[i][6];
+        tmp.Ticket_makeDoll = sw_sucs ? success + (1 - success) * arr[i][7]: arr[i][7];     if(!arr[i][7]){tmp.Ticket_makeDoll = 0;}
+        tmp.Ticket_makeTool = sw_sucs ? success + (1 - success) * arr[i][8]: arr[i][8];     if(!arr[i][8]){tmp.Ticket_makeTool = 0;}
+        tmp.Ticket_fastMake = sw_sucs ? success + (1 - success) * arr[i][9]: arr[i][9];     if(!arr[i][9]){tmp.Ticket_fastMake = 0;}
+        tmp.Ticket_fastRepair = sw_sucs ? success + (1 - success) * arr[i][10]: arr[i][10]; if(!arr[i][10]){tmp.Ticket_fastRepair = 0;}
+        tmp.Ticket_Tokken = sw_sucs ? success + (1 - success) * arr[i][11]: arr[i][11];     if(!arr[i][11]){tmp.Ticket_Tokken = 0;}
 
          if( (areaToggle[tmp.Area]) &&
             (timeToggle[time_front] * 60 <= tmp.Time) &&
             (tmp.Time <= timeToggle[time_end] * 60)){
             objectList.push(tmp);
         }
-
     }
-
+}
+function refresh(){
+    objectList.length = 0;
+    selectedList.length = 0;
+    callData();
+    loadTable();
+    calcStage();
 }
 function init(){
     var myHeight = 0;
@@ -492,5 +508,17 @@ function init(){
     });
     document.getElementById("pre_part").addEventListener("change",function(){
         calcStage();
+    });
+    document.getElementById("sum_level").addEventListener("change",function(){
+        var tmp = parseInt(document.getElementById('sum_level').value);
+        if(!isNaN(tmp)){
+            if (tmp < 0) tmp = 0;
+            if (tmp > 600) tmp = 600;
+            tmp = parseInt(tmp / 5);
+            tmp = tmp * 0.45;
+            tmp = tmp + 15;
+            $('#per_level').text('대성공 확률: ' + tmp.toFixed(1) + '%');
+            success = tmp / 100;
+        }
     });
 }

@@ -13,7 +13,6 @@
             vertical-align: middle;
         }
     </style>
-    <script src="js/GF.js"></script>
 </head>
 
 <body style="color: dimgray;" onresize="init()">
@@ -83,8 +82,9 @@
                         <div class="panel panel-info" style="padding:10px; margin-bottom:10px;">
                             <small>
                                 1. 모든 데이터는 <b>시간당 획득 기준으로 표기 및 정렬</b> (인탄식부:수급량 + 계약서:획득확률)
-                                <br>2. 표 상단의 <b>필요한 자원을 클릭 시</b> 최단시간 내 획득가능한 군수조합순 정렬
-                                <br>3. 하단의 예상 그래프는 <b>'현재자원' 값부터 합산</b>, 값 입력시 자동반영
+                                <br>2. 표 상단의 <b>필요한 자원 이름을 클릭 시</b> 최단시간 내 획득가능한 군수조합순 정렬
+                                <br>3. 하단의 예상 그래프는 <b>'현재자원' 값부터 합산</b>, 값 미입력시 0부터 계산
+                                <br>4. 대성공 확률 적용시 자원 및 계약서 획득표기는 대성공 기대치로 재계산
                             </small>
                         </div>
                         <hr style="margin-top: 5px; margin-bottom: 10px;">
@@ -174,11 +174,22 @@
                         <hr style="margin-top: 10px; margin-bottom: 10px;">
                         <div>
                             <div style="width:15%; display:inline-block;">
-                                <div class="btn btn-sm btn-info" disabled style="width:100%;">추천조합</div>
+                                <div class="btn btn-sm btn-info" disabled style="width:100%;">대성공 확률</div>
+                            </div>
+                            <div style="width:20%; display:inline-block;">
+                                <span class="btn btn-sm btn-primary" disabled style="width:100%;">제대 레벨 합계</span>
+                            </div>
+                            <div style="width:20%; display:inline-block;">
+                                <input id="sum_level" type="number" class="form-control input-sm" min="0" max="600" value="0">
+                            </div>
+                            <div style="width:15%; display:inline-block;">
+                                <div id="btn_toggle_sucs" class="btn btn-sm btn-default" style="width:100%;">미적용</div>
+                            </div>
+                            <div style="width:25%; display:inline-block;">
+                                <span id="per_level" class="btn btn-sm btn-default" disabled style="width:100%;">　</span>
                             </div>
                         </div>
-
-                        </div>
+                    </div>
                     <div id="tbl_cht" class="col-md-12 col-xs-12">
                     </div>
                 </div>
