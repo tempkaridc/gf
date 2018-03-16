@@ -112,6 +112,17 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
     }
     refresh();
 });
+$(document).ready(function() {
+    $(document).on('keydown', 'input', function (e) {
+        if (e.which == 13  || e.keyCode == 13 ){
+            e.preventDefault();
+            var $canfocus = $('input')
+            var index = $canfocus.index(document.activeElement) + 1;
+            if (index >= $canfocus.length) index = 0;
+            $canfocus.eq(index).focus();
+        }
+    });
+});
 function dispTime(){
     $('#scr-times').text(timeToggle[time_front] + '시간');
     $('#scr-timee').text(timeToggle[time_end] + '시간');
@@ -497,18 +508,11 @@ function init(){
     document.getElementById('tbl_help').style.height = myHeight * 0.5 + 'px';
     document.getElementById('tbl_cht').style.height = myHeight * 0.3 + 'px';
 
-    document.getElementById("pre_huma").addEventListener("change",function(){
-        calcStage();
-    });
-    document.getElementById("pre_ammo").addEventListener("change",function(){
-        calcStage();
-    });
-    document.getElementById("pre_food").addEventListener("change",function(){
-        calcStage();
-    });
-    document.getElementById("pre_part").addEventListener("change",function(){
-        calcStage();
-    });
+    document.getElementById("pre_huma").addEventListener("change",function(){calcStage();});
+    document.getElementById("pre_ammo").addEventListener("change",function(){calcStage();});
+    document.getElementById("pre_food").addEventListener("change",function(){calcStage();});
+    document.getElementById("pre_part").addEventListener("change",function(){calcStage();});
+
     document.getElementById("sum_level").addEventListener("change",function(){
         var tmp = parseInt(document.getElementById('sum_level').value);
         if(!isNaN(tmp)){
