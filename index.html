@@ -88,107 +88,88 @@
                             </small>
                         </div>
                         <hr style="margin-top: 5px; margin-bottom: 10px;">
-                        <div>
-                            <div style="width:15%; display:inline-block;">
-                                <div class="btn btn-sm btn-info" disabled style="width:100%;">현재자원</div>
-                            </div>
-                            <div style="width:20%; display:inline-block;">
-                                <input id="pre_huma" type="number" class="form-control input-sm" min="0" value="" placeholder="인력: 0">
-                            </div>
-                            <div style="width:20%; display:inline-block;">
-                                <input id="pre_ammo" type="number" class="form-control input-sm" min="0" value="" placeholder="탄약: 0">
-                            </div>
-                            <div style="width:20%; display:inline-block;">
-                                <input id="pre_food" type="number" class="form-control input-sm" min="0" value="" placeholder="식량: 0">
-                            </div>
-                            <div style="width:20%; display:inline-block;">
-                                <input id="pre_part" type="number" class="form-control input-sm" min="0" value="" placeholder="부품: 0">
-                            </div>
-                        </div>
-                        <hr style="margin-top: 10px; margin-bottom: 10px;">
-                        <div>
-                            <div style="width:15%; display:inline-block;">
-                                <div class="btn btn-sm btn-info" disabled style="width:100%;">군수지역</div>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-0" idx="0" class="btn btn-sm btn-success" style="width:95%;">0</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-1" idx="1" class="btn btn-sm btn-success" style="width:95%;">1</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-2" idx="2" class="btn btn-sm btn-success" style="width:95%;">2</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-3" idx="3" class="btn btn-sm btn-success" style="width:95%;">3</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-4" idx="4" class="btn btn-sm btn-success" style="width:95%;">4</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-5" idx="5" class="btn btn-sm btn-success" style="width:95%;">5</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-6" idx="6" class="btn btn-sm btn-success" style="width:95%;">6</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-7" idx="7" class="btn btn-sm btn-success" style="width:95%;">7</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-8" idx="8" class="btn btn-sm btn-success" style="width:95%;">8</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-9" idx="9" class="btn btn-sm btn-success" style="width:95%;">9</span>
-                            </div>
-                            <div style="width:7%; display:inline-block;">
-                                <span id="btn-area-10" idx="10" class="btn btn-sm btn-success" style="width:95%;">10</span>
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:15%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">현재자원</div>
+                                </div>
+                                <div style="width:20%; display:inline-block;">
+                                    <input id="pre_huma" type="number" class="form-control input-sm" min="0" value="" placeholder="인력: 0">
+                                </div>
+                                <div style="width:20%; display:inline-block;">
+                                    <input id="pre_ammo" type="number" class="form-control input-sm" min="0" value="" placeholder="탄약: 0">
+                                </div>
+                                <div style="width:20%; display:inline-block;">
+                                    <input id="pre_food" type="number" class="form-control input-sm" min="0" value="" placeholder="식량: 0">
+                                </div>
+                                <div style="width:20%; display:inline-block;">
+                                    <input id="pre_part" type="number" class="form-control input-sm" min="0" value="" placeholder="부품: 0">
+                                </div>
                             </div>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 10px;">
-                        <div>
-                            <div style="width:15%; display:inline-block;">
-                                <div class="btn btn-sm btn-info" disabled style="width:100%;">구간설정</div>
-                            </div>
-                            <div style="width:10%; display:inline-block;">
-                                <span id="btn-times-0" idx="0" class="btn btn-sm btn-primary" style="width:100%;">↓</span>
-                            </div>
-                            <div style="width:15%; display:inline-block;">
-                                <span id="scr-times" idx="2" class="btn btn-sm btn-default" style="width:100%;" disabled>0시간</span>
-                            </div>
-                            <div style="width:10%; display:inline-block;">
-                                <span id="btn-times-1" idx="1" class="btn btn-sm btn-primary" style="width:100%;">↑</span>
-                            </div>
-                            <div style="width:10%; display:inline-block;">
-                                <span class="btn btn-sm" style="width:100%;" disabled><b>~</b></span>
-                            </div>
-                            <div style="width:10%; display:inline-block;">
-                                <span id="btn-timee-0" idx="0" class="btn btn-sm btn-primary" style="width:100%;">↓</span>
-                            </div>
-                            <div style="width:15%; display:inline-block;">
-                                <span id="scr-timee" idx="2" class="btn btn-sm btn-default" style="width:100%;" disabled>24시간</span>
-                            </div>
-                            <div style="width:10%; display:inline-block;">
-                                <span id="btn-timee-1" idx="1" class="btn btn-sm btn-primary" style="width:100%;">↑</span>
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:15%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">군수지역</div>
+                                </div>
+                                <div class="btn-group" role="group" style="width:80%; display:inline-block;">
+                                    <button id="btn-area-0" idx="0" class="btn btn-sm btn-success" style="width:9%;">0</button>
+                                    <button id="btn-area-1" idx="1" class="btn btn-sm btn-success" style="width:9%;">1</button>
+                                    <button id="btn-area-2" idx="2" class="btn btn-sm btn-success" style="width:9%;">2</button>
+                                    <button id="btn-area-3" idx="3" class="btn btn-sm btn-success" style="width:9%;">3</button>
+                                    <button id="btn-area-4" idx="4" class="btn btn-sm btn-success" style="width:9%;">4</button>
+                                    <button id="btn-area-5" idx="5" class="btn btn-sm btn-success" style="width:9%;">5</button>
+                                    <button id="btn-area-6" idx="6" class="btn btn-sm btn-success" style="width:9%;">6</button>
+                                    <button id="btn-area-7" idx="7" class="btn btn-sm btn-success" style="width:9%;">7</button>
+                                    <button id="btn-area-8" idx="8" class="btn btn-sm btn-success" style="width:9%;">8</button>
+                                    <button id="btn-area-9" idx="9" class="btn btn-sm btn-success" style="width:9%;">9</button>
+                                    <button id="btn-area-10" idx="10" class="btn btn-sm btn-success" style="width:9%;">10</button>
+                                </div>
                             </div>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 10px;">
-                        <div>
-                            <div style="width:15%; display:inline-block;">
-                                <div class="btn btn-sm btn-info" disabled style="width:100%;">대성공 확률</div>
-                            </div>
-                            <div style="width:20%; display:inline-block;">
-                                <span class="btn btn-sm btn-primary" disabled style="width:100%;">제대 레벨 합계</span>
-                            </div>
-                            <div style="width:20%; display:inline-block;">
-                                <input id="sum_level" type="number" class="form-control input-sm" min="0" max="600" value="0">
-                            </div>
-                            <div style="width:15%; display:inline-block;">
-                                <div id="btn_toggle_sucs" class="btn btn-sm btn-default" style="width:100%;">미적용</div>
-                            </div>
-                            <div style="width:25%; display:inline-block;">
-                                <span id="per_level" class="btn btn-sm btn-default" disabled style="width:100%;">　</span>
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:15%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">구간설정</div>
+                                </div>
+                                <div class="btn-group" role="group" style="width:35%; display:inline-block;">
+                                    <button id="btn-times-0" idx="0" class="btn btn-sm btn-primary" style="width:30%;">↓</button>
+                                    <button id="scr-times" idx="2" class="btn btn-sm btn-default" style="width:40%;" disabled>0시간</button>
+                                    <button id="btn-times-1" idx="1" class="btn btn-sm btn-primary" style="width:30%;">↑</button>
+                                </div>
+                                <div style="width:8%; display:inline-block;">
+                                    <span class="btn btn-sm" style="width:100%;" disabled><b>~</b></span>
+                                </div>
+                                <div class="btn-group" role="group" style="width:35%; display:inline-block;">
+                                    <button id="btn-timee-0" idx="0" class="btn btn-sm btn-primary" style="width:30%;">↓</button>
+                                    <button id="scr-timee" idx="2" class="btn btn-sm btn-default" style="width:40%;" disabled>24시간</button>
+                                    <button id="btn-timee-1" idx="1" class="btn btn-sm btn-primary" style="width:30%;">↑</button>
+                                </div>
                             </div>
                         </div>
+                        <hr style="margin-top: 10px; margin-bottom: 10px;">
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:15%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">대성공 확률</div>
+                                </div>
+                                <div style="width:20%; display:inline-block;">
+                                    <span class="btn btn-sm btn-primary" disabled style="width:100%;">제대 레벨 합계</span>
+                                </div>
+                                <div style="width:20%; display:inline-block;">
+                                    <input id="sum_level" type="number" class="form-control input-sm" min="0" max="600" value="0">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <div id="btn_toggle_sucs" class="btn btn-sm btn-default" style="width:100%;">미적용</div>
+                                </div>
+                                <div style="width:25%; display:inline-block;">
+                                    <span id="per_level" class="btn btn-sm btn-default" disabled style="width:100%;">　</span>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 10px; margin-bottom: 10px;">
                     </div>
                     <div id="tbl_cht" class="col-md-12 col-xs-12">
                     </div>
