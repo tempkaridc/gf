@@ -479,7 +479,7 @@ function init(){
     }
     document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
     document.getElementById('tbl_help').style.height = myHeight * 0.5 + 'px';
-    document.getElementById('tbl_cht').style.height = myHeight * 0.4 + 'px';
+    document.getElementById('tbl_cht').style.height = myHeight * 0.3 + 'px';
 
     document.getElementById("pre_huma").addEventListener("change",function(){
         calcStage();
