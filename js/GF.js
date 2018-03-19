@@ -403,11 +403,11 @@ function loadTable(){
         /*10*/item += td0 + objectList[i].Ticket_fastRepair/objectList[i].Time*60 + tde;
         /*11*/item += td0 + objectList[i].Ticket_Tokken/objectList[i].Time*60 + tde;
         /*12*/item += td30;
-        if(objectList[i].Ticket_makeDoll) item += '<img src="img/doll.png" title="인형제조계약서">'
-        if(objectList[i].Ticket_makeTool) item += '<img src="img/tool.png" title="장비제조계약서">'
-        if(objectList[i].Ticket_fastMake) item += '<img src="img/fast.png" title="쾌속제조계약서">'
-        if(objectList[i].Ticket_fastRepair) item += '<img src="img/repr.png" title="쾌속수복계약서">'
-        if(objectList[i].Ticket_Tokken) item += '<img src="img/tokn.png" title="구매 토큰">'
+        if(objectList[i].Ticket_makeDoll) item += '<img src="img/doll.png" title="획득확률: ' + (objectList[i].Ticket_makeDoll * 100) + '%">'
+        if(objectList[i].Ticket_makeTool) item += '<img src="img/tool.png" title="획득확률: ' + (objectList[i].Ticket_makeTool * 100) + '%">'
+        if(objectList[i].Ticket_fastMake) item += '<img src="img/fast.png" title="획득확률: ' + (objectList[i].Ticket_fastMake * 100) + '%">'
+        if(objectList[i].Ticket_fastRepair) item += '<img src="img/repr.png" title="획득확률: ' + (objectList[i].Ticket_fastRepair * 100) + '%">'
+        if(objectList[i].Ticket_Tokken) item += '<img src="img/tokn.png" title="획득확률: ' + (objectList[i].Ticket_Tokken * 100) + '%">'
         item += tde;
         /*13*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
         /*14*/item += td0 + objectList[i].Time + tde;
