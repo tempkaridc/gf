@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="508">
-              <caret line="79" column="64" lean-forward="false" selection-start-line="79" selection-start-column="64" selection-end-line="79" selection-end-column="64" />
+            <state relative-caret-position="506">
+              <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -61,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="604">
@@ -153,8 +153,8 @@
         <option value="$PROJECT_DIR$/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/js/highcharts.js" />
         <option value="$PROJECT_DIR$/../__ITS workspace/vas-master_ITS_Merge/vas-master/client/js/vas-c-ars-1.0.0.js" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/GF.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -219,12 +219,12 @@
       <updated>1520924005817</updated>
       <workItem from="1520924007020" duration="29997000" />
       <workItem from="1521016921280" duration="65450000" />
-      <workItem from="1521433593634" duration="8915000" />
+      <workItem from="1521433593634" duration="9740000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104362000" />
+    <option name="totallyTimeSpent" value="105187000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="100" y="0" width="1060" height="1088" extended-state="1" />
@@ -417,10 +417,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="604">
+          <caret line="409" column="118" lean-forward="false" selection-start-line="409" selection-start-column="118" selection-end-line="409" selection-end-column="118" />
+          <folding>
+            <element signature="e#2935#3587#0" expanded="false" />
+            <marker date="1521444844234" expanded="true" signature="8723:8755" ph="..." />
+            <marker date="1521444844234" expanded="true" signature="8909:8941" ph="..." />
+            <marker date="1521444844234" expanded="true" signature="9095:9127" ph="..." />
+            <marker date="1521444844234" expanded="true" signature="9281:9313" ph="..." />
+            <marker date="1521444844234" expanded="true" signature="9467:9499" ph="..." />
+            <marker date="1521444844234" expanded="true" signature="12998:13040" ph="..." />
+            <marker date="1521444844234" expanded="true" signature="13088:13130" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="508">
-          <caret line="79" column="64" lean-forward="false" selection-start-line="79" selection-start-column="64" selection-end-line="79" selection-end-column="64" />
+        <state relative-caret-position="506">
+          <caret line="204" column="0" lean-forward="false" selection-start-line="204" selection-start-column="0" selection-end-line="204" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -458,23 +475,6 @@
             <element signature="n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="604">
-          <caret line="409" column="118" lean-forward="false" selection-start-line="409" selection-start-column="118" selection-end-line="409" selection-end-column="118" />
-          <folding>
-            <element signature="e#2935#3587#0" expanded="false" />
-            <marker date="1521444844234" expanded="true" signature="8723:8755" ph="..." />
-            <marker date="1521444844234" expanded="true" signature="8909:8941" ph="..." />
-            <marker date="1521444844234" expanded="true" signature="9095:9127" ph="..." />
-            <marker date="1521444844234" expanded="true" signature="9281:9313" ph="..." />
-            <marker date="1521444844234" expanded="true" signature="9467:9499" ph="..." />
-            <marker date="1521444844234" expanded="true" signature="12998:13040" ph="..." />
-            <marker date="1521444844234" expanded="true" signature="13088:13130" ph="..." />
           </folding>
         </state>
       </provider>
