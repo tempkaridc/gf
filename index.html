@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>GirlsFrontline</title>
+    <title>소녀전선 - 군수 지원 시뮬레이터</title>
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/highcharts.css" rel="stylesheet" />
     <style>
@@ -25,18 +25,19 @@
                             <table class="table table-condensed" style="margin-bottom: 0px; height:100%;">
                                 <tbody>
                                 <tr class="info">
-                                    <td id="sort-0" index=0 class="text-center table-clickable2" width="12%">지역 <small><span id="icon-0" class="glyphicon glyphicon-sort-by-order"></span></small></td>
-                                    <td id="sort-1" index=1 class="text-center table-clickable2" width="12%">인력 <small><span id="icon-1" class="glyphicon"></span></small></td>
-                                    <td id="sort-2" index=2 class="text-center table-clickable2" width="12%">탄약 <small><span id="icon-2" class="glyphicon"></span></small></td>
-                                    <td id="sort-3" index=3 class="text-center table-clickable2" width="12%">식량 <small><span id="icon-3" class="glyphicon"></span></small></td>
-                                    <td id="sort-4" index=4 class="text-center table-clickable2" width="12%">부품 <small><span id="icon-4" class="glyphicon"></span></small></td>
-                                    <td id="sort-5" index=5 class="text-center table-clickable2" width="12%">시간 <small><span id="icon-5" class="glyphicon"></span></small></td>
-                                    <td class="text-center" width="28%">
-                                        <img id="sort-6" index=6 class="table-clickable2" src="img/doll.png" title="인형제조계약서"></img><span id="icon-6" class="glyphicon"></span>
-                                        <img id="sort-7" index=7 class="table-clickable2" src="img/tool.png" title="장비제조계약서"></img><span id="icon-7" class="glyphicon"></span>
-                                        <img id="sort-8" index=8 class="table-clickable2" src="img/fast.png" title="쾌속제조계약서"></img><span id="icon-8" class="glyphicon"></span>
-                                        <img id="sort-9" index=9 class="table-clickable2" src="img/repr.png" title="쾌속수복계약서"></img><span id="icon-9" class="glyphicon"></span>
-                                        <img id="sort-10" index=10 class="table-clickable2" src="img/tokn.png" title="구매 토큰"></img><span id="icon-10" class="glyphicon"></span>
+                                    <td id="sort-0" index=0 class="text-center table-clickable2" width="10%">지역 <small><span id="icon-0" class="glyphicon glyphicon-sort-by-order"></span></small></td>
+                                    <td id="sort-1" index=1 class="text-center table-clickable2" width="10%">인력 <small><span id="icon-1" class="glyphicon"></span></small></td>
+                                    <td id="sort-2" index=2 class="text-center table-clickable2" width="10%">탄약 <small><span id="icon-2" class="glyphicon"></span></small></td>
+                                    <td id="sort-3" index=3 class="text-center table-clickable2" width="10%">식량 <small><span id="icon-3" class="glyphicon"></span></small></td>
+                                    <td id="sort-4" index=4 class="text-center table-clickable2" width="10%">부품 <small><span id="icon-4" class="glyphicon"></span></small></td>
+                                    <td id="sort-5" index=5 class="text-center table-clickable2" width="10%">합계 <small><span id="icon-5" class="glyphicon"></span></small></td>
+                                    <td id="sort-6" index=6 class="text-center table-clickable2" width="10%">시간 <small><span id="icon-6" class="glyphicon"></span></small></td>
+                                    <td class="text-center" width="30%">
+                                        <img id="sort-7" index=7 class="table-clickable2" src="img/doll.png" title="인형제조계약서"></img><span id="icon-7" class="glyphicon"></span>
+                                        <img id="sort-8" index=8 class="table-clickable2" src="img/tool.png" title="장비제조계약서"></img><span id="icon-8" class="glyphicon"></span>
+                                        <img id="sort-9" index=9 class="table-clickable2" src="img/fast.png" title="쾌속제조계약서"></img><span id="icon-9" class="glyphicon"></span>
+                                        <img id="sort-10" index=10 class="table-clickable2" src="img/repr.png" title="쾌속수복계약서"></img><span id="icon-10" class="glyphicon"></span>
+                                        <img id="sort-11" index=11 class="table-clickable2" src="img/tokn.png" title="구매 토큰"></img><span id="icon-11" class="glyphicon"></span>
                                     </td>
                                 </tr>
                                 </tbody>
@@ -53,22 +54,22 @@
                             <table class="table table-condensed" style="margin-bottom: 0px;">
                                 <tbody>
                                 <tr class="success">
-                                    <td class="text-center" width="12%"><small>수집/1시간</small></td>
-                                    <td class="text-center" width="12%"><b><span id="sumH"></span></b></td>
-                                    <td class="text-center" width="12%"><b><span id="sumA"></span></b></td>
-                                    <td class="text-center" width="12%"><b><span id="sumF"></span></b></td>
-                                    <td class="text-center" width="12%"><b><span id="sumP"></span></b></td>
-                                    <td class="text-center" width="12%"></td>
-                                    <td colspan="2" class="text-center" width="40%"><span id="sumItem"></span></td>
+                                    <td rowspan="2" class="text-center" width="10%"><small>시간당<br>자원</small></td>
+                                    <td class="text-center" width="10%"><b><span id="sumH"></span></b></td>
+                                    <td class="text-center" width="10%"><b><span id="sumA"></span></b></td>
+                                    <td class="text-center" width="10%"><b><span id="sumF"></span></b></td>
+                                    <td class="text-center" width="10%"><b><span id="sumP"></span></b></td>
+                                    <td class="text-center" width="10%"><b><span id="sumAll"></span></b></td>
+                                    <td rowspan="2" class="text-center" width="10%"><small>선택<br>지역</small></td>
+                                    <td class="text-center" width="30%"><span id="sumItem"></span></td>
                                 </tr>
                                 <tr class="success">
-                                    <td class="text-center" width="12%"></td>
-                                    <td class="text-center" width="12%"><img src="img/huma.png"></td>
-                                    <td class="text-center" width="12%"><img src="img/ammo.png"></td>
-                                    <td class="text-center" width="12%"><img src="img/food.png"></td>
-                                    <td class="text-center" width="12%"><img src="img/part.png"></td>
-                                    <td class="text-center" width="12%"><small>선택 지역</small></td>
-                                    <td class="text-center" width="28%"><span id="sumT"></span></td>
+                                    <td class="text-center" width="10%"><img src="img/huma.png"></td>
+                                    <td class="text-center" width="10%"><img src="img/ammo.png"></td>
+                                    <td class="text-center" width="10%"><img src="img/food.png"></td>
+                                    <td class="text-center" width="10%"><img src="img/part.png"></td>
+                                    <td class="text-center" width="10%"><img src="img/all.png"></td>
+                                    <td class="text-center" width="30%"><b><font color="blue"><span id="sumT"></span></font></b></td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -85,27 +86,8 @@
                                 <br>2. 표 상단의 <b>필요한 자원 이름을 클릭 시</b> 최단시간 내 획득가능한 군수조합순 정렬
                                 <br>3. 하단의 예상 그래프는 <b>'현재자원' 값부터 합산</b>, 값 미입력시 0부터 계산
                                 <br>4. 대성공 확률 적용시 자원 및 계약서 획득표기는 대성공 기대치로 재계산
+                                <br>5. 가중치 입력시 표의 합계값이 변경 및 합계 기준 내림재정렬 (기본 1 : 1 : 1 : 2.2)
                             </small>
-                        </div>
-                        <hr style="margin-top: 5px; margin-bottom: 10px;">
-                        <div class="row no-gutter">
-                            <div class="col-md-12 col-xs-12">
-                                <div style="width:15%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">현재자원</div>
-                                </div>
-                                <div style="width:20%; display:inline-block;">
-                                    <input id="pre_huma" type="number" class="form-control input-sm" min="0" value="" placeholder="인력: 0">
-                                </div>
-                                <div style="width:20%; display:inline-block;">
-                                    <input id="pre_ammo" type="number" class="form-control input-sm" min="0" value="" placeholder="탄약: 0">
-                                </div>
-                                <div style="width:20%; display:inline-block;">
-                                    <input id="pre_food" type="number" class="form-control input-sm" min="0" value="" placeholder="식량: 0">
-                                </div>
-                                <div style="width:20%; display:inline-block;">
-                                    <input id="pre_part" type="number" class="form-control input-sm" min="0" value="" placeholder="부품: 0">
-                                </div>
-                            </div>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 10px;">
                         <div class="row no-gutter">
@@ -132,19 +114,62 @@
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:15%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">현재자원</div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="pre_huma" type="number" class="form-control input-sm" min="0" value="" placeholder="인력: 0">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="pre_ammo" type="number" class="form-control input-sm" min="0" value="" placeholder="탄약: 0">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="pre_food" type="number" class="form-control input-sm" min="0" value="" placeholder="식량: 0">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="pre_part" type="number" class="form-control input-sm" min="0" value="" placeholder="부품: 0">
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 10px; margin-bottom: 10px;">
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:15%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">합계 가중치</div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_huma" type="number" class="form-control input-sm" min="1" value="1" placeholder="1">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_ammo" type="number" class="form-control input-sm" min="1" value="1" placeholder="1">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_food" type="number" class="form-control input-sm" min="1" value="1" placeholder="1">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_part" type="number" class="form-control input-sm" min="1" value="2.2" placeholder="2.2">
+                                </div>
+                                <div style="width:20%; display:inline-block;">
+                                    <button id="btn_wgt" class="btn btn-sm btn-primary" style="width:100%;">적용</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 10px; margin-bottom: 10px;">
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:15%; display:inline-block;">
                                     <div class="btn btn-sm btn-info" disabled style="width:100%;">구간설정</div>
                                 </div>
                                 <div class="btn-group" role="group" style="width:35%; display:inline-block;">
                                     <button id="btn-times-0" idx="0" class="btn btn-sm btn-primary" style="width:30%;">↓</button>
-                                    <button id="scr-times" idx="2" class="btn btn-sm btn-default" style="width:40%;" disabled>0시간</button>
+                                    <button id="scr-times" idx="2" class="btn btn-sm btn-primary disabled" style="width:40%;" disabled>0시간</button>
                                     <button id="btn-times-1" idx="1" class="btn btn-sm btn-primary" style="width:30%;">↑</button>
                                 </div>
                                 <div style="width:8%; display:inline-block;">
-                                    <span class="btn btn-sm" style="width:100%;" disabled><b>~</b></span>
+                                    <span class="btn btn-sm" style="width:100%;" disabled><b>↔</b></span>
                                 </div>
                                 <div class="btn-group" role="group" style="width:35%; display:inline-block;">
                                     <button id="btn-timee-0" idx="0" class="btn btn-sm btn-primary" style="width:30%;">↓</button>
-                                    <button id="scr-timee" idx="2" class="btn btn-sm btn-default" style="width:40%;" disabled>24시간</button>
+                                    <button id="scr-timee" idx="2" class="btn btn-sm btn-primary disabled" style="width:40%;" disabled>24시간</button>
                                     <button id="btn-timee-1" idx="1" class="btn btn-sm btn-primary" style="width:30%;">↑</button>
                                 </div>
                             </div>
@@ -165,13 +190,14 @@
                                     <div id="btn_toggle_sucs" class="btn btn-sm btn-default" style="width:100%;">미적용</div>
                                 </div>
                                 <div style="width:25%; display:inline-block;">
-                                    <span id="per_level" class="btn btn-sm btn-default" disabled style="width:100%;">　</span>
+                                    <span id="per_level" class="btn btn-sm btn-default" disabled style="width:100%;">대성공 확률: 0.0%</span>
                                 </div>
                             </div>
                         </div>
                         <hr style="margin-top: 10px; margin-bottom: 10px;">
+
                     </div>
-                    <div id="tbl_cht" class="col-md-12 col-xs-12">
+                    <div id="tbl_cht" class="col-md-12 col-xs-12" style="padding:0px;">
                     </div>
                 </div>
             </div>

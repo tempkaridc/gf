@@ -1,8 +1,9 @@
 var objectList = new Array();
-var calcList = new Array();
 var selectedList = new Array();
-var sortToggle = [0,0,0,0,0,0,0,0,0,0,0]; //0:none 1:asc 2:desc
+var sortToggle = [0,0,0,0,0,0,0,0,0,0,0,0]; //0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 var areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
+var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 2.2;
+
 var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; //14쌍
 var time_front = 0, time_end = 13;
 var success = 0;
@@ -14,7 +15,8 @@ var now;
 $(function (){
     init();
     refresh();
-}).on('click', '.table-clickable', function(e) {
+})
+    .on('click', '.table-clickable', function(e) {
         e.preventDefault();
 
         var index = $(this).attr('idx');    //고유값
@@ -112,6 +114,15 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
     }
     refresh();
 });
+$('#btn_wgt').off().on('click', function (e) {
+    wgtH = parseFloat(document.getElementById('wgt_huma').value);
+    wgtA = parseFloat(document.getElementById('wgt_ammo').value);
+    wgtF = parseFloat(document.getElementById('wgt_food').value);
+    wgtP = parseFloat(document.getElementById('wgt_part').value);
+    refresh();
+    sortToggle[5] = 0;
+    $('#sort-5').trigger('click');
+});
 $(document).ready(function() {
     $(document).on('keydown', 'input', function (e) {
         if (e.which == 13  || e.keyCode == 13 ){
@@ -139,8 +150,9 @@ function sortInit(d){
 }
 function sortTable(table, column, sc){
     var rows, switching, i, x, y, shouldSwitch;
-    if(column == 0){column = 12;}
-    if(column == 5){column = 13;}
+    if(column == 0){column = 13;} //지역소팅
+    if(column == 6){column = 14;} //시간소팅
+
     switching = true;
     while (switching) {
         switching = false;
@@ -169,7 +181,7 @@ function sortTable(table, column, sc){
     }
 }
 function calcStage(){
-    var sumH = 0, sumA = 0, sumF = 0, sumP = 0;
+    var sumH = 0, sumA = 0, sumF = 0, sumP = 0, sumAll = 0;
     var sumT = "", sumItem = "";
     var sumHp = 0, sumAp = 0, sumFp = 0, sumPp = 0, sumTp = 0;
     var aryH = new Array();
@@ -184,6 +196,7 @@ function calcStage(){
         sumA += objectList[selectedList[i]].Ammo * (60 / objectList[selectedList[i]].Time);
         sumF += objectList[selectedList[i]].Food * (60 / objectList[selectedList[i]].Time);
         sumP += objectList[selectedList[i]].Part * (60 / objectList[selectedList[i]].Time);
+        sumAll = sumH*wgtH + sumA*wgtA + sumF*wgtF + sumP*wgtP;
         sumT += objectList[selectedList[i]].Area + '-' + objectList[selectedList[i]].Stage + ', ';
 
         if(objectList[selectedList[i]].Ticket_makeDoll) sumHp += objectList[selectedList[i]].Ticket_makeDoll * (60 / objectList[selectedList[i]].Time);
@@ -221,6 +234,7 @@ function calcStage(){
     $('#sumA').text(sumA.toFixed(0));
     $('#sumF').text(sumF.toFixed(0));
     $('#sumP').text(sumP.toFixed(0));
+    $('#sumAll').text(sumAll.toFixed(0));
     $('#sumT').text(sumT.slice(0,-2));
 
     if(sumHp){sumItem += '<div style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/doll.png" title="인형제조계약서"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
@@ -269,7 +283,7 @@ function calcStage(){
             backgroundColor:'rgba(255, 255, 255, 0.0)'
         },
         title: {
-            text: null
+            text: sumT.slice(0,-2)
         },
         rangeSelector: {
             enabled: false
@@ -278,7 +292,7 @@ function calcStage(){
             type: 'datetime',
             crosshair: true,
             title: {
-                text: ''
+                text: null
             },
             dateTimeLabelFormats: {
                 hour: '%H:%M'
@@ -286,7 +300,7 @@ function calcStage(){
         },
         yAxis: {
             title: {
-                text: ''
+                text: null
             },
             min: 0
         },
@@ -372,30 +386,31 @@ function loadTable(){
     $('#area-list').empty();
     for(var i in objectList){
         var td0 = '<td style="text-align: center; vertical-align:middle; display:none;">';
-        var td12 = '<td style="text-align: center; vertical-align:middle;" width="12%">';
-        var td28 = '<td style="text-align: center; vertical-align:middle;" width="28%">';
+        var td10 = '<td style="text-align: center; vertical-align:middle;" width="10%">';
+        var td30 = '<td style="text-align: center; vertical-align:middle;" width="30%">';
         var tde = '</td>';
         var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable">';
-        /*00*/item += td12 + objectList[i].Area + '-' + objectList[i].Stage + tde;
-        /*01*/item += td12 + parseInt(objectList[i].Human/objectList[i].Time*60) + tde;
-        /*02*/item += td12 + parseInt(objectList[i].Ammo/objectList[i].Time*60) + tde;
-        /*03*/item += td12 + parseInt(objectList[i].Food/objectList[i].Time*60) + tde;
-        /*04*/item += td12 + parseInt(objectList[i].Part/objectList[i].Time*60) + tde;
-        /*05*/item += td12 + parseInt(objectList[i].Time / 60) + ':' + (objectList[i].Time % 60 == 0 ? '00' : objectList[i].Time % 60) + tde;
-        /*06*/item += td0 + objectList[i].Ticket_makeDoll/objectList[i].Time*60 + tde;
-        /*07*/item += td0 + objectList[i].Ticket_makeTool/objectList[i].Time*60 + tde;
-        /*08*/item += td0 + objectList[i].Ticket_fastMake/objectList[i].Time*60 + tde;
-        /*09*/item += td0 + objectList[i].Ticket_fastRepair/objectList[i].Time*60 + tde;
-        /*10*/item += td0 + objectList[i].Ticket_Tokken/objectList[i].Time*60 + tde;
-        /*11*/item += td28;
+        /*00*/item += td10 + objectList[i].Area + '-' + objectList[i].Stage + tde;
+        /*01*/item += td10 + parseInt(objectList[i].Human/objectList[i].Time*60) + tde;
+        /*02*/item += td10 + parseInt(objectList[i].Ammo/objectList[i].Time*60) + tde;
+        /*03*/item += td10 + parseInt(objectList[i].Food/objectList[i].Time*60) + tde;
+        /*04*/item += td10 + parseInt(objectList[i].Part/objectList[i].Time*60) + tde;
+        /*05*/item += td10 + parseInt(objectList[i].Human/objectList[i].Time*60*wgtH + objectList[i].Ammo/objectList[i].Time*60*wgtA + objectList[i].Food/objectList[i].Time*60*wgtF + objectList[i].Part/objectList[i].Time*60*wgtP) + tde;
+        /*06*/item += td10 + parseInt(objectList[i].Time / 60) + ':' + (objectList[i].Time % 60 == 0 ? '00' : objectList[i].Time % 60) + tde;
+        /*07*/item += td0 + objectList[i].Ticket_makeDoll/objectList[i].Time*60 + tde;
+        /*08*/item += td0 + objectList[i].Ticket_makeTool/objectList[i].Time*60 + tde;
+        /*09*/item += td0 + objectList[i].Ticket_fastMake/objectList[i].Time*60 + tde;
+        /*10*/item += td0 + objectList[i].Ticket_fastRepair/objectList[i].Time*60 + tde;
+        /*11*/item += td0 + objectList[i].Ticket_Tokken/objectList[i].Time*60 + tde;
+        /*12*/item += td30;
         if(objectList[i].Ticket_makeDoll) item += '<img src="img/doll.png" title="인형제조계약서">'
         if(objectList[i].Ticket_makeTool) item += '<img src="img/tool.png" title="장비제조계약서">'
         if(objectList[i].Ticket_fastMake) item += '<img src="img/fast.png" title="쾌속제조계약서">'
         if(objectList[i].Ticket_fastRepair) item += '<img src="img/repr.png" title="쾌속수복계약서">'
         if(objectList[i].Ticket_Tokken) item += '<img src="img/tokn.png" title="구매 토큰">'
         item += tde;
-        /*12*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
-        /*13*/item += td0 + objectList[i].Time + tde;
+        /*13*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
+        /*14*/item += td0 + objectList[i].Time + tde;
         $('#area-list').append(item);
     }
     for(var i in sortToggle){
