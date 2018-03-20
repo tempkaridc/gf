@@ -173,8 +173,8 @@ $('[id^=btn-rec]').off().on('click', function (e) {
     }
 });
 $('#auto_calc').off().on('click', function (e) {
-    highlight(2);
     $('#btn_wgt').trigger('click');
+    highlight(2);
 
     var usedRes = new Object();
     var usedResA = new Array();
