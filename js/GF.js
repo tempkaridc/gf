@@ -114,10 +114,10 @@ $('#btn_calcUse').off().on('click', function (e) {
         tmp[i] = tmp[i] / min;
     }
 
-    $('#wgt_huma').val(tmp[0]);
-    $('#wgt_ammo').val(tmp[1]);
-    $('#wgt_food').val(tmp[2]);
-    $('#wgt_part').val(tmp[3]);
+    $('#wgt_huma').val(1/tmp[0]);
+    $('#wgt_ammo').val(1/tmp[1]);
+    $('#wgt_food').val(1/tmp[2]);
+    $('#wgt_part').val(1/tmp[3]);
 
     $('#wghtModal').modal("hide");
     $('#recommendLine').addClass('hide');
