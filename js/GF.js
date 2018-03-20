@@ -1,12 +1,15 @@
 var objectList = new Array();
 var selectedList = new Array();
+var sync_calcList = new Array();
 var sortToggle = [0,0,0,0,0,0,0,0,0,0,0,0]; //0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 var areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
+var wghtToggle = [0,0,0,0];
+var level = [0, 0.2, 0.4, 0.6];
 var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 2.2;
 
 var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; //14쌍
 var time_front = 0, time_end = 13;
-var success = 0;
+var success = 0.6;
 var sw_sucs = false;
 var chart;
 var chart_time = new Array();
@@ -18,30 +21,7 @@ $(function (){
 })
     .on('click', '.table-clickable', function(e) {
         e.preventDefault();
-
-        var index = $(this).attr('idx');    //고유값
-        var rowName = '#table-row-' + index;
-
-        //var $target = $('#area-list tr').eq(id);
-
-        if($(rowName).hasClass('danger')){
-            $(rowName).removeClass('danger');
-            for(i in selectedList){
-                if(selectedList[i] == index){
-                    selectedList.splice(i, 1);
-                    break;
-                }
-            }
-        }else{
-            $(rowName).addClass('danger');
-            selectedList.push(index);
-
-            if(selectedList.length > 4){ //Stack Full
-                $('#table-row-' + selectedList[0]).removeClass('danger');
-                selectedList.splice(0,1);
-            }
-        }
-        calcStage();
+        clickRow($(this).attr('idx'));//고유값
     });
 $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
@@ -104,6 +84,7 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#per_level').addClass('btn-success');
         $('#btn_toggle_sucs').text('적용');
         sw_sucs = true;
+        highlight(0);
     }else{
         $('#btn_toggle_sucs').removeClass('btn-success');
         $('#btn_toggle_sucs').addClass('btn-default');
@@ -111,17 +92,318 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#per_level').addClass('btn-default');
         $('#btn_toggle_sucs').text('미적용');
         sw_sucs = false;
+        highlight();
     }
     refresh();
+});
+$('#my_wght').off().on('click', function (e) {
+    $('#wghtModal').modal("show");
+});
+$('#btn_calcUse').off().on('click', function (e) {
+    var tmp = new Array();
+    tmp[0] = parseInt(document.getElementById('use_huma').value);
+    tmp[1] = parseInt(document.getElementById('use_ammo').value);
+    tmp[2] = parseInt(document.getElementById('use_food').value);
+    tmp[3] = parseInt(document.getElementById('use_part').value);
+
+    for(var i in tmp){
+        if(isNaN(tmp[i])) tmp[i] = 1;
+    }
+    var min = tmp[0];
+    for(var i in tmp){
+        tmp[i] = tmp[i] / min;
+    }
+
+    $('#wgt_huma').val(tmp[0]);
+    $('#wgt_ammo').val(tmp[1]);
+    $('#wgt_food').val(tmp[2]);
+    $('#wgt_part').val(tmp[3]);
+
+    $('#wghtModal').modal("hide");
+    $('#recommendLine').addClass('hide');
+    $('#tbl_cht').empty();
 });
 $('#btn_wgt').off().on('click', function (e) {
     wgtH = parseFloat(document.getElementById('wgt_huma').value);
     wgtA = parseFloat(document.getElementById('wgt_ammo').value);
     wgtF = parseFloat(document.getElementById('wgt_food').value);
     wgtP = parseFloat(document.getElementById('wgt_part').value);
+    if(isNaN(wgtH)) wgtH = 1;
+    if(isNaN(wgtA)) wgtA = 1;
+    if(isNaN(wgtF)) wgtF = 1;
+    if(isNaN(wgtP)) wgtP = 2.2;
+    highlight(1);
     refresh();
-    sortToggle[5] = 0;
-    $('#sort-5').trigger('click');
+    //sortToggle[5] = 0;
+    //$('#sort-5').trigger('click');
+});
+$('[id^=btn-tgl]').off().on('click', function (e) {
+    var id = parseInt($(this).attr('idx'));
+    if(wghtToggle[id] == level[0]){    //dflt -> sucs
+        $('#btn-tglT' + id).removeClass('btn-default');
+        $('#btn-tglT' + id).addClass('btn-success');
+        $('#btn-tglT' + id + '_text').text(' 낮음');
+        $('#btn-tglT' + id).attr('title', '시간당 ' + level[1] + '개 이상');
+        wghtToggle[id] = level[1];
+    }else if(wghtToggle[id] == level[1]){    //sucs -> warn
+        $('#btn-tglT' + id).removeClass('btn-success');
+        $('#btn-tglT' + id).addClass('btn-warning');
+        $('#btn-tglT' + id + '_text').text(' 중간');
+        $('#btn-tglT' + id).attr('title', '시간당 ' + level[2] + '개 이상');
+        wghtToggle[id] = level[2];
+    }else if(wghtToggle[id] == level[2]) {    //warn -> dang
+        $('#btn-tglT' + id).removeClass('btn-warning');
+        $('#btn-tglT' + id).addClass('btn-danger');
+        $('#btn-tglT' + id + '_text').text(' 높음');
+        $('#btn-tglT' + id).attr('title', '시간당 ' + level[3] + '개 이상');
+        wghtToggle[id] = level[3];
+    }else if(wghtToggle[id] == level[3]){    //warn -> dang
+        $('#btn-tglT' + id).removeClass('btn-danger');
+        $('#btn-tglT' + id).addClass('btn-default');
+        $('#btn-tglT' + id + '_text').text(' 없음');
+        $('#btn-tglT' + id).attr('title', '시간당 ' + level[0] + '개 이상');
+        wghtToggle[id] = level[0];
+    }
+});
+$('[id^=btn-rec]').off().on('click', function (e) {
+    var id = parseInt($(this).attr('idx'));
+    clearRow();
+    for(var i in sync_calcList[id].comb){
+        clickRow(sync_calcList[id].comb[i]);
+    }
+});
+$('#auto_calc').off().on('click', function (e) {
+    highlight(2);
+
+    var usedRes = new Object();
+    var usedResA = new Array();
+    sync_calcList.length = 0;
+
+    usedRes.h = 1 / parseFloat(document.getElementById('wgt_huma').value);
+    usedRes.a = 1 / parseFloat(document.getElementById('wgt_ammo').value);
+    usedRes.f = 1 / parseFloat(document.getElementById('wgt_food').value);
+    usedRes.p = 1 / parseFloat(document.getElementById('wgt_part').value);
+
+    if(isNaN(usedRes.h)) usedRes.h = 1 / 1;
+    if(isNaN(usedRes.a)) usedRes.a = 1 / 1;
+    if(isNaN(usedRes.f)) usedRes.f = 1 / 1;
+    if(isNaN(usedRes.p)) usedRes.p = 1 / 2.2;
+
+    usedRes.type = binaryType(usedRes.h, usedRes.a, usedRes.f, usedRes.p);
+    usedResA.push(usedRes);
+    normalizeValues(usedResA);
+    //console.log(objectList);
+
+
+    var calcList = new Array();
+    for(var i in objectList){
+        var tmp = new Object();
+        tmp.h = objectList[i].Human/objectList[i].Time*60;
+        tmp.a = objectList[i].Ammo/objectList[i].Time*60;//
+        tmp.f = objectList[i].Food/objectList[i].Time*60;//
+        tmp.p = objectList[i].Part/objectList[i].Time*60;//
+        tmp.t1 = objectList[i].Ticket_makeDoll/objectList[i].Time*60;
+        tmp.t2 = objectList[i].Ticket_makeTool/objectList[i].Time*60;
+        tmp.t3 = objectList[i].Ticket_fastMake/objectList[i].Time*60;
+        tmp.t4 = objectList[i].Ticket_fastRepair/objectList[i].Time*60;
+        calcList.push(tmp);
+    }
+    //console.log(calcList);
+
+    var numAry = new Array();
+    for(var i in objectList){
+        numAry.push(i);
+    }
+    var comb = k_combinations(numAry, 4);
+    //console.log(comb);
+
+    var comb_calcList = new Array();
+    for(var i in comb){
+        var tmp = new Object;
+        var th = 0, ta = 0, tf = 0, tp = 0;
+        var tt1 = 0, tt2 = 0, tt3 = 0, tt4 = 0;
+        for(var j in comb[i]){
+            th += calcList[parseInt(comb[i][j])].h;
+            ta += calcList[parseInt(comb[i][j])].a;
+            tf += calcList[parseInt(comb[i][j])].f;
+            tp += calcList[parseInt(comb[i][j])].p;
+            tt1 += calcList[parseInt(comb[i][j])].t1;
+            tt2 += calcList[parseInt(comb[i][j])].t2;
+            tt3 += calcList[parseInt(comb[i][j])].t3;
+            tt4 += calcList[parseInt(comb[i][j])].t4;
+        }
+        tmp.h = th;
+        tmp.a = ta;
+        tmp.f = tf;
+        tmp.p = tp;
+        tmp.total = th + ta + tf + tp;
+        //tmp.t1 = tt1;
+        //tmp.t2 = tt2;
+        //tmp.t3 = tt3;
+        //tmp.t4 = tt4;
+        if( (tt1 > wghtToggle[0]) &&
+            (tt2 > wghtToggle[1]) &&
+            (tt3 > wghtToggle[2]) &&
+            (tt4 > wghtToggle[3])){
+            tmp.t = true;
+        }else{
+            tmp.t = false;
+        }
+        tmp.type = (binaryType(th,ta,tf,tp));
+        tmp.idx = parseInt(i);
+        tmp.comb = comb[parseInt(i)];
+        comb_calcList.push(tmp);
+    }
+    normalizeValues(comb_calcList);
+
+    var used = usedResA[0];
+    for(var i in comb_calcList){
+        if(comb_calcList[i].type == used.type){
+            if(comb_calcList[i].h >= used.h) { (comb_calcList[i].h = used.h / comb_calcList[i].h) }else{ (comb_calcList[i].h = comb_calcList[i].h / used.h)};
+            if(comb_calcList[i].a >= used.a) { (comb_calcList[i].a = used.a / comb_calcList[i].a) }else{ (comb_calcList[i].a = comb_calcList[i].a / used.a)};
+            if(comb_calcList[i].f >= used.f) { (comb_calcList[i].f = used.f / comb_calcList[i].f) }else{ (comb_calcList[i].f = comb_calcList[i].f / used.f)};
+            if(comb_calcList[i].p >= used.p) { (comb_calcList[i].p = used.p / comb_calcList[i].p) }else{ (comb_calcList[i].p = comb_calcList[i].p / used.p)};
+            comb_calcList[i].avgH = 4 / ((1/comb_calcList[i].h) + (1/comb_calcList[i].a) + (1/comb_calcList[i].f) + (1/comb_calcList[i].p));
+            //comb_calcList[i].avgA = (comb_calcList[i].h + comb_calcList[i].a + comb_calcList[i].f + comb_calcList[i].p) / 4;
+        }
+    }
+    //console.log(comb_calcList);
+
+    var limit = 0.95;
+    while(1){
+        for(var i in comb_calcList){
+            if((comb_calcList[i].avgH > limit) && (comb_calcList[i].t)){
+                sync_calcList.push(comb_calcList[i]);
+            }
+        }
+        if(sync_calcList.length > 4) {
+            break;
+        }else{
+            limit = limit - 0.05;
+            if(limit < 0.0){
+                alert('검색 결과가 없습니다.');
+                $('#recommendLine').addClass('hide');
+                return;
+            }
+        }
+    }
+    sync_calcList.sort(function(a, b){return b.total - a.total});
+    //console.log(sync_calcList);
+
+    for(var i = 0; i < 4; i++){
+        $('#btn-rec' + i).text('추천 ' + (i+1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
+    }
+    $('#recommendLine').removeClass('hide');
+
+    function normalizeValues(ary){
+        for(var i in ary){
+            switch(ary[i].type){
+                case 1:
+                    ary[i].h /= ary[i].p;
+                    ary[i].a /= ary[i].p;
+                    ary[i].f /= ary[i].p;
+                    ary[i].p /= ary[i].p;
+                    break;
+                case 2:
+                    ary[i].h /= ary[i].f;
+                    ary[i].a /= ary[i].f;
+                    ary[i].p /= ary[i].f;
+                    ary[i].f /= ary[i].f;
+                    break;
+                case 3:
+                    ary[i].h /= ary[i].a;
+                    ary[i].f /= ary[i].a;
+                    ary[i].p /= ary[i].a;
+                    ary[i].a /= ary[i].a;
+                    break;
+                case 4:
+                    ary[i].a /= ary[i].h;
+                    ary[i].f /= ary[i].h;
+                    ary[i].p /= ary[i].h;
+                    ary[i].h /= ary[i].h;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+    function binaryType(a,b,c,d){
+        var e = 0;
+        if(a) e+=8;
+        if(b) e+=4;
+        if(c) e+=2;
+        if(d) e+=1;
+
+        switch(e){
+            case 0:
+                return 0;
+                break;
+            case 1:
+            case 3:
+            case 5:
+            case 7:
+                return 1;
+                break;
+            case 2:
+            case 6:
+            case 10:
+            case 11:
+                return 2;
+                break;
+            case 4:
+            case 12:
+            case 13:
+            case 14:
+                return 3;
+                break;
+            case 8:
+            case 9:
+            case 15:
+                return 4;
+                break;
+            default:
+                return 0;
+                break;
+        }
+        return e;
+    }
+    function k_combinations(set, k) {
+        var i, j, combs, head, tailcombs;
+
+        // There is no way to take e.g. sets of 5 elements from
+        // a set of 4.
+        if (k > set.length || k <= 0) {
+            return [];
+        }
+
+        // K-sized set has only one K-sized subset.
+        if (k == set.length) {
+            return [set];
+        }
+
+        // There is N 1-sized subsets in a N-sized set.
+        if (k == 1) {
+            combs = [];
+            for (i = 0; i < set.length; i++) {
+                combs.push([set[i]]);
+            }
+            return combs;
+        }
+
+        combs = [];
+        for (i = 0; i < set.length - k + 1; i++) {
+            // head is a list that includes only our current element.
+            head = set.slice(i, i + 1);
+            // We take smaller combinations from the subsequent elements
+            tailcombs = k_combinations(set.slice(i + 1), k - 1);
+            // For each (k-1)-combination we join it with the current
+            // and store it to the set of k-combinations.
+            for (j = 0; j < tailcombs.length; j++) {
+                combs.push(head.concat(tailcombs[j]));
+            }
+        }
+        return combs;
+    }
 });
 $(document).ready(function() {
     $(document).on('keydown', 'input', function (e) {
@@ -134,6 +416,55 @@ $(document).ready(function() {
         }
     });
 });
+function highlight(id){
+    document.getElementById('highlight_0').style.background = 'transparent';
+    document.getElementById('highlight_1').style.background = 'transparent';
+    document.getElementById('highlight_2').style.background = 'transparent';
+    if(id != undefined) document.getElementById('highlight_' + id).style.background = '#ffe5cc';
+}
+function clearRow(){
+    selectedList.length = 0;
+    for(var i in objectList) {
+        var rowName = '#table-row-' + i;
+
+        if ($(rowName).hasClass('danger')) {
+            $(rowName).removeClass('danger');
+        }
+    }
+}
+function clickRow(index){
+    var rowName = '#table-row-' + index;
+
+    if($(rowName).hasClass('danger')){
+        $(rowName).removeClass('danger');
+        for(i in selectedList){
+            if(selectedList[i] == index){
+                selectedList.splice(i, 1);
+                break;
+            }
+        }
+    }else{
+        $(rowName).addClass('danger');
+        selectedList.push(index);
+
+        if(selectedList.length > 4){ //Stack Full
+            $('#table-row-' + selectedList[0]).removeClass('danger');
+            selectedList.splice(0,1);
+        }
+    }
+    calcStage();
+}
+function clone(obj) {
+    if (obj === null || typeof(obj) !== 'object')
+        return obj;
+    var copy = obj.constructor();
+    for (var attr in obj) {
+        if (obj.hasOwnProperty(attr)) {
+            copy[attr] = obj[attr];
+        }
+    }
+    return copy;
+}
 function dispTime(){
     $('#scr-times').text(timeToggle[time_front] + '시간');
     $('#scr-timee').text(timeToggle[time_end] + '시간');
@@ -479,7 +810,7 @@ function callData(){
         [10,2,100,0,240,180,0,0.75,0,0.25,0,0],
         [10,3,320,0,480,480,300,0,0,0.3,0.5,0],
         [10,4,600,660,660,660,330,0,1,0,0,0]
-    ]
+    ];
 
     for(var i in arr){
         var tmp = new Object();
@@ -506,6 +837,8 @@ function callData(){
 function refresh(){
     objectList.length = 0;
     selectedList.length = 0;
+    sync_calcList.length = 0;
+    $('#recommendLine').addClass('hide');
     callData();
     loadTable();
     calcStage();
@@ -540,4 +873,6 @@ function init(){
             success = tmp / 100;
         }
     });
+
+    $('#wghtModal').modal("hide");
 }

@@ -82,20 +82,22 @@
                     <div id="tbl_help" class="row no-gutters panel panel-primary" style="padding:10px;">
                         <div class="panel panel-info" style="padding:10px; margin-bottom:10px;">
                             <small>
-                                1. 모든 데이터는 <b>시간당 획득 기준으로 표기 및 정렬</b> (인탄식부:수급량 + 계약서:획득확률)
-                                <br>2. 표 상단의 <b>필요한 자원 이름을 클릭 시</b> 최단시간 내 획득가능한 군수조합순 정렬
-                                <br>3. 하단의 예상 그래프는 <b>'현재자원' 값부터 합산</b>, 값 미입력시 0부터 계산
-                                <br>4. 대성공 확률 적용시 자원 및 계약서 획득표기는 대성공 기대치로 재계산
-                                <br>5. 가중치 입력시 표의 합계값이 변경 및 합계 기준 내림재정렬 (기본 1 : 1 : 1 : 2.2)
+                                1. 표의 모든 값은 <b><font color="red">시간당 획득 기준</font></b>으로 표기 및 정렬 (인탄식부:수급량 + 계약서:획득확률)
+                                <br>2. 표 상단의 <b><font color="red">자원명 클릭 시</font></b> 최단시간 내 획득가능한 군수조합순 정렬
+                                <br>3. 하단 예상 그래프는 <b><font color="red">'현재자원' 값부터 합산</font></b>, 값 미입력시 0부터 계산
+                                <br>4. <span id="highlight_0">대성공률 반영 시, 자원 및 계약서 획득률을 대성공 시 기대치로 재계산</span>
+                                <br>5. <span id="highlight_1">가중치 입력 시, 표의 <b><font color="red">'합계 값'</font></b> 재계산 <button id="my_wght" class="btn btn-xs btn-success"><small>나만의 가중치 계산하기</small></button></span>
+                                <br>6. <span id="highlight_2">'추천지역' 기능은 입력된 <b><font color="red">'자원 가중치'를 기준으로 자원비 유지</font></b>를 목표로 하는 군수지역 조합 산출
+                                    <br>　┖ <b><font color="red">'지역선택', '구간설정', '대성공률'</font></b> 반영. & = 검색유사도. 계약서 가중치와 총 자원량은 반비례</span>
                             </small>
                         </div>
-                        <hr style="margin-top: 10px; margin-bottom: 10px;">
+                        <hr style="margin-top: 7px; margin-bottom: 7px;">
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
-                                <div style="width:15%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">군수지역</div>
+                                <div style="width:20%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" style="width:100%;">군수지역</div>
                                 </div>
-                                <div class="btn-group" role="group" style="width:80%; display:inline-block;">
+                                <div class="btn-group" role="group" style="width:75%; display:inline-block;">
                                     <button id="btn-area-0" idx="0" class="btn btn-sm btn-success" style="width:9%;">0</button>
                                     <button id="btn-area-1" idx="1" class="btn btn-sm btn-success" style="width:9%;">1</button>
                                     <button id="btn-area-2" idx="2" class="btn btn-sm btn-success" style="width:9%;">2</button>
@@ -110,11 +112,11 @@
                                 </div>
                             </div>
                         </div>
-                        <hr style="margin-top: 10px; margin-bottom: 10px;">
+                        <hr style="margin-top: 7px; margin-bottom: 7px;">
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
-                                <div style="width:15%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">현재자원</div>
+                                <div style="width:20%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" style="width:100%;">현재자원</div>
                                 </div>
                                 <div style="width:15%; display:inline-block;">
                                     <input id="pre_huma" type="number" class="form-control input-sm" min="0" value="" placeholder="인력: 0">
@@ -130,72 +132,112 @@
                                 </div>
                             </div>
                         </div>
-                        <hr style="margin-top: 10px; margin-bottom: 10px;">
+                        <hr style="margin-top: 7px; margin-bottom: 7px;">
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
-                                <div style="width:15%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">합계 가중치</div>
-                                </div>
-                                <div style="width:15%; display:inline-block;">
-                                    <input id="wgt_huma" type="number" class="form-control input-sm" min="1" value="1" placeholder="1">
-                                </div>
-                                <div style="width:15%; display:inline-block;">
-                                    <input id="wgt_ammo" type="number" class="form-control input-sm" min="1" value="1" placeholder="1">
-                                </div>
-                                <div style="width:15%; display:inline-block;">
-                                    <input id="wgt_food" type="number" class="form-control input-sm" min="1" value="1" placeholder="1">
-                                </div>
-                                <div style="width:15%; display:inline-block;">
-                                    <input id="wgt_part" type="number" class="form-control input-sm" min="1" value="2.2" placeholder="2.2">
-                                </div>
                                 <div style="width:20%; display:inline-block;">
-                                    <button id="btn_wgt" class="btn btn-sm btn-primary" style="width:100%;">적용</button>
+                                    <div class="btn btn-sm btn-info" style="width:100%;">구간설정</div>
                                 </div>
-                            </div>
-                        </div>
-                        <hr style="margin-top: 10px; margin-bottom: 10px;">
-                        <div class="row no-gutter">
-                            <div class="col-md-12 col-xs-12">
-                                <div style="width:15%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">구간설정</div>
-                                </div>
-                                <div class="btn-group" role="group" style="width:35%; display:inline-block;">
-                                    <button id="btn-times-0" idx="0" class="btn btn-sm btn-primary" style="width:30%;">↓</button>
-                                    <button id="scr-times" idx="2" class="btn btn-sm btn-primary disabled" style="width:40%;" disabled>0시간</button>
-                                    <button id="btn-times-1" idx="1" class="btn btn-sm btn-primary" style="width:30%;">↑</button>
+                                <div class="btn-group" role="group" style="width:34%; display:inline-block;">
+                                    <button id="btn-times-0" idx="0" class="btn btn-sm btn-primary" style="width:25%;">↓</button>
+                                    <button id="scr-times" idx="2" class="btn btn-sm btn-primary disabled" style="width:50%;" disabled>0시간</button>
+                                    <button id="btn-times-1" idx="1" class="btn btn-sm btn-primary" style="width:25%;">↑</button>
                                 </div>
                                 <div style="width:8%; display:inline-block;">
                                     <span class="btn btn-sm" style="width:100%;" disabled><b>↔</b></span>
                                 </div>
-                                <div class="btn-group" role="group" style="width:35%; display:inline-block;">
-                                    <button id="btn-timee-0" idx="0" class="btn btn-sm btn-primary" style="width:30%;">↓</button>
-                                    <button id="scr-timee" idx="2" class="btn btn-sm btn-primary disabled" style="width:40%;" disabled>24시간</button>
-                                    <button id="btn-timee-1" idx="1" class="btn btn-sm btn-primary" style="width:30%;">↑</button>
+                                <div class="btn-group" role="group" style="width:34%; display:inline-block;">
+                                    <button id="btn-timee-0" idx="0" class="btn btn-sm btn-primary" style="width:25%;">↓</button>
+                                    <button id="scr-timee" idx="2" class="btn btn-sm btn-primary disabled" style="width:50%;" disabled>24시간</button>
+                                    <button id="btn-timee-1" idx="1" class="btn btn-sm btn-primary" style="width:25%;">↑</button>
                                 </div>
                             </div>
                         </div>
-                        <hr style="margin-top: 10px; margin-bottom: 10px;">
+                        <hr style="margin-top: 7px; margin-bottom: 7px;">
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
-                                <div style="width:15%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" disabled style="width:100%;">대성공 확률</div>
-                                </div>
                                 <div style="width:20%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" style="width:100%;">대성공률</div>
+                                </div>
+                                <div style="width:22%; display:inline-block;">
                                     <span class="btn btn-sm btn-primary" disabled style="width:100%;">제대 레벨 합계</span>
                                 </div>
-                                <div style="width:20%; display:inline-block;">
+                                <div style="width:13%; display:inline-block;">
                                     <input id="sum_level" type="number" class="form-control input-sm" min="0" max="600" value="500">
                                 </div>
-                                <div style="width:15%; display:inline-block;">
-                                    <div id="btn_toggle_sucs" class="btn btn-sm btn-default" style="width:100%;">미적용</div>
-                                </div>
-                                <div style="width:25%; display:inline-block;">
+                                <div style="width:27%; display:inline-block;">
                                     <span id="per_level" class="btn btn-sm btn-default" disabled style="width:100%;">대성공 확률: 60.0%</span>
+                                </div>
+                                <div style="width:13%; display:inline-block;">
+                                    <div id="btn_toggle_sucs" class="btn btn-sm btn-default" style="width:100%;">미적용</div>
                                 </div>
                             </div>
                         </div>
-                        <hr style="margin-top: 10px; margin-bottom: 10px;">
-
+                        <hr style="margin-top: 7px; margin-bottom: 7px;">
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:20%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" style="width:100%;">자원 가중치</div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="인력: 1">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="탄약: 1">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_food" type="number" class="form-control input-sm" min="1" value="" placeholder="식량: 1">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <input id="wgt_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품: 2.2">
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <button id="btn_wgt" class="btn btn-sm btn-primary" style="width:100%;">테이블 적용</button>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 7px; margin-bottom: 7px;">
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:20%; display:inline-block;">
+                                    <div class="btn btn-sm btn-info" style="width:100%;">자동선택</div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <div id="btn-tglT0" idx="0" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/doll.png" title="인형제조계약서"><span id="btn-tglT0_text"> 없음</span></div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <div id="btn-tglT1" idx="1" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/tool.png" title="장비제조계약서"><span id="btn-tglT1_text"> 없음</span></div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <div id="btn-tglT2" idx="2" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/fast.png" title="쾌속제조계약서"><span id="btn-tglT2_text"> 없음</span></div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <div id="btn-tglT3" idx="3" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/repr.png" title="쾌속수복계약서"><span id="btn-tglT3_text"> 없음</span></div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <div id="auto_calc" class="btn btn-sm btn-primary" style="width:100%;">계산</div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 2px; margin-bottom: 2px; border:0px;">
+                        <div class="row no-gutter hide" id="recommendLine" >
+                            <div class="col-md-12 col-xs-12">
+                                <div class="panel panel-primary" style="width:77%; display:inline-block; padding:4px; background-color:steelblue; margin-bottom: 0px; float:right;">
+                                    <div class="col-md-3 col-xs-3" style="padding:0px; display:inline-block;">
+                                        <div id="btn-rec0" idx=0 class="btn btn-sm btn-danger" style="width:100%;"></div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-3" style="padding:0px; display:inline-block;">
+                                        <div id="btn-rec1" idx=1 class="btn btn-sm btn-danger" style="width:100%;"></div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-3" style="padding:0px; display:inline-block;">
+                                        <div id="btn-rec2" idx=2 class="btn btn-sm btn-danger" style="width:100%;"></div>
+                                    </div>
+                                    <div class="col-md-3 col-xs-3" style="padding:0px; display:inline-block;">
+                                        <div id="btn-rec3" idx=3 class="btn btn-sm btn-danger" style="width:100%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div id="tbl_cht" class="col-md-12 col-xs-12" style="padding:0px;">
                     </div>
@@ -203,6 +245,94 @@
             </div>
         </div>
         <a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" class="btn btn-default col-md-12 col-xs-12">건의사항</a>
+        <div class="modal fade" id="wghtModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <small>
+                            나만의 가중치 계산:
+                            <br>　플레이어가 하루에 사용하는 자원량에 의거한 개인 가중치 계산
+                        </small>
+                        <div class="panel panel-primary" style="padding:5px; margin-top:10px;">
+                            <table class="table table-condensed">
+                                <thead>
+                                <tr>
+                                    <th><font color="blue">일일퀘스트 가중치 계산 예</font></th>
+                                    <th>인력</th>
+                                    <th>탄약</th>
+                                    <th>식량</th>
+                                    <th>부품</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>인형제조 범용1식 4회</td>
+                                    <td>430 x 4</td>
+                                    <td>430 x 4</td>
+                                    <td>430 x 4</td>
+                                    <td>230 x 4</td>
+                                </tr>
+                                <tr>
+                                    <td>장비제조 범용1식 4회</td>
+                                    <td>150 x 4</td>
+                                    <td>150 x 4</td>
+                                    <td>150 x 4</td>
+                                    <td>150 x 4</td>
+                                </tr>
+                                <tr>
+                                    <td>전역 9회 클리어</td>
+                                    <td>100 x 9</td>
+                                    <td>300 x 9</td>
+                                    <td>300 x 9</td>
+                                    <td>50 x 9</td>
+                                </tr>
+                                <tr class="warning">
+                                    <td>합계 <small>(아래 입력)</small></td>
+                                    <td>3220</td>
+                                    <td>5020</td>
+                                    <td>5020</td>
+                                    <td>2020</td>
+                                </tr>
+                                <tr class="success">
+                                    <td>자원비</td>
+                                    <td>1</td>
+                                    <td>1.55</td>
+                                    <td>1.55</td>
+                                    <td>0.62</td>
+                                </tr>
+                                <tr class="info">
+                                    <td>가중치(1 / 자원비)</td>
+                                    <td>1</td>
+                                    <td>0.64</td>
+                                    <td>0.64</td>
+                                    <td>1.59</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:19%; display:inline-block;">
+                                    <input id="use_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="인력">
+                                </div>
+                                <div style="width:19%; display:inline-block;">
+                                    <input id="use_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="탄약">
+                                </div>
+                                <div style="width:19%; display:inline-block;">
+                                    <input id="use_food" type="number" class="form-control input-sm" min="1" value="" placeholder="식량">
+                                </div>
+                                <div style="width:19%; display:inline-block;">
+                                    <input id="use_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품">
+                                </div>
+                                <div style="width:19%; display:inline-block;">
+                                    <div id="btn_calcUse" class="btn btn-sm btn-primary" style="width:100%;">계산</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <script src="js/highcharts.js"></script>
     <script src="js/highcharts-more.js"></script>
