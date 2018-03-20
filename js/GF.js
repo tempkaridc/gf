@@ -142,25 +142,25 @@ $('[id^=btn-tgl]').off().on('click', function (e) {
     if(wghtToggle[id] == level[0]){    //dflt -> sucs
         $('#btn-tglT' + id).removeClass('btn-default');
         $('#btn-tglT' + id).addClass('btn-success');
-        $('#btn-tglT' + id + '_text').text(' 낮음');
+        $('#btn-tglT' + id + '_text').text(' 저확률');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[1] + '개 이상');
         wghtToggle[id] = level[1];
     }else if(wghtToggle[id] == level[1]){    //sucs -> warn
         $('#btn-tglT' + id).removeClass('btn-success');
         $('#btn-tglT' + id).addClass('btn-warning');
-        $('#btn-tglT' + id + '_text').text(' 중간');
+        $('#btn-tglT' + id + '_text').text(' 중확률');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[2] + '개 이상');
         wghtToggle[id] = level[2];
     }else if(wghtToggle[id] == level[2]) {    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-warning');
         $('#btn-tglT' + id).addClass('btn-danger');
-        $('#btn-tglT' + id + '_text').text(' 높음');
+        $('#btn-tglT' + id + '_text').text(' 고확률');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[3] + '개 이상');
         wghtToggle[id] = level[3];
     }else if(wghtToggle[id] == level[3]){    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-danger');
         $('#btn-tglT' + id).addClass('btn-default');
-        $('#btn-tglT' + id + '_text').text(' 없음');
+        $('#btn-tglT' + id + '_text').text(' 전체');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[0] + '개 이상');
         wghtToggle[id] = level[0];
     }
@@ -174,6 +174,7 @@ $('[id^=btn-rec]').off().on('click', function (e) {
 });
 $('#auto_calc').off().on('click', function (e) {
     highlight(2);
+    $('#btn_wgt').trigger('click');
 
     var usedRes = new Object();
     var usedResA = new Array();
@@ -273,7 +274,9 @@ $('#auto_calc').off().on('click', function (e) {
     while(1){
         for(var i in comb_calcList){
             if((comb_calcList[i].avgH > limit) && (comb_calcList[i].t)){
-                sync_calcList.push(comb_calcList[i]);
+                if(!((sync_calcList.filter(id => id.idx == comb_calcList[i].idx)).length)){ //중복이 아니면 0이 리턴된다, 중복검사로 쓰자?
+                    sync_calcList.push(comb_calcList[i]);
+                }
             }
         }
         if(sync_calcList.length > 4) {
@@ -281,16 +284,21 @@ $('#auto_calc').off().on('click', function (e) {
         }else{
             limit = limit - 0.05;
             if(limit < 0.0){
-                alert('검색 결과가 없습니다.');
-                $('#recommendLine').addClass('hide');
-                return;
+                if(!sync_calcList.length){
+                    alert('검색 결과가 없습니다.');
+                    $('#recommendLine').addClass('hide');
+                    return;
+                }else{
+                    break;
+                }
             }
         }
     }
     sync_calcList.sort(function(a, b){return b.total - a.total});
+    if(sync_calcList.length > 4) sync_calcList.length = 4; //0~3 이후로 삭제
     //console.log(sync_calcList);
 
-    for(var i = 0; i < 4; i++){
+    for(var i = 0; i < sync_calcList.length; i++){
         $('#btn-rec' + i).text('추천 ' + (i+1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
     }
     $('#recommendLine').removeClass('hide');
