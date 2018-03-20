@@ -874,11 +874,14 @@ function init(){
         if(!isNaN(tmp)){
             if (tmp < 0) tmp = 0;
             if (tmp > 600) tmp = 600;
+
             tmp = parseInt(tmp / 5);
             tmp = tmp * 0.45;
             tmp = tmp + 15;
             $('#per_level').text('대성공 확률: ' + tmp.toFixed(1) + '%');
             success = tmp / 100;
+
+            if($('#btn_toggle_sucs').hasClass('btn-success')) $('#btn_toggle_sucs').trigger('click');
         }
     });
 
