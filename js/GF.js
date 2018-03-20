@@ -192,7 +192,7 @@ $('#auto_calc').off().on('click', function (e) {
     usedRes.type = binaryType(usedRes.h, usedRes.a, usedRes.f, usedRes.p);
     usedResA.push(usedRes);
     normalizeValues(usedResA);
-    console.log(objectList);
+    //console.log(objectList);
 
 
     var calcList = new Array();
@@ -208,14 +208,14 @@ $('#auto_calc').off().on('click', function (e) {
         tmp.t4 = objectList[i].Ticket_fastRepair/objectList[i].Time*60;
         calcList.push(tmp);
     }
-    console.log(calcList);
+    //console.log(calcList);
 
     var numAry = new Array();
     for(var i in objectList){
         numAry.push(i);
     }
     var comb = k_combinations(numAry, 4);
-    console.log(comb);
+    //console.log(comb);
 
     var comb_calcList = new Array();
     for(var i in comb){
@@ -236,6 +236,10 @@ $('#auto_calc').off().on('click', function (e) {
         tmp.a = ta;
         tmp.f = tf;
         tmp.p = tp;
+        //tmp.t1 = tt1;
+        //tmp.t2 = tt2;
+        //tmp.t3 = tt3;
+        //tmp.t4 = tt4;
         tmp.total = th + ta + tf + tp;
         if( (tt1 >= wghtToggle[0]) &&
             (tt2 >= wghtToggle[1]) &&
@@ -263,7 +267,7 @@ $('#auto_calc').off().on('click', function (e) {
             //comb_calcList[i].avgA = (comb_calcList[i].h + comb_calcList[i].a + comb_calcList[i].f + comb_calcList[i].p) / 4;
         }
     }
-    console.log(comb_calcList);
+    //console.log(comb_calcList);
 
     var limit = 0.95;
     while(1){
@@ -274,8 +278,7 @@ $('#auto_calc').off().on('click', function (e) {
         }
         if(sync_calcList.length > 4) {
             break;
-        }
-        else{
+        }else{
             limit = limit - 0.05;
             if(limit < 0.0){
                 alert('검색 결과가 없습니다.');
@@ -285,7 +288,7 @@ $('#auto_calc').off().on('click', function (e) {
         }
     }
     sync_calcList.sort(function(a, b){return b.total - a.total});
-    console.log(sync_calcList);
+    //console.log(sync_calcList);
 
     for(var i = 0; i < 4; i++){
         $('#btn-rec' + i).text('추천 ' + (i+1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
