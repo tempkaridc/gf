@@ -4,7 +4,7 @@ var sync_calcList = new Array();
 var sortToggle = [0,0,0,0,0,0,0,0,0,0,0,0]; //0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 var areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
 var wghtToggle = [0,0,0,0];
-var level = [0, 0.2, 0.4, 0.6];
+var level = [0, 0.1, 0.4, 0.7];
 var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 2.2;
 
 var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; //14쌍
