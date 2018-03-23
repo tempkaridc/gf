@@ -82,20 +82,20 @@
                     <div id="tbl_help" class="row no-gutters panel panel-primary" style="padding:10px;">
                         <div class="panel panel-info" style="padding:10px; margin-bottom:10px;">
                             <small>
-                                1. 표의 모든 값은 <b><font color="red">시간당 획득 기준</font></b>으로 표기 및 정렬 (인탄식부:수급량 + 계약서:획득확률)
-                                <br>2. 표 상단의 <b><font color="red">자원명 클릭 시</font></b> 최단시간 내 획득가능한 군수조합순 정렬
+                                1. 표의 모든 값은 <b><font color="red">시간당 획득 기준</font></b> 표기 및 정렬 (인탄식부:수급량 + 계약서:획득확률)
+                                <br>2. 표 상단의 <b><font color="red">자원 이름 클릭 시</font></b>, 최단시간 내 획득가능한 군수조합순 정렬
                                 <br>3. 하단 예상 그래프는 <b><font color="red">'현재자원' 값부터 합산</font></b>, 값 미입력시 0부터 계산
-                                <br>4. <span id="highlight_0">대성공률 반영 시, 자원 및 계약서 획득률을 대성공 시 기대치로 재계산</span>
-                                <br>5. <span id="highlight_1">가중치 입력 시, 표의 <b><font color="red">'합계 값'</font></b> 재계산 <button id="my_wght" class="btn btn-xs btn-success"><small>나만의 가중치 계산하기</small></button></span>
-                                <br>6. <span id="highlight_2">'추천지역' 기능은 입력된 <b><font color="red">'자원 가중치'를 기준으로 자원비 유지</font></b>를 목표로 하는 군수지역 조합 산출
-                                    <br>　┖ <b><font color="red">'지역선택', '구간설정', '대성공률'</font></b> 반영. <b><font color="red">% = 검색유사도</font></b>. 계약서 가중치와 총 자원량은 반비례</span>
+                                <br>4. <span id="highlight_0">'대성공률' 적용 시, 자원 및 계약서 획득률을 대성공 시 기대치로 재계산</span>
+                                <br>5. <span id="highlight_1">'자원 가중치' 입력 시, 표의 <b><font color="red">'합계'</font></b> 값 재계산 <button id="my_wght" class="btn btn-xs btn-success"><small>나만의 가중치 계산하기</small></button></span>
+                                <br>6. <span id="highlight_2">'자동선택' 기능은 입력된 <b><font color="red">'자원 가중치'의 비율로 자원 유지</font></b>를 목표로 하는 군수지역 조합 자동 산출
+                                    <br>　┖ <b><font color="red">'지역선택', '시간대설정', '대성공률'</font></b> 모두 반영. 계약서 가중치 별도 적용</span>
                             </small>
                         </div>
                         <hr style="margin-top: 7px; margin-bottom: 7px;">
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:20%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" style="width:100%;">군수지역</div>
+                                    <div class="btn btn-sm btn-info" style="width:100%;">지역선택</div>
                                 </div>
                                 <div class="btn-group" role="group" style="width:75%; display:inline-block;">
                                     <button id="btn-area-0" idx="0" class="btn btn-sm btn-success" style="width:9%;">0</button>
@@ -136,7 +136,7 @@
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:20%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info" style="width:100%;">구간설정</div>
+                                    <div class="btn btn-sm btn-info" style="width:100%;">시간대설정</div>
                                 </div>
                                 <div class="btn-group" role="group" style="width:34%; display:inline-block;">
                                     <button id="btn-times-0" idx="0" class="btn btn-sm btn-primary" style="width:25%;">↓</button>
