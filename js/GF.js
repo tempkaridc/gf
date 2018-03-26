@@ -26,10 +26,13 @@ $(function (){
 })
 .on('click', '.table-clickable', function(e) {
     e.preventDefault();
+
     clickRow($(this).attr('idx'));//고유값
 })
 .on('click', '.table-clickable3', function(e) {
     e.preventDefault();
+
+    reload();
     refresh();
     var rows = document.getElementById("area-list").getElementsByTagName("TR");
     var areaList = saves[$(this).attr('idx')].list;
@@ -1022,6 +1025,17 @@ function callData(){
             objectList.push(tmp);
         }
     }
+}
+function reload(){
+    areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
+    time_front = 0, time_end = 13;
+    for(var i = 0; i < 11; i++){
+        if(!$('#btn-area-'+i).hasClass('btn-success')){
+            $('#btn-area-'+i).addClass('btn-success');
+        }
+    }
+    dispTime();
+
 }
 function refresh(){
     objectList.length = 0;
