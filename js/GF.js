@@ -171,6 +171,8 @@ $('[id^=btn-tgl]').off().on('click', function (e) {
     }
 });
 $('[id^=btn-rec]').off().on('click', function (e) {
+    //재정렬후 재위치
+    sortTable(document.getElementById("area-list"), 0, 1);
     var id = parseInt($(this).attr('idx'));
     var rows = document.getElementById("area-list").getElementsByTagName("TR");
     clearRow();
@@ -180,8 +182,6 @@ $('[id^=btn-rec]').off().on('click', function (e) {
     for(var i in sync_calcList[id].comb){
         rows[i].parentNode.insertBefore(rows[sync_calcList[id].comb[i]], rows[i]);
     }
-
-
 });
 $('#auto_calc').off().on('click', function (e) {
     $('#btn_wgt').trigger('click');
