@@ -30,12 +30,16 @@ $(function (){
     })
     .on('click', '.table-clickable2', function(e) {
         e.preventDefault();
-
-        console.log('gasdfa');
         refresh();
+        var rows = document.getElementById("area-list").getElementsByTagName("TR");
+        var areaList = saves[$(this).attr('idx')].list;
         for(var i in saves[$(this).attr('idx')].list){
             clickRow(saves[$(this).attr('idx')].list[i]);//고유값
         }
+        for(var i in areaList){
+            rows[i].parentNode.insertBefore(rows[areaList[i]], rows[i]);
+        }
+
         $('#loadModal').modal("hide");
     });
 $('[id^=sort-]').off().on('click', function (e) {
@@ -232,6 +236,7 @@ $('[id^=btn-rec]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
     var rows = document.getElementById("area-list").getElementsByTagName("TR");
     clearRow();
+    console.log(sync_calcList[id].comb);
     for(var i in sync_calcList[id].comb){
         clickRow(sync_calcList[id].comb[i]);
     }
