@@ -16,7 +16,7 @@ var sw_help = true;
 var chart;
 var chart_time = new Array();
 var now;
-
+var cptStr;
 var config;
 var saves;
 
@@ -27,6 +27,16 @@ $(function (){
     .on('click', '.table-clickable', function(e) {
         e.preventDefault();
         clickRow($(this).attr('idx'));//고유값
+    })
+    .on('click', '.table-clickable2', function(e) {
+        e.preventDefault();
+
+        console.log('gasdfa');
+        refresh();
+        for(var i in saves[$(this).attr('idx')].list){
+            clickRow(saves[$(this).attr('idx')].list[i]);//고유값
+        }
+        $('#loadModal').modal("hide");
     });
 $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
@@ -125,6 +135,52 @@ $('#btn_calcUse').off().on('click', function (e) {
     $('#wgt_part').val(1/tmp[3]);
 
     $('#wghtModal').modal("hide");
+    $('#loadModal').modal("hide");
+    $('#recommendLine').addClass('hide');
+    $('#tbl_cht').empty();
+});
+$('#btn_calcUse2').off().on('click', function (e) {
+    var tmp = new Array();
+    tmp[0] = parseInt(document.getElementById('pre2_huma').value);
+    tmp[1] = parseInt(document.getElementById('pre2_ammo').value);
+    tmp[2] = parseInt(document.getElementById('pre2_food').value);
+    tmp[3] = parseInt(document.getElementById('pre2_part').value);
+
+    var tmpf = new Array();
+    tmpf[0] = parseInt(document.getElementById('fin_huma').value);
+    tmpf[1] = parseInt(document.getElementById('fin_ammo').value);
+    tmpf[2] = parseInt(document.getElementById('fin_food').value);
+    tmpf[3] = parseInt(document.getElementById('fin_part').value);
+
+    for(var i in tmp){
+        if(tmp[i] > tmpf[i]){
+            alert('최종목표치는 현재보다 크거나 같아야 합니다');
+            return;
+        }
+    }
+
+    for(var i in tmp){
+        if(isNaN(tmp[i])) tmp[i] = 1;
+        if(isNaN(tmpf[i])) tmpf[i] = 1;
+    }
+
+    var tmpd = new Array();
+    for(var i in tmp){
+        tmpd[i] = tmpf[i] - tmp[i];
+    }
+
+    var min = tmpd[0];
+    for(var i in tmpd){
+        tmpd[i] = tmpd[i] / min;
+    }
+
+    $('#wgt_huma').val(1/tmpd[0]);
+    $('#wgt_ammo').val(1/tmpd[1]);
+    $('#wgt_food').val(1/tmpd[2]);
+    $('#wgt_part').val(1/tmpd[3]);
+
+    $('#wghtModal').modal("hide");
+    $('#loadModal').modal("hide");
     $('#recommendLine').addClass('hide');
     $('#tbl_cht').empty();
 });
@@ -446,6 +502,35 @@ $('#btn-toggleHelp').off().on('click', function (e) {
         $('#panel-help').addClass('hide');
     }
 });
+$('#btn-load').off().on('click', function (e) {
+    loadSaves();
+    $('#loadModal').modal("show");
+});
+$('#btn-save').off().on('click', function (e) {
+    if(selectedList.length == 0){alert('하나 이상의 군수지역을 선택해야 합니다'); return;}
+    var desc = prompt('저장할 군수의 이름을 입력하세요');
+    var ary = new Array();
+    var obj = new Object();
+    for(var i in selectedList){
+        var t = objectList[parseInt(selectedList[i])].Area * 4 + objectList[parseInt(selectedList[i])].Stage - 1;
+        ary.push(t);
+    }
+    ary.sort(function(a, b){return a - b});
+    obj.list = ary;
+    obj.desc = desc;
+    saves.push(obj);
+
+    localStorage.saves = JSON.stringify(saves);
+});
+$('#btn-capt').off().on('click', function (e) {
+    var t = document.createElement("textarea");
+    document.body.appendChild(t);
+    t.value = cptStr;
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+    alert('클립보드에 아래 내용을 복사하였습니다\n\n' + cptStr);
+});
 $(document).ready(function() {
     $(document).on('keydown', 'input', function (e) {
         if (e.which == 13  || e.keyCode == 13 ){
@@ -457,6 +542,44 @@ $(document).ready(function() {
         }
     });
 });
+function loadSaves(){
+    saves = localStorage.saves;
+    if(saves === undefined) {         //no config cache
+        saves = new Array();
+        localStorage.saves = JSON.stringify(saves);
+    }else{
+        saves = JSON.parse(localStorage.saves);
+    }
+    //console.log(saves);
+
+    $('#load-list').empty();
+    for(var i in saves){
+        var area = "";
+        for(var j in saves[i].list){
+            area += parseInt(saves[i].list[j] / 4) + '-' +  ((saves[i].list[j] % 4) + 1) + ', ';
+        }
+        var td1 = '<td style="text-align: center; vertical-align:middle;" width="10%">';
+        var td3 = '<td style="text-align: center; vertical-align:middle;" width="30%">';
+        var td6 = '<td style="text-align: center; vertical-align:middle;" width="60%">';
+        var tde = '</td>';
+        var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable2">';
+        item += td3 + area.slice(0,-2) + tde;
+        item += td6 + saves[i].desc + tde;
+        item += td1 + '<div id="remove-save-' + i + '" idx ="' + i + '" title="지우기" class="btn"><i class="glyphicon glyphicon-trash"></i></div>' + tde;
+        item += '</tr>';
+        $('#load-list').append(item);
+    }
+
+    $('[id^=remove-save-]').off().on('click', function (e) {
+        e.stopPropagation();
+
+        var id = $(this).attr('idx');  //close, confirm
+        saves.splice(id, 1);
+        localStorage.saves = JSON.stringify(saves);
+        loadSaves();
+        //refresh();
+    });
+}
 function highlight(id){
     document.getElementById('highlight_0').style.background = 'transparent';
     document.getElementById('highlight_1').style.background = 'transparent';
@@ -617,6 +740,17 @@ function calcStage(){
 
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
+
+    cptStr = '지역: ' + sumT.slice(0,-2) + '\n'
+            +'인력/1시간: ' + sumH.toFixed(0) + '\n'
+            +'탄약/1시간: ' + sumA.toFixed(0) + '\n'
+            +'식량/1시간: ' + sumF.toFixed(0) + '\n'
+            +'부품/1시간: ' + sumP.toFixed(0) + '\n';
+    if(sumHp){cptStr += '인형제조계약서/1시간: ' + (sumHp).toFixed(2) + '장\n';}
+    if(sumAp){cptStr += '장비제조계약서/1시간: ' + (sumAp).toFixed(2) + '장\n';}
+    if(sumFp){cptStr += '쾌속제조계약서/1시간: ' + (sumFp).toFixed(2) + '장\n';}
+    if(sumPp){cptStr += '쾌속수복계약서/1시간: ' + (sumPp).toFixed(2) + '장\n';}
+    if(sumTp){cptStr += '구매토큰/1시간: ' + (sumTp).toFixed(2) + '개\n';}
 
     chart_time = new Array();
 
@@ -786,6 +920,7 @@ function loadTable(){
         item += tde;
         /*13*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
         /*14*/item += td0 + objectList[i].Time + tde;
+        item += '</tr>';
         $('#area-list').append(item);
     }
     for(var i in sortToggle){
@@ -888,7 +1023,7 @@ function refresh(){
     calcStage();
 }
 function init(){
-    //localStorage.removeItem("config");
+    //localStorage.removeItem("saves");
     config = localStorage.config;
     if(config === undefined){         //no config cache
         config = new Object();
@@ -904,13 +1039,7 @@ function init(){
     if(sw_help){$('#panel-help').removeClass('hide');}
     else{$('#panel-help').addClass('hide');}
 
-    saves = localStorage.saves;
-    if(saves === undefined) {         //no config cache
-        saves = new Object();
-        localStorage.saves = JSON.stringify(saves);
-    }else{
-        saves = JSON.parse(localStorage.saves);
-    }
+    loadSaves();
 
     var myHeight = 0;
     if( typeof( window.innerWidth ) == 'number' ) {
@@ -946,4 +1075,5 @@ function init(){
 
     });
     $('#wghtModal').modal("hide");
+    $('#loadModal').modal("hide");
 }

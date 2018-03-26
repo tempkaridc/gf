@@ -74,6 +74,11 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div id="tbl_btn" style="width:100%; display:inline-block;">
+                            <button id="btn-load" class="btn btn-xs btn-info" style="width:25%; float:left;"><span class="glyphicon glyphicon-floppy-open"></span> <small>불러오기</small></button>
+                            <button id="btn-save" class="btn btn-xs btn-primary" style="width:25%;"><span class="glyphicon glyphicon-floppy-disk"></span> <small>저장</small></button>
+                            <button id="btn-capt" class="btn btn-xs btn-success" style="width:50%; float:right;"><span class="glyphicon glyphicon-copy"></span> <small>클립보드에 복사</small></button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -224,7 +229,7 @@
                         <div class="row no-gutter hide" id="recommendLine" >
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:20%; display:inline-block;">
-                                    <div class="btn btn-sm btn-danger disabled" style="width:100%;">추천결과</div>
+                                    <div class="btn btn-sm btn-primary disabled" style="width:100%;">추천결과</div>
                                 </div>
                                 <div style="width:19%; display:inline-block;">
                                     <div id="btn-rec0" idx=0 class="btn btn-sm btn-danger" style="width:100%;"></div>
@@ -251,85 +256,184 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-body">
-                        <small>
-                            나만의 가중치 계산: 플레이어가 하루에 사용하는 자원량에 의거한 개인 가중치 계산
-                        </small>
-                        <div class="panel panel-primary" style="padding:5px; margin-top:10px;">
-                            <table class="table table-condensed">
-                                <thead>
-                                <tr>
-                                    <th><font color="blue">일일퀘스트 가중치 계산 예</font></th>
-                                    <th>인력</th>
-                                    <th>탄약</th>
-                                    <th>식량</th>
-                                    <th>부품</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>인형제조 범용1식 4회</td>
-                                    <td>430 x 4</td>
-                                    <td>430 x 4</td>
-                                    <td>430 x 4</td>
-                                    <td>230 x 4</td>
-                                </tr>
-                                <tr>
-                                    <td>장비제조 범용1식 4회</td>
-                                    <td>150 x 4</td>
-                                    <td>150 x 4</td>
-                                    <td>150 x 4</td>
-                                    <td>150 x 4</td>
-                                </tr>
-                                <tr>
-                                    <td>전역 9회 클리어</td>
-                                    <td>100 x 9</td>
-                                    <td>300 x 9</td>
-                                    <td>300 x 9</td>
-                                    <td>50 x 9</td>
-                                </tr>
-                                <tr class="warning">
-                                    <td>합계 <small>(아래 입력)</small></td>
-                                    <td>3220</td>
-                                    <td>5020</td>
-                                    <td>5020</td>
-                                    <td>2020</td>
-                                </tr>
-                                <tr class="success">
-                                    <td>자원비</td>
-                                    <td>1</td>
-                                    <td>1.55</td>
-                                    <td>1.55</td>
-                                    <td>0.62</td>
-                                </tr>
-                                <tr class="info">
-                                    <td>가중치(1 / 자원비)</td>
-                                    <td>1</td>
-                                    <td>0.64</td>
-                                    <td>0.64</td>
-                                    <td>1.59</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="row no-gutter">
-                            <div class="col-md-12 col-xs-12">
-                                <div style="width:19%; display:inline-block;">
-                                    <input id="use_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="인력">
+                        <ul class="nav nav-tabs" style="margin:0px;">
+                            <li class="active"><a data-toggle="tab" href="#daily">일일사용량 기반 계산</a></li>
+                            <li><a data-toggle="tab" href="#total">최종목표치 기반 계산</a></li>
+                        </ul>
+                        <div class="tab-content">
+                            <div id="daily" class="tab-pane fade in active">
+                                <small>
+                                    플레이어가 하루에 사용하는 자원량에 의거한 개인 가중치 계산
+                                </small>
+                                <div class="panel panel-primary" style="padding:5px; margin-top:10px;">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th><font color="blue">일일사용량 기반 계산 예</font></th>
+                                            <th>인력</th>
+                                            <th>탄약</th>
+                                            <th>식량</th>
+                                            <th>부품</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>인형제조 범용1식 4회</td>
+                                            <td>430 x 4</td>
+                                            <td>430 x 4</td>
+                                            <td>430 x 4</td>
+                                            <td>230 x 4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>장비제조 범용1식 4회</td>
+                                            <td>150 x 4</td>
+                                            <td>150 x 4</td>
+                                            <td>150 x 4</td>
+                                            <td>150 x 4</td>
+                                        </tr>
+                                        <tr>
+                                            <td>전역 9회 클리어</td>
+                                            <td>100 x 9</td>
+                                            <td>300 x 9</td>
+                                            <td>300 x 9</td>
+                                            <td>50 x 9</td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>합계 <small>(아래 입력)</small></td>
+                                            <td>3220</td>
+                                            <td>5020</td>
+                                            <td>5020</td>
+                                            <td>2020</td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td>자원비</td>
+                                            <td>1</td>
+                                            <td>1.55</td>
+                                            <td>1.55</td>
+                                            <td>0.62</td>
+                                        </tr>
+                                        <tr class="info">
+                                            <td>가중치(1 / 자원비)</td>
+                                            <td>1</td>
+                                            <td>0.64</td>
+                                            <td>0.64</td>
+                                            <td>1.59</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div style="width:19%; display:inline-block;">
-                                    <input id="use_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="탄약">
+                                <div class="row no-gutter">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="use_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="인력">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="use_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="탄약">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="use_food" type="number" class="form-control input-sm" min="1" value="" placeholder="식량">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="use_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <div id="btn_calcUse" class="btn btn-sm btn-primary" style="width:100%;">자동입력</div>
+                                        </div>
+                                        <div style="float:right;">
+                                            <font color="gray"><small>*'자동입력' 버튼 클릭 시, 계산된 가중치가 입력됩니다. 이후 '계산' 버튼을 클릭해주세요.</small></font>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div style="width:19%; display:inline-block;">
-                                    <input id="use_food" type="number" class="form-control input-sm" min="1" value="" placeholder="식량">
+                            </div>
+                            <div id="total" class="tab-pane fade">
+                                <small>
+                                    플레이어가 목표로 하는 자원수치에서 역산한 개인 가중치 계산
+                                </small>
+                                <div class="panel panel-primary" style="padding:5px; margin-top:10px;">
+                                    <table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th><font color="blue">최종목표량 기반 계산 예</font></th>
+                                            <th>인력</th>
+                                            <th>탄약</th>
+                                            <th>식량</th>
+                                            <th>부품</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr class="warning">
+                                            <td>현재 자원량 <small>(아래 입력)</small></td>
+                                            <td>33400</td>
+                                            <td>8600</td>
+                                            <td>69800</td>
+                                            <td>2200</td>
+                                        </tr>
+                                        <tr class="warning">
+                                            <td>목표 자원량 <small>(아래 입력)</small></td>
+                                            <td>100000</td>
+                                            <td>100000</td>
+                                            <td>100000</td>
+                                            <td>60000</td>
+                                        </tr>
+                                        <tr class="danger">
+                                            <td>오차</td>
+                                            <td>66600</td>
+                                            <td>91400</td>
+                                            <td>30200</td>
+                                            <td>57800</td>
+                                        </tr>
+                                        <tr class="success">
+                                            <td>자원비</td>
+                                            <td>1</td>
+                                            <td>1.37</td>
+                                            <td>0.45</td>
+                                            <td>0.86</td>
+                                        </tr>
+                                        <tr class="info">
+                                            <td>가중치(1 / 자원비)</td>
+                                            <td>1</td>
+                                            <td>0.72</td>
+                                            <td>1.56</td>
+                                            <td>1.16</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <div style="width:19%; display:inline-block;">
-                                    <input id="use_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품">
-                                </div>
-                                <div style="width:19%; display:inline-block;">
-                                    <div id="btn_calcUse" class="btn btn-sm btn-primary" style="width:100%;">자동입력</div>
-                                </div>
-                                <div style="float:right;">
-                                    <font color="gray"><small>*'자동입력' 버튼 클릭 시, 계산된 가중치가 입력됩니다. 우측 하단의 '계산' 버튼을 클릭해주세요.</small></font>
+                                <div class="row no-gutter">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="pre2_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="현재인력">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="pre2_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="현재탄약">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="pre2_food" type="number" class="form-control input-sm" min="1" value="" placeholder="현재식량">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="pre2_part" type="number" class="form-control input-sm" min="1" value="" placeholder="현재부품">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12 col-xs-12">
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="fin_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="목표인력">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="fin_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="목표탄약">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="fin_food" type="number" class="form-control input-sm" min="1" value="" placeholder="목표식량">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <input id="fin_part" type="number" class="form-control input-sm" min="1" value="" placeholder="목표부품">
+                                        </div>
+                                        <div style="width:19%; display:inline-block;">
+                                            <div id="btn_calcUse2" class="btn btn-sm btn-primary" style="width:100%;">자동입력</div>
+                                        </div>
+                                        <div style="float:right;">
+                                            <font color="gray"><small>*'자동입력' 버튼 클릭 시, 계산된 가중치가 입력됩니다. 이후 '계산' 버튼을 클릭해주세요.</small></font>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -337,7 +441,27 @@
                 </div>
             </div>
         </div>
-        <div class="hide">
+        <div class="modal fade" id="loadModal" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        저장된 조합 불러오기
+                        <div class="panel panel-primary" style="padding:5px; margin-top:10px;">
+                            <table class="table table-striped table-condensed">
+                                <thead>
+                                <tr>
+                                    <th width="30%" style="text-align: center; vertical-align:middle;">지역</th>
+                                    <th width="60%" style="text-align: center; vertical-align:middle;">설명</th>
+                                    <th width="10%" style="text-align: center; vertical-align:middle;"></th>
+                                </tr>
+                                </thead>
+                                <tbody id="load-list">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <script src="js/highcharts.js"></script>
