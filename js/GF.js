@@ -24,24 +24,24 @@ $(function (){
     init();
     refresh();
 })
-    .on('click', '.table-clickable', function(e) {
-        e.preventDefault();
-        clickRow($(this).attr('idx'));//고유값
-    })
-    .on('click', '.table-clickable2', function(e) {
-        e.preventDefault();
-        refresh();
-        var rows = document.getElementById("area-list").getElementsByTagName("TR");
-        var areaList = saves[$(this).attr('idx')].list;
-        for(var i in saves[$(this).attr('idx')].list){
-            clickRow(saves[$(this).attr('idx')].list[i]);//고유값
-        }
-        for(var i in areaList){
-            rows[i].parentNode.insertBefore(rows[areaList[i]], rows[i]);
-        }
+.on('click', '.table-clickable', function(e) {
+    e.preventDefault();
+    clickRow($(this).attr('idx'));//고유값
+})
+.on('click', '.table-clickable3', function(e) {
+    e.preventDefault();
+    refresh();
+    var rows = document.getElementById("area-list").getElementsByTagName("TR");
+    var areaList = saves[$(this).attr('idx')].list;
+    for(var i in saves[$(this).attr('idx')].list){
+        clickRow(saves[$(this).attr('idx')].list[i]);//고유값
+    }
+    for(var i in areaList){
+        rows[i].parentNode.insertBefore(rows[areaList[i]], rows[i]);
+    }
 
-        $('#loadModal').modal("hide");
-    });
+    $('#loadModal').modal("hide");
+});
 $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
     if(sortToggle[id] <= 1){
@@ -177,6 +177,11 @@ $('#btn_calcUse2').off().on('click', function (e) {
     for(var i in tmpd){
         tmpd[i] = tmpd[i] / min;
     }
+
+    $('#pre_huma').val(tmp[0]);
+    $('#pre_ammo').val(tmp[1]);
+    $('#pre_food').val(tmp[2]);
+    $('#pre_part').val(tmp[3]);
 
     $('#wgt_huma').val(1/tmpd[0]);
     $('#wgt_ammo').val(1/tmpd[1]);
@@ -567,7 +572,7 @@ function loadSaves(){
         var td3 = '<td style="text-align: center; vertical-align:middle;" width="30%">';
         var td6 = '<td style="text-align: center; vertical-align:middle;" width="60%">';
         var tde = '</td>';
-        var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable2">';
+        var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable3">';
         item += td3 + area.slice(0,-2) + tde;
         item += td6 + saves[i].desc + tde;
         item += td1 + '<div id="remove-save-' + i + '" idx ="' + i + '" title="지우기" class="btn"><i class="glyphicon glyphicon-trash"></i></div>' + tde;
