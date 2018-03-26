@@ -6,14 +6,19 @@ var areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
 var wghtToggle = [0,0,0,0];
 var level = [0, 0.1, 0.4, 0.7];
 var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 2.2;
-
 var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; //14쌍
 var time_front = 0, time_end = 13;
 var success = 0.6;
 var sw_sucs = false;
+var sw_time = true;
+var sw_help = true;
+
 var chart;
 var chart_time = new Array();
 var now;
+
+var config;
+var saves;
 
 $(function (){
     init();
@@ -167,10 +172,16 @@ $('[id^=btn-tgl]').off().on('click', function (e) {
 });
 $('[id^=btn-rec]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
+    var rows = document.getElementById("area-list").getElementsByTagName("TR");
     clearRow();
     for(var i in sync_calcList[id].comb){
         clickRow(sync_calcList[id].comb[i]);
     }
+    for(var i in sync_calcList[id].comb){
+        rows[i].parentNode.insertBefore(rows[sync_calcList[id].comb[i]], rows[i]);
+    }
+
+
 });
 $('#auto_calc').off().on('click', function (e) {
     $('#btn_wgt').trigger('click');
@@ -411,6 +422,28 @@ $('#auto_calc').off().on('click', function (e) {
             }
         }
         return combs;
+    }
+});
+$('#btn-toggleTime').off().on('click', function (e) {
+    if(sw_time){
+        sw_time = false;
+        config.time = false;
+    }else{
+        sw_time = true;
+        config.time = true;
+    }
+    localStorage.config = JSON.stringify(config);
+    refresh();
+});
+$('#btn-toggleHelp').off().on('click', function (e) {
+    if($('#panel-help').hasClass('hide')){
+        config.help = true;
+        localStorage.config = JSON.stringify(config);
+        $('#panel-help').removeClass('hide');
+    }else{
+        config.help = false;
+        localStorage.config = JSON.stringify(config);
+        $('#panel-help').addClass('hide');
     }
 });
 $(document).ready(function() {
@@ -723,24 +756,27 @@ function chkDuplArray(ary, obj){
 }
 function loadTable(){
     $('#area-list').empty();
+    var perMin;
     for(var i in objectList){
+        if(sw_time){perMin = objectList[i].Time / 60;}
+        else{perMin = 1;}
         var td0 = '<td style="text-align: center; vertical-align:middle; display:none;">';
         var td10 = '<td style="text-align: center; vertical-align:middle;" width="10%">';
         var td30 = '<td style="text-align: center; vertical-align:middle;" width="30%">';
         var tde = '</td>';
         var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable">';
         /*00*/item += td10 + objectList[i].Area + '-' + objectList[i].Stage + tde;
-        /*01*/item += td10 + parseInt(objectList[i].Human/objectList[i].Time*60) + tde;
-        /*02*/item += td10 + parseInt(objectList[i].Ammo/objectList[i].Time*60) + tde;
-        /*03*/item += td10 + parseInt(objectList[i].Food/objectList[i].Time*60) + tde;
-        /*04*/item += td10 + parseInt(objectList[i].Part/objectList[i].Time*60) + tde;
-        /*05*/item += td10 + parseInt(objectList[i].Human/objectList[i].Time*60*wgtH + objectList[i].Ammo/objectList[i].Time*60*wgtA + objectList[i].Food/objectList[i].Time*60*wgtF + objectList[i].Part/objectList[i].Time*60*wgtP) + tde;
+        /*01*/item += td10 + parseInt(objectList[i].Human/perMin) + tde;
+        /*02*/item += td10 + parseInt(objectList[i].Ammo/perMin) + tde;
+        /*03*/item += td10 + parseInt(objectList[i].Food/perMin) + tde;
+        /*04*/item += td10 + parseInt(objectList[i].Part/perMin) + tde;
+        /*05*/item += td10 + parseInt(objectList[i].Human/perMin*wgtH + objectList[i].Ammo/perMin*wgtA + objectList[i].Food/perMin*wgtF + objectList[i].Part/perMin*wgtP) + tde;
         /*06*/item += td10 + parseInt(objectList[i].Time / 60) + ':' + (objectList[i].Time % 60 == 0 ? '00' : objectList[i].Time % 60) + tde;
-        /*07*/item += td0 + objectList[i].Ticket_makeDoll/objectList[i].Time*60 + tde;
-        /*08*/item += td0 + objectList[i].Ticket_makeTool/objectList[i].Time*60 + tde;
-        /*09*/item += td0 + objectList[i].Ticket_fastMake/objectList[i].Time*60 + tde;
-        /*10*/item += td0 + objectList[i].Ticket_fastRepair/objectList[i].Time*60 + tde;
-        /*11*/item += td0 + objectList[i].Ticket_Tokken/objectList[i].Time*60 + tde;
+        /*07*/item += td0 + objectList[i].Ticket_makeDoll/perMin + tde;
+        /*08*/item += td0 + objectList[i].Ticket_makeTool/perMin + tde;
+        /*09*/item += td0 + objectList[i].Ticket_fastMake/perMin + tde;
+        /*10*/item += td0 + objectList[i].Ticket_fastRepair/perMin + tde;
+        /*11*/item += td0 + objectList[i].Ticket_Tokken/perMin + tde;
         /*12*/item += td30;
         if(objectList[i].Ticket_makeDoll) item += '<img src="img/doll.png" title="획득확률: ' + (objectList[i].Ticket_makeDoll * 100) + '%">'
         if(objectList[i].Ticket_makeTool) item += '<img src="img/tool.png" title="획득확률: ' + (objectList[i].Ticket_makeTool * 100) + '%">'
@@ -852,6 +888,30 @@ function refresh(){
     calcStage();
 }
 function init(){
+    //localStorage.removeItem("config");
+    config = localStorage.config;
+    if(config === undefined){         //no config cache
+        config = new Object();
+        config.time = true;
+        config.help = true;
+        localStorage.config = JSON.stringify(config);
+    }else{                      //config cache here
+        config = JSON.parse(localStorage.config);
+        sw_time = config.time;
+        sw_help = config.help;
+    }
+
+    if(sw_help){$('#panel-help').removeClass('hide');}
+    else{$('#panel-help').addClass('hide');}
+
+    saves = localStorage.saves;
+    if(saves === undefined) {         //no config cache
+        saves = new Object();
+        localStorage.saves = JSON.stringify(saves);
+    }else{
+        saves = JSON.parse(localStorage.saves);
+    }
+
     var myHeight = 0;
     if( typeof( window.innerWidth ) == 'number' ) {
         myHeight = window.innerHeight;
@@ -883,7 +943,7 @@ function init(){
 
             if($('#btn_toggle_sucs').hasClass('btn-success')) $('#btn_toggle_sucs').trigger('click');
         }
-    });
 
+    });
     $('#wghtModal').modal("hide");
 }
