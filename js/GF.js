@@ -1035,9 +1035,9 @@ function reload(){
         }
     }
     dispTime();
-
 }
 function refresh(){
+    $('#sort-0').trigger('click');
     objectList.length = 0;
     selectedList.length = 0;
     sync_calcList.length = 0;
