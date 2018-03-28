@@ -17,8 +17,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="548">
-              <caret line="205" column="50" lean-forward="false" selection-start-line="205" selection-start-column="50" selection-end-line="205" selection-end-column="50" />
+            <state relative-caret-position="437">
+              <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -144,7 +144,7 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="614">
+            <state relative-caret-position="2261">
               <caret line="1040" column="0" lean-forward="false" selection-start-line="1040" selection-start-column="0" selection-end-line="1040" selection-end-column="0" />
               <folding>
                 <element signature="e#622#652#0" expanded="false" />
@@ -203,8 +203,8 @@
       <file leaf-file-name="wayties.v2x.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../project/OLD_PROJECTS/VAS1_MOVIS/vas-master/client/js/secure/wayties.v2x.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="916" column="58" lean-forward="true" selection-start-line="916" selection-start-column="58" selection-end-line="916" selection-end-column="58" />
+            <state relative-caret-position="17404">
+              <caret line="916" column="58" lean-forward="false" selection-start-line="916" selection-start-column="58" selection-end-line="916" selection-end-column="58" />
               <folding>
                 <marker date="1502016356000" expanded="true" signature="30267:30287" ph="..." />
                 <marker date="1502016356000" expanded="true" signature="30325:30344" ph="..." />
@@ -221,7 +221,7 @@
       <file leaf-file-name="event.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../project/OLD_PROJECTS/VAS1_MOVIS/vas-master/client/js/secure/event.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
+            <state relative-caret-position="14345">
               <caret line="755" column="64" lean-forward="false" selection-start-line="755" selection-start-column="64" selection-end-line="755" selection-end-column="64" />
               <folding />
             </state>
@@ -231,7 +231,7 @@
       <file leaf-file-name="vas-c-ars-1.0.0.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../project/__ITS workspace/vas-master_ITS_Merge/vas-master/client/js/vas-c-ars-1.0.0.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="381">
+            <state relative-caret-position="25422">
               <caret line="1341" column="20" lean-forward="false" selection-start-line="1341" selection-start-column="20" selection-end-line="1341" selection-end-column="64" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
@@ -243,7 +243,7 @@
       <file leaf-file-name="event.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../project/__ITS workspace/vas-master_ITS_Merge/vas-master/client/event.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="3895">
               <caret line="205" column="24" lean-forward="false" selection-start-line="205" selection-start-column="24" selection-end-line="205" selection-end-column="24" />
               <folding />
             </state>
@@ -253,7 +253,7 @@
       <file leaf-file-name="analysis.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../project/OLD_PROJECTS/VAS1_MOVIS/vas-master/client/js/secure/analysis.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="475">
               <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
               <folding />
             </state>
@@ -263,8 +263,8 @@
       <file leaf-file-name="v2x.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../../project/__ITS workspace/vas-master_ITS_Merge/vas-master/client/v2x.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="870">
-              <caret line="88" column="38" lean-forward="true" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
+            <state relative-caret-position="1672">
+              <caret line="88" column="38" lean-forward="false" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -405,12 +405,13 @@
       <workItem from="1521465652640" duration="44376000" />
       <workItem from="1521774688433" duration="633000" />
       <workItem from="1521867780421" duration="118000" />
-      <workItem from="1522026986037" duration="30279000" />
+      <workItem from="1522026986037" duration="30872000" />
+      <workItem from="1522208207728" duration="15000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="186849000" />
+    <option name="totallyTimeSpent" value="187457000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="250" y="75" width="1096" height="1080" extended-state="1" />
@@ -419,12 +420,12 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1936791" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5274841" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1788,7 +1789,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../project/__ITS workspace/vas-master_ITS_Merge/vas-master/client/event.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="3895">
           <caret line="205" column="24" lean-forward="false" selection-start-line="205" selection-start-column="24" selection-end-line="205" selection-end-column="24" />
           <folding />
         </state>
@@ -1796,7 +1797,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../project/OLD_PROJECTS/VAS1_MOVIS/vas-master/client/js/secure/analysis.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="475">
           <caret line="25" column="11" lean-forward="false" selection-start-line="25" selection-start-column="11" selection-end-line="25" selection-end-column="11" />
           <folding />
         </state>
@@ -1804,7 +1805,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../project/OLD_PROJECTS/VAS1_MOVIS/vas-master/client/js/secure/event.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
+        <state relative-caret-position="14345">
           <caret line="755" column="64" lean-forward="false" selection-start-line="755" selection-start-column="64" selection-end-line="755" selection-end-column="64" />
           <folding />
         </state>
@@ -1812,8 +1813,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../project/OLD_PROJECTS/VAS1_MOVIS/vas-master/client/js/secure/wayties.v2x.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="916" column="58" lean-forward="true" selection-start-line="916" selection-start-column="58" selection-end-line="916" selection-end-column="58" />
+        <state relative-caret-position="17404">
+          <caret line="916" column="58" lean-forward="false" selection-start-line="916" selection-start-column="58" selection-end-line="916" selection-end-column="58" />
           <folding>
             <marker date="1502016356000" expanded="true" signature="30267:30287" ph="..." />
             <marker date="1502016356000" expanded="true" signature="30325:30344" ph="..." />
@@ -1828,7 +1829,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../project/__ITS workspace/vas-master_ITS_Merge/vas-master/client/js/vas-c-ars-1.0.0.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
+        <state relative-caret-position="25422">
           <caret line="1341" column="20" lean-forward="false" selection-start-line="1341" selection-start-column="20" selection-end-line="1341" selection-end-column="64" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
@@ -1838,8 +1839,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../../project/__ITS workspace/vas-master_ITS_Merge/vas-master/client/v2x.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="870">
-          <caret line="88" column="38" lean-forward="true" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
+        <state relative-caret-position="1672">
+          <caret line="88" column="38" lean-forward="false" selection-start-line="88" selection-start-column="38" selection-end-line="88" selection-end-column="38" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -1848,7 +1849,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="614">
+        <state relative-caret-position="2261">
           <caret line="1040" column="0" lean-forward="false" selection-start-line="1040" selection-start-column="0" selection-end-line="1040" selection-end-column="0" />
           <folding>
             <element signature="e#622#652#0" expanded="false" />
@@ -1905,8 +1906,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="205" column="50" lean-forward="false" selection-start-line="205" selection-start-column="50" selection-end-line="205" selection-end-column="50" />
+        <state relative-caret-position="437">
+          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
