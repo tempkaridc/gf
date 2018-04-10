@@ -1,14 +1,17 @@
+var version = 118;
+
 var objectList = new Array();
 var selectedList = new Array();
 var sync_calcList = new Array();
-var sortToggle = [0,0,0,0,0,0,0,0,0,0,0,0]; //0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
-var areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
+var sortToggle = [0,0,0,0,0,0,0,0,0,0,0,0];         // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
+var areaToggle = [1,1,1,1,1,1,1,1,1,1,1];           // [11] 0~10지역
 var wghtToggle = [0,0,0,0];
-var level = [0, 0.1, 0.4, 0.7];
-var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 2.2;
-var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; //14쌍
-var time_front = 0, time_end = 13;
-var success = 0.6;
+var level = [0, 0.1, 0.4, 0.7];                     // Item 발견 가중치
+var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 0.45;       // 자원 가중치
+var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; // 14쌍
+var time_front = 0, time_end = 13;                  // 시간쌍 0~13
+var success = 0.6;                                  // 대성공 초기성공률 60%
+
 var sw_sucs = false;
 var sw_time = true;
 var sw_help = true;
@@ -22,6 +25,7 @@ var saves;
 
 $(function (){
     init();
+    loadNotice();
     refresh();
 })
 .on('click', '.table-clickable', function(e) {
@@ -136,10 +140,17 @@ $('#btn_calcUse').off().on('click', function (e) {
         tmp[i] = tmp[i] / min;
     }
 
+    /*
+    가중치 수정
     $('#wgt_huma').val(1/tmp[0]);
     $('#wgt_ammo').val(1/tmp[1]);
     $('#wgt_food').val(1/tmp[2]);
     $('#wgt_part').val(1/tmp[3]);
+     */
+    $('#wgt_huma').val(tmp[0].toFixed(2));
+    $('#wgt_ammo').val(tmp[1].toFixed(2));
+    $('#wgt_food').val(tmp[2].toFixed(2));
+    $('#wgt_part').val(tmp[3].toFixed(2));
 
     $('#wghtModal').modal("hide");
     $('#loadModal').modal("hide");
@@ -186,29 +197,22 @@ $('#btn_calcUse2').off().on('click', function (e) {
     $('#pre_food').val(tmp[2]);
     $('#pre_part').val(tmp[3]);
 
+    /*
+    가중치 수정
     $('#wgt_huma').val(1/tmpd[0]);
     $('#wgt_ammo').val(1/tmpd[1]);
     $('#wgt_food').val(1/tmpd[2]);
     $('#wgt_part').val(1/tmpd[3]);
+     */
+    $('#wgt_huma').val(tmpd[0].toFixed(2));
+    $('#wgt_ammo').val(tmpd[1].toFixed(2));
+    $('#wgt_food').val(tmpd[2].toFixed(2));
+    $('#wgt_part').val(tmpd[3].toFixed(2));
 
     $('#wghtModal').modal("hide");
     $('#loadModal').modal("hide");
     $('#recommendLine').addClass('hide');
     $('#tbl_cht').empty();
-});
-$('#btn_wgt').off().on('click', function (e) {
-    wgtH = parseFloat(document.getElementById('wgt_huma').value);
-    wgtA = parseFloat(document.getElementById('wgt_ammo').value);
-    wgtF = parseFloat(document.getElementById('wgt_food').value);
-    wgtP = parseFloat(document.getElementById('wgt_part').value);
-    if(isNaN(wgtH)) wgtH = 1;
-    if(isNaN(wgtA)) wgtA = 1;
-    if(isNaN(wgtF)) wgtF = 1;
-    if(isNaN(wgtP)) wgtP = 2.2;
-    highlight(1);
-    refresh();
-    //sortToggle[5] = 0;
-    //$('#sort-5').trigger('click');
 });
 $('[id^=btn-tgl]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
@@ -253,22 +257,22 @@ $('[id^=btn-rec]').off().on('click', function (e) {
     }
 });
 $('#auto_calc').off().on('click', function (e) {
-    $('#btn_wgt').trigger('click');
+    //$('#btn_wgt').trigger('click');
     highlight(2);
 
     var usedRes = new Object();
     var usedResA = new Array();
     sync_calcList.length = 0;
 
-    usedRes.h = 1 / parseFloat(document.getElementById('wgt_huma').value);
-    usedRes.a = 1 / parseFloat(document.getElementById('wgt_ammo').value);
-    usedRes.f = 1 / parseFloat(document.getElementById('wgt_food').value);
-    usedRes.p = 1 / parseFloat(document.getElementById('wgt_part').value);
+    usedRes.h = parseFloat(document.getElementById('wgt_huma').value);
+    usedRes.a = parseFloat(document.getElementById('wgt_ammo').value);
+    usedRes.f = parseFloat(document.getElementById('wgt_food').value);
+    usedRes.p = parseFloat(document.getElementById('wgt_part').value);
 
-    if(isNaN(usedRes.h)) usedRes.h = 1 / 1;
-    if(isNaN(usedRes.a)) usedRes.a = 1 / 1;
-    if(isNaN(usedRes.f)) usedRes.f = 1 / 1;
-    if(isNaN(usedRes.p)) usedRes.p = 1 / 2.2;
+    if(isNaN(usedRes.h)) usedRes.h = 1;
+    if(isNaN(usedRes.a)) usedRes.a = 1;
+    if(isNaN(usedRes.f)) usedRes.f = 1;
+    if(isNaN(usedRes.p)) usedRes.p = 0.45;
 
     usedRes.type = binaryType(usedRes.h, usedRes.a, usedRes.f, usedRes.p);
     usedResA.push(usedRes);
@@ -279,14 +283,14 @@ $('#auto_calc').off().on('click', function (e) {
     var calcList = new Array();
     for(var i in objectList){
         var tmp = new Object();
-        tmp.h = objectList[i].Human/objectList[i].Time*60;
-        tmp.a = objectList[i].Ammo/objectList[i].Time*60;//
-        tmp.f = objectList[i].Food/objectList[i].Time*60;//
-        tmp.p = objectList[i].Part/objectList[i].Time*60;//
-        tmp.t1 = objectList[i].Ticket_makeDoll/objectList[i].Time*60;
-        tmp.t2 = objectList[i].Ticket_makeTool/objectList[i].Time*60;
-        tmp.t3 = objectList[i].Ticket_fastMake/objectList[i].Time*60;
-        tmp.t4 = objectList[i].Ticket_fastRepair/objectList[i].Time*60;
+        tmp.h = objectList[i].Human / objectList[i].Time * 60;
+        tmp.a = objectList[i].Ammo / objectList[i].Time * 60;//
+        tmp.f = objectList[i].Food / objectList[i].Time * 60;//
+        tmp.p = objectList[i].Part / objectList[i].Time * 60;//
+        tmp.t1 = objectList[i].Ticket_makeDoll / objectList[i].Time * 60;
+        tmp.t2 = objectList[i].Ticket_makeTool / objectList[i].Time * 60;
+        tmp.t3 = objectList[i].Ticket_fastMake / objectList[i].Time * 60;
+        tmp.t4 = objectList[i].Ticket_fastRepair / objectList[i].Time * 60;
         calcList.push(tmp);
     }
     //console.log(calcList);
@@ -515,6 +519,13 @@ $('#btn-toggleHelp').off().on('click', function (e) {
         $('#panel-help').addClass('hide');
     }
 });
+$('#btn-toggleNotice').off().on('click', function (e) {
+    if($('#panel-notice').hasClass('hide')){
+        $('#panel-notice').removeClass('hide');
+    }else{
+        $('#panel-notice').addClass('hide');
+    }
+});
 $('#btn-load').off().on('click', function (e) {
     loadSaves();
     $('#loadModal').modal("show");
@@ -704,7 +715,7 @@ function calcStage(){
         sumA += objectList[selectedList[i]].Ammo * (60 / objectList[selectedList[i]].Time);
         sumF += objectList[selectedList[i]].Food * (60 / objectList[selectedList[i]].Time);
         sumP += objectList[selectedList[i]].Part * (60 / objectList[selectedList[i]].Time);
-        sumAll = sumH*wgtH + sumA*wgtA + sumF*wgtF + sumP*wgtP;
+        sumAll = sumH * 1 + sumA * 1 + sumF * 1 + sumP * 2.2;
         sumT += objectList[selectedList[i]].Area + '-' + objectList[selectedList[i]].Stage + ', ';
 
         if(objectList[selectedList[i]].Ticket_makeDoll) sumHp += objectList[selectedList[i]].Ticket_makeDoll * (60 / objectList[selectedList[i]].Time);
@@ -913,17 +924,20 @@ function loadTable(){
         var tde = '</td>';
         var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable">';
         /*00*/item += td10 + objectList[i].Area + '-' + objectList[i].Stage + tde;
-        /*01*/item += td10 + parseInt(objectList[i].Human/perMin) + tde;
-        /*02*/item += td10 + parseInt(objectList[i].Ammo/perMin) + tde;
-        /*03*/item += td10 + parseInt(objectList[i].Food/perMin) + tde;
-        /*04*/item += td10 + parseInt(objectList[i].Part/perMin) + tde;
-        /*05*/item += td10 + parseInt(objectList[i].Human/perMin*wgtH + objectList[i].Ammo/perMin*wgtA + objectList[i].Food/perMin*wgtF + objectList[i].Part/perMin*wgtP) + tde;
+        /*01*/item += td10 + parseInt(objectList[i].Human / perMin) + tde;
+        /*02*/item += td10 + parseInt(objectList[i].Ammo / perMin) + tde;
+        /*03*/item += td10 + parseInt(objectList[i].Food / perMin) + tde;
+        /*04*/item += td10 + parseInt(objectList[i].Part / perMin) + tde;
+        /*05*/item += td10 + parseInt(  objectList[i].Human / perMin * 1 +
+                                        objectList[i].Ammo / perMin * 1 +
+                                        objectList[i].Food / perMin * 1 +
+                                        objectList[i].Part / perMin * 2.2) + tde;
         /*06*/item += td10 + parseInt(objectList[i].Time / 60) + ':' + (objectList[i].Time % 60 == 0 ? '00' : objectList[i].Time % 60) + tde;
-        /*07*/item += td0 + objectList[i].Ticket_makeDoll/perMin + tde;
-        /*08*/item += td0 + objectList[i].Ticket_makeTool/perMin + tde;
-        /*09*/item += td0 + objectList[i].Ticket_fastMake/perMin + tde;
-        /*10*/item += td0 + objectList[i].Ticket_fastRepair/perMin + tde;
-        /*11*/item += td0 + objectList[i].Ticket_Tokken/perMin + tde;
+        /*07*/item += td0 + objectList[i].Ticket_makeDoll / perMin + tde;
+        /*08*/item += td0 + objectList[i].Ticket_makeTool / perMin + tde;
+        /*09*/item += td0 + objectList[i].Ticket_fastMake / perMin + tde;
+        /*10*/item += td0 + objectList[i].Ticket_fastRepair / perMin + tde;
+        /*11*/item += td0 + objectList[i].Ticket_Tokken / perMin + tde;
         /*12*/item += td30;
         if(objectList[i].Ticket_makeDoll) item += '<img src="img/doll.png" title="획득확률: ' + (objectList[i].Ticket_makeDoll * 100) + '%">'
         if(objectList[i].Ticket_makeTool) item += '<img src="img/tool.png" title="획득확률: ' + (objectList[i].Ticket_makeTool * 100) + '%">'
@@ -1046,6 +1060,18 @@ function refresh(){
     loadTable();
     calcStage();
 }
+function loadNotice(){
+    var text = "";
+
+    text += "2018-04-10 가중치 개념 분리\n" +
+        "- 자원량 합계의 부품 가중치를 1:1:1:2.2 로 고정\n" +
+        "- 자원 가중치 '적용'기능 삭제. (자원량합계 불변)\n" +
+        "- 기존 자원 가중치 기능은 추천지역 자동계산에만 사용\n" +
+        "└ 가중치가 높을수록 해당 자원 우선적용\n";
+
+    text = text.replace(/\r?\n/g, '<br />');
+    $('#list-notice').append(text);
+}
 function init(){
     //localStorage.removeItem("saves");
     config = localStorage.config;
@@ -1053,11 +1079,18 @@ function init(){
         config = new Object();
         config.time = true;
         config.help = true;
+        config.version = version;
         localStorage.config = JSON.stringify(config);
     }else{                      //config cache here
         config = JSON.parse(localStorage.config);
         sw_time = config.time;
         sw_help = config.help;
+
+        if((config.version === undefined) || (config.version < version)){
+            $('#panel-notice').removeClass('hide');
+            config.version = version;
+            localStorage.config = JSON.stringify(config);
+        }
     }
 
     if(sw_help){$('#panel-help').removeClass('hide');}
@@ -1101,3 +1134,20 @@ function init(){
     $('#wghtModal').modal("hide");
     $('#loadModal').modal("hide");
 }
+
+/*
+$('#btn_wgt').off().on('click', function (e) {
+    wgtH = parseFloat(document.getElementById('wgt_huma').value);
+    wgtA = parseFloat(document.getElementById('wgt_ammo').value);
+    wgtF = parseFloat(document.getElementById('wgt_food').value);
+    wgtP = parseFloat(document.getElementById('wgt_part').value);
+    if(isNaN(wgtH)) wgtH = 1;
+    if(isNaN(wgtA)) wgtA = 1;
+    if(isNaN(wgtF)) wgtF = 1;
+    if(isNaN(wgtP)) wgtP = 2.2;
+    highlight(1);
+    refresh();
+    //sortToggle[5] = 0;
+    //$('#sort-5').trigger('click');
+});
+ */

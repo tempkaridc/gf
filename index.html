@@ -95,15 +95,22 @@
             <div class="col-md-6 col-xs-12" style="padding:5px;">
                 <div class="col-md-12 col-xs-12">
                     <div id="tbl_help" class="row no-gutters panel panel-primary" style="padding:10px;">
+                        <div id="panel-notice" class="panel panel-info hide" style="padding:10px; margin-bottom:0px; height:100px; overflow-x: hidden; overflow-y: scroll;">
+                            <table class="table table-striped table-condensed">
+                                <small><span id="list-notice"></span></small>
+                            </table>
+                            <div id="table-notice"></div>
+                        </div>
+                        <button id="btn-toggleNotice" class="btn btn-xs" style="width:100%;">변경사항 열기/닫기</button></span>
                         <div id="panel-help" class="panel panel-info" style="padding:10px; margin-bottom:0px;">
                             <small>
                                 1. 표의 모든 초기값은 <b><font color="red">시간당 획득 기준</font></b> 표기 및 정렬 <button id="btn-toggleTime" class="btn btn-xs btn-success"><small>(시간당 표기/원본값 표기) 전환</small></button></span>
                                 <br>2. 표 상단의 <b><font color="red">자원 이름 클릭 시</font></b>, 최단시간 내 획득가능한 군수조합순 정렬
-                                <br>3. 하단 예상 그래프는 <b><font color="red">'현재자원' 값부터 합산</font></b>, 값 미입력시 0부터 계산
-                                <br>4. <span id="highlight_0">'대성공률' 적용 시, 자원 및 계약서 획득률을 대성공 시 기대치로 재계산</span>
-                                <br>5. <span id="highlight_1">'자원 가중치' 입력 시, 표의 <b><font color="red">'합계'</font></b> 값 재계산 <button id="my_wght" class="btn btn-xs btn-success"><small>나만의 가중치 계산하기</small></button></span>
-                                <br>6. <span id="highlight_2">'자동선택' 기능은 입력된 <b><font color="red">'자원 가중치'의 비율로 자원 유지</font></b>를 목표로 하는 군수지역 조합 자동 산출
-                                    <br>　┖ <b><font color="red">'지역선택', '시간대설정', '대성공률'</font></b> 모두 반영. 계약서 가중치 별도 적용</span>
+                                <br>3. <span id="highlight_1">표의 <b><font color="red">'합계'</font></b> 값은 자원비 1:1:1:2.2로 계산 후 표기</span>
+                                <br>4. 하단 예상 그래프는 <b><font color="red">'현재자원' 값부터 합산</font></b>, 값 미입력시 0부터 계산
+                                <br>5. <span id="highlight_0">'대성공률' 적용 시, 자원 및 계약서 획득률을 대성공 시 기대치로 재계산</span>
+                                <br>6. <span id="highlight_2">'자동선택' 기능은 입력된 <b><font color="red">'자원 가중치'의 비율로 자원 획득</font></b>을 위한 군수지역 조합 계산 <button id="my_wght" class="btn btn-xs btn-success"><small>나만의 가중치 계산하기</small></button>
+                                    <br>　┖ <b><font color="red">'지역선택', '시간대설정', '대성공률'</font></b> 모두 반영. 계약서 확률 별도 적용</span>
                             </small>
                         </div>
                         <button id="btn-toggleHelp" class="btn btn-xs btn-warning" style="width:100%;">도움말 열기/닫기</button></span>
@@ -193,7 +200,10 @@
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:20%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info disabled" style="width:100%;">자원 가중치</div>
+                                    <div class="btn btn-sm btn-info disabled" style="width:100%;">자동선택</div>
+                                </div>
+                                <div style="width:15%; display:inline-block;">
+                                    <div class="btn btn-sm btn-primary disabled" style="width:100%;">자원 가중치</div>
                                 </div>
                                 <div style="width:15%; display:inline-block;">
                                     <input id="wgt_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="인력: 1">
@@ -205,33 +215,41 @@
                                     <input id="wgt_food" type="number" class="form-control input-sm" min="1" value="" placeholder="식량: 1">
                                 </div>
                                 <div style="width:15%; display:inline-block;">
-                                    <input id="wgt_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품: 2.2">
-                                </div>
-                                <div style="width:15%; display:inline-block;">
-                                    <button id="btn_wgt" class="btn btn-sm btn-primary" style="width:100%;">테이블 적용</button>
+                                    <input id="wgt_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품: 0.45">
                                 </div>
                             </div>
                         </div>
-                        <hr style="margin-top: 7px; margin-bottom: 7px;">
+                        <hr style="margin-top: 5px; margin-bottom: 0px; border: 0px; color: white;">
                         <div class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:20%; display:inline-block;">
-                                    <div class="btn btn-sm btn-info disabled" style="width:100%;">자동선택</div>
+
                                 </div>
                                 <div style="width:15%; display:inline-block;">
-                                    <div id="btn-tglT0" idx="0" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/doll.png" title="인형제조계약서"><span id="btn-tglT0_text"> 전체</span></div>
+                                    <div class="btn btn-sm btn-primary disabled" style="width:100%;">계약서 확률</div>
                                 </div>
                                 <div style="width:15%; display:inline-block;">
-                                    <div id="btn-tglT1" idx="1" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/tool.png" title="장비제조계약서"><span id="btn-tglT1_text"> 전체</span></div>
+                                    <div id="btn-tglT0" idx="0" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/doll.png"><span id="btn-tglT0_text"> 전체</span></div>
                                 </div>
                                 <div style="width:15%; display:inline-block;">
-                                    <div id="btn-tglT2" idx="2" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/fast.png" title="쾌속제조계약서"><span id="btn-tglT2_text"> 전체</span></div>
+                                    <div id="btn-tglT1" idx="1" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/tool.png"><span id="btn-tglT1_text"> 전체</span></div>
                                 </div>
                                 <div style="width:15%; display:inline-block;">
-                                    <div id="btn-tglT3" idx="3" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/repr.png" title="쾌속수복계약서"><span id="btn-tglT3_text"> 전체</span></div>
+                                    <div id="btn-tglT2" idx="2" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/fast.png"><span id="btn-tglT2_text"> 전체</span></div>
                                 </div>
                                 <div style="width:15%; display:inline-block;">
-                                    <div id="auto_calc" class="btn btn-sm btn-primary" style="width:100%;">계산</div>
+                                    <div id="btn-tglT3" idx="3" class="btn btn-sm btn-default" style="width:100%; padding:2px;" title="시간당 0개 이상"><img src="img/repr.png"><span id="btn-tglT3_text"> 전체</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr style="margin-top: 5px; margin-bottom: 0px; border: 0px; color: white;">
+                        <div class="row no-gutter">
+                            <div class="col-md-12 col-xs-12">
+                                <div style="width:20%; display:inline-block;">
+
+                                </div>
+                                <div style="width:79%; display:inline-block;">
+                                    <div id="auto_calc" class="btn btn-xs btn-primary" style="width:100%;">계산</div>
                                 </div>
                             </div>
                         </div>
@@ -316,18 +334,11 @@
                                             <td>2020</td>
                                         </tr>
                                         <tr class="success">
-                                            <td>자원비</td>
+                                            <td>가중치</td>
                                             <td>1</td>
                                             <td>1.55</td>
                                             <td>1.55</td>
                                             <td>0.62</td>
-                                        </tr>
-                                        <tr class="info">
-                                            <td>가중치(1 / 자원비)</td>
-                                            <td>1</td>
-                                            <td>0.64</td>
-                                            <td>0.64</td>
-                                            <td>1.59</td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -393,18 +404,11 @@
                                             <td>57800</td>
                                         </tr>
                                         <tr class="success">
-                                            <td>자원비</td>
+                                            <td>가중치</td>
                                             <td>1</td>
                                             <td>1.37</td>
                                             <td>0.45</td>
                                             <td>0.86</td>
-                                        </tr>
-                                        <tr class="info">
-                                            <td>가중치(1 / 자원비)</td>
-                                            <td>1</td>
-                                            <td>0.72</td>
-                                            <td>1.56</td>
-                                            <td>1.16</td>
                                         </tr>
                                         </tbody>
                                     </table>
