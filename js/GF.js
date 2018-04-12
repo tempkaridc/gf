@@ -704,6 +704,7 @@ function calcStage(){
     var sumH = 0, sumA = 0, sumF = 0, sumP = 0, sumAll = 0;
     var sumT = "", sumItem = "";
     var sumHp = 0, sumAp = 0, sumFp = 0, sumPp = 0, sumTp = 0;
+    var perMin;
     var aryH = new Array();
     var aryA = new Array();
     var aryF = new Array();
@@ -712,10 +713,13 @@ function calcStage(){
     now = (new Date).getTime() + 32400000; // GMT+9
 
     for(i in selectedList){
-        sumH += objectList[selectedList[i]].Human * (60 / objectList[selectedList[i]].Time);
-        sumA += objectList[selectedList[i]].Ammo * (60 / objectList[selectedList[i]].Time);
-        sumF += objectList[selectedList[i]].Food * (60 / objectList[selectedList[i]].Time);
-        sumP += objectList[selectedList[i]].Part * (60 / objectList[selectedList[i]].Time);
+        if(sw_time){perMin = objectList[selectedList[i]].Time / 60;}
+        else{perMin = 1;}
+
+        sumH += objectList[selectedList[i]].Human / perMin;
+        sumA += objectList[selectedList[i]].Ammo / perMin;
+        sumF += objectList[selectedList[i]].Food / perMin;
+        sumP += objectList[selectedList[i]].Part / perMin;
         sumAll = sumH * 1 + sumA * 1 + sumF * 1 + sumP * 2.2;
         sumT += objectList[selectedList[i]].Area + '-' + objectList[selectedList[i]].Stage + ', ';
 
