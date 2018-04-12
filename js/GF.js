@@ -1,20 +1,22 @@
-var version = 118;
 
-var objectList = new Array();
-var selectedList = new Array();
-var sync_calcList = new Array();
-var sortToggle = [0,0,0,0,0,0,0,0,0,0,0,0];         // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
-var areaToggle = [1,1,1,1,1,1,1,1,1,1,1];           // [11] 0~10지역
-var wghtToggle = [0,0,0,0];
-var level = [0, 0.1, 0.4, 0.7];                     // Item 발견 가중치
-var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 0.45;       // 자원 가중치
-var timeToggle = [0,1,2,3,4,5,6,7,8,9,10,11,12,24]; // 14쌍
-var time_front = 0, time_end = 13;                  // 시간쌍 0~13
-var success = 0.6;                                  // 대성공 초기성공률 60%
+var version = 20180412;         // Version == 최종수정일
 
-var sw_sucs = false;
-var sw_time = true;
-var sw_help = true;
+var objectList      = new Array();
+var selectedList    = new Array();
+var sync_calcList   = new Array();
+
+var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
+var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1];              // [11] 0~10지역
+var wghtToggle      = [0,0,0,0];
+var level           = [0,0.1,0.4,0.7];                      // Item 발견 가중치
+var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 0.45;              // 초기 자원 가중치 1:1:1:0.45
+var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,11,12,24];    // 14쌍
+var time_front      = 0, time_end = 13;                     // 시간쌍 0~13
+var success         = 0.6;                                  // 대성공 초기성공률 60%
+
+var sw_sucs         = false;    // 대성공 적용여부
+var sw_time         = true;     // 표 자원 시간당 표기 적용여부
+var sw_help         = true;     // 도움말 보기 적용여부
 
 var chart;
 var chart_time = new Array();
@@ -248,7 +250,6 @@ $('[id^=btn-rec]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
     var rows = document.getElementById("area-list").getElementsByTagName("TR");
     clearRow();
-    console.log(sync_calcList[id].comb);
     for(var i in sync_calcList[id].comb){
         clickRow(sync_calcList[id].comb[i]);
     }
@@ -748,7 +749,6 @@ function calcStage(){
             chkDuplArray(aryP,tmp);
         }
     }
-
     $('#sumH').text(sumH.toFixed(0));
     $('#sumA').text(sumA.toFixed(0));
     $('#sumF').text(sumF.toFixed(0));
@@ -813,10 +813,10 @@ function calcStage(){
             backgroundColor:'rgba(255, 255, 255, 0.0)'
         },
         title: {
-            text: sumT.slice(0,-2)
-        },
-        rangeSelector: {
-            enabled: false
+            text: sumT.slice(0,-2),
+            style:{
+                "fontSize": "13px"
+            }
         },
         xAxis: {
             type: 'datetime',
@@ -825,7 +825,8 @@ function calcStage(){
                 text: null
             },
             dateTimeLabelFormats: {
-                hour: '%H:%M'
+                hour:"%a, %H시",
+                day:"%a, %H시"
             }
         },
         yAxis: {
@@ -835,28 +836,42 @@ function calcStage(){
             min: 0
         },
         tooltip: {
-            split: true
+            split: true,
+            padding: 3
         },
         plotOptions: {
             series: {
                 marker: {
-                    enabled: true,
-                    radius: 2
+                    enabled: false
                 }
             }
         },
         legend: {
             enabled: true,
-            align: 'center'
-        },
-        lang: {
-            weekdays: [
-                '월','화','수','목','금','토','일'
-            ]
+            align: 'center',
+            verticalAlign: 'top',
+            y: 20,
+            floating: true
         },
         series: chart_time
     });
 }
+Highcharts.setOptions({
+    lang: {
+        months: [
+            '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
+        ],
+        shortMonths: [
+            '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
+        ],
+        weekdays: [
+            '월요일','화요일','수요일','목요일','금요일','토요일','일요일'
+        ],
+        shortWeekdays: [
+            '월','화','수','목','금','토','일'
+        ]
+    }
+});
 function stackArray(ary, type){
     if(ary[0]){
         switch(type){
@@ -1063,7 +1078,12 @@ function refresh(){
 function loadNotice(){
     var text = "";
 
-    text += "2018-04-10 가중치 개념 분리\n" +
+    text +=
+        "2018-04-12 UI수정\n" +
+        "- 차트 및 기타 UI 일부수정\n\n";
+
+    text +=
+        "2018-04-10 가중치 개념 분리\n" +
         "- 자원량 합계의 부품 가중치를 1:1:1:2.2 로 고정\n" +
         "- 자원 가중치 '적용'기능 삭제. (자원량합계 불변)\n" +
         "- 기존 자원 가중치 기능은 추천지역 자동계산에만 사용\n" +
@@ -1134,6 +1154,7 @@ function init(){
     $('#wghtModal').modal("hide");
     $('#loadModal').modal("hide");
 }
+
 
 /*
 $('#btn_wgt').off().on('click', function (e) {

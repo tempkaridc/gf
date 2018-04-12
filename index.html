@@ -6,12 +6,8 @@
     <link href="css/bootstrap.min.css" rel="stylesheet" />
     <link href="css/highcharts.css" rel="stylesheet" />
     <style>
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        .table>tbody>tr>td {
-            vertical-align: middle;
-        }
+        ::-webkit-scrollbar {display: none;}
+        .table>tbody>tr>td {vertical-align: middle;}
     </style>
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116552461-1"></script>
@@ -19,10 +15,8 @@
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'UA-116552461-1');
     </script>
-
 </head>
 
 <body style="color: dimgray;" onresize="init()">
@@ -94,7 +88,7 @@
             </div>
             <div class="col-md-6 col-xs-12" style="padding:5px;">
                 <div class="col-md-12 col-xs-12">
-                    <div id="tbl_help" class="row no-gutters panel panel-primary" style="padding:10px;">
+                    <div id="tbl_help" class="row no-gutters panel panel-primary" style="padding:10px; margin-bottom: 10px;">
                         <div id="panel-notice" class="panel panel-info hide" style="padding:10px; margin-bottom:0px; height:100px; overflow-x: hidden; overflow-y: scroll;">
                             <table class="table table-striped table-condensed">
                                 <small><span id="list-notice"></span></small>
@@ -248,7 +242,7 @@
                                 <div style="width:20%; display:inline-block;">
 
                                 </div>
-                                <div style="width:79%; display:inline-block;">
+                                <div style="width:78%; display:inline-block;">
                                     <div id="auto_calc" class="btn btn-xs btn-primary" style="width:100%;">계산</div>
                                 </div>
                             </div>
@@ -274,7 +268,8 @@
                             </div>
                         </div>
                     </div>
-                    <div id="tbl_cht" class="col-md-12 col-xs-12" style="padding:0px;">
+                    <div id="tbl_chtbox" class="row no-gutters panel panel-primary" style="padding:0px; margin-bottom: 10px;">
+                        <div id="tbl_cht" class="col-md-12 col-xs-12" style="padding:0px;"></div>
                     </div>
                 </div>
             </div>

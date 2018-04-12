@@ -116,19 +116,6 @@
   stroke-opacity: 0.25;
 }
 
-/* Credits */
-.highcharts-credits {
-  cursor: pointer;
-  fill: #999999;
-  font-size: 0.7em;
-  transition: fill 250ms, font-size 250ms;
-}
-
-.highcharts-credits:hover {
-  fill: black;
-  font-size: 1em;
-}
-
 /* Tooltip */
 .highcharts-tooltip {
   cursor: default;
