@@ -271,9 +271,9 @@ $('#auto_calc').off().on('click', function (e) {
     usedRes.p = parseFloat(document.getElementById('wgt_part').value);
 
     if(isNaN(usedRes.h)) usedRes.h = 1;
-    if(isNaN(usedRes.a)) usedRes.a = 1;
-    if(isNaN(usedRes.f)) usedRes.f = 1;
-    if(isNaN(usedRes.p)) usedRes.p = 0.45;
+    if(isNaN(usedRes.a)) usedRes.a = 1.5;
+    if(isNaN(usedRes.f)) usedRes.f = 1.5;
+    if(isNaN(usedRes.p)) usedRes.p = 0.6;
 
     usedRes.type = binaryType(usedRes.h, usedRes.a, usedRes.f, usedRes.p);
     usedResA.push(usedRes);
