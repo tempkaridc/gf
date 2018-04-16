@@ -1,3 +1,7 @@
+/*
+자동계산시 0을 기본값으로 가지는 타입별 분류 계산한흔 법 만들기. 이미 분류는 되어있으니 그 안에서만 검색하면 될 듯?
+모바일 플ㄹ랫폼 변화시 table에서 일괄 condensed 클래스 제거 & 버튼사이즈 재조정 하기바람.
+ */
 
 var version = 20180412;         // Version == 최종수정일
 
@@ -280,7 +284,6 @@ $('#auto_calc').off().on('click', function (e) {
     normalizeValues(usedResA);
     //console.log(objectList);
 
-
     var calcList = new Array();
     for(var i in objectList){
         var tmp = new Object();
@@ -345,12 +348,41 @@ $('#auto_calc').off().on('click', function (e) {
     var used = usedResA[0];
     for(var i in comb_calcList){
         if(comb_calcList[i].type == used.type){
-            if(comb_calcList[i].h >= used.h) { (comb_calcList[i].h = used.h / comb_calcList[i].h) }else{ (comb_calcList[i].h = comb_calcList[i].h / used.h)};
-            if(comb_calcList[i].a >= used.a) { (comb_calcList[i].a = used.a / comb_calcList[i].a) }else{ (comb_calcList[i].a = comb_calcList[i].a / used.a)};
-            if(comb_calcList[i].f >= used.f) { (comb_calcList[i].f = used.f / comb_calcList[i].f) }else{ (comb_calcList[i].f = comb_calcList[i].f / used.f)};
-            if(comb_calcList[i].p >= used.p) { (comb_calcList[i].p = used.p / comb_calcList[i].p) }else{ (comb_calcList[i].p = comb_calcList[i].p / used.p)};
-            comb_calcList[i].avgH = 4 / ((1/comb_calcList[i].h) + (1/comb_calcList[i].a) + (1/comb_calcList[i].f) + (1/comb_calcList[i].p));
-            //comb_calcList[i].avgA = (comb_calcList[i].h + comb_calcList[i].a + comb_calcList[i].f + comb_calcList[i].p) / 4;
+            var sumH = 0;
+            if(comb_calcList[i].h){
+                if(comb_calcList[i].h >= used.h) {
+                    comb_calcList[i].h = used.h / comb_calcList[i].h;
+                }else{
+                    comb_calcList[i].h = comb_calcList[i].h / used.h;
+                }
+                sumH += 1 / comb_calcList[i].h;
+            }
+            if(comb_calcList[i].a){
+                if(comb_calcList[i].a >= used.a) {
+                    comb_calcList[i].a = used.a / comb_calcList[i].a;
+                }else{
+                    comb_calcList[i].a = comb_calcList[i].a / used.a;
+                }
+                sumH += 1 / comb_calcList[i].a;
+            }
+            if(comb_calcList[i].f){
+                if(comb_calcList[i].f >= used.f) {
+                    comb_calcList[i].f = used.f / comb_calcList[i].f;
+                }else{
+                    comb_calcList[i].f = comb_calcList[i].f / used.f;
+                }
+                sumH += 1 / comb_calcList[i].f;
+            }
+            if(comb_calcList[i].p){
+                if(comb_calcList[i].p >= used.p) {
+                    comb_calcList[i].p = used.p / comb_calcList[i].p;
+                }else{
+                    comb_calcList[i].p = comb_calcList[i].p / used.p;
+                }
+                sumH += 1 / comb_calcList[i].p;
+            }
+            //comb_calcList[i].avgH = 4 / ((1/comb_calcList[i].h) + (1/comb_calcList[i].a) + (1/comb_calcList[i].f) + (1/comb_calcList[i].p));
+            comb_calcList[i].avgH = 4 / sumH;
         }
     }
     //console.log(comb_calcList);
@@ -390,34 +422,57 @@ $('#auto_calc').off().on('click', function (e) {
 
     function normalizeValues(ary){
         for(var i in ary){
+            var div;
             switch(ary[i].type){
+                case 0:
+                    break;
                 case 1:
-                    ary[i].h /= ary[i].p;
-                    ary[i].a /= ary[i].p;
-                    ary[i].f /= ary[i].p;
-                    ary[i].p /= ary[i].p;
+                case 3:
+                case 5:
+                case 7:
+                    div = ary[i].p;
+
+                    ary[i].h = ary[i].h / div;
+                    ary[i].a = ary[i].a / div;
+                    ary[i].f = ary[i].f / div;
+                    ary[i].p = ary[i].p / div;
                     break;
                 case 2:
-                    ary[i].h /= ary[i].f;
-                    ary[i].a /= ary[i].f;
-                    ary[i].p /= ary[i].f;
-                    ary[i].f /= ary[i].f;
-                    break;
-                case 3:
-                    ary[i].h /= ary[i].a;
-                    ary[i].f /= ary[i].a;
-                    ary[i].p /= ary[i].a;
-                    ary[i].a /= ary[i].a;
+                case 6:
+                case 10:
+                case 11:
+                    div = ary[i].f;
+
+                    ary[i].h = ary[i].h / div;
+                    ary[i].a = ary[i].a / div;
+                    ary[i].f = ary[i].f / div;
+                    ary[i].p = ary[i].p / div;
                     break;
                 case 4:
-                    ary[i].a /= ary[i].h;
-                    ary[i].f /= ary[i].h;
-                    ary[i].p /= ary[i].h;
-                    ary[i].h /= ary[i].h;
+                case 12:
+                case 13:
+                case 14:
+                    div = ary[i].a;
+
+                    ary[i].h = ary[i].h / div;
+                    ary[i].a = ary[i].a / div;
+                    ary[i].f = ary[i].f / div;
+                    ary[i].p = ary[i].p / div;
+                    break;
+                case 8:
+                case 9:
+                case 15:
+                    div = ary[i].h;
+
+                    ary[i].h = ary[i].h / div;
+                    ary[i].a = ary[i].a / div;
+                    ary[i].f = ary[i].f / div;
+                    ary[i].p = ary[i].p / div;
                     break;
                 default:
                     break;
             }
+
         }
     }
     function binaryType(a,b,c,d){
@@ -426,38 +481,6 @@ $('#auto_calc').off().on('click', function (e) {
         if(b) e+=4;
         if(c) e+=2;
         if(d) e+=1;
-
-        switch(e){
-            case 0:
-                return 0;
-                break;
-            case 1:
-            case 3:
-            case 5:
-            case 7:
-                return 1;
-                break;
-            case 2:
-            case 6:
-            case 10:
-            case 11:
-                return 2;
-                break;
-            case 4:
-            case 12:
-            case 13:
-            case 14:
-                return 3;
-                break;
-            case 8:
-            case 9:
-            case 15:
-                return 4;
-                break;
-            default:
-                return 0;
-                break;
-        }
         return e;
     }
     function k_combinations(set, k) {
