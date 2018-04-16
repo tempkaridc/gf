@@ -130,6 +130,9 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
 $('#my_wght').off().on('click', function (e) {
     $('#wghtModal').removeClass("hide");
 });
+$('#my_wght2').off().on('click', function (e) {
+    $('#wghtModal').removeClass("hide");
+});
 $('#close_wght').off().on('click', function (e) {
     $('#wghtModal').addClass("hide");
 });
