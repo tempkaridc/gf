@@ -1,8 +1,8 @@
 /*
-모바일 플ㄹ랫폼 변화시 table에서 일괄 condensed 클래스 제거 & 버튼사이즈 재조정 하기바람.
+    모바일 플ㄹ랫폼 변화시 table에서 일괄 condensed 클래스 제거 & 버튼사이즈 재조정 하기바람.
  */
 
-var version = 20180416;         // Version == 최종수정일
+var version = 201804162;         // Version == 최종수정일 + Trial
 
 var objectList      = new Array();
 var selectedList    = new Array();
@@ -128,7 +128,10 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
     refresh();
 });
 $('#my_wght').off().on('click', function (e) {
-    $('#wghtModal').modal("show");
+    $('#wghtModal').removeClass("hide");
+});
+$('#close_wght').off().on('click', function (e) {
+    $('#wghtModal').addClass("hide");
 });
 $('#btn_calcUse').off().on('click', function (e) {
     var tmp = new Array();
@@ -140,24 +143,23 @@ $('#btn_calcUse').off().on('click', function (e) {
     for(var i in tmp){
         if(isNaN(tmp[i])) tmp[i] = 1;
     }
-    var min = tmp[0];
+    var min = 9999999999;
+    for(var i in tmp){
+        if((tmp[i] < min) && (tmp[i] != 0)){
+            min = tmp[i];
+        }
+    }
+
     for(var i in tmp){
         tmp[i] = tmp[i] / min;
     }
 
-    /*
-    가중치 수정
-    $('#wgt_huma').val(1/tmp[0]);
-    $('#wgt_ammo').val(1/tmp[1]);
-    $('#wgt_food').val(1/tmp[2]);
-    $('#wgt_part').val(1/tmp[3]);
-     */
     $('#wgt_huma').val(tmp[0].toFixed(2));
     $('#wgt_ammo').val(tmp[1].toFixed(2));
     $('#wgt_food').val(tmp[2].toFixed(2));
     $('#wgt_part').val(tmp[3].toFixed(2));
 
-    $('#wghtModal').modal("hide");
+    $('#wghtModal').addClass("hide");
     $('#loadModal').modal("hide");
     $('#recommendLine').addClass('hide');
     $('#tbl_cht').empty();
@@ -183,8 +185,8 @@ $('#btn_calcUse2').off().on('click', function (e) {
     }
 
     for(var i in tmp){
-        if(isNaN(tmp[i])) tmp[i] = 1;
-        if(isNaN(tmpf[i])) tmpf[i] = 1;
+        if(isNaN(tmp[i])) tmp[i] = 0;
+        if(isNaN(tmpf[i])) tmpf[i] = 0;
     }
 
     var tmpd = new Array();
@@ -192,7 +194,14 @@ $('#btn_calcUse2').off().on('click', function (e) {
         tmpd[i] = tmpf[i] - tmp[i];
     }
 
-    var min = tmpd[0];
+    var min = 9999999999;
+    for(var i in tmp){
+        if((tmp[i] < min) && (tmp[i] != 0)){
+            min = tmp[i];
+        }
+    }
+    console.log(min);
+
     for(var i in tmpd){
         tmpd[i] = tmpd[i] / min;
     }
@@ -202,19 +211,12 @@ $('#btn_calcUse2').off().on('click', function (e) {
     $('#pre_food').val(tmp[2]);
     $('#pre_part').val(tmp[3]);
 
-    /*
-    가중치 수정
-    $('#wgt_huma').val(1/tmpd[0]);
-    $('#wgt_ammo').val(1/tmpd[1]);
-    $('#wgt_food').val(1/tmpd[2]);
-    $('#wgt_part').val(1/tmpd[3]);
-     */
     $('#wgt_huma').val(tmpd[0].toFixed(2));
     $('#wgt_ammo').val(tmpd[1].toFixed(2));
     $('#wgt_food').val(tmpd[2].toFixed(2));
     $('#wgt_part').val(tmpd[3].toFixed(2));
 
-    $('#wghtModal').modal("hide");
+    $('#wghtModal').addClass("hide");
     $('#loadModal').modal("hide");
     $('#recommendLine').addClass('hide');
     $('#tbl_cht').empty();
@@ -1106,6 +1108,7 @@ function loadNotice(){
 
     text +=
         "2018-04-16 BUG 수정\n" +
+        "- 나만의 가중치 계산버튼위치 변경 및 모바일 대응\n" +
         "- 가중치 0 미계산 버그 수정\n\n";
 
     text +=
@@ -1157,7 +1160,6 @@ function init(){
         myHeight = document.body.clientHeight;
     }
     document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
-    //document.getElementById('tbl_help').style.height = myHeight * 0.5 + 'px';
     document.getElementById('tbl_cht').style.height = myHeight * 0.3 + 'px';
 
     document.getElementById("pre_huma").addEventListener("change",function(){calcStage();});
@@ -1181,7 +1183,6 @@ function init(){
         }
 
     });
-    $('#wghtModal').modal("hide");
     $('#loadModal').modal("hide");
 }
 
