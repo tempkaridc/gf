@@ -1,9 +1,8 @@
 /*
-자동계산시 0을 기본값으로 가지는 타입별 분류 계산한흔 법 만들기. 이미 분류는 되어있으니 그 안에서만 검색하면 될 듯?
 모바일 플ㄹ랫폼 변화시 table에서 일괄 condensed 클래스 제거 & 버튼사이즈 재조정 하기바람.
  */
 
-var version = 20180412;         // Version == 최종수정일
+var version = 20180416;         // Version == 최종수정일
 
 var objectList      = new Array();
 var selectedList    = new Array();
@@ -1104,6 +1103,10 @@ function refresh(){
 }
 function loadNotice(){
     var text = "";
+
+    text +=
+        "2018-04-16 BUG 수정\n" +
+        "- 가중치 0 미계산 버그 수정\n\n";
 
     text +=
         "2018-04-12 UI수정\n" +
