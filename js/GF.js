@@ -2,7 +2,7 @@
     모바일 플ㄹ랫폼 변화시 table에서 일괄 condensed 클래스 제거 & 버튼사이즈 재조정 하기바람.
  */
 
-var version = 201804162;         // Version == 최종수정일 + Trial
+var version = 201804201;         // Version == 최종수정일 + Trial
 
 var objectList      = new Array();
 var selectedList    = new Array();
@@ -1009,6 +1009,11 @@ function loadTable(){
             default:
                 break;
         }
+    }
+    if(sw_time){
+        document.getElementById('text_tablesum').innerHTML = "시간당<br>획득";
+    }else{
+        document.getElementById('text_tablesum').innerHTML = "전체<br>획득";
     }
 }
 function callData(){
