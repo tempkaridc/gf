@@ -30,7 +30,7 @@ var saves;
 
 $(function (){
     init();
-    loadNotice();
+    //loadNotice();
     refresh();
 })
 .on('click', '.table-clickable', function(e) {
@@ -1145,7 +1145,7 @@ function init(){
         sw_help = config.help;
 
         if((config.version === undefined) || (config.version < version)){
-            $('#panel-notice').removeClass('hide');
+            //$('#panel-notice').removeClass('hide');
             config.version = version;
             localStorage.config = JSON.stringify(config);
         }
