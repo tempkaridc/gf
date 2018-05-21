@@ -569,10 +569,12 @@ $('#btn-toggleHelp').off().on('click', function (e) {
         config.help = true;
         localStorage.config = JSON.stringify(config);
         $('#panel-help').removeClass('hide');
+        $('#text-toggleHelp').text('도움말 닫기');
     }else{
         config.help = false;
         localStorage.config = JSON.stringify(config);
         $('#panel-help').addClass('hide');
+        $('#text-toggleHelp').text('도움말 열기');
     }
 });
 $('#btn-toggleNotice').off().on('click', function (e) {
@@ -1174,8 +1176,14 @@ function init(){
         }
     }
 
-    if(sw_help){$('#panel-help').removeClass('hide');}
-    else{$('#panel-help').addClass('hide');}
+    if(sw_help){
+        $('#panel-help').removeClass('hide');
+        $('#text-toggleHelp').text('도움말 닫기');
+    }
+    else{
+        $('#panel-help').addClass('hide');
+        $('#text-toggleHelp').text('도움말 열기');
+    }
 
     loadSaves();
 
