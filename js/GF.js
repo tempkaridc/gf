@@ -201,7 +201,6 @@ $('#btn_calcUse2').off().on('click', function (e) {
             min = tmp[i];
         }
     }
-    console.log(min);
 
     for(var i in tmpd){
         tmpd[i] = tmpd[i] / min;
@@ -867,8 +866,6 @@ function calcStage(){
     obj_LineP.data = aryP;
     stackArray(aryP,4);
     chart_time.push(obj_LineP);
-
-    console.log(chart_time);
 
     chart = new Highcharts.chart({
         chart: {
