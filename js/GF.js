@@ -2,7 +2,8 @@
     모바일 플ㄹ랫폼 변화시 table에서 일괄 condensed 클래스 제거 & 버튼사이즈 재조정 하기바람.
  */
 
-var version = 201804201;         // Version == 최종수정일 + Trial
+var version = 201805210;         // Version == 최종수정일 + Trial
+var updateString = "2018-05-21 업데이트\n그래프에 기간 설정 버튼 추가 완료";
 
 var objectList      = new Array();
 var selectedList    = new Array();
@@ -262,6 +263,40 @@ $('[id^=btn-rec]').off().on('click', function (e) {
         rows[i].parentNode.insertBefore(rows[sync_calcList[id].comb[i]], rows[i]);
     }
 });
+$('[id^=btn-rangeSelector]').off().on('click', function (e) {
+    var id = parseInt($(this).attr('idx'));
+
+    for(var i = 0; i < 4; i++) {
+        if ($('#btn-rangeSelector-' + i).hasClass('btn-success')) {
+            $('#btn-rangeSelector-' + i).removeClass('btn-success');
+            $('#btn-rangeSelector-' + i).addClass('btn-default');
+        }
+    }
+    $('#btn-rangeSelector-' + id).removeClass('btn-default');
+    $('#btn-rangeSelector-' + id).addClass('btn-success');
+
+    var extremes = chart.xAxis[0].getExtremes();
+    var min = extremes.min;
+    var max;
+
+    switch(id){
+        case 0:
+            max = min + (1000 * 60 * 60 * 24); //1일
+            break;
+        case 1:
+            max = min + (1000 * 60 * 60 * 24 * 7); //1주
+            break;
+        case 2:
+            max = min + (1000 * 60 * 60 * 24 * 14); //2주
+            break;
+        case 3:
+            max = min + (1000 * 60 * 60 * 24 * 28); //1달
+            break;
+        default:
+            break;
+    }
+    chart.xAxis[0].setExtremes(min, max);
+});
 $('#auto_calc').off().on('click', function (e) {
     //$('#btn_wgt').trigger('click');
     highlight(2);
@@ -326,10 +361,6 @@ $('#auto_calc').off().on('click', function (e) {
         tmp.a = ta;
         tmp.f = tf;
         tmp.p = tp;
-        //tmp.t1 = tt1;
-        //tmp.t2 = tt2;
-        //tmp.t3 = tt3;
-        //tmp.t4 = tt4;
         tmp.total = th + ta + tf + tp;
         if( (tt1 >= wghtToggle[0]) &&
             (tt2 >= wghtToggle[1]) &&
@@ -753,7 +784,8 @@ function calcStage(){
         if(objectList[selectedList[i]].Ticket_fastRepair) sumPp += objectList[selectedList[i]].Ticket_fastRepair * (60 / objectList[selectedList[i]].Time);
         if(objectList[selectedList[i]].Ticket_Tokken) sumTp += objectList[selectedList[i]].Ticket_Tokken * (60 / objectList[selectedList[i]].Time);
 
-        for(var j = 0; j < parseInt((60 * 24 * 1) / objectList[selectedList[i]].Time) + 1; j++){
+        var maxTimeRange = 60 * 24 * 30; //60min * 24hours * 30days
+        for(var j = 0; j < parseInt(maxTimeRange / objectList[selectedList[i]].Time) + 1; j++){
             timeCount = j * objectList[selectedList[i]].Time;
 
             var tmp = new Array();
@@ -834,6 +866,8 @@ function calcStage(){
     stackArray(aryP,4);
     chart_time.push(obj_LineP);
 
+    console.log(chart_time);
+
     chart = new Highcharts.chart({
         chart: {
             renderTo: 'tbl_cht',
@@ -883,6 +917,16 @@ function calcStage(){
         },
         series: chart_time
     });
+
+    for(var i = 0; i < 4; i++) {
+        if ($('#btn-rangeSelector-' + i).hasClass('btn-success')) {
+            $('#btn-rangeSelector-' + i).removeClass('btn-success');
+            $('#btn-rangeSelector-' + i).addClass('btn-default');
+        }
+    }
+    $('#btn-rangeSelector-0').removeClass('btn-default');
+    $('#btn-rangeSelector-0').addClass('btn-success');
+    chart.xAxis[0].setExtremes(now, now + (1000 * 60 * 60 * 24)); //초기값 X-axis range 1dayms
 }
 Highcharts.setOptions({
     lang: {
@@ -1108,28 +1152,6 @@ function refresh(){
     loadTable();
     calcStage();
 }
-function loadNotice(){
-    var text = "";
-
-    text +=
-        "2018-04-16 BUG 수정\n" +
-        "- 나만의 가중치 계산버튼위치 변경 및 모바일 대응\n" +
-        "- 가중치 0 미계산 버그 수정\n\n";
-
-    text +=
-        "2018-04-12 UI수정\n" +
-        "- 차트 및 기타 UI 일부수정\n\n";
-
-    text +=
-        "2018-04-10 가중치 개념 분리\n" +
-        "- 자원량 합계의 부품 가중치를 1:1:1:2.2 로 고정\n" +
-        "- 자원 가중치 '적용'기능 삭제. (자원량합계 불변)\n" +
-        "- 기존 자원 가중치 기능은 추천지역 자동계산에만 사용\n" +
-        "└ 가중치가 높을수록 해당 자원 우선적용\n";
-
-    text = text.replace(/\r?\n/g, '<br />');
-    $('#list-notice').append(text);
-}
 function init(){
     //localStorage.removeItem("saves");
     config = localStorage.config;
@@ -1146,6 +1168,7 @@ function init(){
 
         if((config.version === undefined) || (config.version < version)){
             //$('#panel-notice').removeClass('hide');
+            alert(updateString);
             config.version = version;
             localStorage.config = JSON.stringify(config);
         }
@@ -1191,7 +1214,7 @@ function init(){
     $('#loadModal').modal("hide");
 }
 
-
+//GarbageCode
 /*
 $('#btn_wgt').off().on('click', function (e) {
     wgtH = parseFloat(document.getElementById('wgt_huma').value);
@@ -1207,4 +1230,27 @@ $('#btn_wgt').off().on('click', function (e) {
     //sortToggle[5] = 0;
     //$('#sort-5').trigger('click');
 });
+
+function loadNotice(){
+    var text = "";
+
+    text +=
+        "2018-04-16 BUG 수정\n" +
+        "- 나만의 가중치 계산버튼위치 변경 및 모바일 대응\n" +
+        "- 가중치 0 미계산 버그 수정\n\n";
+
+    text +=
+        "2018-04-12 UI수정\n" +
+        "- 차트 및 기타 UI 일부수정\n\n";
+
+    text +=
+        "2018-04-10 가중치 개념 분리\n" +
+        "- 자원량 합계의 부품 가중치를 1:1:1:2.2 로 고정\n" +
+        "- 자원 가중치 '적용'기능 삭제. (자원량합계 불변)\n" +
+        "- 기존 자원 가중치 기능은 추천지역 자동계산에만 사용\n" +
+        "└ 가중치가 높을수록 해당 자원 우선적용\n";
+
+    text = text.replace(/\r?\n/g, '<br />');
+    $('#list-notice').append(text);
+}
  */
