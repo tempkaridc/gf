@@ -1,7 +1,3 @@
-/*
-    모바일 플ㄹ랫폼 변화시 table에서 일괄 condensed 클래스 제거 & 버튼사이즈 재조정 하기바람.
- */
-
 var version = 201805210;         // Version == 최종수정일 + Trial
 var updateString = "2018-05-21 업데이트\n그래프에 기간 설정 버튼 추가 완료";
 
@@ -13,9 +9,9 @@ var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:de
 var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1];              // [11] 0~10지역
 var wghtToggle      = [0,0,0,0];
 var level           = [0,0.1,0.4,0.7];                      // Item 발견 가중치
-var wgtH = 1, wgtA = 1, wgtF = 1, wgtP = 0.45;              // 초기 자원 가중치 1:1:1:0.45
 var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,11,12,24];    // 14쌍
-var time_front      = 0, time_end = 13;                     // 시간쌍 0~13
+var time_front      = 0;
+var time_end        = 13;                     // 시간쌍 0~13
 var success         = 0.6;                                  // 대성공 초기성공률 60%
 
 var sw_sucs         = false;    // 대성공 적용여부
