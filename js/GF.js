@@ -1,5 +1,6 @@
-var version = 201805210;         // Version == 최종수정일 + Trial
-var updateString = "2018-05-21 업데이트\n그래프에 기간 설정 버튼 추가 완료";
+var version         = 201805230;         // Version == 최종수정일 + Trial
+var updateString    = "2018-05-23\n"
+                    + "추천 알고리즘 조정 (기존 대비 획득 자원량 상승, 자원비 일치율 소폭감소)";
 
 var objectList      = new Array();
 var selectedList    = new Array();
@@ -414,7 +415,7 @@ $('#auto_calc').off().on('click', function (e) {
     }
     //console.log(comb_calcList);
 
-    var limit = 0.95;
+    var limit = 0.90;
     while(1){
         for(var i in comb_calcList){
             if((comb_calcList[i].avgH > limit) && (comb_calcList[i].t)){
@@ -443,7 +444,7 @@ $('#auto_calc').off().on('click', function (e) {
     //console.log(sync_calcList);
 
     for(var i = 0; i < sync_calcList.length; i++){
-        $('#btn-rec' + i).text('추천 ' + (i+1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
+        $('#btn-rec' + i).text('추천 ' + (i + 1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
     }
     $('#recommendLine').removeClass('hide');
 
