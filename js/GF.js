@@ -17,6 +17,7 @@ var time_end        = 13;                     // 시간쌍 0~13
 var success         = 0.6;                                  // 대성공 초기성공률 60%
 
 var sw_sucs         = false;    // 대성공 적용여부
+var sw_recovery     = false;
 var sw_time         = true;     // 표 자원 시간당 표기 적용여부
 var sw_help         = true;     // 도움말 보기 적용여부
 
@@ -123,6 +124,22 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#btn_toggle_sucs').text('미적용');
         sw_sucs = false;
         highlight();
+    }
+    refresh();
+});
+$('#btn_toggle_recovery').off().on('click', function (e) {
+    if($('#btn_toggle_recovery').hasClass('btn-default')){
+        $('#btn_toggle_recovery').removeClass('btn-default');
+        $('#btn_toggle_recovery').addClass('btn-success');
+
+        $('#btn_toggle_recovery').text('회복 켜짐');
+        sw_recovery = true;
+    }else{
+        $('#btn_toggle_recovery').removeClass('btn-success');
+        $('#btn_toggle_recovery').addClass('btn-default');
+
+        $('#btn_toggle_recovery').text('회복 꺼짐');
+        sw_recovery = false;
     }
     refresh();
 });
@@ -763,8 +780,7 @@ function calcStage(){
     var aryA = new Array();
     var aryF = new Array();
     var aryP = new Array();
-    //now = new Date().getTime();
-    now = (new Date).getTime() + 32400000; // GMT+9
+    now = (new Date).getTime() + (9 * 60 * 60 * 1000); // GMT+9
 
     for(i in selectedList){
         if(sw_time){perMin = objectList[selectedList[i]].Time / 60;}
@@ -784,26 +800,52 @@ function calcStage(){
         if(objectList[selectedList[i]].Ticket_Tokken) sumTp += objectList[selectedList[i]].Ticket_Tokken * (60 / objectList[selectedList[i]].Time);
 
         var maxTimeRange = 60 * 24 * 30; //60min * 24hours * 30days
+
+        //3분에 인탄식 3회복 & 3분에 부품 1회복
+        if(sw_recovery){
+            for(var j = 0; j < parseInt(maxTimeRange / 60) + 1; j++){
+                var tmp = new Array();
+                tmp[0] = j * 60 * 60 * 1000;
+                tmp[1] = 60;
+                chkDuplArray(aryH,tmp);
+
+                var tmp = new Array();
+                tmp[0] = j * 60 * 60 * 1000;
+                tmp[1] = 60;
+                chkDuplArray(aryA,tmp);
+
+                var tmp = new Array();
+                tmp[0] = j * 60 * 60 * 1000;
+                tmp[1] = 60;
+                chkDuplArray(aryF,tmp);
+
+                var tmp = new Array();
+                tmp[0] = j * 60 * 60 * 1000;
+                tmp[1] = 20;
+                chkDuplArray(aryP,tmp);
+            }
+        }
+
         for(var j = 0; j < parseInt(maxTimeRange / objectList[selectedList[i]].Time) + 1; j++){
             timeCount = j * objectList[selectedList[i]].Time;
 
             var tmp = new Array();
-            tmp[0] = timeCount * 60000;
+            tmp[0] = timeCount * 60 * 1000;
             tmp[1] = objectList[selectedList[i]].Human;
             chkDuplArray(aryH,tmp);
 
             var tmp = new Array();
-            tmp[0] = timeCount * 60000;
+            tmp[0] = timeCount * 60 * 1000;
             tmp[1] = objectList[selectedList[i]].Ammo;
             chkDuplArray(aryA,tmp);
 
             var tmp = new Array();
-            tmp[0] = timeCount * 60000;
+            tmp[0] = timeCount * 60 * 1000;
             tmp[1] = objectList[selectedList[i]].Food;
             chkDuplArray(aryF,tmp);
 
             var tmp = new Array();
-            tmp[0] = timeCount * 60000;
+            tmp[0] = timeCount * 60 * 1000;
             tmp[1] = objectList[selectedList[i]].Part;
             chkDuplArray(aryP,tmp);
         }
@@ -877,7 +919,13 @@ function calcStage(){
         },
         xAxis: {
             type: 'datetime',
-            crosshair: true,
+            //crosshair: true,
+            crosshair: {
+              enabled: true,
+              format:{
+                  value: "%b %d일, %Y"
+              }
+            },
             title: {
                 text: null
             },
@@ -941,7 +989,8 @@ Highcharts.setOptions({
             '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
         ],
         shortWeekdays: [
-            '일','월','화','수','목','금','토'
+            //'일','월','화','수','목','금','토'
+            '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
         ]
     }
 });
@@ -984,7 +1033,9 @@ function sortFunction(a, b) {
 }
 function chkDuplArray(ary, obj){
     if(obj[1] == 0){
-        return;
+        //return;
+        //data가 0일경우 그래프에서 삭제했었는데, 요청으로 0 부활시켜야겠음.
+        //return 시 삭제됨
     }
 
     if(obj[0] == 0) {
@@ -1202,7 +1253,6 @@ function init(){
         document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
         document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
     }
-
 
     document.getElementById("pre_huma").addEventListener("change",function(){calcStage();});
     document.getElementById("pre_ammo").addEventListener("change",function(){calcStage();});
