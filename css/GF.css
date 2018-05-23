@@ -8,3 +8,8 @@
         padding: 10px;
     }
 }
+
+.highcharts-title {
+    fill: #FFFFFF;
+}
+

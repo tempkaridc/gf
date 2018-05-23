@@ -872,10 +872,8 @@ function calcStage(){
             backgroundColor:'rgba(255, 255, 255, 0.0)'
         },
         title: {
-            text: sumT.slice(0,-2),
-            style:{
-                "fontSize": "13px"
-            }
+            //text: "지역: " + sumT.slice(0,-2),
+            text: "와쨩 다이스키!"
         },
         xAxis: {
             type: 'datetime',
@@ -923,6 +921,7 @@ function calcStage(){
     }
     $('#btn-rangeSelector-0').removeClass('btn-default');
     $('#btn-rangeSelector-0').addClass('btn-success');
+    $('#text-graphTitle').text(sumT.slice(0,-2) + "　");
     chart.xAxis[0].setExtremes(now, now + (1000 * 60 * 60 * 24)); //초기값 X-axis range 1dayms
 }
 Highcharts.setOptions({
