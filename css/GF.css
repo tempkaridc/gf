@@ -7,7 +7,13 @@
     .table-condensed > tfoot > tr > td {
         padding: 10px;
     }
+    .btn-font-responsive{
+        font-size: 10px;
+        padding: 5px;
+    }
 }
+
+
 
 .highcharts-title {
     fill: #FFFFFF;

@@ -921,7 +921,12 @@ function calcStage(){
     }
     $('#btn-rangeSelector-0').removeClass('btn-default');
     $('#btn-rangeSelector-0').addClass('btn-success');
-    $('#text-graphTitle').text(sumT.slice(0,-2) + "　");
+    if(sumT.slice(0,-2) == ""){
+        $('#text-graphTitle').text("　");
+    }else{
+        $('#text-graphTitle').text(sumT.slice(0,-2));
+    }
+
     chart.xAxis[0].setExtremes(now, now + (1000 * 60 * 60 * 24)); //초기값 X-axis range 1dayms
 }
 Highcharts.setOptions({
@@ -1182,6 +1187,7 @@ function init(){
     loadSaves();
 
     var myHeight = 0;
+    var myWidth = window.innerWidth;
     if( typeof( window.innerWidth ) == 'number' ) {
         myHeight = window.innerHeight;
     } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
@@ -1189,8 +1195,14 @@ function init(){
     } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
         myHeight = document.body.clientHeight;
     }
-    document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
-    document.getElementById('tbl_cht').style.height = myHeight * 0.3 + 'px';
+    if(myWidth <= 991){ //Mobile UI
+        document.getElementById('tbl_mid').style.height = myHeight * 0.50 + 'px';
+        document.getElementById('tbl_cht').style.height = myHeight * 0.50 + 'px';
+    }else{              //Desktop UI
+        document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
+        document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
+    }
+
 
     document.getElementById("pre_huma").addEventListener("change",function(){calcStage();});
     document.getElementById("pre_ammo").addEventListener("change",function(){calcStage();});
