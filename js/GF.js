@@ -1,6 +1,7 @@
-var version         = 201805230;         // Version == 최종수정일 + Trial
-var updateString    = "2018-05-23\n"
-                    + "추천 알고리즘 조정 (기존 대비 획득 자원량 상승, 자원비 일치율 소폭감소)";
+var version         = 201805231;         // Version == 최종수정일 + Trial
+var updateString    = "2018-05-23 업데이트 내역\n"
+                    + "- 추천 알고리즘 조정 (획득 자원량 상승, 자원비 일치율 소폭감소)\n"
+                    + "- 모바일 UI 대응수정";
 
 var objectList      = new Array();
 var selectedList    = new Array();
