@@ -1031,7 +1031,7 @@ function sortFunction(a, b) {
 }
 function chkDuplArray(ary, obj){
     if(obj[1] == 0){
-        //return;
+        return;
         //data가 0일경우 그래프에서 삭제했었는데, 요청으로 0 부활시켜야겠음.
         //return 시 삭제됨
     }
