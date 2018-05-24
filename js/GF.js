@@ -132,13 +132,13 @@ $('#btn_toggle_recovery').off().on('click', function (e) {
         $('#btn_toggle_recovery').removeClass('btn-default');
         $('#btn_toggle_recovery').addClass('btn-success');
 
-        $('#btn_toggle_recovery').text('회복 켜짐');
+        //$('#btn_toggle_recovery').text('회복 켜짐');
         sw_recovery = true;
     }else{
         $('#btn_toggle_recovery').removeClass('btn-success');
         $('#btn_toggle_recovery').addClass('btn-default');
 
-        $('#btn_toggle_recovery').text('회복 꺼짐');
+        //$('#btn_toggle_recovery').text('회복 꺼짐');
         sw_recovery = false;
     }
     refresh();
@@ -241,25 +241,25 @@ $('[id^=btn-tgl]').off().on('click', function (e) {
     if(wghtToggle[id] == level[0]){    //dflt -> sucs
         $('#btn-tglT' + id).removeClass('btn-default');
         $('#btn-tglT' + id).addClass('btn-success');
-        $('#btn-tglT' + id + '_text').text(' 저확률');
+        $('#btn-tglT' + id + '_text').text('낮음');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[1] + '개 이상');
         wghtToggle[id] = level[1];
     }else if(wghtToggle[id] == level[1]){    //sucs -> warn
         $('#btn-tglT' + id).removeClass('btn-success');
         $('#btn-tglT' + id).addClass('btn-warning');
-        $('#btn-tglT' + id + '_text').text(' 중확률');
+        $('#btn-tglT' + id + '_text').text('중간');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[2] + '개 이상');
         wghtToggle[id] = level[2];
     }else if(wghtToggle[id] == level[2]) {    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-warning');
         $('#btn-tglT' + id).addClass('btn-danger');
-        $('#btn-tglT' + id + '_text').text(' 고확률');
+        $('#btn-tglT' + id + '_text').text('높음');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[3] + '개 이상');
         wghtToggle[id] = level[3];
     }else if(wghtToggle[id] == level[3]){    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-danger');
         $('#btn-tglT' + id).addClass('btn-default');
-        $('#btn-tglT' + id + '_text').text(' 전체');
+        $('#btn-tglT' + id + '_text').text('전체');
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[0] + '개 이상');
         wghtToggle[id] = level[0];
     }
@@ -914,12 +914,10 @@ function calcStage(){
             backgroundColor:'rgba(255, 255, 255, 0.0)'
         },
         title: {
-            //text: "지역: " + sumT.slice(0,-2),
             text: "와쨩 다이스키!"
         },
         xAxis: {
             type: 'datetime',
-            //crosshair: true,
             crosshair: {
               enabled: true,
               format:{

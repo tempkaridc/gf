@@ -5,15 +5,14 @@
     .table-condensed > thead > tr > td,
     .table-condensed > tbody > tr > td,
     .table-condensed > tfoot > tr > td {
-        padding: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
     }
     .btn-font-responsive{
         font-size: 10px;
         padding: 5px;
     }
 }
-
-
 
 .highcharts-title {
     fill: #FFFFFF;
