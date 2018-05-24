@@ -1245,8 +1245,8 @@ function init(){
         myHeight = document.body.clientHeight;
     }
     if(myWidth <= 991){ //Mobile UI
-        document.getElementById('tbl_mid').style.height = myHeight * 0.50 + 'px';
-        document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
+        document.getElementById('tbl_mid').style.height = myHeight * 0.60 + 'px';
+        document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
     }else{              //Desktop UI
         document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
         document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
