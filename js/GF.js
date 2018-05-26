@@ -17,7 +17,8 @@ var time_end        = timeToggle.length - 1;                // Tail 시간쌍
 var success         = 0.6;                                  // 대성공 초기성공률 60%
 
 var sw_sucs         = false;    // 대성공 적용여부
-var sw_recovery     = false;
+var sw_recovery     = false;    // 자원회복 적용여부
+var sw_zero         = true;     // 자원량 0 표기여부
 var sw_time         = true;     // 표 자원 시간당 표기 적용여부
 var sw_help         = true;     // 도움말 보기 적용여부
 
@@ -1038,10 +1039,10 @@ function stackArray(ary, type){
             ary[0][1] = 0;
         }
     }
-    for(var i = 1; i < ary.length; i++){
-        ary[i][1] += ary[i-1][1];
-    }
     for(var i in ary){
+        if(i > 0){
+            ary[i][1] += ary[i-1][1];
+        }
         ary[i][0] = new Date(ary[i][0] + now).getTime();
     }
 }
@@ -1055,9 +1056,14 @@ function sortFunction(a, b) {
 }
 function chkDuplArray(ary, obj){
     if(obj[1] == 0){
-        return;
-        //data가 0일경우 그래프에서 삭제했었는데, 요청으로 0 부활시켜야겠음.
-        //return 시 삭제됨
+        if(sw_zero){
+            //data가 0일경우 그래프에서 삭제했었는데, 요청으로 0 부활시켜야겠음.
+            //push 하지않고 return 시 해당 노드는 삭제됨
+            ary.push(obj);
+            return;
+        }else{
+            return;
+        }
     }
 
     if(obj[0] == 0) {
