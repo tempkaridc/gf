@@ -56,11 +56,11 @@ $(function (){
 });
 $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
-    if(id == 5){
-        highlight(3);
-        $('#high_02').addClass('success');       // 코드 순서때문에 어쩔수없이 이부분만 하드코딩
-    }else{
-        $('#high_03').removeClass('success');       // 코드 순서때문에 어쩔수없이 이부분만 하드코딩
+    if(0 < id){
+        highlight(2);
+        if(id == 5){
+            $('#high_03').addClass('success');       // 코드 순서때문에 어쩔수없이 이부분만 하드코딩
+        }
     }
     if(sortToggle[id] <= 1){
         sortInit(id);
