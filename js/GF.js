@@ -462,7 +462,7 @@ $('#auto_calc').off().on('click', function (e) {
     //console.log(sync_calcList);
 
     for(var i = 0; i < sync_calcList.length; i++){
-        $('#btn-rec' + i).text('추천 ' + (i + 1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
+        $('#btn-rec' + i).text('#' + (i + 1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
     }
     $('#recommendLine').removeClass('hide');
 
