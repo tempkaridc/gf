@@ -8,11 +8,12 @@ var sync_calcList   = new Array();
 
 var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1];              // [11] 0~10지역
-var wghtToggle      = [0,0,0,0];
-var level           = [0,0.1,0.4,0.7];                      // Item 발견 가중치
-var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,11,12,24];    // 14쌍
-var time_front      = 0;
-var time_end        = 13;                     // 시간쌍 0~13
+var wghtToggle      = [0,0,0,0];                            // 계약서 가중치 버튼 스위치
+var level           = [0,0.1,0.4,0.7];                      // 계약서 가중치 확률
+var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,12,24];       // [13]
+
+var time_front      = 0;                                    // Head
+var time_end        = timeToggle.length - 1;                // Tail 시간쌍
 var success         = 0.6;                                  // 대성공 초기성공률 60%
 
 var sw_sucs         = false;    // 대성공 적용여부
@@ -55,6 +56,12 @@ $(function (){
 });
 $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
+    if(id == 5){
+        highlight(3);
+        $('#high_02').addClass('success');       // 코드 순서때문에 어쩔수없이 이부분만 하드코딩
+    }else{
+        $('#high_03').removeClass('success');       // 코드 순서때문에 어쩔수없이 이부분만 하드코딩
+    }
     if(sortToggle[id] <= 1){
         sortInit(id);
         $('#icon-'+id).addClass('glyphicon-sort-by-order-alt');
@@ -100,7 +107,7 @@ $('[id^=btn-timee-]').off().on('click', function (e) {
             time_end--;
         }
     }else if(id ==1){
-        if(time_end < 13){
+        if(time_end < timeToggle.length - 1){
             time_end++;
         }
     }
@@ -114,6 +121,7 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#per_level').addClass('btn-success');
         $('#btn_toggle_sucs').text('적용');
         sw_sucs = true;
+        highlight(5);
     }else{
         $('#btn_toggle_sucs').removeClass('btn-success');
         $('#btn_toggle_sucs').addClass('btn-default');
@@ -121,6 +129,7 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#per_level').addClass('btn-default');
         $('#btn_toggle_sucs').text('미적용');
         sw_sucs = false;
+        highlight(0);
     }
     refresh();
 });
@@ -128,17 +137,20 @@ $('#btn_toggle_recovery').off().on('click', function (e) {
     if($('#btn_toggle_recovery').hasClass('btn-default')){
         $('#btn_toggle_recovery').removeClass('btn-default');
         $('#btn_toggle_recovery').addClass('btn-success');
-
+        highlight(4);
         //$('#btn_toggle_recovery').text('회복 켜짐');
         sw_recovery = true;
     }else{
         $('#btn_toggle_recovery').removeClass('btn-success');
         $('#btn_toggle_recovery').addClass('btn-default');
-
+        highlight(0);
         //$('#btn_toggle_recovery').text('회복 꺼짐');
         sw_recovery = false;
     }
     refresh();
+});
+$('#help_time').off().on('click', function (e) {
+    $('#btn-toggleTime').trigger('click');
 });
 $('#help_wght').off().on('click', function (e) {
     $('#my_wght').trigger('click');
@@ -473,6 +485,8 @@ $('#auto_calc').off().on('click', function (e) {
     }
     $('#recommendLine').removeClass('hide');
 
+    highlight(7);
+
     function normalizeValues(ary){
         for(var i in ary){
             var div;
@@ -575,12 +589,15 @@ $('#auto_calc').off().on('click', function (e) {
     }
 });
 $('#btn-toggleTime').off().on('click', function (e) {
+    highlight(1);
     if(sw_time){
         sw_time = false;
         config.time = false;
+        document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
     }else{
         sw_time = true;
         config.time = true;
+        document.getElementById('btn-toggleTime').innerHTML = "전체<br>획득";
     }
     localStorage.config = JSON.stringify(config);
     refresh();
@@ -645,6 +662,12 @@ $(document).ready(function() {
         }
     });
 });
+function highlight(id){
+    $('[id^=high_]').removeClass('success');
+    if(id > 0){
+        $('#high_0' + id).addClass('success');
+    }
+}
 function loadSaves(){
     saves = localStorage.saves;
     if(saves === undefined) {         //no config cache
@@ -858,11 +881,11 @@ function calcStage(){
     $('#sumAll').text(sumAll.toFixed(0));
     $('#sumT').text(sumT.slice(0,-2));
 
-    if(sumHp){sumItem += '<div style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/doll.png" title="인형제조계약서"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
-    if(sumAp){sumItem += '<div style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/tool.png" title="장비제조계약서"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
-    if(sumFp){sumItem += '<div style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/fast.png" title="쾌속제조계약서"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
-    if(sumPp){sumItem += '<div style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/repr.png" title="쾌속수복계약서"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
-    if(sumTp){sumItem += '<div style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/tokn.png" title="구매 토큰"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
+    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/doll.png" title="인형제조계약서"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
+    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/tool.png" title="장비제조계약서"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
+    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/fast.png" title="쾌속제조계약서"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
+    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/repr.png" title="쾌속수복계약서"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
+    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/tokn.png" title="구매 토큰"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
 
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
@@ -1106,9 +1129,9 @@ function loadTable(){
         }
     }
     if(sw_time){
-        document.getElementById('text_tablesum').innerHTML = "시간당<br>획득";
+        document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
     }else{
-        document.getElementById('text_tablesum').innerHTML = "전체<br>획득";
+        document.getElementById('btn-toggleTime').innerHTML = "전체<br>획득";
     }
 }
 function callData(){
@@ -1184,9 +1207,11 @@ function callData(){
     }
 }
 function reload(){
-    areaToggle = [1,1,1,1,1,1,1,1,1,1,1]; //0~10지역
-    time_front = 0, time_end = 13;
-    for(var i = 0; i < 11; i++){
+    for(var i in areaToggle){   //전지역 초기화
+        areaToggle[i] = 1;
+    }
+    time_front = 0, time_end = timeToggle.length- 1;
+    for(var i = 0; i < areaToggle.length - 1; i++){
         if(!$('#btn-area-'+i).hasClass('btn-success')){
             $('#btn-area-'+i).addClass('btn-success');
         }
@@ -1253,10 +1278,10 @@ function init(){
         document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
     }
 
-    document.getElementById("pre_huma").addEventListener("change",function(){calcStage();});
-    document.getElementById("pre_ammo").addEventListener("change",function(){calcStage();});
-    document.getElementById("pre_food").addEventListener("change",function(){calcStage();});
-    document.getElementById("pre_part").addEventListener("change",function(){calcStage();});
+    document.getElementById("pre_huma").addEventListener("change",function(){highlight(4);calcStage();});
+    document.getElementById("pre_ammo").addEventListener("change",function(){highlight(4);calcStage();});
+    document.getElementById("pre_food").addEventListener("change",function(){highlight(4);calcStage();});
+    document.getElementById("pre_part").addEventListener("change",function(){highlight(4);calcStage();});
 
     document.getElementById("sum_level").addEventListener("change",function(){
         var tmp = parseInt(document.getElementById('sum_level').value);
@@ -1279,20 +1304,6 @@ function init(){
 
 //GarbageCode
 /*
-function highlight(index){
-    var idstring = '#tr_highlight_';
-    $([id^=tr_highlight]).removeClass('warning');
-
-    if(index != undefined){
-        idstring += index;
-
-        console.log(idstring);
-
-        $('[id^=idstring]').addClass('warning');
-        $(idstring).addClass('danger');
-    }
-
-}
 
 $('#btn_wgt').off().on('click', function (e) {
     wgtH = parseFloat(document.getElementById('wgt_huma').value);

@@ -11,10 +11,6 @@
         padding-top: 10px;
         padding-bottom: 10px;
     }
-    .btn-font-responsive{
-        font-size: 10px;
-        padding: 5px;
-    }
     .table-font-responsive{
         font-size: 11px;
     }
@@ -27,8 +23,18 @@
         padding-top: 5px;
         padding-bottom: 5px;
     }
+    .btn-font-responsive{
+        font-size: 10px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
     .nav-tabs {
         font-size: 12px;
+    }
+    .btn-image-responsive{
+        width: 40%;
     }
 }
 

@@ -3607,7 +3607,7 @@ a.btn.disabled, fieldset[disabled] a.btn {
     background-color: #fff
 }
 
-
+/*CUSTOM BUTTONS*/
 .btn-title{
     color: #fff;
     background-color: #656565;
@@ -3651,6 +3651,8 @@ a.btn.disabled, fieldset[disabled] a.btn {
     background-color: #656565;
     border-color: #505050;
 }
+
+/*CUSTOM BUTTONS END*/
 
 .btn-warning {
     color: #fff;
