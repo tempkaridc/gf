@@ -1,7 +1,6 @@
-var version         = 201805232;         // Version == 최종수정일 + Trial
-var updateString    = "2018-05-23 업데이트 내역\n"
-                    + "- 추천 알고리즘 조정 (획득 자원량 상승, 자원비 일치율 소폭감소)\n"
-                    + "- 모바일 UI 대응";
+var version         = 201805260;         // Version == 최종수정일 + Trial
+var updateString    = "2018-05-26 업데이트 내역\n"
+                    + "- 도움말, 가중치 계산기 UI 개선";
 
 var objectList      = new Array();
 var selectedList    = new Array();
@@ -115,7 +114,6 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#per_level').addClass('btn-success');
         $('#btn_toggle_sucs').text('적용');
         sw_sucs = true;
-        highlight(0);
     }else{
         $('#btn_toggle_sucs').removeClass('btn-success');
         $('#btn_toggle_sucs').addClass('btn-default');
@@ -123,7 +121,6 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#per_level').addClass('btn-default');
         $('#btn_toggle_sucs').text('미적용');
         sw_sucs = false;
-        highlight();
     }
     refresh();
 });
@@ -143,11 +140,18 @@ $('#btn_toggle_recovery').off().on('click', function (e) {
     }
     refresh();
 });
+$('#help_wght').off().on('click', function (e) {
+    $('#my_wght').trigger('click');
+});
 $('#my_wght').off().on('click', function (e) {
     $('#wghtModal').removeClass("hide");
+    $('#wghtModal_margin1').removeClass("hide");
+    $('#wghtModal_margin2').removeClass("hide");
 });
 $('#close_wght').off().on('click', function (e) {
     $('#wghtModal').addClass("hide");
+    $('#wghtModal_margin1').addClass("hide");
+    $('#wghtModal_margin2').addClass("hide");
 });
 $('#btn_calcUse').off().on('click', function (e) {
     var tmp = new Array();
@@ -157,7 +161,7 @@ $('#btn_calcUse').off().on('click', function (e) {
     tmp[3] = parseInt(document.getElementById('use_part').value);
 
     for(var i in tmp){
-        if(isNaN(tmp[i])) tmp[i] = 1;
+        if(isNaN(tmp[i])) tmp[i] = 0;
     }
     var min = 9999999999;
     for(var i in tmp){
@@ -170,12 +174,14 @@ $('#btn_calcUse').off().on('click', function (e) {
         tmp[i] = tmp[i] / min;
     }
 
-    $('#wgt_huma').val(tmp[0].toFixed(2));
-    $('#wgt_ammo').val(tmp[1].toFixed(2));
-    $('#wgt_food').val(tmp[2].toFixed(2));
-    $('#wgt_part').val(tmp[3].toFixed(2));
+    if((tmp[0] + tmp[1] + tmp[2] + tmp[3]) > 0){
+        $('#wgt_huma').val(tmp[0].toFixed(2));
+        $('#wgt_ammo').val(tmp[1].toFixed(2));
+        $('#wgt_food').val(tmp[2].toFixed(2));
+        $('#wgt_part').val(tmp[3].toFixed(2));
+    }
 
-    $('#wghtModal').addClass("hide");
+    $('#close_wght').trigger('click');
     $('#loadModal').modal("hide");
     $('#recommendLine').addClass('hide');
     $('#tbl_cht').empty();
@@ -202,7 +208,7 @@ $('#btn_calcUse2').off().on('click', function (e) {
 
     for(var i in tmp){
         if(isNaN(tmp[i])) tmp[i] = 0;
-        if(isNaN(tmpf[i])) tmpf[i] = 0;
+        if(isNaN(tmpf[i])) tmpf[i] = tmp[i];
     }
 
     var tmpd = new Array();
@@ -221,17 +227,19 @@ $('#btn_calcUse2').off().on('click', function (e) {
         tmpd[i] = tmpd[i] / min;
     }
 
-    $('#pre_huma').val(tmp[0]);
-    $('#pre_ammo').val(tmp[1]);
-    $('#pre_food').val(tmp[2]);
-    $('#pre_part').val(tmp[3]);
+    if((tmpd[0] + tmpd[1] + tmpd[2] + tmpd[3]) > 0){
+        $('#pre_huma').val(tmp[0]);
+        $('#pre_ammo').val(tmp[1]);
+        $('#pre_food').val(tmp[2]);
+        $('#pre_part').val(tmp[3]);
 
-    $('#wgt_huma').val(tmpd[0].toFixed(2));
-    $('#wgt_ammo').val(tmpd[1].toFixed(2));
-    $('#wgt_food').val(tmpd[2].toFixed(2));
-    $('#wgt_part').val(tmpd[3].toFixed(2));
+        $('#wgt_huma').val(tmpd[0].toFixed(2));
+        $('#wgt_ammo').val(tmpd[1].toFixed(2));
+        $('#wgt_food').val(tmpd[2].toFixed(2));
+        $('#wgt_part').val(tmpd[3].toFixed(2));
+    }
 
-    $('#wghtModal').addClass("hide");
+    $('#close_wght').trigger('click');
     $('#loadModal').modal("hide");
     $('#recommendLine').addClass('hide');
     $('#tbl_cht').empty();
@@ -313,7 +321,6 @@ $('[id^=btn-rangeSelector]').off().on('click', function (e) {
 });
 $('#auto_calc').off().on('click', function (e) {
     //$('#btn_wgt').trigger('click');
-    highlight(2);
 
     var usedRes = new Object();
     var usedResA = new Array();
@@ -675,12 +682,6 @@ function loadSaves(){
         loadSaves();
         //refresh();
     });
-}
-function highlight(id){
-    document.getElementById('highlight_0').style.background = 'transparent';
-    document.getElementById('highlight_1').style.background = 'transparent';
-    document.getElementById('highlight_2').style.background = 'transparent';
-    if(id != undefined) document.getElementById('highlight_' + id).style.background = '#ffe5cc';
 }
 function clearRow(){
     selectedList.length = 0;
@@ -1278,6 +1279,21 @@ function init(){
 
 //GarbageCode
 /*
+function highlight(index){
+    var idstring = '#tr_highlight_';
+    $([id^=tr_highlight]).removeClass('warning');
+
+    if(index != undefined){
+        idstring += index;
+
+        console.log(idstring);
+
+        $('[id^=idstring]').addClass('warning');
+        $(idstring).addClass('danger');
+    }
+
+}
+
 $('#btn_wgt').off().on('click', function (e) {
     wgtH = parseFloat(document.getElementById('wgt_huma').value);
     wgtA = parseFloat(document.getElementById('wgt_ammo').value);

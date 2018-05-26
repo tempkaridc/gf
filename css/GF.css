@@ -18,6 +18,18 @@
     .table-font-responsive{
         font-size: 11px;
     }
+    .table-font-responsive > thead > tr > th,
+    .table-font-responsive > tbody > tr > th,
+    .table-font-responsive > tfoot > tr > th,
+    .table-font-responsive > thead > tr > td,
+    .table-font-responsive > tbody > tr > td,
+    .table-font-responsive > tfoot > tr > td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+    .nav-tabs {
+        font-size: 12px;
+    }
 }
 
 .highcharts-title {

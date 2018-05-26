@@ -100,20 +100,41 @@
                         </div>
                         <button id="btn-toggleNotice" class="btn btn-xs" style="width:100%;">변경사항 열기/닫기</button></span>
                         -->
-                        <div id="panel-help" class="panel panel-info" style="padding:10px; margin-bottom:0px;">
-                            <small>
-                                1. 표의 모든 초기값은 <b><font color="red">시간당 획득 기준</font></b> 표기 및 정렬 <button id="btn-toggleTime" class="btn btn-xs btn-success"><small>(시간당 표기/원본값 표기) 전환</small></button></span>
-                                <br>2. 표 상단의 <b><font color="red">자원 이름 클릭 시</font></b>, 최단시간 내 획득가능한 군수조합순 정렬
-                                <br>3. <span id="highlight_1">표의 <b><font color="red">'합계'</font></b> 값은 자원비 1:1:1:2.2로 계산 후 표기</span>
-                                <br>4. 하단 예상 그래프는 <b><font color="red">'현재자원' 값부터 합산</font></b>, 값 미입력시 0부터 계산
-                                <br>5. <span id="highlight_0">'대성공률' 적용 시, 자원 및 계약서 획득률을 대성공 시 기대치로 재계산</span>
-                                <br>6. <span id="highlight_2">'자동추천' 기능은 입력된 <b><font color="red">'내 가중치'의 비율로 자원 획득</font></b>을 위한 군수지역 조합 계산
-                                    <br>　┖ <b><font color="red">'지역선택', '시간대설정', '대성공률'</font></b> 모두 반영. 계약서 확률 별도 적용</span>
-                            </small>
+                        <div id="panel-help" class="panel panel-default" style="padding:3px; margin-bottom:0px;">
+                            <table class="table table-condensed table-striped">
+                                <tr><td>
+                                    1. 표의 모든 값은 <font color="red">시간당 획득 기준</font> 표기 및 정렬<br>
+                                    　<button id="btn-toggleTime" class="btn btn-xs btn-success"><small>(시간당 표기/원본값 표기) 전환</small></button>
+                                </td></tr>
+                                <tr><td>
+                                    2. 표 상단의 <a href="#">자원명</a> <font color="red">클릭 시</font>, 오름 / 내림차순 정렬
+                                </td></tr>
+                                <tr><td>
+                                    3. 표의 <a href="#">합계</a> 값은 자원비 <font color="red">1 : 1 : 1 : 2.2</font> 로 계산
+                                </td></tr>
+                                <tr><td>
+                                    4. 하단 예상 그래프는 <a href="#anchor_resource">현재자원</a> <font color="red">값부터 합산</font>, 미입력시 0부터 계산
+                                </td></tr>
+                                <tr><td>
+                                    5. <a href="#anchor_success">대성공률</a> 적용 시, 자원 및 계약서 획득률을 대성공 기대치로 재계산
+                                </td></tr>
+                                <tr><td>
+                                    6. <div class="btn btn-primary"></div> 작용 버튼, <div class="btn btn-default"></div><div class="btn btn-success"></div> 켜기/끄기 버튼
+                                </td></tr>
+                                <tr><td>
+                                    7. <a href="#anchor_recommend">자동추천</a> 은 입력된 <font color="red">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천
+                                </td></tr>
+                                <tr><td>
+                                    　a. <a href="#anchor_areas">지역선택</a>, <a href="#anchor_timeline">시간대설정</a>, <a href="#anchor_success">대성공률</a>, <a href="#anchor_contract">계약서 가중치</a> 모두 반영
+                                </td></tr>
+                                <tr><td>
+                                    　b. <span id="help_wght"><a href="#wghtModal">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능
+                                </td></tr>
+                            </table>
                         </div>
-                        <button id="btn-toggleHelp" class="btn btn-xs btn-primary" style="width:100%;"><span id="text-toggleHelp">도움말 열기/닫기</span></button>
+                        <button id="btn-toggleHelp" class="btn btn-xs btn-default" style="width:100%;"><span id="text-toggleHelp">도움말 열기</span></button>
                         <hr style="margin-top: 7px; margin-bottom: 7px;">
-                        <div class="row no-gutter">
+                        <div id="anchor_areas" class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:18%; display:inline-block;">
                                     <div class="btn btn-sm btn-title btn-font-responsive disabled" style="width:100%;">지역선택</div>
@@ -134,7 +155,7 @@
                             </div>
                         </div>
                         <hr style="margin-top: 7px; margin-bottom: 7px;">
-                        <div class="row no-gutter">
+                        <div id="anchor_resource" class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:18%; display:inline-block;">
                                     <div class="btn btn-sm btn-title btn-font-responsive disabled" style="width:100%;">현재자원</div>
@@ -157,7 +178,7 @@
                             </div>
                         </div>
                         <hr style="margin-top: 7px; margin-bottom: 7px;">
-                        <div class="row no-gutter">
+                        <div id="anchor_timeline" class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:18%; display:inline-block;">
                                     <div class="btn btn-sm btn-title btn-font-responsive disabled" style="width:100%;">시간대설정</div>
@@ -178,7 +199,7 @@
                             </div>
                         </div>
                         <hr style="margin-top: 7px; margin-bottom: 7px;">
-                        <div class="row no-gutter">
+                        <div id="anchor_success" class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:18%; display:inline-block;">
                                     <div class="btn btn-sm btn-title btn-font-responsive disabled" style="width:100%;">대성공률</div>
@@ -198,185 +219,8 @@
                             </div>
                         </div>
                         <hr style="margin-top: 7px; margin-bottom: 7px;">
-                        <div id="wghtModal" class="row no-gutter hide">
-                            <div class="col-md-12 col-xs-12">
-                                <div class="panel panel-primary" style="margin-bottom: 5px; background-color: whitesmoke;">
-                                    <div class="panel-body" style="padding:10px;">
-                                        <ul class="nav nav-tabs" style="margin:0px;">
-                                            <li class="active"><a data-toggle="tab" href="#daily">일일사용량 기반 계산</a></li>
-                                            <li><a data-toggle="tab" href="#total">최종목표치 기반 계산</a></li>
-                                        </ul>
-                                        <div class="tab-content" style="margin-top:5px;">
-                                            <div id="daily" class="tab-pane fade in active">
-                                                <small>
-                                                    하루에 사용하는 자원량에 의거한 개인 가중치 계산
-                                                </small>
-                                                <div class="panel panel-primary" style="padding:5px; margin:0px;">
-                                                    <table class="table table-condensed table-font-responsive">
-                                                        <thead>
-                                                        <tr>
-                                                            <th><font color="blue">일일사용량 기반 계산 예</font></th>
-                                                            <th>인력</th>
-                                                            <th>탄약</th>
-                                                            <th>식량</th>
-                                                            <th>부품</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr>
-                                                            <td>인형제조 범용1식 4회</td>
-                                                            <td>430 x 4</td>
-                                                            <td>430 x 4</td>
-                                                            <td>430 x 4</td>
-                                                            <td>230 x 4</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>장비제조 범용1식 4회</td>
-                                                            <td>150 x 4</td>
-                                                            <td>150 x 4</td>
-                                                            <td>150 x 4</td>
-                                                            <td>150 x 4</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>전역 9회 클리어</td>
-                                                            <td>100 x 9</td>
-                                                            <td>300 x 9</td>
-                                                            <td>300 x 9</td>
-                                                            <td>50 x 9</td>
-                                                        </tr>
-                                                        <tr class="warning">
-                                                            <td>합계 <small>(아래 입력)</small></td>
-                                                            <td>3220</td>
-                                                            <td>5020</td>
-                                                            <td>5020</td>
-                                                            <td>2020</td>
-                                                        </tr>
-                                                        <tr class="success">
-                                                            <td>가중치</td>
-                                                            <td>1</td>
-                                                            <td>1.55</td>
-                                                            <td>1.55</td>
-                                                            <td>0.62</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="row no-gutter">
-                                                    <div class="col-md-12 col-xs-12">
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="use_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="인력">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="use_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="탄약">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="use_food" type="number" class="form-control input-sm" min="1" value="" placeholder="식량">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="use_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품">
-                                                        </div>
-                                                        <div style="width:17%; display:inline-block;">
-                                                            <div id="btn_calcUse" class="btn btn-sm btn-success btn-font-responsive" style="width:100%;">계산</div>
-                                                        </div>
-                                                        <div style="float:right;">
-                                                            <font color="gray"><small>*'계산' 버튼 클릭 시, 계산된 가중치가 아래 입력됩니다. 이후 '지역 추천' 버튼을 클릭해주세요.</small></font>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div id="total" class="tab-pane fade">
-                                                <small>
-                                                    목표로 삼은 자원량에서 역산한 개인 가중치 계산
-                                                </small>
-                                                <div class="panel panel-primary" style="padding:5px; margin:0px;">
-                                                    <table class="table table-condensed table-font-responsive">
-                                                        <thead>
-                                                        <tr>
-                                                            <th><font color="blue">최종목표량 기반 계산 예</font></th>
-                                                            <th>인력</th>
-                                                            <th>탄약</th>
-                                                            <th>식량</th>
-                                                            <th>부품</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        <tr class="warning">
-                                                            <td>현재 자원량 <small>(아래 입력)</small></td>
-                                                            <td>33400</td>
-                                                            <td>8600</td>
-                                                            <td>69800</td>
-                                                            <td>2200</td>
-                                                        </tr>
-                                                        <tr class="warning">
-                                                            <td>목표 자원량 <small>(아래 입력)</small></td>
-                                                            <td>100000</td>
-                                                            <td>100000</td>
-                                                            <td>100000</td>
-                                                            <td>60000</td>
-                                                        </tr>
-                                                        <tr class="danger">
-                                                            <td>오차</td>
-                                                            <td>66600</td>
-                                                            <td>91400</td>
-                                                            <td>30200</td>
-                                                            <td>57800</td>
-                                                        </tr>
-                                                        <tr class="success">
-                                                            <td>가중치</td>
-                                                            <td>1</td>
-                                                            <td>1.37</td>
-                                                            <td>0.45</td>
-                                                            <td>0.86</td>
-                                                        </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                <div class="row no-gutter">
-                                                    <div class="col-md-12 col-xs-12">
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="pre2_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="현재인력">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="pre2_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="현재탄약">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="pre2_food" type="number" class="form-control input-sm" min="1" value="" placeholder="현재식량">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="pre2_part" type="number" class="form-control input-sm" min="1" value="" placeholder="현재부품">
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-12 col-xs-12">
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="fin_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="목표인력">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="fin_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="목표탄약">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="fin_food" type="number" class="form-control input-sm" min="1" value="" placeholder="목표식량">
-                                                        </div>
-                                                        <div style="width:19%; display:inline-block;">
-                                                            <input id="fin_part" type="number" class="form-control input-sm" min="1" value="" placeholder="목표부품">
-                                                        </div>
-                                                        <div style="width:17%; display:inline-block;">
-                                                            <div id="btn_calcUse2" class="btn btn-sm btn-success btn-font-responsive" style="width:100%;">계산</div>
-                                                        </div>
-                                                        <div style="float:right;">
-                                                            <font color="gray"><small>*'계산' 버튼 클릭 시, 계산된 가중치가 아래 입력됩니다. 이후 '지역 추천' 버튼을 클릭해주세요.</small></font>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div style="display:inline; position:absolute; top:10px; right:25px; ">
-                                            <button id="close_wght" class="btn btn-sm btn-danger">X</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row no-gutter">
+
+                        <div id="anchor_recommend" class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:18%; display:inline-block;">
                                     <div class="btn btn-sm btn-title btn-font-responsive disabled" style="width:100%;">자동추천</div>
@@ -385,6 +229,190 @@
                                     <!--<button id="my_wght" class="btn btn-xs btn-success">나의 가중치</button>-->
                                     <!--<div class="btn btn-sm btn-primary disabled" style="width:100%;">자원 가중치</div>-->
                                     <button id="my_wght" class="btn btn-sm btn-primary btn-font-responsive" style="width:100%;">내 가중치</button>
+                                </div>
+                                <div id="wghtModal_margin1" class="hide" style="width:65%; display:inline-block;">
+                                    <div class="btn btn-primary disabled" style="width:100%;"></div>
+                                </div>
+                                <div id="wghtModal" class="row no-gutter hide" style="margin-top:5px; margin-bottom:5px;">
+                                    <div class="col-md-12 col-xs-12">
+                                        <div class="panel panel-primary" style="margin-bottom: 0px; background-color: whitesmoke;">
+                                            <div class="panel-body" style="padding:5px;">
+                                                <ul class="nav nav-tabs" style="margin:0px;">
+                                                    <li class="active"><a data-toggle="tab" href="#daily">일일사용량 기반 계산</a></li>
+                                                    <li><a data-toggle="tab" href="#total">최종목표치 기반 계산</a></li>
+                                                </ul>
+                                                <div class="tab-content" style="margin-top:5px;">
+                                                    <div id="daily" class="tab-pane fade in active">
+                                                        <small>
+                                                            하루에 사용하는 자원량에 의거한 개인 가중치 계산
+                                                        </small>
+                                                        <div class="panel panel-primary" style="padding:5px; margin-top:5px; margin-bottom:5px;">
+                                                            <table class="table table-condensed table-font-responsive">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th><font color="#4169e1">일일사용량 기반 계산 예</font></th>
+                                                                    <th>인력</th>
+                                                                    <th>탄약</th>
+                                                                    <th>식량</th>
+                                                                    <th>부품</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr>
+                                                                    <td>인형제조 범용1식 4회</td>
+                                                                    <td>430 x 4</td>
+                                                                    <td>430 x 4</td>
+                                                                    <td>430 x 4</td>
+                                                                    <td>230 x 4</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>장비제조 범용1식 4회</td>
+                                                                    <td>150 x 4</td>
+                                                                    <td>150 x 4</td>
+                                                                    <td>150 x 4</td>
+                                                                    <td>150 x 4</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>전역 9회 클리어</td>
+                                                                    <td>100 x 9</td>
+                                                                    <td>300 x 9</td>
+                                                                    <td>300 x 9</td>
+                                                                    <td>50 x 9</td>
+                                                                </tr>
+                                                                <tr class="warning">
+                                                                    <td>합계 <small>(아래 입력)</small></td>
+                                                                    <td>3220</td>
+                                                                    <td>5020</td>
+                                                                    <td>5020</td>
+                                                                    <td>2020</td>
+                                                                </tr>
+                                                                <tr class="success">
+                                                                    <td>가중치</td>
+                                                                    <td>1</td>
+                                                                    <td>1.55</td>
+                                                                    <td>1.55</td>
+                                                                    <td>0.62</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="row no-gutter">
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="use_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="인력">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="use_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="탄약">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="use_food" type="number" class="form-control input-sm" min="1" value="" placeholder="식량">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="use_part" type="number" class="form-control input-sm" min="1" value="" placeholder="부품">
+                                                                </div>
+                                                                <div style="width:17%; display:inline-block;">
+                                                                    <div id="btn_calcUse" class="btn btn-sm btn-success btn-font-responsive" style="width:100%;">계산</div>
+                                                                </div>
+                                                                <div style="float:right;">
+                                                                    <font color="gray"><small>'계산' 클릭 시, 가중치 자동입력</small></font>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div id="total" class="tab-pane fade">
+                                                        <small>
+                                                            목표로 삼은 자원량에서 역산한 개인 가중치 계산
+                                                        </small>
+                                                        <div class="panel panel-primary" style="padding:5px; margin-top:5px; margin-bottom:5px;">
+                                                            <table class="table table-condensed table-font-responsive">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th><font color="#4169e1">최종목표량 기반 계산 예</font></th>
+                                                                    <th>인력</th>
+                                                                    <th>탄약</th>
+                                                                    <th>식량</th>
+                                                                    <th>부품</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <tr class="warning">
+                                                                    <td>현재 자원량 <small>(아래 입력)</small></td>
+                                                                    <td>33400</td>
+                                                                    <td>8600</td>
+                                                                    <td>69800</td>
+                                                                    <td>2200</td>
+                                                                </tr>
+                                                                <tr class="warning">
+                                                                    <td>목표 자원량 <small>(아래 입력)</small></td>
+                                                                    <td>100000</td>
+                                                                    <td>100000</td>
+                                                                    <td>100000</td>
+                                                                    <td>60000</td>
+                                                                </tr>
+                                                                <tr class="danger">
+                                                                    <td>오차</td>
+                                                                    <td>66600</td>
+                                                                    <td>91400</td>
+                                                                    <td>30200</td>
+                                                                    <td>57800</td>
+                                                                </tr>
+                                                                <tr class="success">
+                                                                    <td>가중치</td>
+                                                                    <td>1</td>
+                                                                    <td>1.37</td>
+                                                                    <td>0.45</td>
+                                                                    <td>0.86</td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        <div class="row no-gutter">
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="pre2_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="현재인력">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="pre2_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="현재탄약">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="pre2_food" type="number" class="form-control input-sm" min="1" value="" placeholder="현재식량">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="pre2_part" type="number" class="form-control input-sm" min="1" value="" placeholder="현재부품">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-12 col-xs-12">
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="fin_huma" type="number" class="form-control input-sm" min="1" value="" placeholder="목표인력">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="fin_ammo" type="number" class="form-control input-sm" min="1" value="" placeholder="목표탄약">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="fin_food" type="number" class="form-control input-sm" min="1" value="" placeholder="목표식량">
+                                                                </div>
+                                                                <div style="width:19%; display:inline-block;">
+                                                                    <input id="fin_part" type="number" class="form-control input-sm" min="1" value="" placeholder="목표부품">
+                                                                </div>
+                                                                <div style="width:17%; display:inline-block;">
+                                                                    <div id="btn_calcUse2" class="btn btn-sm btn-success btn-font-responsive" style="width:100%;">계산</div>
+                                                                </div>
+                                                                <div style="float:right;">
+                                                                    <font color="gray"><small>'계산' 클릭 시, 가중치 자동입력</small></font>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div style="display:inline; position:absolute; top:10px; right:25px; ">
+                                                    <button id="close_wght" class="btn btn-sm btn-danger">X</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="wghtModal_margin2" class="hide" style="width:34%; display:inline-block;">
+                                    <div class="btn btn-primary disabled" style="width:100%;"></div>
                                 </div>
                                 <div style="width:15%; display:inline-block;">
                                     <input id="wgt_huma" type="number" class="form-control input-sm btn-font-responsive" min="0" value="" placeholder="인력: 1">
@@ -401,7 +429,7 @@
                             </div>
                         </div>
                         <hr style="margin-top: 5px; margin-bottom: 0px; border: 0px; color: white;">
-                        <div class="row no-gutter">
+                        <div id="anchor_contract" class="row no-gutter">
                             <div class="col-md-12 col-xs-12">
                                 <div style="width:18%; display:inline-block;">
 
@@ -430,7 +458,7 @@
 
                                 </div>
                                 <div style="width:78%; display:inline-block;">
-                                    <div id="auto_calc" class="btn btn-xs btn-success" style="width:100%;">지역 추천</div>
+                                    <div id="auto_calc" class="btn btn-sm btn-primary" style="width:100%;">지역 추천</div>
                                 </div>
                             </div>
                         </div>
