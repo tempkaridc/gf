@@ -12,7 +12,7 @@
         padding-bottom: 10px;
     }
     .table-font-responsive{
-        font-size: 11px;
+        font-size: smaller;
     }
     .table-font-responsive > thead > tr > th,
     .table-font-responsive > tbody > tr > th,
@@ -24,14 +24,14 @@
         padding-bottom: 5px;
     }
     .btn-font-responsive{
-        font-size: 10px;
+        font-size: x-small;
         padding-top: 5px;
         padding-bottom: 5px;
         padding-left: 0px;
         padding-right: 0px;
     }
     .nav-tabs {
-        font-size: 12px;
+        font-size: small;
     }
     .btn-image-responsive{
         width: 40%;
