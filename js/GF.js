@@ -598,7 +598,7 @@ $('#btn-toggleTime').off().on('click', function (e) {
     }else{
         sw_time = true;
         config.time = true;
-        document.getElementById('btn-toggleTime').innerHTML = "전체<br>획득";
+        document.getElementById('btn-toggleTime').innerHTML = "성공시<br>획득";
     }
     localStorage.config = JSON.stringify(config);
     refresh();
@@ -1137,7 +1137,7 @@ function loadTable(){
     if(sw_time){
         document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
     }else{
-        document.getElementById('btn-toggleTime').innerHTML = "전체<br>획득";
+        document.getElementById('btn-toggleTime').innerHTML = "성공시<br>획득";
     }
 }
 function callData(){
