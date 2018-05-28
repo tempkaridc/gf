@@ -1,6 +1,6 @@
-var version         = 201805260;         // Version == 최종수정일 + Trial
-var updateString    = "2018-05-26 업데이트 내역\n"
-                    + "- 도움말, 가중치 계산기 UI 개선";
+var version         = 201805280;         // Version == 최종수정일 + Trial
+var updateString    = "2018-05-28 업데이트 내역\n"
+                    + "- UI: 그래프 시간표기 개선";
 
 var objectList      = new Array();
 var selectedList    = new Array();
