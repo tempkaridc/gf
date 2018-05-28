@@ -946,7 +946,7 @@ function calcStage(){
             crosshair: {
               enabled: true,
               format:{
-                  value: "%b %d일, %Y"
+                  value: "%b %d, %Y"
               }
             },
             title: {
@@ -964,6 +964,7 @@ function calcStage(){
             min: 0
         },
         tooltip: {
+            xDateFormat: '%B %d일 %A, %H시 %M분',
             split: true,
             padding: 3
         },
@@ -1012,8 +1013,7 @@ Highcharts.setOptions({
             '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
         ],
         shortWeekdays: [
-            //'일','월','화','수','목','금','토'
-            '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
+            '일','월','화','수','목','금','토'
         ]
     }
 });
