@@ -1,6 +1,7 @@
-var version         = 201805280;         // Version == 최종수정일 + Trial
-var updateString    = "2018-05-28 업데이트 내역\n"
-                    + "- UI: 그래프 시간표기 개선";
+var version         = 201806130;         // Version == 최종수정일 + Trial
+var updateString    = "2018-06-13 업데이트 내역\n"
+                    + "- 계약서 확률 시간당/획득당 표기 개선\n"
+                    + "- 계약서 확률 시간당/획득당 대성공시 최종확률 계산 및 표기\n";
 
 var objectList      = new Array();
 var selectedList    = new Array();
@@ -1081,10 +1082,13 @@ function chkDuplArray(ary, obj){
 }
 function loadTable(){
     $('#area-list').empty();
-    var perMin;
+    var perMin = 1;
+    var byTime = "";
     for(var i in objectList){
-        if(sw_time){perMin = objectList[i].Time / 60;}
-        else{perMin = 1;}
+        if(sw_time){
+            perMin = objectList[i].Time / 60;
+            byTime = "시간당 ";
+        }
         var td0 = '<td style="text-align: center; vertical-align:middle; display:none;">';
         var td10 = '<td style="text-align: center; vertical-align:middle;" width="10%">';
         var td30 = '<td style="text-align: center; vertical-align:middle;" width="30%">';
@@ -1106,11 +1110,11 @@ function loadTable(){
         /*10*/item += td0 + objectList[i].Ticket_fastRepair / perMin + tde;
         /*11*/item += td0 + objectList[i].Ticket_Tokken / perMin + tde;
         /*12*/item += td30;
-        if(objectList[i].Ticket_makeDoll) item += '<img src="img/doll.png" title="획득확률: ' + (objectList[i].Ticket_makeDoll * 100) + '%">'
-        if(objectList[i].Ticket_makeTool) item += '<img src="img/tool.png" title="획득확률: ' + (objectList[i].Ticket_makeTool * 100) + '%">'
-        if(objectList[i].Ticket_fastMake) item += '<img src="img/fast.png" title="획득확률: ' + (objectList[i].Ticket_fastMake * 100) + '%">'
-        if(objectList[i].Ticket_fastRepair) item += '<img src="img/repr.png" title="획득확률: ' + (objectList[i].Ticket_fastRepair * 100) + '%">'
-        if(objectList[i].Ticket_Tokken) item += '<img src="img/tokn.png" title="획득확률: ' + (objectList[i].Ticket_Tokken * 100) + '%">'
+        if(objectList[i].Ticket_makeDoll) item      += '<img src="img/doll.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%">'
+        if(objectList[i].Ticket_makeTool) item      += '<img src="img/tool.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%">'
+        if(objectList[i].Ticket_fastMake) item      += '<img src="img/fast.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%">'
+        if(objectList[i].Ticket_fastRepair) item    += '<img src="img/repr.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastRepair * 100 / perMin).toFixed(2) + '%">'
+        if(objectList[i].Ticket_Tokken) item        += '<img src="img/tokn.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_Tokken * 100 / perMin).toFixed(2) + '%">'
         item += tde;
         /*13*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
         /*14*/item += td0 + objectList[i].Time + tde;
@@ -1195,17 +1199,54 @@ function callData(){
         tmp.Area = arr[i][0];
         tmp.Stage = arr[i][1];
         tmp.Time = arr[i][2];
-        tmp.Human = sw_sucs ? arr[i][3] * (0.5 * success + 1): arr[i][3];
-        tmp.Ammo = sw_sucs ? arr[i][4] * (0.5 * success + 1): arr[i][4];
-        tmp.Food = sw_sucs ? arr[i][5] * (0.5 * success + 1): arr[i][5];
-        tmp.Part = sw_sucs ? arr[i][6] * (0.5 * success + 1): arr[i][6];
-        tmp.Ticket_makeDoll = sw_sucs ? success + (1 - success) * arr[i][7]: arr[i][7];     if(!arr[i][7]){tmp.Ticket_makeDoll = 0;}
-        tmp.Ticket_makeTool = sw_sucs ? success + (1 - success) * arr[i][8]: arr[i][8];     if(!arr[i][8]){tmp.Ticket_makeTool = 0;}
-        tmp.Ticket_fastMake = sw_sucs ? success + (1 - success) * arr[i][9]: arr[i][9];     if(!arr[i][9]){tmp.Ticket_fastMake = 0;}
-        tmp.Ticket_fastRepair = sw_sucs ? success + (1 - success) * arr[i][10]: arr[i][10]; if(!arr[i][10]){tmp.Ticket_fastRepair = 0;}
-        tmp.Ticket_Tokken = sw_sucs ? success + (1 - success) * arr[i][11]: arr[i][11];     if(!arr[i][11]){tmp.Ticket_Tokken = 0;}
 
-         if( (areaToggle[tmp.Area]) &&
+        if(sw_sucs){
+            tmp.Human   = arr[i][3] * (0.5 * success + 1);
+            tmp.Ammo    = arr[i][4] * (0.5 * success + 1);
+            tmp.Food    = arr[i][5] * (0.5 * success + 1);
+            tmp.Part    = arr[i][6] * (0.5 * success + 1);
+
+            tmp.Ticket_total = arr[i][7] + arr[i][8] + arr[i][9] + arr[i][10] + arr[i][11];
+
+            if(arr[i][7]){
+                tmp.Ticket_makeDoll     =   success * arr[i][7] / tmp.Ticket_total + (1 - success) * arr[i][7];
+            }else{tmp.Ticket_makeDoll   = 0;}
+            if(arr[i][8]){
+                tmp.Ticket_makeTool     =   success * arr[i][8] / tmp.Ticket_total + (1 - success) * arr[i][8];
+            }else{tmp.Ticket_makeTool   = 0;}
+            if(arr[i][9]){
+                tmp.Ticket_fastMake     =   success * arr[i][9] / tmp.Ticket_total + (1 - success) * arr[i][9];
+            }else{tmp.Ticket_fastMake   = 0;}
+            if(arr[i][10]){
+                tmp.Ticket_fastRepair   =   success * arr[i][10] / tmp.Ticket_total + (1 - success) * arr[i][10];
+            }else{tmp.Ticket_fastRepair = 0;}
+            if(arr[i][11]){
+                tmp.Ticket_Tokken       =   success * arr[i][11] / tmp.Ticket_total + (1 - success) * arr[i][11];
+            }else{tmp.Ticket_Tokken     = 0;}
+        }else{
+            tmp.Human   = arr[i][3];
+            tmp.Ammo    = arr[i][4];
+            tmp.Food    = arr[i][5];
+            tmp.Part    = arr[i][6];
+
+            if(arr[i][7]){
+                tmp.Ticket_makeDoll     = arr[i][7];
+            }else{tmp.Ticket_makeDoll   = 0;}
+            if(arr[i][8]){
+                tmp.Ticket_makeTool     = arr[i][8];
+            }else{tmp.Ticket_makeTool   = 0;}
+            if(arr[i][9]){
+                tmp.Ticket_fastMake     = arr[i][9];
+            }else{tmp.Ticket_fastMake   = 0;}
+            if(arr[i][10]){
+                tmp.Ticket_fastRepair   = arr[i][10];
+            }else{tmp.Ticket_fastRepair = 0;}
+            if(arr[i][11]){
+                tmp.Ticket_Tokken       = arr[i][11];
+            }else{tmp.Ticket_Tokken     = 0;}
+        }
+
+        if( (areaToggle[tmp.Area]) &&
             (timeToggle[time_front] * 60 <= tmp.Time) &&
             (tmp.Time <= timeToggle[time_end] * 60)){
             objectList.push(tmp);
