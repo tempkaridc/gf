@@ -1,4 +1,4 @@
-var version         = 201806151548;         // Version == 최종수정일 시간 분
+var version         = 201806152105;         // Version == 최종수정일 시간 분
 var updateString    = "2018-06-15 업데이트 내역"
                     + "\n- http://gunsu.kr/ 도메인 적용"
                     + "\n- UI 소폭 수정"
