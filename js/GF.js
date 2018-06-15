@@ -1,9 +1,7 @@
-var version         = 201806131;         // Version == 최종수정일 + Trial
-var updateString    = "2018-06-13 업데이트 내역\n"
-                    + "- 계약서 확률 시간당/획득당 표기 개선\n"
-                    + "- 계약서 확률 시간당/획득당 대성공시 최종확률 계산 및 표기\n"
-                    + "- 계약서 확률 관련 도움말 항목 추가\n"
-                    + "- 10-4 제보 기준으로 확률 미조정 1 -> 0.9\n"
+var version         = 201806151548;         // Version == 최종수정일 시간 분
+var updateString    = "2018-06-15 업데이트 내역"
+                    + "\n- http://gunsu.kr/ 도메인 적용"
+                    + "\n- UI 소폭 수정"
                     ;
 
 var objectList      = new Array();
@@ -62,9 +60,12 @@ $(function (){
 $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
     if(0 < id){
-        highlight(2);
+        highlight(2);                           // 코드 순서때문에 어쩔수없이 정렬 펑션부분은 하드코딩
         if(id == 5){
-            $('#high_03').addClass('success');       // 코드 순서때문에 어쩔수없이 이부분만 하드코딩
+            $('#high_03').addClass('success');
+        }
+        if((7 <= id) && (id <= 11)){
+            $('#high_08').addClass('success');
         }
     }
     if(sortToggle[id] <= 1){
@@ -1349,6 +1350,11 @@ function init(){
         }
 
     });
+
+    var date = version + "";
+    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12);
+    $('#lastUpdate').text(date);
+
     $('#loadModal').modal("hide");
 }
 
