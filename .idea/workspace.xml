@@ -134,7 +134,7 @@
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="362">
-              <caret line="906" column="25" lean-forward="true" selection-start-line="906" selection-start-column="25" selection-end-line="906" selection-end-column="25" />
+              <caret line="906" column="4" selection-start-line="906" selection-start-column="4" selection-end-line="906" selection-end-column="4" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
@@ -347,12 +347,12 @@
       <workItem from="1529048736469" duration="2734000" />
       <workItem from="1529302268941" duration="3000000" />
       <workItem from="1529307980847" duration="1096000" />
-      <workItem from="1529309242901" duration="767000" />
+      <workItem from="1529309242901" duration="902000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="345688000" />
+    <option name="totallyTimeSpent" value="345823000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="390" y="159" width="1296" height="880" extended-state="0" />
@@ -1300,7 +1300,7 @@
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
-          <caret line="906" column="25" lean-forward="true" selection-start-line="906" selection-start-column="25" selection-end-line="906" selection-end-column="25" />
+          <caret line="906" column="4" selection-start-line="906" selection-start-column="4" selection-end-line="906" selection-end-column="4" />
           <folding>
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
