@@ -904,6 +904,7 @@ function calcStage(){
     if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tokn.png" title="구매 토큰" style="height:1.8em"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
 
     $('#sumItem').empty();
+    console.log(sumItem);
     $('#sumItem').append(sumItem);
 
     var orTime = "성공시";
