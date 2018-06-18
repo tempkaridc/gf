@@ -1,7 +1,7 @@
-var version         = 201806152105;         // Version == 최종수정일 시간 분
-var updateString    = "2018-06-15 업데이트 내역"
+var version         = 201806181600;         // Version == 최종수정일 시간 분
+var updateString    = "2018-06-18 업데이트 내역"
                     + "\n- http://gunsu.kr/ 도메인 적용"
-                    + "\n- UI 소폭 수정"
+                    + "\n- 클립보드 포맷 소폭 수정"
                     ;
 
 var objectList      = new Array();
@@ -803,7 +803,7 @@ function sortTable(table, column, sc){
 }
 function calcStage(){
     var sumH = 0, sumA = 0, sumF = 0, sumP = 0, sumAll = 0;
-    var sumT = "", sumItem = "";
+    var sumT = "", sumItem = "", sumTime = "";
     var sumHp = 0, sumAp = 0, sumFp = 0, sumPp = 0, sumTp = 0;
     var perMin;
     var aryH = new Array();
@@ -813,8 +813,11 @@ function calcStage(){
     now = (new Date).getTime() + (9 * 60 * 60 * 1000); // GMT+9
 
     for(i in selectedList){
-        if(sw_time){perMin = objectList[selectedList[i]].Time / 60;}
-        else{perMin = 1;}
+        if(sw_time){
+            perMin = objectList[selectedList[i]].Time / 60;
+        }else{
+            perMin = 1;
+        }
 
         sumH += objectList[selectedList[i]].Human / perMin;
         sumA += objectList[selectedList[i]].Ammo / perMin;
@@ -822,12 +825,14 @@ function calcStage(){
         sumP += objectList[selectedList[i]].Part / perMin;
         sumAll = sumH * 1 + sumA * 1 + sumF * 1 + sumP * 2.2;
         sumT += objectList[selectedList[i]].Area + '-' + objectList[selectedList[i]].Stage + ', ';
+        sumTime += + parseInt(objectList[selectedList[i]].Time / 60) + ':' + (objectList[selectedList[i]].Time % 60 == 0 ? '00' : objectList[selectedList[i]].Time % 60);
+        sumTime += ', ';
 
-        if(objectList[selectedList[i]].Ticket_makeDoll) sumHp += objectList[selectedList[i]].Ticket_makeDoll * (60 / objectList[selectedList[i]].Time);
-        if(objectList[selectedList[i]].Ticket_makeTool) sumAp += objectList[selectedList[i]].Ticket_makeTool * (60 / objectList[selectedList[i]].Time);
-        if(objectList[selectedList[i]].Ticket_fastMake) sumFp += objectList[selectedList[i]].Ticket_fastMake * (60 / objectList[selectedList[i]].Time);
-        if(objectList[selectedList[i]].Ticket_fastRepair) sumPp += objectList[selectedList[i]].Ticket_fastRepair * (60 / objectList[selectedList[i]].Time);
-        if(objectList[selectedList[i]].Ticket_Tokken) sumTp += objectList[selectedList[i]].Ticket_Tokken * (60 / objectList[selectedList[i]].Time);
+        if(objectList[selectedList[i]].Ticket_makeDoll) sumHp += objectList[selectedList[i]].Ticket_makeDoll / perMin;
+        if(objectList[selectedList[i]].Ticket_makeTool) sumAp += objectList[selectedList[i]].Ticket_makeTool / perMin;
+        if(objectList[selectedList[i]].Ticket_fastMake) sumFp += objectList[selectedList[i]].Ticket_fastMake / perMin;
+        if(objectList[selectedList[i]].Ticket_fastRepair) sumPp += objectList[selectedList[i]].Ticket_fastRepair / perMin;
+        if(objectList[selectedList[i]].Ticket_Tokken) sumTp += objectList[selectedList[i]].Ticket_Tokken / perMin;
 
         var maxTimeRange = 60 * 24 * 30; //60min * 24hours * 30days
 
@@ -887,25 +892,37 @@ function calcStage(){
     $('#sumAll').text(sumAll.toFixed(0));
     $('#sumT').text(sumT.slice(0,-2));
 
-    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/doll.png" title="인형제조계약서"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
-    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/tool.png" title="장비제조계약서"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
-    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/fast.png" title="쾌속제조계약서"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
-    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/repr.png" title="쾌속수복계약서"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
-    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="시간당 획득률"><img src="img/tokn.png" title="구매 토큰"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
+    var timeTitle = "시간당 획득률";
+    if(!sw_time){
+        timeTitle = "성공시 획득률";
+    }
+    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/doll.png" title="인형제조계약서"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
+    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tool.png" title="장비제조계약서"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
+    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/fast.png" title="쾌속제조계약서"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
+    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/repr.png" title="쾌속수복계약서"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
+    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tokn.png" title="구매 토큰"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
 
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
 
-    cptStr = '지역: ' + sumT.slice(0,-2) + '\n'
-            +'인력/1시간: ' + sumH.toFixed(0) + '\n'
-            +'탄약/1시간: ' + sumA.toFixed(0) + '\n'
-            +'식량/1시간: ' + sumF.toFixed(0) + '\n'
-            +'부품/1시간: ' + sumP.toFixed(0) + '\n';
-    if(sumHp){cptStr += '인형제조계약서/1시간: ' + (sumHp).toFixed(2) + '장\n';}
-    if(sumAp){cptStr += '장비제조계약서/1시간: ' + (sumAp).toFixed(2) + '장\n';}
-    if(sumFp){cptStr += '쾌속제조계약서/1시간: ' + (sumFp).toFixed(2) + '장\n';}
-    if(sumPp){cptStr += '쾌속수복계약서/1시간: ' + (sumPp).toFixed(2) + '장\n';}
-    if(sumTp){cptStr += '구매토큰/1시간: ' + (sumTp).toFixed(2) + '개\n';}
+    var orTime = "성공시";
+    if(sw_time){
+        orTime = "시간당";
+    }
+
+    cptStr = '지역: ' + sumT.slice(0,-2) + '　\n';
+    cptStr += '시간: ' + sumTime.slice(0,-2) + '　\n';
+    cptStr += '자원량(' + orTime + '): '
+            + '인력[' + sumH.toFixed(0) + '] '
+            + '탄약[' + sumA.toFixed(0) + '] '
+            + '식량[' + sumF.toFixed(0) + '] '
+            + '부품[' + sumP.toFixed(0) + ']　\n'
+            + '계약서(' + orTime + '): ';
+    if(sumHp){cptStr += '인형제조[' + (sumHp).toFixed(2) + '개] ';}
+    if(sumAp){cptStr += '장비제조[' + (sumAp).toFixed(2) + '개] ';}
+    if(sumFp){cptStr += '쾌속제조[' + (sumFp).toFixed(2) + '개] ';}
+    if(sumPp){cptStr += '쾌속수복[' + (sumPp).toFixed(2) + '개] ';}
+    if(sumTp){cptStr += '구매토큰[' + (sumTp).toFixed(2) + '개]';}
 
     chart_time = new Array();
 
