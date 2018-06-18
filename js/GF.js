@@ -1,6 +1,7 @@
-var version         = 201806181600;         // Version == 최종수정일 시간 분
+var version         = 201806181700;         // Version == 최종수정일 시간 분
 var updateString    = "2018-06-18 업데이트 내역"
                     + "\n- http://gunsu.kr/ 도메인 적용"
+                    + "\n- UI 일부 수정, 이미지 고화질 교체"
                     + "\n- 클립보드 포맷 소폭 수정"
                     ;
 
@@ -267,25 +268,25 @@ $('[id^=btn-tgl]').off().on('click', function (e) {
     if(wghtToggle[id] == level[0]){    //dflt -> sucs
         $('#btn-tglT' + id).removeClass('btn-default');
         $('#btn-tglT' + id).addClass('btn-success');
-        $('#btn-tglT' + id + '_text').text('낮음');
+        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[1]);
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[1] + '개 이상');
         wghtToggle[id] = level[1];
     }else if(wghtToggle[id] == level[1]){    //sucs -> warn
         $('#btn-tglT' + id).removeClass('btn-success');
         $('#btn-tglT' + id).addClass('btn-warning');
-        $('#btn-tglT' + id + '_text').text('중간');
+        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[2]);
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[2] + '개 이상');
         wghtToggle[id] = level[2];
     }else if(wghtToggle[id] == level[2]) {    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-warning');
         $('#btn-tglT' + id).addClass('btn-danger');
-        $('#btn-tglT' + id + '_text').text('높음');
+        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[3]);
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[3] + '개 이상');
         wghtToggle[id] = level[3];
     }else if(wghtToggle[id] == level[3]){    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-danger');
         $('#btn-tglT' + id).addClass('btn-default');
-        $('#btn-tglT' + id + '_text').text('전체');
+        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[0]);
         $('#btn-tglT' + id).attr('title', '시간당 ' + level[0] + '개 이상');
         wghtToggle[id] = level[0];
     }
@@ -1131,11 +1132,11 @@ function loadTable(){
         /*10*/item += td0 + objectList[i].Ticket_fastRepair / perMin + tde;
         /*11*/item += td0 + objectList[i].Ticket_Tokken / perMin + tde;
         /*12*/item += td30;
-        if(objectList[i].Ticket_makeDoll) item      += '<img src="img/doll.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%">'
-        if(objectList[i].Ticket_makeTool) item      += '<img src="img/tool.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%">'
-        if(objectList[i].Ticket_fastMake) item      += '<img src="img/fast.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%">'
-        if(objectList[i].Ticket_fastRepair) item    += '<img src="img/repr.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastRepair * 100 / perMin).toFixed(2) + '%">'
-        if(objectList[i].Ticket_Tokken) item        += '<img src="img/tokn.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_Tokken * 100 / perMin).toFixed(2) + '%">'
+        if(objectList[i].Ticket_makeDoll) item      += '<img src="img/doll.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_makeTool) item      += '<img src="img/tool.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_fastMake) item      += '<img src="img/fast.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_fastRepair) item    += '<img src="img/repr.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastRepair * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_Tokken) item        += '<img src="img/tokn.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_Tokken * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
         item += tde;
         /*13*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
         /*14*/item += td0 + objectList[i].Time + tde;
