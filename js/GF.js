@@ -1,4 +1,4 @@
-var version         = 201806190130;         // Version == 최종수정일 시간 분
+var version         = 201806201030;         // Version == 최종수정일 시간 분
 var updateString    = "2018-06-18 업데이트 내역"
                     + "\n- http://gunsu.kr/ 도메인 적용"
                     + "\n- UI 일부 수정, 이미지 고화질 교체"
@@ -489,6 +489,7 @@ $('#auto_calc').off().on('click', function (e) {
 
     for(var i = 0; i < sync_calcList.length; i++){
         $('#btn-rec' + i).text('#' + (i + 1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
+        $('#btn-rec' + i).attr("title", '가중치 일치율: ' + (sync_calcList[i].avgH * 100).toFixed(1) + '%');
     }
     $('#recommendLine').removeClass('hide');
 
