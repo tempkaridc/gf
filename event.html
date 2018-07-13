@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>소녀전선 - 포인트 이벤트 표</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/highcharts.css" rel="stylesheet" />
+    <link href="css/event.css" rel="stylesheet" />
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body onresize="init()">
+    <div class="row no-gutter">
+        <div class="col-xs-12" style="padding:5px;">
+            <table class="table primary" style="margin:0px;">
+                <thead>
+                <tr class="info">
+                    <th id="table_title" style="text-align:center;">
+                        스칼렛 위치 (2018-07-14 ~ 2018-08-03)
+                    </th>
+                </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="row no-gutter" style="height:100%; margin: auto; padding:0px; overflow-x:hidden;">
+        <div class="col-xs-4" style="padding:5px;">
+            <table class="table table-striped table-condensed table-clickable">
+                <thead>
+                <tr><th id="head_week1" style="text-align:center;">1주차 (7/14 ~ 8/3)</th></tr>
+                <tr class="active">
+                    <th width="80%" style="text-align:center;">미션</th>
+                    <th width="20%" style="text-align:center;">포인트</th>
+                </tr>
+                </thead>
+                <tbody id="table_week1">
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-4" style="padding:5px;">
+            <table class="table table-striped table-condensed table-clickable">
+                <thead>
+                <tr><th id="head_week2" style="text-align:center;">2주차 (7/21 ~ 8/3)</th></tr>
+                <tr class="active">
+                    <th width="80%" style="text-align:center;">미션</th>
+                    <th width="20%" style="text-align:center;">포인트</th>
+                </tr>
+                </thead>
+                <tbody id="table_week2">
+                </tbody>
+            </table>
+        </div>
+        <div class="col-xs-4" style="padding:5px;">
+            <table class="table table-striped table-condensed table-clickable">
+                <thead>
+                <tr><th id="head_week3" style="text-align:center;">3주차 (7/28 ~ 8/3)</th></tr>
+                <tr class="active">
+                    <th width="80%" style="text-align:center;">미션</th>
+                    <th width="20%" style="text-align:center;">포인트</th>
+                </tr>
+                </thead>
+                <tbody id="table_week3">
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row no-gutter">
+        <label class="btn btn-danger btn-xs" style="float:right; margin-right:5px;">
+            엑셀 표 입력
+            <input id="csv" type="file" style="display: none;" onchange="readCSV(this);">
+        </label>
+    </div>
+
+
+
+
+    <script src="js/highcharts.js"></script>
+    <script src="js/highcharts-more.js"></script>
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/event.js"></script>
+</body>
+</html>
