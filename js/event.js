@@ -1,5 +1,6 @@
-var quests = new Object();
-var sample;
+var quests;
+var thisEvent;
+var saves;
 
 $(document).ready(function() {
     init();
@@ -15,35 +16,8 @@ $(function (){
     clickRow(parseInt($(this).attr('idx')));//고유값
 });
 
-function load(){
-    if(localStorage.saves == "") {         //no config cache
-        return;
-    }else{
-        quests = JSON.parse(localStorage.saves);
-    }
-}
-
-function clickRow(index){
-    var me = quests.list[index];
-    if(me.enabled){
-        for(var i in quests.list){
-            if((quests.list[i].week == me.week) && (quests.list[i].qnum == me.qnum) && (quests.list[i].snum >= me.snum)){
-                quests.list[i].enabled = false;
-            }
-        }
-    }else{
-        for(var i in quests.list){
-            if((quests.list[i].week == me.week) &&(quests.list[i].qnum == me.qnum) && (quests.list[i].snum <= me.snum)){
-                quests.list[i].enabled = true;
-            }
-        }
-    }
-    refreshTable();
-}
-
-
 function init(){
-    sample = "스칼렛 위치 이벤트,,,,,,,,,,*주의사항 #1: 연동되지 않는 미션들은 한칸씩 공백을 두고 입력할 것\n" +
+    thisEvent = "스칼렛 위치 이벤트,,,,,,,,,,*주의사항 #1: 연동되지 않는 미션들은 한칸씩 공백을 두고 입력할 것\n" +
         "1주차,18-07-14 ~ 18-08-03,,2주차,18-07-21 ~ 18-08-03,,3주차,18-07-28 ~ 18-08-03,,,\"*주의사항 #2: 보상 입력시 쉼표(,) 사용불가, 특문쉼표로 대용(，)\"\n" +
         "미션,포인트,추가보상,미션,포인트,추가보상,미션,포인트,추가보상,누적포인트,보상\n" +
         "로그인 1일,10,,전지 200개 획득,20,,구매토큰 소모 100개,20,,100,탄약，식량 1000\n" +
@@ -80,8 +54,36 @@ function init(){
         "5성 제조 1회,50,,,,,,,,,\n" +
         "5성 제조 5회,100,,,,,,,,,\n";
 
-    makeQuests(CSV(sample));
+    makeQuests(CSV(thisEvent));
+    return;
 }
+
+function load(){
+    if(JSON.parse(localStorage.saves).title != quests.title){
+        localStorage.removeItem(saves);
+    }else{
+        quests = JSON.parse(localStorage.saves);
+    }
+}
+
+function clickRow(index){
+    var me = quests.list[index];
+    if(me.enabled){
+        for(var i in quests.list){
+            if((quests.list[i].week == me.week) && (quests.list[i].qnum == me.qnum) && (quests.list[i].snum >= me.snum)){
+                quests.list[i].enabled = false;
+            }
+        }
+    }else{
+        for(var i in quests.list){
+            if((quests.list[i].week == me.week) &&(quests.list[i].qnum == me.qnum) && (quests.list[i].snum <= me.snum)){
+                quests.list[i].enabled = true;
+            }
+        }
+    }
+    refreshTable();
+}
+
 function readCSV(myFile){
     var reader = new FileReader();
     reader.onload = function () {
@@ -104,6 +106,8 @@ function CSV( $data ){
     return result;
 }
 function makeQuests(ary){
+    quests = new Object();
+
     //Non-Array Initialize
     quests.title = ary[0][0];
     quests.dateWeek1 = ary[1][1];
@@ -278,10 +282,22 @@ function refreshTable(){
     //console.log(JSON.parse(localStorage.saves));
 
 }
-$('#csvdown').off().on('click', function (e) {
+$('#csvDown').off().on('click', function (e) {
     var hiddenElement = document.createElement('a');
     hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI("\uFEFF" + sample);
     hiddenElement.target = '_blank';
     hiddenElement.download = 'sample.csv';
     hiddenElement.click();
+});
+$('#selAll').off().on('click', function (e) {
+    for(var i in quests.list){
+        quests.list[i].enabled = true;
+    }
+    refreshTable();
+});
+$('#selNo').off().on('click', function (e) {
+    for(var i in quests.list){
+        quests.list[i].enabled = false;
+    }
+    refreshTable();
 });
