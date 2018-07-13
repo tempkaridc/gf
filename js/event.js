@@ -284,7 +284,7 @@ function refreshTable(){
 }
 $('#csvDown').off().on('click', function (e) {
     var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI("\uFEFF" + sample);
+    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI("\uFEFF" + thisEvent);
     hiddenElement.target = '_blank';
     hiddenElement.download = 'sample.csv';
     hiddenElement.click();
