@@ -16,17 +16,14 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="34" column="108" selection-start-line="34" selection-start-column="97" selection-end-line="34" selection-end-column="108" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="event.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/event.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="-961">
+              <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -58,7 +55,8 @@
       <file leaf-file-name="event.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/event.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="270">
+              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
               <folding>
                 <element signature="n#!!block;n#init#0" />
                 <element signature="n#!!block;n#CSV#0" />
@@ -173,8 +171,8 @@
         <option value="$PROJECT_DIR$/css/event.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/GF.js" />
-        <option value="$PROJECT_DIR$/js/event.js" />
         <option value="$PROJECT_DIR$/event.html" />
+        <option value="$PROJECT_DIR$/js/event.js" />
       </list>
     </option>
   </component>
@@ -328,12 +326,12 @@
       <workItem from="1530092576213" duration="610000" />
       <workItem from="1530150203672" duration="1354000" />
       <workItem from="1530622433021" duration="68000" />
-      <workItem from="1531462454606" duration="14467000" />
+      <workItem from="1531462454606" duration="14711000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376708000" />
+    <option name="totallyTimeSpent" value="376952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="919" y="113" width="1396" height="870" extended-state="0" />
@@ -607,22 +605,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="34" column="108" selection-start-line="34" selection-start-column="97" selection-end-line="34" selection-end-column="108" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="685" column="5" lean-forward="true" selection-start-line="679" selection-start-column="4" selection-end-line="685" selection-end-column="5" />
-        </state>
-      </provider>
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/event.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="-961">
+          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -650,9 +638,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="685" column="5" lean-forward="true" selection-start-line="679" selection-start-column="4" selection-end-line="685" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/event.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="270">
+          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
           <folding>
             <element signature="n#!!block;n#init#0" />
             <element signature="n#!!block;n#CSV#0" />
