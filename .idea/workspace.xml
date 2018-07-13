@@ -56,7 +56,7 @@
         <entry file="file://$PROJECT_DIR$/js/event.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="270">
-              <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
               <folding>
                 <element signature="n#!!block;n#init#0" />
                 <element signature="n#!!block;n#CSV#0" />
@@ -326,12 +326,12 @@
       <workItem from="1530092576213" duration="610000" />
       <workItem from="1530150203672" duration="1354000" />
       <workItem from="1530622433021" duration="68000" />
-      <workItem from="1531462454606" duration="14711000" />
+      <workItem from="1531462454606" duration="14809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="376952000" />
+    <option name="totallyTimeSpent" value="377050000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="919" y="113" width="1396" height="870" extended-state="0" />
@@ -648,7 +648,7 @@
     <entry file="file://$PROJECT_DIR$/js/event.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
-          <caret line="18" column="28" selection-start-line="18" selection-start-column="28" selection-end-line="18" selection-end-column="28" />
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="n#!!block;n#init#0" />
             <element signature="n#!!block;n#CSV#0" />

@@ -16,7 +16,7 @@ $(function (){
 });
 
 function load(){
-    if(localStorage.saves == undefined) {         //no config cache
+    if(localStorage.saves == "") {         //no config cache
         return;
     }else{
         quests = JSON.parse(localStorage.saves);
