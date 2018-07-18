@@ -28,16 +28,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="319">
-              <caret line="1325" column="12" selection-start-line="1325" selection-start-column="12" selection-end-line="1325" selection-end-column="12" />
+            <state relative-caret-position="438">
+              <caret line="1342" column="6" selection-start-line="1342" selection-start-column="6" selection-end-line="1342" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="languages.json" pinned="false" current-in-tab="true">
+      <file leaf-file-name="languages.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lang/languages.json">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
@@ -59,11 +59,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>내 가중치</find>
-      <find>X&lt;/</find>
-      <find>gf/</find>
-      <find>show</find>
-      <find>loadTable</find>
       <find>table-clickable</find>
       <find>addclass('</find>
       <find>quests</find>
@@ -81,7 +76,6 @@
       <find>csvDown</find>
       <find>sample</find>
       <find>load</find>
-      <find>setLanguage</find>
       <find>loadSaves</find>
       <find>도움말 열기</find>
       <find>sw_help</find>
@@ -89,6 +83,12 @@
       <find>height:1u</find>
       <find>lang</find>
       <find>JSON.</find>
+      <find>langPack</find>
+      <find>getJSON</find>
+      <find>localStorage</find>
+      <find>config.</find>
+      <find>localStorage.config = JSO</find>
+      <find>setLanguage</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -119,8 +119,8 @@
         <option value="$PROJECT_DIR$/lang/ko.xml" />
         <option value="$PROJECT_DIR$/lang/ko.json" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/GF.js" />
         <option value="$PROJECT_DIR$/lang/languages.json" />
+        <option value="$PROJECT_DIR$/js/GF.js" />
       </list>
     </option>
   </component>
@@ -280,12 +280,12 @@
       <workItem from="1530150203672" duration="1354000" />
       <workItem from="1530622433021" duration="68000" />
       <workItem from="1531462454606" duration="16190000" />
-      <workItem from="1531901888448" duration="9368000" />
+      <workItem from="1531901888448" duration="10411000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="387799000" />
+    <option name="totallyTimeSpent" value="388842000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1169" y="71" width="1369" height="739" extended-state="0" />
@@ -600,17 +600,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="319">
-          <caret line="1325" column="12" selection-start-line="1325" selection-start-column="12" selection-end-line="1325" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lang/languages.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
           <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="438">
+          <caret line="1342" column="6" selection-start-line="1342" selection-start-column="6" selection-end-line="1342" selection-end-column="6" />
         </state>
       </provider>
     </entry>

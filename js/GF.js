@@ -37,7 +37,7 @@ var saves;
 
 $(function (){
     init();
-    setLanguage();
+    chkLanguage();
     refresh();
 })
 .on('click', '.table-clickable', function(e) {
@@ -1308,39 +1308,41 @@ function refresh(){
 $('[id^=lang]').on('click', function (e) {
     var id = $(this).attr('id');
 
+    selLang = id.substr(4,6);
 
+    config.lang = setLang;
+    localStorage.config = JSON.stringify(config);
 });
 
-function setLanguage(){
+function chkLanguage(){
     if(selLang == undefined){
         var t = window.navigator.userLanguage || window.navigator.language;
-        var t2 = t.substring(0,2);
-        console.log(t2); //works IE/SAFARI/CHROME/FF
+        selLang = t.substring(0,2);
+
+        config.lang = selLang;
+        localStorage.config = JSON.stringify(config);
     }
 
-    //http://tempkaridc.github.io/gf/lang/languages.json
     //$.getJSON("lang/languages.json", function (data) {
-    $.getJSON("http://tempkaridc.github.io/gf/lang/languages.json", function (data) {
-        $.each(data, function (index, value) {
-            console.log(value);
-            //var languagePack = JSON.parse(value);
-            //console.log(languagePack);
-
-
-            //langPackage = value.;
-            switch(selLang){
-                case 'kr':
-
-                    break;
-                case 'en':
-                    break;
-                default:
-                    break;
-            }
-
-
-        });
+    $.getJSON("http://tempkaridc.github.io/gf/lang/languages.json", function (langPackage) {
+        switch(selLang){
+            case 'kr':
+                langPack = langPackage.kr;
+                break;
+            case 'en':
+                langPack = langPackage.en;
+                break;
+            default:
+                break;
+        }
+        setLanguage();
     });
+}
+
+function setLanguage(){
+    //console.log(langPack)
+
+    //여기서 언어지원 전부 업로드.
 }
 
 function init(){
@@ -1356,7 +1358,7 @@ function init(){
         config = JSON.parse(localStorage.config);
         sw_time = config.time;
         sw_help = config.help;
-        language = config.lang;
+        selLang = config.lang;
 
         if((config.version === undefined) || (config.version < version)){
             //$('#panel-notice').removeClass('hide');
