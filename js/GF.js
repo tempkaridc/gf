@@ -5,6 +5,9 @@ var updateString    = "2018-06-18 업데이트 내역"
                     + "\n- 클립보드 포맷 소폭 수정"
                     ;
 
+var lang;
+var langPack;
+
 var objectList      = new Array();
 var selectedList    = new Array();
 var sync_calcList   = new Array();
@@ -34,7 +37,7 @@ var saves;
 
 $(function (){
     init();
-    //loadNotice();
+    setLanguage();
     refresh();
 })
 .on('click', '.table-clickable', function(e) {
@@ -1025,6 +1028,7 @@ function calcStage(){
 
     chart.xAxis[0].setExtremes(now, now + (1000 * 60 * 60 * 24)); //초기값 X-axis range 1dayms
 }
+
 Highcharts.setOptions({
     lang: {
         months: [
@@ -1041,6 +1045,7 @@ Highcharts.setOptions({
         ]
     }
 });
+
 function stackArray(ary, type){
     if(ary[0]){
         switch(type){
@@ -1288,6 +1293,7 @@ function reload(){
     }
     dispTime();
 }
+
 function refresh(){
     $('#sort-0').trigger('click');
     objectList.length = 0;
@@ -1298,8 +1304,32 @@ function refresh(){
     loadTable();
     calcStage();
 }
+
+function setLanguage(){
+    if(language == undefined){
+        var t = window.navigator.userLanguage || window.navigator.language;
+        language = t.substring(0,2);
+    }
+    console.log(language); //works IE/SAFARI/CHROME/FF
+
+
+    /*
+    $.getJSON("lang/languages.json", function (data) {
+        $.each(data, function (index, value) {
+            console.log(value);
+        });
+    });
+
+    lang = JSON.parse(document.getElementById('languages').innerHTML);
+    //console.log(document.getElementById('languages').innerHTML);
+    console.log(lang); //works IE/SAFARI/CHROME/FF
+    */
+}
+
 function init(){
+
     //localStorage.removeItem("saves");
+
     config = localStorage.config;
     if(config === undefined){         //no config cache
         config = new Object();
@@ -1311,6 +1341,7 @@ function init(){
         config = JSON.parse(localStorage.config);
         sw_time = config.time;
         sw_help = config.help;
+        language = config.lang;
 
         if((config.version === undefined) || (config.version < version)){
             //$('#panel-notice').removeClass('hide');
@@ -1376,45 +1407,3 @@ function init(){
 
     $('#loadModal').modal("hide");
 }
-
-//GarbageCode
-/*
-
-$('#btn_wgt').off().on('click', function (e) {
-    wgtH = parseFloat(document.getElementById('wgt_huma').value);
-    wgtA = parseFloat(document.getElementById('wgt_ammo').value);
-    wgtF = parseFloat(document.getElementById('wgt_food').value);
-    wgtP = parseFloat(document.getElementById('wgt_part').value);
-    if(isNaN(wgtH)) wgtH = 1;
-    if(isNaN(wgtA)) wgtA = 1;
-    if(isNaN(wgtF)) wgtF = 1;
-    if(isNaN(wgtP)) wgtP = 2.2;
-    highlight(1);
-    refresh();
-    //sortToggle[5] = 0;
-    //$('#sort-5').trigger('click');
-});
-
-function loadNotice(){
-    var text = "";
-
-    text +=
-        "2018-04-16 BUG 수정\n" +
-        "- 나만의 가중치 계산버튼위치 변경 및 모바일 대응\n" +
-        "- 가중치 0 미계산 버그 수정\n\n";
-
-    text +=
-        "2018-04-12 UI수정\n" +
-        "- 차트 및 기타 UI 일부수정\n\n";
-
-    text +=
-        "2018-04-10 가중치 개념 분리\n" +
-        "- 자원량 합계의 부품 가중치를 1:1:1:2.2 로 고정\n" +
-        "- 자원 가중치 '적용'기능 삭제. (자원량합계 불변)\n" +
-        "- 기존 자원 가중치 기능은 추천지역 자동계산에만 사용\n" +
-        "└ 가중치가 높을수록 해당 자원 우선적용\n";
-
-    text = text.replace(/\r?\n/g, '<br />');
-    $('#list-notice').append(text);
-}
- */
