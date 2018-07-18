@@ -28,18 +28,22 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="1324" column="14" selection-start-line="1324" selection-start-column="14" selection-end-line="1324" selection-end-column="14" />
+            <state relative-caret-position="319">
+              <caret line="1325" column="12" selection-start-line="1325" selection-start-column="12" selection-end-line="1325" selection-end-column="12" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="languages.json" pinned="false" current-in-tab="false">
+      <file leaf-file-name="languages.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lang/languages.json">
-          <provider selected="true" editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -115,8 +119,8 @@
         <option value="$PROJECT_DIR$/lang/ko.xml" />
         <option value="$PROJECT_DIR$/lang/ko.json" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/lang/languages.json" />
         <option value="$PROJECT_DIR$/js/GF.js" />
+        <option value="$PROJECT_DIR$/lang/languages.json" />
       </list>
     </option>
   </component>
@@ -276,12 +280,12 @@
       <workItem from="1530150203672" duration="1354000" />
       <workItem from="1530622433021" duration="68000" />
       <workItem from="1531462454606" duration="16190000" />
-      <workItem from="1531901888448" duration="9301000" />
+      <workItem from="1531901888448" duration="9368000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="387732000" />
+    <option name="totallyTimeSpent" value="387799000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1169" y="71" width="1369" height="739" extended-state="0" />
@@ -596,13 +600,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lang/languages.json">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="1324" column="14" selection-start-line="1324" selection-start-column="14" selection-end-line="1324" selection-end-column="14" />
+        <state relative-caret-position="319">
+          <caret line="1325" column="12" selection-start-line="1325" selection-start-column="12" selection-end-line="1325" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lang/languages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="109" column="5" selection-start-line="109" selection-start-column="5" selection-end-line="109" selection-end-column="5" />
         </state>
       </provider>
     </entry>

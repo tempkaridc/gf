@@ -1322,7 +1322,7 @@ function setLanguage(){
     //$.getJSON("lang/languages.json", function (data) {
     $.getJSON("http://tempkaridc.github.io/gf/lang/languages.json", function (data) {
         $.each(data, function (index, value) {
-            //console.log(value);
+            console.log(value);
             //var languagePack = JSON.parse(value);
             //console.log(languagePack);
 
