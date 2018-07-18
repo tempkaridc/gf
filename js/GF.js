@@ -5,7 +5,7 @@ var updateString    = "2018-06-18 업데이트 내역"
                     + "\n- 클립보드 포맷 소폭 수정"
                     ;
 
-var lang;
+var selLang;
 var langPack;
 
 var objectList      = new Array();
@@ -1305,31 +1305,46 @@ function refresh(){
     calcStage();
 }
 
+$('[id^=lang]').on('click', function (e) {
+    var id = $(this).attr('id');
+
+
+});
+
 function setLanguage(){
-    if(language == undefined){
+    if(selLang == undefined){
         var t = window.navigator.userLanguage || window.navigator.language;
-        language = t.substring(0,2);
+        var t2 = t.substring(0,2);
+        console.log(t2); //works IE/SAFARI/CHROME/FF
     }
-    console.log(language); //works IE/SAFARI/CHROME/FF
 
-
-    /*
-    $.getJSON("lang/languages.json", function (data) {
+    //http://tempkaridc.github.io/gf/lang/languages.json
+    //$.getJSON("lang/languages.json", function (data) {
+    $.getJSON("http://tempkaridc.github.io/gf/lang/languages.json", function (data) {
         $.each(data, function (index, value) {
-            console.log(value);
+            //console.log(value);
+            //var languagePack = JSON.parse(value);
+            //console.log(languagePack);
+
+
+            //langPackage = value.;
+            switch(selLang){
+                case 'kr':
+
+                    break;
+                case 'en':
+                    break;
+                default:
+                    break;
+            }
+
+
         });
     });
-
-    lang = JSON.parse(document.getElementById('languages').innerHTML);
-    //console.log(document.getElementById('languages').innerHTML);
-    console.log(lang); //works IE/SAFARI/CHROME/FF
-    */
 }
 
 function init(){
-
     //localStorage.removeItem("saves");
-
     config = localStorage.config;
     if(config === undefined){         //no config cache
         config = new Object();
