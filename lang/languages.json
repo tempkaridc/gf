@@ -211,7 +211,7 @@
       "BOTTOM": {
         "ADDR": "주소",
         "SGST": "건의사항",
-        "OPTI": "이 페이지는 Chrome, FF, Edge에 최적화되어 있습니다."
+        "OPTI": "This website is optimized for Chrome, FF, Edge"
       }
     }
   }
