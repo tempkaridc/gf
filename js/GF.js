@@ -1,11 +1,10 @@
-var version         = 201806201030;         // Version == 최종수정일 시간 분
-var updateString    = "2018-06-18 업데이트 내역"
-                    + "\n- http://gunsu.kr/ 도메인 적용"
-                    + "\n- UI 일부 수정, 이미지 고화질 교체"
-                    + "\n- 클립보드 포맷 소폭 수정"
+var version         = 201808072200;         // Version == 최종수정일 시간 분
+var updateString    = "2018-08-07 Changelog"
+                    + "\n- 다국어 지원"
                     ;
 
 var selLang;
+var langPacks;
 var langPack;
 
 var objectList      = new Array();
@@ -37,7 +36,6 @@ var saves;
 
 $(function (){
     init();
-    chkLanguage();
     refresh();
 })
 .on('click', '.table-clickable', function(e) {
@@ -69,7 +67,7 @@ $('[id^=sort-]').off().on('click', function (e) {
             $('#high_03').addClass('success');
         }
         if((7 <= id) && (id <= 11)){
-            $('#high_08').addClass('success');
+            $('#high_04').addClass('success');
         }
     }
     if(sortToggle[id] <= 1){
@@ -129,15 +127,15 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#btn_toggle_sucs').addClass('btn-success');
         $('#per_level').removeClass('btn-default');
         $('#per_level').addClass('btn-success');
-        $('#btn_toggle_sucs').text('적용');
+        $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN_OK);
         sw_sucs = true;
-        highlight(5);
+        highlight(6);
     }else{
         $('#btn_toggle_sucs').removeClass('btn-success');
         $('#btn_toggle_sucs').addClass('btn-default');
         $('#per_level').removeClass('btn-success');
         $('#per_level').addClass('btn-default');
-        $('#btn_toggle_sucs').text('미적용');
+        $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN_NO);
         sw_sucs = false;
         highlight(0);
     }
@@ -147,14 +145,12 @@ $('#btn_toggle_recovery').off().on('click', function (e) {
     if($('#btn_toggle_recovery').hasClass('btn-default')){
         $('#btn_toggle_recovery').removeClass('btn-default');
         $('#btn_toggle_recovery').addClass('btn-success');
-        highlight(4);
-        //$('#btn_toggle_recovery').text('회복 켜짐');
+        highlight(5);
         sw_recovery = true;
     }else{
         $('#btn_toggle_recovery').removeClass('btn-success');
         $('#btn_toggle_recovery').addClass('btn-default');
         highlight(0);
-        //$('#btn_toggle_recovery').text('회복 꺼짐');
         sw_recovery = false;
     }
     refresh();
@@ -223,7 +219,7 @@ $('#btn_calcUse2').off().on('click', function (e) {
 
     for(var i in tmp){
         if(tmp[i] > tmpf[i]){
-            alert('최종목표치는 현재보다 크거나 같아야 합니다');
+            alert(langPack.HTML.INCODE.ALERT1);
             return;
         }
     }
@@ -272,25 +268,25 @@ $('[id^=btn-tgl]').off().on('click', function (e) {
         $('#btn-tglT' + id).removeClass('btn-default');
         $('#btn-tglT' + id).addClass('btn-success');
         $('#btn-tglT' + id + '_text').text(' ≥ ' + level[1]);
-        $('#btn-tglT' + id).attr('title', '시간당 ' + level[1] + '개 이상');
+        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[1] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2); // 시간당 0 개 이상
         wghtToggle[id] = level[1];
     }else if(wghtToggle[id] == level[1]){    //sucs -> warn
         $('#btn-tglT' + id).removeClass('btn-success');
         $('#btn-tglT' + id).addClass('btn-warning');
         $('#btn-tglT' + id + '_text').text(' ≥ ' + level[2]);
-        $('#btn-tglT' + id).attr('title', '시간당 ' + level[2] + '개 이상');
+        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[2] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
         wghtToggle[id] = level[2];
     }else if(wghtToggle[id] == level[2]) {    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-warning');
         $('#btn-tglT' + id).addClass('btn-danger');
         $('#btn-tglT' + id + '_text').text(' ≥ ' + level[3]);
-        $('#btn-tglT' + id).attr('title', '시간당 ' + level[3] + '개 이상');
+        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[3] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
         wghtToggle[id] = level[3];
     }else if(wghtToggle[id] == level[3]){    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-danger');
         $('#btn-tglT' + id).addClass('btn-default');
         $('#btn-tglT' + id + '_text').text(' ≥ ' + level[0]);
-        $('#btn-tglT' + id).attr('title', '시간당 ' + level[0] + '개 이상');
+        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[4] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
         wghtToggle[id] = level[0];
     }
 });
@@ -477,7 +473,7 @@ $('#auto_calc').off().on('click', function (e) {
             limit = limit - 0.05;
             if(limit < 0.0){
                 if(!sync_calcList.length){
-                    alert('검색 결과가 없습니다.');
+                    alert(langPack.HTML.INCODE.ALERT2);
                     $('#recommendLine').addClass('hide');
                     return;
                 }else{
@@ -492,11 +488,11 @@ $('#auto_calc').off().on('click', function (e) {
 
     for(var i = 0; i < sync_calcList.length; i++){
         $('#btn-rec' + i).text('#' + (i + 1) + ' (' + (sync_calcList[i].avgH * 100).toFixed(1) + '%)');
-        $('#btn-rec' + i).attr("title", '가중치 일치율: ' + (sync_calcList[i].avgH * 100).toFixed(1) + '%');
+        $('#btn-rec' + i).attr("title", langPack.HTML.TABLE.HELP.RECOMMEND.SIMM +': ' + (sync_calcList[i].avgH * 100).toFixed(1) + '%');
     }
     $('#recommendLine').removeClass('hide');
 
-    highlight(7);
+    highlight(8);
 
     function normalizeValues(ary){
         for(var i in ary){
@@ -604,11 +600,13 @@ $('#btn-toggleTime').off().on('click', function (e) {
     if(sw_time){
         sw_time = false;
         config.time = false;
-        document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
+        //document.getElementById('btn-toggleTime').innerHTML = "성공시<br>획득";
+        $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNSUCS);
     }else{
         sw_time = true;
         config.time = true;
-        document.getElementById('btn-toggleTime').innerHTML = "성공시<br>획득";
+        //document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
+        $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNTIME);
     }
     localStorage.config = JSON.stringify(config);
     refresh();
@@ -618,12 +616,12 @@ $('#btn-toggleHelp').off().on('click', function (e) {
         config.help = true;
         localStorage.config = JSON.stringify(config);
         $('#panel-help').removeClass('hide');
-        $('#text-toggleHelp').text('도움말 닫기');
+        $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.CLOSE);
     }else{
         config.help = false;
         localStorage.config = JSON.stringify(config);
         $('#panel-help').addClass('hide');
-        $('#text-toggleHelp').text('도움말 열기');
+        $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.OPEN);
     }
 });
 $('#btn-toggleNotice').off().on('click', function (e) {
@@ -638,8 +636,8 @@ $('#btn-load').off().on('click', function (e) {
     $('#loadModal').modal("show");
 });
 $('#btn-save').off().on('click', function (e) {
-    if(selectedList.length == 0){alert('하나 이상의 군수지역을 선택해야 합니다'); return;}
-    var desc = prompt('저장할 군수의 이름을 입력하세요');
+    if(selectedList.length == 0){alert(langPack.HTML.INCODE.ALERT3); return;}
+    var desc = prompt(langPack.HTML.INCODE.SAVE);
     var ary = new Array();
     var obj = new Object();
     for(var i in selectedList){
@@ -660,7 +658,7 @@ $('#btn-capt').off().on('click', function (e) {
     t.select();
     document.execCommand('copy');
     document.body.removeChild(t);
-    alert('클립보드에 아래 내용을 복사하였습니다\n\n' + cptStr);
+    alert(langPack.HTML.INCODE.ALERT4 + cptStr);
 });
 $(document).ready(function() {
     $(document).on('keydown', 'input', function (e) {
@@ -702,7 +700,7 @@ function loadSaves(){
         var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable3">';
         item += td3 + area.slice(0,-2) + tde;
         item += td6 + saves[i].desc + tde;
-        item += td1 + '<div id="remove-save-' + i + '" idx ="' + i + '" title="지우기" class="btn"><i class="glyphicon glyphicon-trash"></i></div>' + tde;
+        item += td1 + '<div id="remove-save-' + i + '" idx ="' + i + '" title="' + langPack.HTML.INCODE.DELETE + '" class="btn"><i class="glyphicon glyphicon-trash"></i></div>' + tde;
         item += '</tr>';
         $('#load-list').append(item);
     }
@@ -761,8 +759,8 @@ function clone(obj) {
     return copy;
 }
 function dispTime(){
-    $('#scr-times').text(timeToggle[time_front] + '시간');
-    $('#scr-timee').text(timeToggle[time_end] + '시간');
+    $('#scr-times').text(timeToggle[time_front] + ' ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR); //hours hour 혼용예정
+    $('#scr-timee').text(timeToggle[time_end] + ' ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR);
     objectList.length = 0;
     selectedList.length = 0;
     refresh();
@@ -897,63 +895,63 @@ function calcStage(){
     $('#sumAll').text(sumAll.toFixed(0));
     $('#sumT').text(sumT.slice(0,-2));
 
-    var timeTitle = "시간당 획득률";
+    var timeTitle = langPack.HTML.TABLE.TICKET_PER_HOUR;
     if(!sw_time){
-        timeTitle = "성공시 획득률";
+        timeTitle = langPack.HTML.TABLE.TICKET_PER_RECV;
     }
-    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/doll.png" title="인형제조계약서" style="height:1.7em"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
-    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tool.png" title="장비제조계약서" style="height:1.7em"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
-    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/fast.png" title="쾌속제조계약서" style="height:1.7em"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
-    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/repr.png" title="쾌속수복계약서" style="height:1.7em"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
-    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tokn.png" title="구매 토큰" style="height:1.7em"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
+    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '" style="height:1.7em"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
+    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '" style="height:1.7em"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
+    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '" style="height:1.7em"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
+    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '" style="height:1.7em"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
+    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '" style="height:1.7em"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
 
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
 
-    var orTime = "성공시";
+    var orTime = langPack.HTML.TABLE.PER_RECV;
     if(sw_time){
-        orTime = "시간당";
+        orTime = langPack.HTML.TABLE.PER_HOUR;
     }
 
-    cptStr = '지역: ' + sumT.slice(0,-2) + '　\n';
-    cptStr += '시간: ' + sumTime.slice(0,-2) + '　\n';
-    cptStr += '자원량(' + orTime + '): '
-            + '인력[' + sumH.toFixed(0) + '] '
-            + '탄약[' + sumA.toFixed(0) + '] '
-            + '식량[' + sumF.toFixed(0) + '] '
-            + '부품[' + sumP.toFixed(0) + ']　\n'
-            + '계약서(' + orTime + '): ';
-    if(sumHp){cptStr += '인형제조[' + (sumHp).toFixed(2) + '개] ';}
-    if(sumAp){cptStr += '장비제조[' + (sumAp).toFixed(2) + '개] ';}
-    if(sumFp){cptStr += '쾌속제조[' + (sumFp).toFixed(2) + '개] ';}
-    if(sumPp){cptStr += '쾌속수복[' + (sumPp).toFixed(2) + '개] ';}
-    if(sumTp){cptStr += '구매토큰[' + (sumTp).toFixed(2) + '개]';}
+    cptStr = langPack.HTML.TABLE.AREA + ': ' + sumT.slice(0,-2) + '　\n';
+    cptStr += langPack.HTML.TABLE.TIME + ': ' + sumTime.slice(0,-2) + '　\n';
+    cptStr += langPack.HTML.TABLE.RSRC + '(' + orTime + '): '
+            + langPack.HTML.TABLE.HUMA + '[' + sumH.toFixed(0) + '] '
+            + langPack.HTML.TABLE.AMMO + '[' + sumA.toFixed(0) + '] '
+            + langPack.HTML.TABLE.FOOD + '[' + sumF.toFixed(0) + '] '
+            + langPack.HTML.TABLE.PART + '[' + sumP.toFixed(0) + ']　\n'
+            + langPack.HTML.TABLE.TICKET + '(' + orTime + '): ';
+    if(sumHp){cptStr += langPack.HTML.TABLE.TICKET_DOLL + '[' + (sumHp).toFixed(2) + '] ';}
+    if(sumAp){cptStr += langPack.HTML.TABLE.TICKET_TOOL + '[' + (sumAp).toFixed(2) + '] ';}
+    if(sumFp){cptStr += langPack.HTML.TABLE.TICKET_FAST + '[' + (sumFp).toFixed(2) + '] ';}
+    if(sumPp){cptStr += langPack.HTML.TABLE.TICKET_REPR + '[' + (sumPp).toFixed(2) + '] ';}
+    if(sumTp){cptStr += langPack.HTML.TABLE.TICKET_TOKN + '[' + (sumTp).toFixed(2) + '] ';}
 
     chart_time = new Array();
 
     var obj_LineH = new Object();
-    obj_LineH.name = "인력";
+    obj_LineH.name = langPack.HTML.TABLE.HUMA;
     aryH.sort(sortFunction);
     stackArray(aryH,1);
     obj_LineH.data = aryH;
     chart_time.push(obj_LineH);
 
     var obj_LineA = new Object();
-    obj_LineA.name = "탄약";
+    obj_LineA.name = langPack.HTML.TABLE.AMMO;
     aryA.sort(sortFunction);
     stackArray(aryA,2);
     obj_LineA.data = aryA;
     chart_time.push(obj_LineA);
 
     var obj_LineF = new Object();
-    obj_LineF.name = "식량";
+    obj_LineF.name = langPack.HTML.TABLE.FOOD;
     aryF.sort(sortFunction);
     stackArray(aryF,3);
     obj_LineF.data = aryF;
     chart_time.push(obj_LineF);
 
     var obj_LineP = new Object();
-    obj_LineP.name = "부품";
+    obj_LineP.name = langPack.HTML.TABLE.PART;
     aryP.sort(sortFunction);
     obj_LineP.data = aryP;
     stackArray(aryP,4);
@@ -980,8 +978,8 @@ function calcStage(){
                 text: null
             },
             dateTimeLabelFormats: {
-                hour:"%a, %H시",
-                day:"%a, %H시"
+                hour:"%a, %H" + langPack.HTML.CHART.HOUR,
+                day:"%a, %H" + langPack.HTML.CHART.DAY
             }
         },
         yAxis: {
@@ -991,7 +989,7 @@ function calcStage(){
             min: 0
         },
         tooltip: {
-            xDateFormat: '%B %d일 %A, %H시 %M분',
+            xDateFormat: "%B %d" + langPack.HTML.CHART.DAY + " %A, %H" + langPack.HTML.CHART.HOUR + " %M" + langPack.HTML.CHART.MIN,
             split: true,
             padding: 3
         },
@@ -1028,23 +1026,6 @@ function calcStage(){
 
     chart.xAxis[0].setExtremes(now, now + (1000 * 60 * 60 * 24)); //초기값 X-axis range 1dayms
 }
-
-Highcharts.setOptions({
-    lang: {
-        months: [
-            '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-        ],
-        shortMonths: [
-            '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-        ],
-        weekdays: [
-            '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
-        ],
-        shortWeekdays: [
-            '일','월','화','수','목','금','토'
-        ]
-    }
-});
 
 function stackArray(ary, type){
     if(ary[0]){
@@ -1111,11 +1092,11 @@ function chkDuplArray(ary, obj){
 function loadTable(){
     $('#area-list').empty();
     var perMin = 1;
-    var byTime = "";
+    var byTime = langPack.HTML.TABLE.TICKET_PER_RECV;
     for(var i in objectList){
         if(sw_time){
             perMin = objectList[i].Time / 60;
-            byTime = "시간당 ";
+            byTime = langPack.HTML.TABLE.TICKET_PER_HOUR;
         }
         var td0 = '<td style="text-align: center; vertical-align:middle; display:none;">';
         var td10 = '<td style="text-align: center; vertical-align:middle;" width="10%">';
@@ -1138,11 +1119,11 @@ function loadTable(){
         /*10*/item += td0 + objectList[i].Ticket_fastRepair / perMin + tde;
         /*11*/item += td0 + objectList[i].Ticket_Tokken / perMin + tde;
         /*12*/item += td30;
-        if(objectList[i].Ticket_makeDoll) item      += '<img src="img/doll.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_makeTool) item      += '<img src="img/tool.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_fastMake) item      += '<img src="img/fast.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_fastRepair) item    += '<img src="img/repr.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_fastRepair * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_Tokken) item        += '<img src="img/tokn.png" title="' + byTime + '획득확률: ' + (objectList[i].Ticket_Tokken * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_makeDoll) item      += '<img src="img/doll.png" title="' + byTime + ': ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_makeTool) item      += '<img src="img/tool.png" title="' + byTime + ': ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_fastMake) item      += '<img src="img/fast.png" title="' + byTime + ': ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_fastRepair) item    += '<img src="img/repr.png" title="' + byTime + ': ' + (objectList[i].Ticket_fastRepair * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
+        if(objectList[i].Ticket_Tokken) item        += '<img src="img/tokn.png" title="' + byTime + ': ' + (objectList[i].Ticket_Tokken * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
         item += tde;
         /*13*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
         /*14*/item += td0 + objectList[i].Time + tde;
@@ -1167,9 +1148,11 @@ function loadTable(){
         }
     }
     if(sw_time){
-        document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
+        //document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
+        $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNTIME);
     }else{
-        document.getElementById('btn-toggleTime').innerHTML = "성공시<br>획득";
+        //document.getElementById('btn-toggleTime').innerHTML = "성공시<br>획득";
+        $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNSUCS);
     }
 }
 function callData(){
@@ -1310,11 +1293,16 @@ $('[id^=lang]').on('click', function (e) {
 
     selLang = id.substr(4,6);
 
-    config.lang = setLang;
+    config.lang = selLang;
     localStorage.config = JSON.stringify(config);
+
+    loadLanguage();
 });
 
-function chkLanguage(){
+function loadLanguage(){
+    var text = '{"kr":{"HTML":{"TITLE":"소녀전선 - 군수지원 효율계산 / 추천 시뮬레이터","TABLE":{"RSRC":"자원","AREA":"지역","HUMA":"인력","AMMO":"탄약","FOOD":"식량","PART":"부품","SUM":"합계","SUMRATIO":"인탄식부 1:1:1:2.2 계산","TIME":"시간","BTNSUCS":"성공시<br>획득","BTNTIME":"시간당<br>획득","SELAREA":"선택<br>지역","LOAD":" 불러오기","SAVE":" 저장","COPY":" 클립보드에 복사","TICKET":"계약서","TICKET_DOLL":"인형제조계약서","TICKET_TOOL":"장비제조계약서","TICKET_FAST":"쾌속제조계약서","TICKET_REPR":"쾌속수복계약서","TICKET_TOKN":"구매 토큰","TICKET_PER_HOUR":"시간당 획득률","TICKET_PER_RECV":"성공시 획득률","PER_HOUR":"시간당","PER_RECV":"성공시","TICKET_RATIO":"획득확률","HELP":{"OPEN":"도움말 열기","CLOSE":"도움말 닫기","TIPS":{"TIP1":"1. 자원량 / 계약서 획득량은 표 좌측 하단의 <span id=\\"help_time\\"><a href=\\"#toggleTime\\">시간당 / 성공시 획득 전환 버튼</a></span> 으로 변경 가능","TIP2":"2. 표 상단의 <a href=\\"#\\">자원명</a> <font color=\\"red\\">클릭 시</font>, 오름 / 내림차순 정렬","TIP3":"3. 표의 <a href=\\"#\\">합계</a> 값은 자원비 <font color=\\"red\\">1 : 1 : 1 : 2.2</font> 로 계산","TIP4":"4. 표의 계약서 획득확률은 <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\\" target=\\"_blank\\">철혈시트</a> 기준 추정 <font color=\\"red\\">가중치</font>","TIP5":"5. 하단 예상 그래프는 <a href=\\"#anchor_resource\\">현재자원</a> <font color=\\"red\\">값부터 합산</font>, 미입력시 0부터 계산","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#anchor_resource\\">자동회복</a> 활성화 시 3분당 인탄식부 3:3:3:1 회복</div>","TIP6":"6. <a href=\\"#anchor_success\\">대성공률</a> 적용 시, 자원 및 계약서 획득률을 대성공 기대치로 재계산","TIP7":"7. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> 기능/선택 버튼, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> 켜기/끄기 버튼","TIP8":"8. <a href=\\"#anchor_recommend\\">자동추천</a> 은 입력된 <font color=\\"red\\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천","TIP8a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#anchor_areas\\">지역선택</a>, <a href=\\"#anchor_timeline\\">시간대설정</a>, <a href=\\"#anchor_success\\">대성공률</a>, <a href=\\"#anchor_contract\\">계약서 획득률</a> 모두 반영</div>","TIP8b":"<div style=\\"margin-left:10px;\\">b. <span id=\\"help_wght\\"><a href=\\"#anchor_recommend\\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>"},"SELAREA":"지역선택","RESOURCE":"현재자원","REFILL":"자동회복","SELTIME":"시간대설정","SELTIMEHOUR":"시간","SUCCESS":{"TEXT":"대성공률","SUMLEVEL":"제대 레벨합계","SUCSRATIO":"대성공 확률","BTN_OK":"적용","BTN_NO":"미적용"},"RECOMMEND":{"TITLE":"자동추천","RATIO":{"BTN_RATIO":"내 가중치","CHOICE":{"DAY":{"TITLE":"일일사용량 기반 계산","TEXT":"하루에 사용하는 자원량에 의거한 개인 가중치 계산","TABLE1":"일일사용량 기반 계산 예","TABLE2":"인형제조 범용1식 4회","TABLE3":"장비제조 범용1식 4회","TABLE4":"전역 9회 클리어","TABLE5":"합계 <small>(아래 입력)</small>","TABLE6":"가중치"},"USES":{"TITLE":"최종목표치 기반 계산","TEXT":"목표로 삼은 자원량에서 역산한 개인 가중치 계산","TABLE1":"최종목표량 기반 계산 예","TABLE2":"현재 자원량 <small>(아래 입력)</small>","TABLE3":"목표 자원량 <small>(아래 입력)</small>","TABLE4":"오차","TABLE5":"가중치","TABLEs1":"현재","TABLEs2":"목표"}},"BTN_CALC":"계산","CALC_TEXT":"\'계산\'클릭 시, 가중치 자동입력"},"SUCSRATIO":"획득률","TEXT_PERHOUR1":"시간당 ","TEXT_PERHOUR2":"개 이상","BTN_RCMD":"지역 추천","RESULT":"추천결과","SIMM":"가중치 일치율"}}},"CHART":{"AREA":"지역:","TIME":"기간:","BTN1":"1일","BTN2":"1주","BTN3":"2주","BTN4":"4일","DAY":"일","HOUR":"시","MIN":"분"},"MODAL":{"LOAD":{"TITLE":"저장된 조합 불러오기","AREA":"지역","HELP":"설명"}},"BOTTOM":{"ADDR":"주소: ","SGST":"건의사항: ","OPTI":"이 페이지는 Chrome, FF, Edge에 최적화되어 있습니다."},"INCODE":{"ALERT1":"최종목표치는 현재보다 크거나 같아야 합니다","ALERT2":"검색 결과가 없습니다","ALERT3":"하나 이상의 군수지역을 선택해야 합니다","ALERT4":"클립보드에 아래 내용을 복사하였습니다\\n\\n","SAVE":"저장할 조합의 이름을 입력하세요","DELETE":"지우기"}}},"en":{"HTML":{"TITLE":"Girls\' Frontline Logistic Support Calculator","TABLE":{"RSRC":"Resource","AREA":"Mission","HUMA":"Manpw.","AMMO":"Ammo","FOOD":"Rations","PART":"Parts","SUM":"Total","SUMRATIO":"Multiplier - Man(1):Ammo(1):Ration(1):Part(2)","TIME":"Time","BTNSUCS":"Per<br>Mission","BTNTIME":"Per<br>Hour","SELAREA":"Selected<br>Mission","LOAD":" Load","SAVE":" Save","COPY":" Copy to clipboard","TICKET":"Contracts","TICKET_DOLL":"T-Doll Contract","TICKET_TOOL":"Equipment Production Contract","TICKET_FAST":"Quick Production Contract","TICKET_REPR":"Quick Restoration Contract","TICKET_TOKN":"Token","TICKET_PER_HOUR":"Chance per hour","TICKET_PER_RECV":"Chance per mission","PER_HOUR":"perHour","PER_RECV":"perMission","TICKET_RATIO":"Chance","HELP":{"OPEN":"Open Help","CLOSE":"Close Help","TIPS":{"TIP1":"1. Toggle \'Resource & Contract gain per HOUR or MISSION\' with <span id=\\"help_time\\"><a href=\\"#toggleTime\\">Button left-bottom of the table</a></span>","TIP2":"2. When you click <a href=\\"#\\">Resource Name</a>, ASC / DESC Sort","TIP3":"3. <a href=\\"#\\">Total</a> calculated with <font color=\\"red\\">1x : 1x : 1x : 2.2x</font> multiplier","TIP4":"4. Contract Gain Chance reference: <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\\" target=\\"_blank\\">Sangvis Ferri Sheet</a> <font color=\\"red\\">(Assumption)</font>","TIP5":"5. Graph starts from <a href=\\"#anchor_resource\\">Pre Resource</a> <font color=\\"red\\"></font>, default is 0","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#anchor_resource\\">Auto Resupply</a> add 3 : 3 : 3 : 1 resource per 3 min</div>","TIP6":"6. When you apply <a href=\\"#anchor_success\\">Great Success</a>, recaluculate resource & contracts gain to expectation value","TIP7":"7. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> Function / Select Button, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> On / Off Toggle Button","TIP8":"8. <a href=\\"#anchor_recommend\\">Recommend</a> provides mission combination with <font color=\\"red\\">Resource Weight</font>","TIP8a":"<div style=\\"margin-left:10px;\\">a. Reflect <a href=\\"#anchor_areas\\">Area Selection</a>, <a href=\\"#anchor_timeline\\">Time Periods</a>, <a href=\\"#anchor_success\\">Great Success</a>, <a href=\\"#anchor_contract\\">Contract Chance</a></div>","TIP8b":"<div style=\\"margin-left:10px;\\">b. Calculate personal resource weights with <span id=\\"help_wght\\"><a href=\\"#anchor_recommend\\">My Weights</a></span> </div>"},"SELAREA":"Area Selection","RESOURCE":"Pre Resource","REFILL":"Auto Resupply","SELTIME":"Time Periods","SELTIMEHOUR":"hour","SUCCESS":{"TEXT":"Great Success","SUMLEVEL":"Echelon\'s levelsum","SUCSRATIO":"GS Chance","BTN_OK":"Apply","BTN_NO":"Apply"},"RECOMMEND":{"TITLE":"Recommend","RATIO":{"BTN_RATIO":"My weights","CHOICE":{"DAY":{"TITLE":"Daily Weight","TEXT":"Calculate with day uses","TABLE1":"Example","TABLE2":"T-DOLL Standard Set x 4","TABLE3":"Equipment Standard Set x 4","TABLE4":"Clear 9 Areas","TABLE5":"Sum <small>(input below)</small>","TABLE6":"Weight"},"USES":{"TITLE":"Target Weight","TEXT":"Calculate with target amount","TABLE1":"Example","TABLE2":"Present Resource <small>(input below)</small>","TABLE3":"Goal Resource <small>(input below)</small>","TABLE4":"Difference","TABLE5":"Weight","TABLEs1":"Pre","TABLEs2":"Obj"}},"BTN_CALC":"Calculate","CALC_TEXT":"Click \'Calculate\' to get your own weight"},"SUCSRATIO":"Contracts","TEXT_PERHOUR1":"Over ","TEXT_PERHOUR2":"/h","BTN_RCMD":"Recommend Missions","RESULT":"Results","SIMM":"Weight Similarity"}}},"CHART":{"AREA":"Area:","TIME":"Period:","BTN1":"1D","BTN2":"1W","BTN3":"2W","BTN4":"4W","DAY":"","HOUR":"","MIN":""},"MODAL":{"LOAD":{"TITLE":"Load saved missions","AREA":"Missions","HELP":"Description"}},"BOTTOM":{"ADDR":"Address: ","SGST":"Suggestions: ","OPTI":"This website is optimized for Chrome, FF, Edge"},"INCODE":{"ALERT1":"Goal must bigger than present","ALERT2":"No result","ALERT3":"You muse select at least one mission","ALERT4":"Copy to clipboard\\n\\n","SAVE":"Name your save","DELETE":"Delete"}}}}';
+    langPacks = JSON.parse(text);
+
     if(selLang == undefined){
         var t = window.navigator.userLanguage || window.navigator.language;
         selLang = t.substring(0,2);
@@ -1323,31 +1311,179 @@ function chkLanguage(){
         localStorage.config = JSON.stringify(config);
     }
 
-    //$.getJSON("lang/languages.json", function (data) {
-    $.getJSON("http://tempkaridc.github.io/gf/lang/languages.json", function (langPackage) {
-        switch(selLang){
-            case 'kr':
-                langPack = langPackage.kr;
-                break;
-            case 'en':
-                langPack = langPackage.en;
-                break;
-            default:
-                break;
-        }
-        setLanguage();
-    });
+    switch(selLang){
+        case 'kr':
+            langPack = langPacks.kr;
+            Highcharts.setOptions({
+                lang: {
+                    months: [
+                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
+                    ],
+                    shortMonths: [
+                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
+                    ],
+                    weekdays: [
+                        '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
+                    ],
+                    shortWeekdays: [
+                        '일','월','화','수','목','금','토'
+                    ]
+                }
+            });
+            break;
+        case 'en':
+            langPack = langPacks.en;
+            Highcharts.setOptions({
+                lang: {
+                    months: [
+                        'January','February','March','April','May','June','July','August','September','October','November','December'
+                    ],
+                    shortMonths: [
+                        'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'
+                    ],
+                    weekdays: [
+                        'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
+                    ],
+                    shortWeekdays: [
+                        'Sun.','Mon.','Tue.','Wed.','Thu.','Fri.','Sat.'
+                    ]
+                }
+            });
+            break;
+        default:
+            break;
+    }
+    setLanguage();
 }
 
 function setLanguage(){
-    //console.log(langPack)
+    //langPack <- 언어별 Language Package
+    //document.title = langPack.HTML.TITLE;
+    $('#str_area').text(langPack.HTML.TABLE.AREA);
+    $('#str_huma').text(langPack.HTML.TABLE.HUMA);
+    $('#str_ammo').text(langPack.HTML.TABLE.AMMO);
+    $('#str_food').text(langPack.HTML.TABLE.FOOD);
+    $('#str_part').text(langPack.HTML.TABLE.PART);
+    $('#str_sum').text(langPack.HTML.TABLE.SUM);
+    $('#sort-5').attr('title', langPack.HTML.TABLE.SUMRATIO);
+    $('#str_time').text(langPack.HTML.TABLE.TIME);
+    $('#sort-7').attr('title', langPack.HTML.TABLE.TICKET_DOLL);
+    $('#sort-8').attr('title', langPack.HTML.TABLE.TICKET_TOOL);
+    $('#sort-9').attr('title', langPack.HTML.TABLE.TICKET_FAST);
+    $('#sort-10').attr('title', langPack.HTML.TABLE.TICKET_REPR);
+    $('#sort-11').attr('title', langPack.HTML.TABLE.TICKET_TOKN);
+    $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNTIME);
+    $('#str_selarea').html(langPack.HTML.TABLE.SELAREA);
+    $('#str_load').text(langPack.HTML.TABLE.LOAD);
+    $('#str_save').text(langPack.HTML.TABLE.SAVE);
+    $('#str_copy').text(langPack.HTML.TABLE.COPY);
 
-    //여기서 언어지원 전부 업로드.
+    $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.OPEN);
+    $('#help_01').html(langPack.HTML.TABLE.HELP.TIPS.TIP1);
+    $('#help_02').html(langPack.HTML.TABLE.HELP.TIPS.TIP2);
+    $('#help_03').html(langPack.HTML.TABLE.HELP.TIPS.TIP3);
+    $('#help_04').html(langPack.HTML.TABLE.HELP.TIPS.TIP4);
+    $('#help_05').html(langPack.HTML.TABLE.HELP.TIPS.TIP5);
+    $('#help_05a').html(langPack.HTML.TABLE.HELP.TIPS.TIP5a);
+    $('#help_06').html(langPack.HTML.TABLE.HELP.TIPS.TIP6);
+    $('#help_07').html(langPack.HTML.TABLE.HELP.TIPS.TIP7);
+    $('#help_08').html(langPack.HTML.TABLE.HELP.TIPS.TIP8);
+    $('#help_08a').html(langPack.HTML.TABLE.HELP.TIPS.TIP8a);
+    $('#help_08b').html(langPack.HTML.TABLE.HELP.TIPS.TIP8b);
+
+    $('#str_title_selarea').text(langPack.HTML.TABLE.HELP.SELAREA);
+    $('#str_title_resource').text(langPack.HTML.TABLE.HELP.RESOURCE);
+    $('#str_title_refill').text(langPack.HTML.TABLE.HELP.REFILL);
+    $('#pre_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ': 0');
+    $('#pre_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ': 0');
+    $('#pre_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ': 0');
+    $('#pre_part').attr('placeholder', langPack.HTML.TABLE.PART + ': 0');
+
+    $('#str_title_seltime').text(langPack.HTML.TABLE.HELP.SELTIME);
+    $('#scr-times').html('0 ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR);
+    $('#scr-timee').html('24 ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR);
+    $('#str_success_title').text(langPack.HTML.TABLE.HELP.SUCCESS.TEXT);
+    $('#str_success_sumlevel').text(langPack.HTML.TABLE.HELP.SUCCESS.SUMLEVEL);
+    $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': 60.0%');
+    $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN_NO);
+
+    $('#str_rcmd_title').text(langPack.HTML.TABLE.HELP.RECOMMEND.TITLE);
+    $('#str_rcmd_myratio').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_RATIO);
+    $('#str_rcmd_day_title').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TITLE);
+    $('#str_rcmd_day_text').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TEXT);
+    $('#str_rcmd_day_table1').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE1);
+    $('#str_rcmd_day_table1_huma').text(langPack.HTML.TABLE.HUMA);
+    $('#str_rcmd_day_table1_ammo').text(langPack.HTML.TABLE.AMMO);
+    $('#str_rcmd_day_table1_food').text(langPack.HTML.TABLE.FOOD);
+    $('#str_rcmd_day_table1_part').text(langPack.HTML.TABLE.PART);
+    $('#str_rcmd_day_table2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE2);
+    $('#str_rcmd_day_table3').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE3);
+    $('#str_rcmd_day_table4').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE4);
+    $('#str_rcmd_day_table5').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE5);
+    $('#str_rcmd_day_table6').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE6);
+    $('#use_huma').attr('placeholder', langPack.HTML.TABLE.HUMA);
+    $('#use_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO);
+    $('#use_food').attr('placeholder', langPack.HTML.TABLE.FOOD);
+    $('#use_part').attr('placeholder', langPack.HTML.TABLE.PART);
+    $('#btn_calcUse').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_CALC);
+    $('#str_rcmd_ratio_text').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CALC_TEXT);
+
+    $('#str_rcmd_uses_title').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TITLE);
+    $('#str_rcmd_uses_text').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TEXT);
+    $('#str_rcmd_uses_table1').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE1);
+    $('#str_rcmd_uses_table1_huma').text(langPack.HTML.TABLE.HUMA);
+    $('#str_rcmd_uses_table1_ammo').text(langPack.HTML.TABLE.AMMO);
+    $('#str_rcmd_uses_table1_food').text(langPack.HTML.TABLE.FOOD);
+    $('#str_rcmd_uses_table1_part').text(langPack.HTML.TABLE.PART);
+    $('#str_rcmd_uses_table2').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE2);
+    $('#str_rcmd_uses_table3').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE3);
+    $('#str_rcmd_uses_table4').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE4);
+    $('#str_rcmd_uses_table5').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE5);
+    $('#pre2_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.HUMA);
+    $('#pre2_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.AMMO);
+    $('#pre2_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.FOOD);
+    $('#pre2_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.PART);
+    $('#fin_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.HUMA);
+    $('#fin_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.AMMO);
+    $('#fin_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.FOOD);
+    $('#fin_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.PART);
+    $('#btn_calcUse2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_CALC);
+    $('#str_rcmd_ratio_text2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CALC_TEXT);
+
+    $('#wgt_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ':1');
+    $('#wgt_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ':1.5');
+    $('#wgt_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ':1.5');
+    $('#wgt_part').attr('placeholder', langPack.HTML.TABLE.PART + ':0.6');
+
+    $('#str_rcmd_sucsratio').text(langPack.HTML.TABLE.HELP.RECOMMEND.SUCSRATIO);
+    $('#auto_calc').text(langPack.HTML.TABLE.HELP.RECOMMEND.BTN_RCMD);
+    $('#str_rcmd_result').text(langPack.HTML.TABLE.HELP.RECOMMEND.RESULT);
+    $('#btn-tglT0').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+    $('#btn-tglT1').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+    $('#btn-tglT2').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+    $('#btn-tglT3').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+
+    $('#str_chart_area').text(langPack.HTML.CHART.AREA);
+    $('#str_chart_time').text(langPack.HTML.CHART.TIME);
+    $('#str_chart_btn1').text(langPack.HTML.CHART.BTN1);
+    $('#str_chart_btn2').text(langPack.HTML.CHART.BTN2);
+    $('#str_chart_btn3').text(langPack.HTML.CHART.BTN3);
+    $('#str_chart_btn4').text(langPack.HTML.CHART.BTN4);
+
+    $('#str_modal_load_title').text(langPack.HTML.MODAL.LOAD.TITLE);
+    $('#str_modal_load_area').text(langPack.HTML.MODAL.LOAD.AREA);
+    $('#str_modal_load_desc').text(langPack.HTML.MODAL.LOAD.HELP);
+
+    $('#str_bottom_addr').text(langPack.HTML.BOTTOM.ADDR);
+    $('#str_bottom_sgst').text(langPack.HTML.BOTTOM.SGST);
+    $('#str_bottom_opti').text(langPack.HTML.BOTTOM.OPTI);
 }
 
 function init(){
-    //localStorage.removeItem("saves");
+    //localStorage.removeItem("config");
+
     config = localStorage.config;
+
     if(config === undefined){         //no config cache
         config = new Object();
         config.time = true;
@@ -1367,14 +1503,15 @@ function init(){
             localStorage.config = JSON.stringify(config);
         }
     }
+    loadLanguage();
 
     if(sw_help){
         $('#panel-help').removeClass('hide');
-        $('#text-toggleHelp').text('도움말 닫기');
+        $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.CLOSE);
     }
     else{
         $('#panel-help').addClass('hide');
-        $('#text-toggleHelp').text('도움말 열기');
+        $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.OPEN);
     }
 
     loadSaves();
@@ -1396,10 +1533,10 @@ function init(){
         document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
     }
 
-    document.getElementById("pre_huma").addEventListener("change",function(){highlight(4);calcStage();});
-    document.getElementById("pre_ammo").addEventListener("change",function(){highlight(4);calcStage();});
-    document.getElementById("pre_food").addEventListener("change",function(){highlight(4);calcStage();});
-    document.getElementById("pre_part").addEventListener("change",function(){highlight(4);calcStage();});
+    document.getElementById("pre_huma").addEventListener("change",function(){highlight(5);calcStage();});
+    document.getElementById("pre_ammo").addEventListener("change",function(){highlight(5);calcStage();});
+    document.getElementById("pre_food").addEventListener("change",function(){highlight(5);calcStage();});
+    document.getElementById("pre_part").addEventListener("change",function(){highlight(5);calcStage();});
 
     document.getElementById("sum_level").addEventListener("change",function(){
         var tmp = parseInt(document.getElementById('sum_level').value);
@@ -1410,7 +1547,7 @@ function init(){
             tmp = parseInt(tmp / 5);
             tmp = tmp * 0.45;
             tmp = tmp + 15;
-            $('#per_level').text('대성공 확률: ' + tmp.toFixed(1) + '%');
+            $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + tmp.toFixed(1) + '%');
             success = tmp / 100;
 
             if($('#btn_toggle_sucs').hasClass('btn-success')) $('#btn_toggle_sucs').trigger('click');
