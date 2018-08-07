@@ -32,8 +32,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+            <state relative-caret-position="900">
+              <caret line="1378" column="41" lean-forward="true" selection-start-line="1378" selection-start-column="41" selection-end-line="1378" selection-end-column="41" />
               <folding>
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
@@ -57,6 +57,7 @@
                 <element signature="e#5822#5851#0" expanded="true" />
                 <element signature="e#50633#51027#0" />
                 <element signature="e#51319#51893#0" />
+                <element signature="e#56981#57672#0" />
               </folding>
             </state>
           </provider>
@@ -75,7 +76,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>\</find>
       <find>계산</find>
       <find>&quot;en</find>
       <find>asdf</find>
@@ -105,6 +105,7 @@
       <find>c</find>
       <find>grate</find>
       <find>g</find>
+      <find>loadLange</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -150,11 +151,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="343" />
-    <option name="y" value="169" />
-    <option name="width" value="1559" />
-    <option name="height" value="909" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="21" />
+    <option name="y" value="81" />
+    <option name="width" value="2077" />
+    <option name="height" value="1088" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -298,18 +299,18 @@
       <workItem from="1530622433021" duration="68000" />
       <workItem from="1531462454606" duration="16190000" />
       <workItem from="1531901888448" duration="15516000" />
-      <workItem from="1533624856945" duration="20462000" />
+      <workItem from="1533624856945" duration="21078000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="414409000" />
+    <option name="totallyTimeSpent" value="415025000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="343" y="169" width="1559" height="909" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.09980557" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06015625" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -597,8 +598,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="27" selection-start-line="2" selection-start-column="27" selection-end-line="2" selection-end-column="27" />
+        <state relative-caret-position="900">
+          <caret line="1378" column="41" lean-forward="true" selection-start-line="1378" selection-start-column="41" selection-end-line="1378" selection-end-column="41" />
           <folding>
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
@@ -622,6 +623,7 @@
             <element signature="e#5822#5851#0" expanded="true" />
             <element signature="e#50633#51027#0" />
             <element signature="e#51319#51893#0" />
+            <element signature="e#56981#57672#0" />
           </folding>
         </state>
       </provider>
