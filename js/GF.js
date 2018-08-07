@@ -1351,7 +1351,7 @@ function loadLanguage(){
             });
             break;
         default:
-            langPack = langPacks.en;
+            langPack = langPacks.kr;
             Highcharts.setOptions({
                 lang: {
                     months: [
