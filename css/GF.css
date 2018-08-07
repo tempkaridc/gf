@@ -30,6 +30,17 @@
     .nav-tabs {
         font-size: small;
     }
+
+    .table-fixed {
+        table-layout:fixed;
+    }
+
+    .table-fixed td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+
+    }
 }
 
 .highcharts-title {
