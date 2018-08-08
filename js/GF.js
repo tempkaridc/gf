@@ -36,10 +36,9 @@ var cptStr;
 var config;
 var saves;
 
-var rfshcount = 0;
-
 $(function (){
     init();
+    resizeBoxes();
     refresh();
 })
 .on('click', '.table-clickable', function(e) {
@@ -720,7 +719,7 @@ function loadSaves(){
             localStorage.saves = JSON.stringify(saves);
         }
     }
-    console.log(saves);
+    //console.log(saves);
 
     $('#load-list').empty();
     for(var i in saves){
@@ -1331,25 +1330,7 @@ function refresh(){
 function selectLanguage(){
     selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
     loadLanguage();
-
-    rfshcount++;
-    var date = version + "";
-    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12) + rfshcount;
-    $('#lastUpdate').text(date);
 }
-
-/*
-$('#selectLang').off().change(function () {
-    selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
-    loadLanguage();
-
-
-    rfshcount++;
-    var date = version + "";
-    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12) + rfshcount;
-    $('#lastUpdate').text(date);
-});
-*/
 
 function loadLanguage(){
     switch(selLang){
@@ -1541,6 +1522,26 @@ function setLanguage(){
     $('#str_bottom_opti').text(langPack.HTML.BOTTOM.OPTI);
 }
 
+function resizeBoxes(){
+    var myHeight = 0;
+    var myWidth = window.innerWidth;
+    if( typeof( window.innerWidth ) == 'number' ) {
+        myHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+        myHeight = document.documentElement.clientHeight;
+    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+        myHeight = document.body.clientHeight;
+    }
+
+    if(myWidth <= 991){ //Mobile UI
+        document.getElementById('tbl_mid').style.height = myHeight * 0.60 + 'px';
+        document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
+    }else{              //Desktop UI
+        document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
+        document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
+    }
+}
+
 function init(){
     //localStorage.removeItem("config");
 
@@ -1582,24 +1583,6 @@ function init(){
 
     loadSaves();
 
-    var myHeight = 0;
-    var myWidth = window.innerWidth;
-    if( typeof( window.innerWidth ) == 'number' ) {
-        myHeight = window.innerHeight;
-    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
-        myHeight = document.documentElement.clientHeight;
-    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
-        myHeight = document.body.clientHeight;
-    }
-
-    if(myWidth <= 991){ //Mobile UI
-        document.getElementById('tbl_mid').style.height = myHeight * 0.60 + 'px';
-        document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
-    }else{              //Desktop UI
-        document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
-        document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
-    }
-
     document.getElementById("pre_huma").addEventListener("change",function(){highlight(5);calcStage();});
     document.getElementById("pre_ammo").addEventListener("change",function(){highlight(5);calcStage();});
     document.getElementById("pre_food").addEventListener("change",function(){highlight(5);calcStage();});
@@ -1608,8 +1591,14 @@ function init(){
     document.getElementById("sum_level").addEventListener("change",function(){
         var tmp = parseInt(document.getElementById('sum_level').value);
         if(!isNaN(tmp)){
-            if (tmp < 0) tmp = 0;
-            if (tmp > 600) tmp = 600;
+            if (tmp < 0){
+                tmp = 0;
+                $('#sum_level').val(0);
+            }
+            if (tmp > 600){
+                tmp = 600;
+                $('#sum_level').val(600);
+            }
 
             tmp = parseInt(tmp / 5);
             tmp = tmp * 0.45;
@@ -1623,7 +1612,7 @@ function init(){
     });
 
     var date = version + "";
-    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12) + rfshcount;
+    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12);
     $('#lastUpdate').text(date);
 
     $('#loadModal').modal("hide");
