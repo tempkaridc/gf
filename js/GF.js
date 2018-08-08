@@ -703,13 +703,14 @@ function highlight(id){
 }
 function loadSaves(){
     saves = localStorage.saves;
+
     if(saves === undefined) {         //no config cache
         saves = new Array();
         localStorage.saves = JSON.stringify(saves);
     }else{
         saves = JSON.parse(localStorage.saves);
     }
-    //console.log(saves);
+    console.log(saves);
 
     $('#load-list').empty();
     for(var i in saves){
