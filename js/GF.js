@@ -709,6 +709,14 @@ function loadSaves(){
         localStorage.saves = JSON.stringify(saves);
     }else{
         saves = JSON.parse(localStorage.saves);
+
+        //임시로 이벤트쪽에서 save 섞인 파일 지우는 코드 삽입해둠...
+        if(saves.title == undefined) {
+
+        }else{
+            saves = new Array();
+            localStorage.saves = JSON.stringify(saves);
+        }
     }
     console.log(saves);
 

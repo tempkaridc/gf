@@ -59,10 +59,10 @@ function init(){
 }
 
 function load(){
-    if(JSON.parse(localStorage.saves).title != quests.title){
-        localStorage.removeItem(saves);
+    if(JSON.parse(localStorage.savesEvent).title != quests.title){
+        localStorage.removeItem(savesEvent);
     }else{
-        quests = JSON.parse(localStorage.saves);
+        quests = JSON.parse(localStorage.savesEvent);
     }
 }
 
@@ -278,7 +278,7 @@ function refreshTable(){
     $('#table_week2').append(sum + weekSum2 + '</b></td></tr>');
     $('#table_week3').append(sum + weekSum3 + '</b></td></tr>');
 
-    localStorage.saves = JSON.stringify(quests);
+    localStorage.savesEvent = JSON.stringify(quests);
     //console.log(JSON.parse(localStorage.saves));
 
 }
