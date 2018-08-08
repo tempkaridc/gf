@@ -17,7 +17,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="541">
+            <state relative-caret-position="5145">
               <caret line="345" column="134" selection-start-line="345" selection-start-column="134" selection-end-line="345" selection-end-column="134" />
               <folding>
                 <element signature="n#style#0;n#img#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -51,16 +51,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="529">
-              <caret line="720" column="4" selection-start-line="720" selection-start-column="4" selection-end-line="720" selection-end-column="4" />
-              <folding>
-                <element signature="e#1200#1229#0" expanded="true" />
-                <element signature="e#1707#1736#0" expanded="true" />
-                <element signature="e#1927#1956#0" expanded="true" />
-                <element signature="e#4908#4937#0" expanded="true" />
-                <element signature="e#5539#5568#0" expanded="true" />
-                <element signature="e#5792#5821#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="390">
+              <caret line="1335" column="4" selection-start-line="1335" selection-start-column="4" selection-end-line="1335" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -68,19 +60,8 @@
       <file leaf-file-name="event.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/event.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="269" column="49" lean-forward="true" selection-start-line="269" selection-start-column="49" selection-end-line="269" selection-end-column="49" />
-              <folding>
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="4035">
+              <caret line="269" column="49" selection-start-line="269" selection-start-column="49" selection-end-line="269" selection-end-column="49" />
             </state>
           </provider>
         </entry>
@@ -107,8 +88,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>help_time</find>
-      <find>c</find>
       <find>grate</find>
       <find>g</find>
       <find>loadLange</find>
@@ -124,7 +103,6 @@
       <find>calcStage</find>
       <find>hide</find>
       <find>loadLan</find>
-      <find>loadLanguage</find>
       <find>btn-area</find>
       <find>Chapter</find>
       <find>HOUR</find>
@@ -137,6 +115,9 @@
       <find>area selection</find>
       <find>splice</find>
       <find>saves</find>
+      <find>setLanguage</find>
+      <find>loadLanguage</find>
+      <find>version</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -182,17 +163,18 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="677" />
-    <option name="y" value="58" />
-    <option name="width" value="1270" />
-    <option name="height" value="1022" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="121" />
+    <option name="y" value="121" />
+    <option name="width" value="1869" />
+    <option name="height" value="817" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -219,7 +201,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -337,18 +318,19 @@
       <workItem from="1533705889831" duration="3628000" />
       <workItem from="1533714970911" duration="207000" />
       <workItem from="1533715414848" duration="5331000" />
-      <workItem from="1533722296622" duration="794000" />
+      <workItem from="1533722296622" duration="913000" />
+      <workItem from="1533736414356" duration="707000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="431433000" />
+    <option name="totallyTimeSpent" value="432259000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="677" y="58" width="1270" height="1022" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12280702" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12265625" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -368,22 +350,22 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.057722308" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3295688" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="REST Client" order="10" weight="0.3315565" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.5274841" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -616,7 +598,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
+        <state relative-caret-position="5145">
           <caret line="345" column="134" selection-start-line="345" selection-start-column="134" selection-end-line="345" selection-end-column="134" />
           <folding>
             <element signature="n#style#0;n#img#0;n#td#7;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -639,34 +621,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/event.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="269" column="49" lean-forward="true" selection-start-line="269" selection-start-column="49" selection-end-line="269" selection-end-column="49" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="4035">
+          <caret line="269" column="49" selection-start-line="269" selection-start-column="49" selection-end-line="269" selection-end-column="49" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="720" column="4" selection-start-line="720" selection-start-column="4" selection-end-line="720" selection-end-column="4" />
-          <folding>
-            <element signature="e#1200#1229#0" expanded="true" />
-            <element signature="e#1707#1736#0" expanded="true" />
-            <element signature="e#1927#1956#0" expanded="true" />
-            <element signature="e#4908#4937#0" expanded="true" />
-            <element signature="e#5539#5568#0" expanded="true" />
-            <element signature="e#5792#5821#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="390">
+          <caret line="1335" column="4" selection-start-line="1335" selection-start-column="4" selection-end-line="1335" selection-end-column="4" />
         </state>
       </provider>
     </entry>

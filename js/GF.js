@@ -36,6 +36,8 @@ var cptStr;
 var config;
 var saves;
 
+var rfshcount = 0;
+
 $(function (){
     init();
     refresh();
@@ -1329,6 +1331,12 @@ function refresh(){
 $('#selectLang').off().change(function () {
     selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
     loadLanguage();
+
+
+    rfshcount++;
+    var date = version + "";
+    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12) + rfshcount;
+    $('#lastUpdate').text(date);
 });
 
 function loadLanguage(){
@@ -1603,7 +1611,7 @@ function init(){
     });
 
     var date = version + "";
-    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12);
+    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12) + rfshcount;
     $('#lastUpdate').text(date);
 
     $('#loadModal').modal("hide");
