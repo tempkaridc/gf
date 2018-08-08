@@ -1,4 +1,4 @@
-var version         = 201808081038;         // Version == 최종수정일 시간 분
+var version         = 201808082330;         // Version == 최종수정일 시간 분
 var updateString    = "2018-08-08 Changelog"
                     + "\n- 다국어 지원"
                     + "\n- 그래프 속도 개선"

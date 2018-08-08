@@ -52,8 +52,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="1599" column="41" lean-forward="true" selection-start-line="1599" selection-start-column="41" selection-end-line="1599" selection-end-column="41" />
+            <state>
+              <caret column="34" selection-start-column="34" selection-end-column="34" />
               <folding>
                 <element signature="e#1200#1229#0" expanded="true" />
                 <element signature="e#1707#1736#0" expanded="true" />
@@ -99,7 +99,7 @@
     <findStrings>
       <find>console.lo</find>
       <find>clickRow</find>
-      <find>function clickRow</find>
+      <find />
       <find>btn-rec</find>
       <find>series</find>
       <find>chart_time</find>
@@ -114,8 +114,8 @@
       <find>시간대</find>
       <find>43</find>
       <find>da</find>
-      <find>day use</find>
-      <find>area selection</find>
+      <find />
+      <find />
       <find>splice</find>
       <find>saves</find>
       <find>setLanguage</find>
@@ -172,7 +172,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="121" />
     <option name="y" value="121" />
     <option name="width" value="1869" />
@@ -328,12 +328,12 @@
       <workItem from="1533714970911" duration="207000" />
       <workItem from="1533715414848" duration="5331000" />
       <workItem from="1533722296622" duration="913000" />
-      <workItem from="1533736414356" duration="2172000" />
+      <workItem from="1533736414356" duration="2343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="433724000" />
+    <option name="totallyTimeSpent" value="433895000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
@@ -638,8 +638,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="1599" column="41" lean-forward="true" selection-start-line="1599" selection-start-column="41" selection-end-line="1599" selection-end-column="41" />
+        <state>
+          <caret column="34" selection-start-column="34" selection-end-column="34" />
           <folding>
             <element signature="e#1200#1229#0" expanded="true" />
             <element signature="e#1707#1736#0" expanded="true" />
