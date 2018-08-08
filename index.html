@@ -575,28 +575,28 @@
             <small>
                 <div class="row no-gutter">
                     <div class="col-xs-12">
-                        <!--
-                        <input type="string" class="form-control input-xs" value='<iframe style="display:block; width:100%; height:100%;" src="https://tempkaridc.github.io/gf/"></iframe>' style="padding:0px; height:1.3em; font-size:1.0em; width:80%;">
-                        -->
-                        <!--이 페이지는 Chrome, Firefox, Edge에 최적화되어 있습니다.-->
-                        <span id="str_bottom_opti"></span>
-                    </div>
-                    <div class="col-xs-12">
                         <table>
                             <tbody>
                             <tr>
                                 <td>
                                     Languages:
                                 </td>
-                                <td>
-                                    <div id="langkr" style="margin:0px 2px 0px 2px;"><img src="img/kr.png"></div>
-                                </td>
-                                <td>
-                                    <div id="langen" style="margin:0px 2px 0px 2px;"><img src="img/en.png"></div>
+                                <td style="padding-left:5px;">
+                                    <select id="selectLang">
+                                        <option value="kr" selected>Korean</option>
+                                        <option value="en">English</option>
+                                    </select>
                                 </td>
                             </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-xs-12">
+                        <!--
+                        <input type="string" class="form-control input-xs" value='<iframe style="display:block; width:100%; height:100%;" src="https://tempkaridc.github.io/gf/"></iframe>' style="padding:0px; height:1.3em; font-size:1.0em; width:80%;">
+                        -->
+                        <!--이 페이지는 Chrome, Firefox, Edge에 최적화되어 있습니다.-->
+                        <span id="str_bottom_opti"></span>
                     </div>
                 </div>
             </small>
@@ -604,6 +604,7 @@
     </div>
     <script src="js/highcharts.js"></script>
     <script src="js/highcharts-more.js"></script>
+    <script src="js/highcharts-boost.js"></script>
     <script src="js/jquery-2.2.4.min.js"></script>
     <script src="js/bootstrap.js"></script>
     <script src="js/GF.js"></script>

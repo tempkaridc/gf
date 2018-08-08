@@ -140,7 +140,7 @@
         "FOOD": "Rations",
         "PART": "Parts",
         "SUM": "Total",
-        "SUMRATIO": "Multiplier - Man(1):Ammo(1):Ration(1):Part(2)",
+        "SUMRATIO": "Multiplier - Manpw.(1x) : Ammo(1x) : Rations(1x) : Parts(2x)",
         "TIME": "Time",
         "BTNSUCS": "Per<br>Mission",
         "BTNTIME": "Per<br>Hour",
