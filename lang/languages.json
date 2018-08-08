@@ -48,10 +48,10 @@
           "SELAREA": "지역선택",
           "RESOURCE": "현재자원",
           "REFILL": "자동회복",
-          "SELTIME": "시간대설정",
+          "SELTIME": "시간대",
           "SELTIMEHOUR": "시간",
           "SUCCESS": {
-            "TEXT": "대성공률",
+            "TEXT": "대성공",
             "SUMLEVEL": "제대 레벨합계",
             "SUCSRATIO": "대성공 확률",
             "BTN_OK": "적용",
@@ -172,10 +172,10 @@
             "TIP6": "6. When you apply <a href=\"#anchor_success\">Great Success</a>, recaluculate resource & contracts gain to expectation value",
             "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> Function / Select Button, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> On / Off Toggle Button",
             "TIP8": "8. <a href=\"#anchor_recommend\">Recommend</a> provides mission combination with <font color=\"red\">Resource Weight</font>",
-            "TIP8a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#anchor_areas\">Area Selection</a>, <a href=\"#anchor_timeline\">Time Periods</a>, <a href=\"#anchor_success\">Great Success</a>, <a href=\"#anchor_contract\">Contract Chance</a></div>",
+            "TIP8a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#anchor_areas\">Chapters</a>, <a href=\"#anchor_timeline\">Time Periods</a>, <a href=\"#anchor_success\">Great Success</a>, <a href=\"#anchor_contract\">Contract Chance</a></div>",
             "TIP8b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#anchor_recommend\">My Weights</a></span> </div>"
           },
-          "SELAREA": "Area Selection",
+          "SELAREA": "Chapters",
           "RESOURCE": "Pre Resource",
           "REFILL": "Auto Resupply",
           "SELTIME": "Time Periods",
@@ -194,7 +194,7 @@
               "CHOICE": {
                 "DAY": {
                   "TITLE": "Daily Weight",
-                  "TEXT": "Calculate with day uses",
+                  "TEXT": "Calculate with daily uses",
                   "TABLE1": "Example",
                   "TABLE2": "T-DOLL Standard Set x 4",
                   "TABLE3": "Equipment Standard Set x 4",
