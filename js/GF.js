@@ -1328,6 +1328,17 @@ function refresh(){
     calcStage();
 }
 
+function selectLanguage(){
+    selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
+    loadLanguage();
+
+    rfshcount++;
+    var date = version + "";
+    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12) + rfshcount;
+    $('#lastUpdate').text(date);
+}
+
+/*
 $('#selectLang').off().change(function () {
     selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
     loadLanguage();
@@ -1338,6 +1349,7 @@ $('#selectLang').off().change(function () {
     date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12) + rfshcount;
     $('#lastUpdate').text(date);
 });
+*/
 
 function loadLanguage(){
     switch(selLang){
