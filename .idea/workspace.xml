@@ -39,8 +39,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="676">
-              <caret line="1376" column="4" selection-start-line="1376" selection-start-column="4" selection-end-line="1376" selection-end-column="4" />
+            <state relative-caret-position="512">
+              <caret line="1376" lean-forward="true" selection-start-line="1376" selection-end-line="1376" />
               <folding>
                 <element signature="e#58120#66568#0" />
               </folding>
@@ -145,11 +145,11 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="617" />
-    <option name="y" value="220" />
-    <option name="width" value="1869" />
-    <option name="height" value="817" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="808" />
+    <option name="y" value="112" />
+    <option name="width" value="1270" />
+    <option name="height" value="1022" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -297,18 +297,18 @@
       <workItem from="1533692554823" duration="1755000" />
       <workItem from="1533694936206" duration="49000" />
       <workItem from="1533697704871" duration="147000" />
-      <workItem from="1533705889831" duration="1058000" />
+      <workItem from="1533705889831" duration="2589000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="422531000" />
+    <option name="totallyTimeSpent" value="424062000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
+    <frame x="808" y="112" width="1270" height="1022" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.06015625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12280702" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -594,8 +594,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="1376" column="4" selection-start-line="1376" selection-start-column="4" selection-end-line="1376" selection-end-column="4" />
+        <state relative-caret-position="512">
+          <caret line="1376" lean-forward="true" selection-start-line="1376" selection-end-line="1376" />
           <folding>
             <element signature="e#58120#66568#0" />
           </folding>
