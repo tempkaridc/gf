@@ -1303,12 +1303,6 @@ function refresh(){
     calcStage();
 }
 
-/*
-$('#selectLang').on('click', function (e) {
-    //selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
-    //loadLanguage();
-});
-*/
 $('#selectLang').off().change(function () {
     selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
     loadLanguage();
