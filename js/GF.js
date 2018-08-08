@@ -1526,7 +1526,7 @@ function init(){
         }
     }
 
-    loadLanguage();
+    $('#selectLang').val(selLang).change();
 
     if(sw_help){
         $('#panel-help').removeClass('hide');
