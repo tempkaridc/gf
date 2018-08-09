@@ -4,7 +4,7 @@ var updateString    = "2018-08-08 Changelog"
                     + "\n- 그래프 속도 개선"
                     ;
 
-var selLang;
+var selLang         = "kr";   //혹 모르니 기본값 한글로
 var langPacks;
 var langPack;
 
@@ -1187,10 +1187,10 @@ function loadTable(){
         }
     }
     if(sw_time){
-        //document.getElementById('btn-toggleTime').innerHTML = "시간당<br>획득";
+        //"시간당<br>획득";
         $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNTIME);
     }else{
-        //document.getElementById('btn-toggleTime').innerHTML = "성공시<br>획득";
+        //"성공시<br>획득";
         $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNSUCS);
     }
 }
@@ -1377,16 +1377,16 @@ function loadLanguage(){
             Highcharts.setOptions({
                 lang: {
                     months: [
-                        'January','February','March','April','May','June','July','August','September','October','November','December'
+                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
                     ],
                     shortMonths: [
-                        'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'
+                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
                     ],
                     weekdays: [
-                        'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
+                        '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
                     ],
                     shortWeekdays: [
-                        'Sun.','Mon.','Tue.','Wed.','Thu.','Fri.','Sat.'
+                        '일','월','화','수','목','금','토'
                     ]
                 }
             });
@@ -1520,6 +1520,8 @@ function setLanguage(){
     $('#str_bottom_addr').text(langPack.HTML.BOTTOM.ADDR);
     $('#str_bottom_sgst').text(langPack.HTML.BOTTOM.SGST);
     $('#str_bottom_opti').text(langPack.HTML.BOTTOM.OPTI);
+
+    refresh();
 }
 
 function resizeBoxes(){
