@@ -3609,33 +3609,28 @@ a.btn.disabled, fieldset[disabled] a.btn {
 
 /*CUSTOM BUTTONS*/
 .btn-title{
-    color: #fff;
-    background-color: #656565;
-    border-color: #505050;
+    background-color: #ddd;
+    border-color: #ccc;
 }
 
 .btn-title.focus, .btn-title:focus {
-    color: #fff;
-    background-color: #272727;
-    border-color: #505050;
+    background-color: #bbb;
+    border-color: #ccc;
 }
 
 .btn-title:hover {
-    color: #fff;
-    background-color: #272727;
-    border-color: #505050;
+    background-color: #bbb;
+    border-color: #ccc;
 }
 
 .btn-title.active, .btn-title:active, .open > .dropdown-toggle.btn-title {
-    color: #fff;
-    background-color: #272727;
-    border-color: #505050;
+    background-color: #bbb;
+    border-color: #ccc;
 }
 
 .btn-title.active.focus, .btn-title.active:focus, .btn-title.active:hover, .btn-title:active.focus, .btn-title:active:focus, .btn-title:active:hover, .open > .dropdown-toggle.btn-title.focus, .open > .dropdown-toggle.btn-title:focus, .open > .dropdown-toggle.btn-title:hover {
-    color: #fff;
-    background-color: #272727;
-    border-color: #505050;
+    background-color: #bbb;
+    border-color: #ccc;
 }
 
 .btn-title.active, .btn-title:active, .open > .dropdown-toggle.btn-title {
@@ -3643,13 +3638,13 @@ a.btn.disabled, fieldset[disabled] a.btn {
 }
 
 .btn-title.disabled.focus, .btn-title.disabled:focus, .btn-title.disabled:hover, .btn-title[disabled].focus, .btn-title[disabled]:focus, .btn-title[disabled]:hover, fieldset[disabled] .btn-title.focus, fieldset[disabled] .btn-title:focus, fieldset[disabled] .btn-title:hover {
-    background-color: #656565;
-    border-color: #505050;
+    background-color: #eee;
+    border-color: #ccc;
 }
 
 .btn-title .badge {
-    background-color: #656565;
-    border-color: #505050;
+    background-color: #eee;
+    border-color: #ccc;
 }
 
 /*CUSTOM BUTTONS END*/

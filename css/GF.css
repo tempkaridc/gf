@@ -43,6 +43,10 @@
     }
 }
 
+.tight-input > input{
+    margin-right: 0px;
+}
+
 .highcharts-title {
     fill: #FFFFFF;
 }
