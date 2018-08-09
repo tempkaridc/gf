@@ -1353,6 +1353,7 @@ function loadLanguage(){
                 }
             });
             break;
+        case 'en-US':
         case 'en':
             langPack = langPacks.en;
             Highcharts.setOptions({
@@ -1558,6 +1559,8 @@ function init(){
         config.help = true;
         config.version = version;
         localStorage.config = JSON.stringify(config);
+
+        selLang = navigator.language;
     }else{                      //config cache here
         config = JSON.parse(localStorage.config);
         sw_time = config.time;
@@ -1565,7 +1568,6 @@ function init(){
         selLang = config.lang;
 
         if((config.version === undefined) || (config.version < version)){
-            //$('#panel-notice').removeClass('hide');
             alert(updateString);
             config.version = version;
             localStorage.config = JSON.stringify(config);
