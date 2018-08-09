@@ -1327,8 +1327,8 @@ function refresh(){
     calcStage();
 }
 
-function selectLanguage(){
-    selLang = document.getElementById("selectLang").options[document.getElementById("selectLang").selectedIndex].value;
+function selectLanguage(elem){
+    selLang = elem.value;
     loadLanguage();
 }
 
