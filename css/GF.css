@@ -39,8 +39,11 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: clip;
-
     }
+}
+
+.tight-input > input{
+    margin-right: 0px;
 }
 
 .highcharts-title {
