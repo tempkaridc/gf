@@ -128,8 +128,136 @@
         "DELETE": "지우기"
       }
     }
-  },
-  "en": {
+  }, "ja": {
+    "HTML": {
+      "TITLE": "少女前線 - 後方支援計算機 / 推薦シミュレーター",
+      "TABLE": {
+        "RSRC": "資源",
+        "AREA": "地域",
+        "HUMA": "人力",
+        "AMMO": "弾薬",
+        "FOOD": "配給",
+        "PART": "パーツ",
+        "SUM": "合計",
+        "SUMRATIO": "人力、弾薬、配給は、パーツ 1:1:1:2.2 計算",
+        "TIME": "時間",
+        "BTNSUCS": "成功する時に<br>獲得",
+        "BTNTIME": "時間当たり<br>獲得",
+        "SELAREA": "選択<br>地域",
+        "LOAD": " 設定を適用",
+        "SAVE": " 保存",
+        "COPY": " クリップボードにコピー",
+        "TICKET": "契約",
+        "TICKET_DOLL": "人形製造契約",
+        "TICKET_TOOL": "装備製造契約",
+        "TICKET_FAST": "快速製造",
+        "TICKET_REPR": "快速修復契約",
+        "TICKET_TOKN": "コイン",
+        "TICKET_PER_HOUR": "時間当たりの獲得率",
+        "TICKET_PER_RECV": "成功時の獲得率",
+        "PER_HOUR": "時間当たり",
+        "PER_RECV": "成功市",
+        "TICKET_RATIO": "獲得確率",
+        "HELP": {
+          "OPEN": "ヘルプの熱気",
+          "CLOSE": "ヘルプ閉じる",
+          "TIPS": {
+            "TIP1": "1. 資源量/契約書フェクドゥクリャンは表の左下段の<span id=\"help_time\"><a href=\"#toggleTime\">時間当たり/成功市獲得切り替えボタン</a></span>に変更可能",
+            "TIP2": "2. 表の上段の<a href=\"#\">リソース名</a><font color=\"red\">をくりっくすると、</font>、寄生/降順整列",
+            "TIP3": "3. 表の<a href=\"#\">合計</a>価格は資源費<font color=\"red\">1:1:1:2.2</font>に計算",
+            "TIP4": "4. 表の契約書の獲得確率は<a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\"target=\"_blank\">鉄血シート</a>基準の推定<font color=\"red\">加重値</font>",
+            "TIP5": "5. 下段予想グラフは<a href=\"#anchor_resource\">、現在、資源</a><font color=\"red\">の値から合算</font>、未入力時0から計算",
+            "TIP5a": "<div style=\"margin-left:10px;\">a.<a href=\"#anchor_resource\">自動回復</a>活性化の際3分当たりインタンシクブ3:3:3:1回復</div>",
+            "TIP6": "6. <a href=\"#anchor_success\">大成功率</a>適用すると、資源及び契約書の獲得率を大成功の期待値に再計算",
+            "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 機能/選択ボタン, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> 入/けしのボタン",
+            "TIP8": "8. <a href=\"#anchor_recommend\">自動推薦</a>は入力された<font color=\"red\">加重値の割合の資源の獲得</font>のための軍組合推薦",
+            "TIP8a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_areas\">地域選択</a>, <a href=\"#anchor_timeline\">時間帯設定</a>, <a href=\"#anchor_success\">大成功率</a>, <a href=\"#anchor_contract\">契約書の獲得率</a> すべて反映</div>",
+            "TIP8b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#anchor_recommend\">私の加重値</a></span> ボタンをくりっくすると、個人の加重値計算可能</div>"
+          },
+          "SELAREA": "地域選択",
+          "RESOURCE": "現在、資源",
+          "REFILL": "自動回復",
+          "SELTIME": "時間帯",
+          "SELTIMEHOUR": "時間",
+          "SUCCESS": {
+            "TEXT": "大成功",
+            "SUMLEVEL": "除隊レベル合計",
+            "SUCSRATIO": "大成功確率",
+            "BTN_OK": "適用",
+            "BTN_NO": "未適用"
+          },
+          "RECOMMEND": {
+            "TITLE": "自動おすすめ",
+            "RATIO": {
+              "BTN_RATIO": "私の加重値",
+              "CHOICE": {
+                "DAY": {
+                  "TITLE": "イルイル使用量基盤の計算だ",
+                  "TEXT": "1日に使用する資源量に基づいた個人の加重値計算",
+                  "TABLE1": "イルイル使用量基盤計算例",
+                  "TABLE2": "人形製造汎用1式4回",
+                  "TABLE3": "装備製造汎用1式4回",
+                  "TABLE4": "全域9回クリア",
+                  "TABLE5": "合計<small>(下入力)</small>",
+                  "TABLE6": "加重値"
+                },
+                "USES": {
+                  "TITLE": "最終目標値ベースの計算だ",
+                  "TEXT": "目標にした資源量から逆算した個人の加重値計算",
+                  "TABLE1": "最終目標量基盤計算例",
+                  "TABLE2": "最終目標量基盤現在、資源量<small>(下入力)</small>計算例",
+                  "TABLE3": "目標の資源量<small>(下入力)</small>",
+                  "TABLE4": "誤差",
+                  "TABLE5": "加重値",
+                  "TABLEs1": "現在",
+                  "TABLEs2": "目標"
+                }
+              },
+              "BTN_CALC": "計算",
+              "CALC_TEXT": "'計算'くりっくすると、加重値自動入力"
+            },
+            "SUCSRATIO": "契約書確率",
+            "TEXT_PERHOUR1": "時間当たり",
+            "TEXT_PERHOUR2": "つ以上",
+            "BTN_RCMD": "地域、おすすめ",
+            "RESULT": "抽選結果",
+            "SIMM": "加重値の一致率"
+          }
+        }
+      },
+      "CHART": {
+        "AREA": "地域:",
+        "TIME": "期間:",
+        "BTN1": "1日",
+        "BTN2": "1週間",
+        "BTN3": "2週間",
+        "BTN4": "4週間",
+        "DAY": "日",
+        "HOUR": "時",
+        "MIN": "分"
+      },
+      "MODAL": {
+        "LOAD": {
+          "TITLE": "保存された組合呼ぶこと",
+          "AREA": "地域",
+          "HELP": "説明"
+        }
+      },
+      "BOTTOM": {
+        "ADDR": "住所: ",
+        "SGST": "建議事項: ",
+        "OPTI": "このページはChrome、FF、Edgeに最適化されています。"
+      },
+      "INCODE": {
+        "ALERT1": "最終目標値は現在より大きかったり、同じでなければなりません",
+        "ALERT2": "検索結果がありません",
+        "ALERT3": "一つ以上の軍需地域を選択しなければなりません",
+        "ALERT4": "クリップボードに下記内容をコピーしました\n\n",
+        "SAVE": "保存する組合の名前を入力してください",
+        "DELETE": "を消すこと"
+      }
+    }
+  }, "en": {
     "HTML": {
       "TITLE": "Girls' Frontline Logistic Support Calculator",
       "TABLE": {
