@@ -1611,7 +1611,7 @@ function init(){
     var userLang = window.navigator.userLanguage || window.navigator.language;
 	
     $.getJSON('lang/languages.json', function(data) {
-		var langPacks = data;
+		langPacks = data;
 	});
 
     config = localStorage.config;
