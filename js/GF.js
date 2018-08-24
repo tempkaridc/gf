@@ -1610,10 +1610,16 @@ function init(){
     //localStorage.removeItem("config");
     var userLang = window.navigator.userLanguage || window.navigator.language;
 	
+	$.ajaxSetup({
+		async: false
+	});
     $.getJSON('lang/languages.json', function(data) {
 		langPacks = data;
 	});
-
+	$.ajaxSetup({
+		async: true
+	});
+	
     config = localStorage.config;
 
     if(config === undefined){         //no config cache
