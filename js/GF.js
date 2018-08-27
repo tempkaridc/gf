@@ -168,7 +168,8 @@ function btn_toggleMenu(btn){
         menuToggle[idx] = 0;
     }
 
-    console.log(menuToggle);
+    disp_summary();
+    //console.log(menuToggle);
 
     config.menu = menuToggle;
     localStorage.config = JSON.stringify(config);
@@ -1363,6 +1364,7 @@ function refresh(){
     callData();
     loadTable();
     calcStage();
+    disp_summary();
 }
 
 function selectLanguage(elem){
@@ -1372,7 +1374,7 @@ function selectLanguage(elem){
 
 function loadLanguage(){
     switch(selLang){
-        case 'ko-KR':
+        case 'ko-kr':
         case 'ko':
             langPack = langPacks.ko;
             Highcharts.setOptions({
@@ -1392,7 +1394,8 @@ function loadLanguage(){
                 }
             });
             break;
-        case 'en-US':
+        case 'en-us':
+        case 'en-gb':
         case 'en':
             langPack = langPacks.en;
             Highcharts.setOptions({
@@ -1412,6 +1415,9 @@ function loadLanguage(){
                 }
             });
             break;
+        //case 'ja':
+        //case 'ja-jp':
+        //    break;
         default:
             langPack = langPacks.ko;
             Highcharts.setOptions({
@@ -1566,6 +1572,81 @@ function setLanguage(){
     refresh();
 }
 
+function disp_summary(){
+    for(var t = 0; t < menuToggle.length; t++){
+        if(menuToggle[t] == 1){
+            $('#summ_' + t).html("");
+            continue;
+        }
+
+        var stext = "";
+        switch(t){
+            case 0:
+                var cont = false;
+                for(var i = 0; i < areaToggle.length; i++){
+                    if(areaToggle[i] == 0){
+                        continue;
+                    }else{
+                        if(i == areaToggle.length - 1){
+                            stext += i + ", ";
+                        }
+                        else if(areaToggle[i+1] == 0){
+                            stext += i + ", ";
+                            cont = false;
+                        }
+                        else if(areaToggle[i+1] == 1){
+                            if(cont == false){
+                                stext += i + "-";
+                                cont = true;
+                            }
+                        }
+                    }
+                }
+                stext = stext.slice(0,-2)
+                break;
+            case 1:
+                stext = timeToggle[time_front] + " - " + timeToggle[time_end] + ' ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR;
+                break;
+            case 2:
+                var ary = new Array();
+                ary.push(parseInt(document.getElementById('pre_huma').value));
+                ary.push(parseInt(document.getElementById('pre_ammo').value));
+                ary.push(parseInt(document.getElementById('pre_food').value));
+                ary.push(parseInt(document.getElementById('pre_part').value));
+
+                for(var j in ary){
+                    if(isNaN(ary[j])) {
+                        ary[j] = 0;
+                    }
+                    stext += ary[j] +', ';
+                }
+                stext = stext.slice(0,-2)
+                if(sw_recovery) stext += ' + ' + langPack.HTML.TABLE.HELP.REFILL;
+                break;
+            case 3:
+                if(sw_sucs){
+                    var tmp = parseInt(document.getElementById('sum_level').value);
+                    if(!isNaN(tmp)){
+                        if (tmp < 0){tmp = 0;}
+                        else if (tmp > 600){tmp = 600;}
+                    }else{tmp = 500;}
+                    tmp = parseInt(tmp / 5);
+                    tmp = tmp * 0.45;
+                    tmp = tmp + 15;
+                    stext = tmp.toFixed(1) + '%';
+                }else{
+                    stext = '0%';
+                }
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+        $('#summ_' + t).html(stext);
+    }
+}
+
 function resizeBoxes(){
     var myHeight = 0;
     var myWidth = window.innerWidth;
@@ -1667,7 +1748,7 @@ function init(){
         $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + tmp.toFixed(1) + '%');
         success = tmp / 100;
 
-        if($('#btn_toggle_sucs').hasClass('btn-default')) $('#btn_toggle_sucs').trigger('click');
+        if($('#btn_toggle_sucs').hasClass('btn-success')) $('#btn_toggle_sucs').trigger('click');
 
     });
 
