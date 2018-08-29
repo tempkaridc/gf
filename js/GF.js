@@ -1,10 +1,9 @@
-var version         = 201808082330;         // Version == 최종수정일 시간 분
-var updateString    = "2018-08-08 Changelog"
-                    + "\n- 다국어 지원"
-                    + "\n- 그래프 속도 개선"
+var version         = 201808291330;         // Version == 최종수정일 시간 분
+var updateString    = "2018-08-29 Changelog"
+                    + "\n- PC/Mobile 속도 개선"
                     ;
 
-var selLang         = "ko";   //혹 모르니 기본값 한글로
+var selLang         = "ko-kr";   //혹 모르니 기본값 한글로
 var langPacks;
 var langPack;
 
@@ -29,6 +28,9 @@ var sw_zero         = true;     // 자원량 0 표기여부
 var sw_time         = true;     // 표 자원 시간당 표기 적용여부
 var sw_help         = true;     // 도움말 보기 적용여부
 var sw_drawChart    = true;     // 차트 드로잉 갱신여부
+var sw_drawReserved = false;    // 차트 드로잉 예약여부
+
+var drawTimer;
 
 var chart;
 var chart_time = new Array();
@@ -812,15 +814,16 @@ function clickRow(index){
         $(rowName).addClass('danger');
         selectedList.push(index);
 
+        //selectedList.sort(function(a, b){return parseInt(a) - parseInt(b)});
+        //지울때 큐순서로 지워지게 하는 기능 보완 없으면 못바꿔
+
         if(selectedList.length > 4){ //Stack Full
             $('#table-row-' + selectedList[0]).removeClass('danger');
             selectedList.splice(0,1);
         }
     }
-
-    if(sw_drawChart){
-        calcStage();
-    }
+    //console.log('chartshown:' + sw_chartshown + ' mobile:' + sw_mobile);
+    calcStage();
 }
 function clone(obj) {
     if (obj === null || typeof(obj) !== 'object')
@@ -884,11 +887,6 @@ function calcStage(){
     var sumT = "", sumItem = "", sumTime = "";
     var sumHp = 0, sumAp = 0, sumFp = 0, sumPp = 0, sumTp = 0;
     var perMin;
-    var aryH = new Array();
-    var aryA = new Array();
-    var aryF = new Array();
-    var aryP = new Array();
-    now = (new Date).getTime() + (9 * 60 * 60 * 1000); // GMT+9
 
     for(i in selectedList){
         if(sw_time){
@@ -911,8 +909,70 @@ function calcStage(){
         if(objectList[selectedList[i]].Ticket_fastMake) sumFp += objectList[selectedList[i]].Ticket_fastMake / perMin;
         if(objectList[selectedList[i]].Ticket_fastRepair) sumPp += objectList[selectedList[i]].Ticket_fastRepair / perMin;
         if(objectList[selectedList[i]].Ticket_Tokken) sumTp += objectList[selectedList[i]].Ticket_Tokken / perMin;
+    }
 
+    $('#sumH').text(sumH.toFixed(0));
+    $('#sumA').text(sumA.toFixed(0));
+    $('#sumF').text(sumF.toFixed(0));
+    $('#sumP').text(sumP.toFixed(0));
+    $('#sumAll').text(sumAll.toFixed(0));
+    $('#sumT').text(sumT.slice(0,-2));
+
+    var timeTitle = langPack.HTML.TABLE.TICKET_PER_HOUR;
+    if(!sw_time){
+        timeTitle = langPack.HTML.TABLE.TICKET_PER_RECV;
+    }
+    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '" style="height:1.7em"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
+    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '" style="height:1.7em"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
+    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '" style="height:1.7em"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
+    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '" style="height:1.7em"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
+    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '" style="height:1.7em"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
+
+    $('#sumItem').empty();
+    $('#sumItem').append(sumItem);
+
+    var orTime = langPack.HTML.TABLE.PER_RECV;
+    if(sw_time){
+        orTime = langPack.HTML.TABLE.PER_HOUR;
+    }
+
+    cptStr = langPack.HTML.TABLE.AREA + ': ' + sumT.slice(0,-2) + '　\n';
+    cptStr += langPack.HTML.TABLE.TIME + ': ' + sumTime.slice(0,-2) + '　\n';
+    cptStr += langPack.HTML.TABLE.RSRC + '(' + orTime + '): '
+            + langPack.HTML.TABLE.HUMA + '[' + sumH.toFixed(0) + '] '
+            + langPack.HTML.TABLE.AMMO + '[' + sumA.toFixed(0) + '] '
+            + langPack.HTML.TABLE.FOOD + '[' + sumF.toFixed(0) + '] '
+            + langPack.HTML.TABLE.PART + '[' + sumP.toFixed(0) + ']　\n'
+            + langPack.HTML.TABLE.TICKET + '(' + orTime + '): ';
+    if(sumHp){cptStr += langPack.HTML.TABLE.TICKET_DOLL + '[' + (sumHp).toFixed(2) + '] ';}
+    if(sumAp){cptStr += langPack.HTML.TABLE.TICKET_TOOL + '[' + (sumAp).toFixed(2) + '] ';}
+    if(sumFp){cptStr += langPack.HTML.TABLE.TICKET_FAST + '[' + (sumFp).toFixed(2) + '] ';}
+    if(sumPp){cptStr += langPack.HTML.TABLE.TICKET_REPR + '[' + (sumPp).toFixed(2) + '] ';}
+    if(sumTp){cptStr += langPack.HTML.TABLE.TICKET_TOKN + '[' + (sumTp).toFixed(2) + '] ';}
+
+    //연속입력시 2초안에 입력시 갱신시점 1초뒤로 재갱신,
+    if(sw_drawReserved) clearTimeout(drawTimer);
+
+    drawTimer = setTimeout(function(){drawStage()}, 1000);
+    sw_drawReserved = true;
+}
+
+function drawStage(){
+    var sumT = "";
+    var aryH = new Array();
+    var aryA = new Array();
+    var aryF = new Array();
+    var aryP = new Array();
+
+    //Mobile Chart Drawing Junction
+    if(!sw_drawChart) return;
+
+    now = (new Date).getTime() + (9 * 60 * 60 * 1000); // GMT+9
+
+    for(i in selectedList){
         var maxTimeRange = 60 * 24 * 30; //60min * 24hours * 30days
+
+        sumT += objectList[selectedList[i]].Area + '-' + objectList[selectedList[i]].Stage + ', ';
 
         //3분에 인탄식 3회복 & 3분에 부품 1회복
         if(sw_recovery){
@@ -963,44 +1023,6 @@ function calcStage(){
             chkDuplArray(aryP,tmp);
         }
     }
-    $('#sumH').text(sumH.toFixed(0));
-    $('#sumA').text(sumA.toFixed(0));
-    $('#sumF').text(sumF.toFixed(0));
-    $('#sumP').text(sumP.toFixed(0));
-    $('#sumAll').text(sumAll.toFixed(0));
-    $('#sumT').text(sumT.slice(0,-2));
-
-    var timeTitle = langPack.HTML.TABLE.TICKET_PER_HOUR;
-    if(!sw_time){
-        timeTitle = langPack.HTML.TABLE.TICKET_PER_RECV;
-    }
-    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '" style="height:1.7em"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
-    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '" style="height:1.7em"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
-    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '" style="height:1.7em"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
-    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '" style="height:1.7em"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
-    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '" style="height:1.7em"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
-
-    $('#sumItem').empty();
-    $('#sumItem').append(sumItem);
-
-    var orTime = langPack.HTML.TABLE.PER_RECV;
-    if(sw_time){
-        orTime = langPack.HTML.TABLE.PER_HOUR;
-    }
-
-    cptStr = langPack.HTML.TABLE.AREA + ': ' + sumT.slice(0,-2) + '　\n';
-    cptStr += langPack.HTML.TABLE.TIME + ': ' + sumTime.slice(0,-2) + '　\n';
-    cptStr += langPack.HTML.TABLE.RSRC + '(' + orTime + '): '
-            + langPack.HTML.TABLE.HUMA + '[' + sumH.toFixed(0) + '] '
-            + langPack.HTML.TABLE.AMMO + '[' + sumA.toFixed(0) + '] '
-            + langPack.HTML.TABLE.FOOD + '[' + sumF.toFixed(0) + '] '
-            + langPack.HTML.TABLE.PART + '[' + sumP.toFixed(0) + ']　\n'
-            + langPack.HTML.TABLE.TICKET + '(' + orTime + '): ';
-    if(sumHp){cptStr += langPack.HTML.TABLE.TICKET_DOLL + '[' + (sumHp).toFixed(2) + '] ';}
-    if(sumAp){cptStr += langPack.HTML.TABLE.TICKET_TOOL + '[' + (sumAp).toFixed(2) + '] ';}
-    if(sumFp){cptStr += langPack.HTML.TABLE.TICKET_FAST + '[' + (sumFp).toFixed(2) + '] ';}
-    if(sumPp){cptStr += langPack.HTML.TABLE.TICKET_REPR + '[' + (sumPp).toFixed(2) + '] ';}
-    if(sumTp){cptStr += langPack.HTML.TABLE.TICKET_TOKN + '[' + (sumTp).toFixed(2) + '] ';}
 
     chart_time = new Array();
 
@@ -1047,10 +1069,10 @@ function calcStage(){
         xAxis: {
             type: 'datetime',
             crosshair: {
-              enabled: true,
-              format:{
-                  value: "%b %d, %Y"
-              }
+                enabled: true,
+                format:{
+                    value: "%b %d, %Y"
+                }
             },
             title: {
                 text: null
@@ -1096,6 +1118,7 @@ function calcStage(){
     }
     $('#btn-rangeSelector-0').removeClass('btn-default');
     $('#btn-rangeSelector-0').addClass('btn-success');
+
     if(sumT.slice(0,-2) == ""){
         $('#text-graphTitle').text("　");
     }else{
@@ -1661,10 +1684,28 @@ function resizeBoxes(){
     if(myWidth <= 991){ //Mobile UI
         document.getElementById('tbl_mid').style.height = myHeight * 0.60 + 'px';
         document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
+        sw_drawChart = false;
+        chkScroll();
     }else{              //Desktop UI
         document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
         document.getElementById('tbl_cht').style.height = myHeight * 0.30 + 'px';
+        sw_drawChart = true;
     }
+}
+
+$(window).scroll(function() {
+    chkScroll();
+});
+
+function chkScroll(){
+    var scrollBottom = $(this).scrollTop() + window.innerHeight;
+
+    if(scrollBottom > $('#tbl_cht').offset().top){
+        if(sw_drawChart == false){
+            sw_drawChart = true;
+            drawStage();
+        }
+    }else{sw_drawChart = false;}
 }
 
 function init(){

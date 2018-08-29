@@ -308,18 +308,19 @@
                     </div>
                     <div id="tbl_mid">
                         <div id="tbl_mid2" style="height:100%; overflow-x:hidden; overflow-y: scroll;">
-                            <table class="table table-striped table-condensed"
-                                   style="table-layout: fixed; margin-bottom: 0px; height:100%;">
+                            <table class="table table-striped table-condensed" style="table-layout: fixed; margin-bottom: 0px; height:100%;">
                                 <tbody id="area-list"></tbody>
                             </table>
                         </div>
                     </div>
                     <div id="tbl_bot">
-                        <table class="table table-condensed" style="margin-bottom: 0px;">
+                        <table class="table table-condensed table-fixed" style="margin-bottom: 0px;">
                             <tbody>
                             <tr class="success">
                                 <td rowspan="2" width="10%" style="padding:0px;">
-                                    <div id="btn-toggleTime" class="btn btn-xs btn-font-responsive" style="width:100%; height:100%;
+                                    <div id="btn-toggleTime" class="btn btn-xs btn-font-responsive" style="
+                                                    display:block;
+                                                    width:90%; height:90%;
                                                     margin:3px; border-color:darkgreen;
                                                     padding-top:10px; padding-bottom:10px; padding-left:0px; padding-right:0px;"></span></div>
                                 </td>
@@ -329,7 +330,12 @@
                                 <td class="text-center" width="10%"><b><span id="sumP"></span></b></td>
                                 <td class="text-center" width="10%"><b><span id="sumAll"></span></b></td>
                                 <td rowspan="2" class="text-center" width="10%">
-                                    <small><span id="str_selarea"></span></small>
+                                    <small style="display: block;">
+                                        <span id="str_selarea" style="
+                                                display: block;
+                                                width:100%;
+                                        "></span>
+                                    </small>
                                 </td>
                                 <td class="text-center" width="30%"><span id="sumItem"></span></td>
                             </tr>
