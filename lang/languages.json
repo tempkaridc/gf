@@ -260,5 +260,136 @@
         "DELETE": "Delete"
       }
     }
+  },
+  "ja": {
+    "HTML": {
+      "TITLE": "ドールフロ - 後方支援 効率計算 / 推選 シミュレータ",
+      "TABLE": {
+        "RSRC": "資源",
+        "AREA": "戦役",
+        "HUMA": "人力",
+        "AMMO": "弾薬",
+        "FOOD": "配給",
+        "PART": "パーツ",
+        "SUM": "合算",
+        "SUMRATIO": "人弾配パ 1:1:1:2.2 計算",
+        "TIME": "時間",
+        "BTNSUCS": "成功時<br>獲得",
+        "BTNTIME": "時間当たり<br>獲得",
+        "SELAREA": "選択<br>戦役",
+        "LOAD": " ロード",
+        "SAVE": " セーブ",
+        "COPY": " クリップボードに複写",
+        "TICKET": "契約",
+        "TICKET_DOLL": "人形製造契約",
+        "TICKET_TOOL": "装備製造契約",
+        "TICKET_FAST": "快速製造契約",
+        "TICKET_REPR": "快速修復契約",
+        "TICKET_TOKN": "購買トークン",
+        "TICKET_PER_HOUR": "時間当たり獲得率",
+        "TICKET_PER_RECV": "成功時獲得率",
+        "PER_HOUR": "時間当たり",
+        "PER_RECV": "成功時",
+        "TICKET_RATIO": "獲得率",
+        "HELP": {
+          "OPEN": "ヘルプを開く",
+          "CLOSE": "ヘルプを閉じる",
+          "TIPS": {
+            "TIP1": "1. 資源量 / 契約獲得量は表左側下段の <span id=\"help_time\"><a href=\"#toggleTime\">時間当たり / 成功時獲得転換ボタン</a></span> で転換可能",
+            "TIP2": "2. 表上段の <a href=\"#\">資源</a> <font color=\"red\">クリック時</font>, 昇順 / 降順整列",
+            "TIP3": "3. 表の <a href=\"#\">合計</a> は資源比 <font color=\"red\">1 : 1 : 1 : 2.2</font> で計算",
+            "TIP4": "4. 表の契約獲得率は <a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls Frontline\" target=\"_blank\">鉄血シート</a> 基準推定 <font color=\"red\">重み付け</font>",
+            "TIP5": "5. 下段予想グラフは <a href=\"#anchor_resource\">現在資源</a> <font color=\"red\">量から合算</font>, 入力なしと０から計算",
+            "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_resource\">自動回復</a> 活性化時3分当たり人弾配パ3:3:3:1回復</div>",
+            "TIP6": "6. <a href=\"#anchor_success\">大成功率</a> 適用時資源及び契約獲得率は大成功期待値で再計算",
+            "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 機能/選択ボタン, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> オン・オフボタン",
+            "TIP8": "8. <a href=\"#anchor_recommend\">自動推選</a> は入力された <font color=\"red\">重み付け比率の資源獲得</font>ための配置推選",
+            "TIP8a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_areas\">戦役選択</a>, <a href=\"#anchor_timeline\">時間帯設定</a>, <a href=\"#anchor_success\">大成功率</a>, <a href=\"#anchor_contract\">契約獲得率</a> 全て反映</div>",
+            "TIP8b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#anchor_recommend\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>",
+            "TIP8c": "<div style=\"margin-left:10px;\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"
+          },
+          "SELAREA": "戦役選択",
+          "RESOURCE": "現在資源",
+          "REFILL": "自動回復",
+          "SELTIME": "時間帯設定",
+          "SELTIMEHOUR": "時間",
+          "SUCCESS": {
+            "TEXT": "大成功率",
+            "SUMLEVEL": "梯隊レベル合計",
+            "SUCSRATIO": "大成功率",
+            "BTN_OK": "適用",
+            "BTN_NO": "適用なし"
+          },
+          "RECOMMEND": {
+            "TITLE": "自動推選",
+            "RATIO": {
+              "BTN_RATIO": "私の重み付け",
+              "CHOICE": {
+                "DAY": {
+                  "TITLE": "一日使用量で計算",
+                  "TEXT": "一日に使用する資源量を基盤とする個人重み付け計算",
+                  "TABLE1": "一日使用量で計算例",
+                  "TABLE2": "人形製造汎用式4回",
+                  "TABLE3": "装備製造汎用式4回",
+                  "TABLE4": "戦役9回クリア",
+                  "TABLE5": "合計 <small>(下に入力)</small>",
+                  "TABLE6": "重み付け"
+                },
+                "USES": {
+                  "TITLE": "最終目標値で計算",
+                  "TEXT": "目標とした資源量から逆算した個人重み付け計算",
+                  "TABLE1": "最終目標値で計算例",
+                  "TABLE2": "現在資源量 <small>(下に入力)</small>",
+                  "TABLE3": "目標資源量 <small>(下に入力)</small>",
+                  "TABLE4": "誤差",
+                  "TABLE5": "重み付け",
+                  "TABLEs1": "現在",
+                  "TABLEs2": "目標"
+                }
+              },
+              "BTN_CALC": "計算",
+              "CALC_TEXT": "'計算'クリック時、重み付け自動入力"
+            },
+            "SUCSRATIO": "獲得率",
+            "TEXT_PERHOUR1": "時間当たり",
+            "TEXT_PERHOUR2": "個以上",
+            "BTN_RCMD": "戦役推選",
+            "RESULT": "推選結果",
+            "SIMM": "重み付け一致率"
+          }
+        }
+      },
+      "CHART": {
+        "AREA": "戦役:",
+        "TIME": "期間:",
+        "BTN1": "1日",
+        "BTN2": "1週",
+        "BTN3": "2週",
+        "BTN4": "4日",
+        "DAY": "日",
+        "HOUR": "時",
+        "MIN": "分"
+      },
+      "MODAL": {
+        "LOAD": {
+          "TITLE": "セーブされた配置ロード",
+          "AREA": "戦役",
+          "HELP": "ヘルプ"
+        }
+      },
+      "BOTTOM": {
+        "ADDR": "アドレス: ",
+        "SGST": "建議事項: ",
+        "OPTI": "このページはChrome、FF、Edgeに最適化されています。"
+      },
+      "INCODE": {
+        "ALERT1": "最終目標値は現在より大きいか同じでなければなりません。",
+        "ALERT2": "検索結果が有りません。",
+        "ALERT3": "一つ以上の支援を選択してください。",
+        "ALERT4": "クリップボードに下の内容を複写しました。",
+        "SAVE": "セーブする配置の名前を入力してください。",
+        "DELETE": "デリート"
+      }
+    }
   }
 }
