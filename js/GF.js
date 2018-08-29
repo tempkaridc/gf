@@ -1398,7 +1398,6 @@ function selectLanguage(elem){
 
 function loadLanguage(){
     switch(selLang){
-        case 'ko-kr':
         case 'ko':
             langPack = langPacks.ko;
             Highcharts.setOptions({
@@ -1418,8 +1417,6 @@ function loadLanguage(){
                 }
             });
             break;
-        case 'en-us':
-        case 'en-gb':
         case 'en':
             langPack = langPacks.en;
             Highcharts.setOptions({
@@ -1440,7 +1437,6 @@ function loadLanguage(){
             });
             break;
         case 'ja':
-        case 'ja-jp':
             langPack = langPacks.ja;
             Highcharts.setOptions({
                 lang: {
@@ -1479,7 +1475,6 @@ function loadLanguage(){
             });
             break;
     }
-
     config.lang = selLang;
     localStorage.config = JSON.stringify(config);
 
