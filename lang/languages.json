@@ -43,7 +43,8 @@
             "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 기능/선택 버튼, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> 켜기/끄기 버튼",
             "TIP8": "8. <a href=\"#anchor_recommend\">자동추천</a> 은 입력된 <font color=\"red\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천",
             "TIP8a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_areas\">지역선택</a>, <a href=\"#anchor_timeline\">시간대설정</a>, <a href=\"#anchor_success\">대성공률</a>, <a href=\"#anchor_contract\">계약서 획득률</a> 모두 반영</div>",
-            "TIP8b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#anchor_recommend\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>"
+            "TIP8b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#anchor_recommend\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>",
+            "TIP8c": "<div style=\"margin-left:10px;\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"
           },
           "SELAREA": "지역선택",
           "RESOURCE": "현재자원",
@@ -91,7 +92,7 @@
             "TEXT_PERHOUR1": "시간당 ",
             "TEXT_PERHOUR2": "개 이상",
             "BTN_RCMD": "지역 추천",
-            "RESULT": "추천결과",
+            "RESULT": "추천조합",
             "SIMM": "가중치 일치율"
           }
         }
@@ -173,7 +174,8 @@
             "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> Function / Select Button, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> On / Off Toggle Button",
             "TIP8": "8. <a href=\"#anchor_recommend\">Recommend</a> provides mission combination with <font color=\"red\">Resource Weight</font>",
             "TIP8a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#anchor_areas\">Chapters</a>, <a href=\"#anchor_timeline\">Time Periods</a>, <a href=\"#anchor_success\">Great Success</a>, <a href=\"#anchor_contract\">Contract Chance</a></div>",
-            "TIP8b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#anchor_recommend\">Calc weights</a></span> </div>"
+            "TIP8b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#anchor_recommend\">Calc weights</a></span> </div>",
+            "TIP8c": "<div style=\"margin-left:10px;\">c. Result % means similarity between input ratio & result</div>"
           },
           "SELAREA": "Chapters",
           "RESOURCE": "Pre Resources",
