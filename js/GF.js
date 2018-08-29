@@ -1445,16 +1445,16 @@ function loadLanguage(){
             Highcharts.setOptions({
                 lang: {
                     months: [
-                        'January','February','March','April','May','June','July','August','September','October','November','December'
+                        '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
                     ],
                     shortMonths: [
-                        'Jan.','Feb.','Mar.','Apr.','May','Jun.','Jul.','Aug.','Sep.','Oct.','Nov.','Dec.'
+                        '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
                     ],
                     weekdays: [
-                        'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
+                        '日','月','火','水','木','金','土'
                     ],
                     shortWeekdays: [
-                        'Sun.','Mon.','Tue.','Wed.','Thu.','Fri.','Sat.'
+                        '日','月','火','水','木','金','土'
                     ]
                 }
             });
@@ -1464,16 +1464,16 @@ function loadLanguage(){
             Highcharts.setOptions({
                 lang: {
                     months: [
-                        '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
+                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
                     ],
                     shortMonths: [
-                        '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
+                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
                     ],
                     weekdays: [
-                        '日','月','火','水','木','金','土'
+                        '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
                     ],
                     shortWeekdays: [
-                        '日','月','火','水','木','金','土'
+                        '일','월','화','수','목','금','토'
                     ]
                 }
             });
