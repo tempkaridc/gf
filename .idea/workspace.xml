@@ -17,7 +17,7 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
+            <state relative-caret-position="11505">
               <caret line="1100" column="53" selection-start-line="1100" selection-start-column="53" selection-end-line="1100" selection-end-column="53" />
               <folding>
                 <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -108,8 +108,8 @@
       <file leaf-file-name="highcharts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/highcharts.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="1606" column="10" lean-forward="true" selection-start-line="1606" selection-start-column="10" selection-end-line="1606" selection-end-column="10" />
+            <state relative-caret-position="24000">
+              <caret line="1606" column="10" selection-start-line="1606" selection-start-column="10" selection-end-line="1606" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -117,8 +117,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="1427" column="94" selection-start-line="1427" selection-start-column="94" selection-end-line="1427" selection-end-column="94" />
+            <state relative-caret-position="603">
+              <caret line="1726" column="10820" selection-start-line="1726" selection-start-column="10820" selection-end-line="1726" selection-end-column="10820" />
               <folding>
                 <element signature="e#1200#1229#0" expanded="true" />
                 <element signature="e#1707#1736#0" expanded="true" />
@@ -140,8 +140,8 @@
       <file leaf-file-name="languages.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lang/languages.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="263" column="5" selection-start-line="263" selection-start-column="5" selection-end-line="263" selection-end-column="5" />
+            <state relative-caret-position="412">
+              <caret line="367" column="19" selection-start-line="367" selection-start-column="19" selection-end-line="367" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -159,10 +159,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>resize</find>
-      <find>calcStage();</find>
-      <find>sw_drawChart</find>
-      <find>console.log</find>
       <find>function calcStage</find>
       <find>on</find>
       <find>resizeBoxes</find>
@@ -189,6 +185,10 @@
       <find>'ko'</find>
       <find>jp</find>
       <find>Thu</find>
+      <find>switch-devtools</find>
+      <find>-&gt;</find>
+      <find>=&gt;</find>
+      <find>=&gt;ddddddddddddd</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -225,8 +225,8 @@
         <option value="$PROJECT_DIR$/css/GF.css" />
         <option value="$PROJECT_DIR$/js/event.js" />
         <option value="$PROJECT_DIR$/event.html" />
-        <option value="$PROJECT_DIR$/lang/languages.json" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/lang/languages.json" />
         <option value="$PROJECT_DIR$/js/GF.js" />
       </list>
     </option>
@@ -240,9 +240,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="-7" />
-    <option name="width" value="1294" />
+    <option name="width" value="1614" />
     <option name="height" value="1087" />
   </component>
   <component name="ProjectView">
@@ -250,7 +250,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,6 +276,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -410,18 +410,19 @@
       <workItem from="1535512598414" duration="5809000" />
       <workItem from="1535518715097" duration="282000" />
       <workItem from="1535519827722" duration="1044000" />
-      <workItem from="1535549049316" duration="1706000" />
+      <workItem from="1535549049316" duration="4160000" />
+      <workItem from="1535602960384" duration="30000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="477331000" />
+    <option name="totallyTimeSpent" value="479815000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
+    <frame x="-7" y="0" width="1294" height="1087" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12265625" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2456964" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -441,22 +442,22 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.057722308" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3295688" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="REST Client" order="10" weight="0.3315565" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.5274841" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -644,17 +645,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="831">
           <caret line="301" column="3" lean-forward="true" selection-start-line="301" selection-start-column="3" selection-end-line="301" selection-end-column="3" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -662,17 +652,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="58" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="58" />
-          <folding>
-            <element signature="n#style#0;n#label#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#label#0;n#td#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lang/languages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="263" column="5" selection-start-line="263" selection-start-column="5" selection-end-line="263" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -692,14 +671,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/highcharts.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="1606" column="10" lean-forward="true" selection-start-line="1606" selection-start-column="10" selection-end-line="1606" selection-end-column="10" />
+        <state relative-caret-position="24000">
+          <caret line="1606" column="10" selection-start-line="1606" selection-start-column="10" selection-end-line="1606" selection-end-column="10" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
+        <state relative-caret-position="11505">
           <caret line="1100" column="53" selection-start-line="1100" selection-start-column="53" selection-end-line="1100" selection-end-column="53" />
           <folding>
             <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
@@ -786,10 +765,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lang/languages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="367" column="19" selection-start-line="367" selection-start-column="19" selection-end-line="367" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="1427" column="94" selection-start-line="1427" selection-start-column="94" selection-end-line="1427" selection-end-column="94" />
+        <state relative-caret-position="603">
+          <caret line="1726" column="10820" selection-start-line="1726" selection-start-column="10820" selection-end-line="1726" selection-end-column="10820" />
           <folding>
             <element signature="e#1200#1229#0" expanded="true" />
             <element signature="e#1707#1736#0" expanded="true" />
