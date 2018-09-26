@@ -890,11 +890,16 @@ function calcStage(){
     var perMin;
 
     for(i in selectedList){
+
+        //일괄적으로 시간당 표기 형태로 변경하도록 한다.
+        perMin = objectList[selectedList[i]].Time / 60;
+        /*
         if(sw_time){
             perMin = objectList[selectedList[i]].Time / 60;
         }else{
             perMin = 1;
         }
+        */
 
         sumH += objectList[selectedList[i]].Human / perMin;
         sumA += objectList[selectedList[i]].Ammo / perMin;
@@ -919,10 +924,13 @@ function calcStage(){
     $('#sumAll').text(sumAll.toFixed(0));
     $('#sumT').text(sumT.slice(0,-2));
 
+    //일괄적으로 시간당 표기 형태로 변경하도록 한다.
     var timeTitle = langPack.HTML.TABLE.TICKET_PER_HOUR;
+    /*
     if(!sw_time){
         timeTitle = langPack.HTML.TABLE.TICKET_PER_RECV;
     }
+    */
     if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '" style="height:1.7em"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
     if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '" style="height:1.7em"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
     if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '" style="height:1.7em"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
@@ -932,10 +940,14 @@ function calcStage(){
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
 
+    //일괄적으로 시간당 표기 형태로 변경하도록 한다.
+    var orTime = langPack.HTML.TABLE.PER_HOUR;
+    /*
     var orTime = langPack.HTML.TABLE.PER_RECV;
     if(sw_time){
         orTime = langPack.HTML.TABLE.PER_HOUR;
     }
+    */
 
     cptStr = langPack.HTML.TABLE.AREA + ': ' + sumT.slice(0,-2) + '　\n';
     cptStr += langPack.HTML.TABLE.TIME + ': ' + sumTime.slice(0,-2) + '　\n';
