@@ -49,3 +49,11 @@
 .highcharts-title {
     fill: #FFFFFF;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
