@@ -1731,7 +1731,7 @@ function calcSuccessRatio(){
     success = sucsrate / 100;
     if(success > 1){success = 1;}
 
-    return tmp;
+    return sucsrate;
 }
 
 function resizeBoxes(){

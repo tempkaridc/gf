@@ -14,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="539">
@@ -31,11 +31,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
+            <state relative-caret-position="644">
+              <caret line="1733" column="19" selection-start-line="1733" selection-start-column="19" selection-end-line="1733" selection-end-column="19" />
               <folding>
                 <element signature="e#1200#1229#0" expanded="true" />
                 <element signature="e#1707#1736#0" expanded="true" />
@@ -95,9 +95,7 @@
       <find>Date</find>
       <find>toggle_sucs</find>
       <find>sum_level</find>
-      <find>calcSuccessRatio</find>
       <find>per_level</find>
-      <find>summ_</find>
       <find>logis</find>
       <find>successEvent</find>
       <find>title</find>
@@ -115,6 +113,8 @@
       <find>sucs</find>
       <find>successEve</find>
       <find>toggletime</find>
+      <find>summ_</find>
+      <find>calcSuccessRatio</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -153,8 +153,8 @@
         <option value="$PROJECT_DIR$/event.html" />
         <option value="$PROJECT_DIR$/css/GF.css" />
         <option value="$PROJECT_DIR$/lang/languages.json" />
-        <option value="$PROJECT_DIR$/js/GF.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/GF.js" />
       </list>
     </option>
   </component>
@@ -356,12 +356,12 @@
       <workItem from="1539226671456" duration="3267000" />
       <workItem from="1539327209397" duration="916000" />
       <workItem from="1539332727025" duration="713000" />
-      <workItem from="1539485289431" duration="3184000" />
+      <workItem from="1539485289431" duration="3892000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="513672000" />
+    <option name="totallyTimeSpent" value="514380000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
@@ -619,27 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="60" selection-start-line="3" selection-start-column="60" selection-end-line="3" selection-end-column="60" />
-          <folding>
-            <element signature="e#1200#1229#0" expanded="true" />
-            <element signature="e#1707#1736#0" expanded="true" />
-            <element signature="e#1930#1959#0" expanded="true" />
-            <element signature="e#2080#2109#0" expanded="true" />
-            <element signature="e#5059#5088#0" expanded="true" />
-            <element signature="e#5690#5719#0" expanded="true" />
-            <element signature="e#5943#5972#0" expanded="true" />
-            <element signature="e#6120#6149#0" expanded="true" />
-            <element signature="e#9047#9076#0" expanded="true" />
-            <element signature="e#9535#9564#0" expanded="true" />
-            <element signature="e#9755#9784#0" expanded="true" />
-            <element signature="e#9904#9933#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/GF.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -658,6 +637,27 @@
             <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#1;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#button#2;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="644">
+          <caret line="1733" column="19" selection-start-line="1733" selection-start-column="19" selection-end-line="1733" selection-end-column="19" />
+          <folding>
+            <element signature="e#1200#1229#0" expanded="true" />
+            <element signature="e#1707#1736#0" expanded="true" />
+            <element signature="e#1930#1959#0" expanded="true" />
+            <element signature="e#2080#2109#0" expanded="true" />
+            <element signature="e#5059#5088#0" expanded="true" />
+            <element signature="e#5690#5719#0" expanded="true" />
+            <element signature="e#5943#5972#0" expanded="true" />
+            <element signature="e#6120#6149#0" expanded="true" />
+            <element signature="e#9047#9076#0" expanded="true" />
+            <element signature="e#9535#9564#0" expanded="true" />
+            <element signature="e#9755#9784#0" expanded="true" />
+            <element signature="e#9904#9933#0" expanded="true" />
           </folding>
         </state>
       </provider>
