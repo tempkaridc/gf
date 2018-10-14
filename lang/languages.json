@@ -126,7 +126,9 @@
         "ALERT3": "하나 이상의 군수지역을 선택해야 합니다",
         "ALERT4": "클립보드에 아래 내용을 복사하였습니다\n\n",
         "SAVE": "저장할 조합의 이름을 입력하세요",
-        "DELETE": "지우기"
+        "DELETE": "지우기",
+        "EVENT": "군수지원 대성공 확률 UP 이벤트",
+        "EVENTBTN": "확률UP"
       }
     }
   },
@@ -257,7 +259,9 @@
         "ALERT3": "You muse select at least one mission",
         "ALERT4": "Copy to clipboard\n\n",
         "SAVE": "Name your save",
-        "DELETE": "Delete"
+        "DELETE": "Delete",
+        "EVENT": "Great Success rate-up event",
+        "EVENTBTN": "Rate-UP"
       }
     }
   },
@@ -388,7 +392,9 @@
         "ALERT3": "一つ以上の支援を選択してください。",
         "ALERT4": "クリップボードに下の内容を複写しました。",
         "SAVE": "セーブする配置の名前を入力してください。",
-        "DELETE": "デリート"
+        "DELETE": "デリート",
+        "EVENT": "後方支援大成功確率UP",
+        "EVENTBTN": "確率UP"
       }
     }
   }

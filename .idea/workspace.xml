@@ -17,10 +17,14 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state>
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#1;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#2;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -29,21 +33,20 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="1173" column="22" selection-start-line="1173" selection-start-column="22" selection-end-line="1173" selection-end-column="22" />
+            <state>
               <folding>
                 <element signature="e#1200#1229#0" expanded="true" />
                 <element signature="e#1707#1736#0" expanded="true" />
                 <element signature="e#1930#1959#0" expanded="true" />
                 <element signature="e#2080#2109#0" expanded="true" />
-                <element signature="e#5012#5041#0" expanded="true" />
-                <element signature="e#5643#5672#0" expanded="true" />
-                <element signature="e#5896#5925#0" expanded="true" />
-                <element signature="e#6073#6102#0" expanded="true" />
-                <element signature="e#8941#8970#0" expanded="true" />
-                <element signature="e#9429#9458#0" expanded="true" />
-                <element signature="e#9649#9678#0" expanded="true" />
-                <element signature="e#9798#9827#0" expanded="true" />
+                <element signature="e#5059#5088#0" expanded="true" />
+                <element signature="e#5690#5719#0" expanded="true" />
+                <element signature="e#5943#5972#0" expanded="true" />
+                <element signature="e#6120#6149#0" expanded="true" />
+                <element signature="e#9047#9076#0" expanded="true" />
+                <element signature="e#9535#9564#0" expanded="true" />
+                <element signature="e#9755#9784#0" expanded="true" />
+                <element signature="e#9904#9933#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,8 +55,8 @@
       <file leaf-file-name="languages.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lang/languages.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5505">
-              <caret line="367" column="19" selection-start-line="367" selection-start-column="19" selection-end-line="367" selection-end-column="19" />
+            <state relative-caret-position="480">
+              <caret line="363" column="9" lean-forward="true" selection-start-line="363" selection-start-column="9" selection-end-line="363" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -61,8 +64,8 @@
       <file leaf-file-name="GF.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/GF.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="52" selection-start-line="52" selection-end-line="52" />
+            <state relative-caret-position="90">
+              <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -80,36 +83,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.text</find>
+      <find>success</find>
+      <find>summ_3</find>
+      <find />
+      <find>supportev</find>
+      <find>calcSucess</find>
+      <find>calcSta</find>
+      <find>calcsuc</find>
+      <find>init</find>
+      <find />
+      <find>supportEvent</find>
+      <find>Date</find>
+      <find>toggle_sucs</find>
+      <find>sum_level</find>
+      <find>calcSuccessRatio</find>
+      <find>per_level</find>
+      <find>summ_</find>
+      <find>logis</find>
+      <find>successEvent</find>
+      <find>title</find>
+      <find>btn_toggle_sucs</find>
+      <find>event</find>
+      <find>ali</find>
+      <find>chart_time</find>
+      <find>now</find>
+      <find>highchart</find>
       <find>click</find>
       <find>btn_toggleMenu</find>
-      <find>language</find>
-      <find>border</find>
-      <find>onchange</find>
-      <find>SUM</find>
-      <find>%</find>
-      <find>str_selarea</find>
-      <find>sumItem</find>
-      <find>시간당 획득률</find>
-      <find>TICKET_PER_HOUR</find>
-      <find>btn-toggle</find>
-      <find>table-condensed</find>
-      <find>thisEvent</find>
-      <find>LOAD</find>
-      <find>area</find>
-      <find>span</find>
-      <find>function loadSaves</find>
-      <find>clickRow</find>
-      <find>saves</find>
-      <find>load</find>
-      <find>select</find>
-      <find>load-list</find>
-      <find>clickable3</find>
-      <find>function ini</find>
-      <find>sw_time</find>
-      <find>tbl_cht</find>
-      <find>시간당</find>
-      <find>일괄</find>
+      <find />
+      <find>+30</find>
+      <find>console.log</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -146,8 +149,8 @@
         <option value="$PROJECT_DIR$/css/bootstrap.min.css" />
         <option value="$PROJECT_DIR$/js/event.js" />
         <option value="$PROJECT_DIR$/event.html" />
-        <option value="$PROJECT_DIR$/lang/languages.json" />
         <option value="$PROJECT_DIR$/css/GF.css" />
+        <option value="$PROJECT_DIR$/lang/languages.json" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/GF.js" />
       </list>
@@ -162,9 +165,9 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="1" />
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="160" />
+    <option name="y" value="15" />
     <option name="width" value="1546" />
     <option name="height" value="868" />
   </component>
@@ -345,18 +348,24 @@
       <workItem from="1537963782396" duration="1338000" />
       <workItem from="1538008612966" duration="4000" />
       <workItem from="1538100253775" duration="4843000" />
-      <workItem from="1538443453810" duration="960000" />
+      <workItem from="1538443453810" duration="4614000" />
+      <workItem from="1539153640292" duration="2677000" />
+      <workItem from="1539220071345" duration="2566000" />
+      <workItem from="1539226671456" duration="3267000" />
+      <workItem from="1539327209397" duration="916000" />
+      <workItem from="1539332727025" duration="713000" />
+      <workItem from="1539485289431" duration="571000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="496695000" />
+    <option name="totallyTimeSpent" value="511059000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="1" width="1546" height="868" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16470589" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0984375" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -580,13 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lang/languages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5505">
-          <caret line="367" column="19" selection-start-line="367" selection-start-column="19" selection-end-line="367" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/highcharts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24000">
@@ -610,38 +612,48 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/GF.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="780">
-          <caret line="52" selection-start-line="52" selection-end-line="52" />
+        <state relative-caret-position="90">
+          <caret line="6" column="39" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lang/languages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="363" column="9" lean-forward="true" selection-start-line="363" selection-start-column="9" selection-end-line="363" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state>
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#1;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#2;n#div#1;n#div#0;n#td#0;n#tr#2;n#table#4;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="1173" column="22" selection-start-line="1173" selection-start-column="22" selection-end-line="1173" selection-end-column="22" />
+        <state>
           <folding>
             <element signature="e#1200#1229#0" expanded="true" />
             <element signature="e#1707#1736#0" expanded="true" />
             <element signature="e#1930#1959#0" expanded="true" />
             <element signature="e#2080#2109#0" expanded="true" />
-            <element signature="e#5012#5041#0" expanded="true" />
-            <element signature="e#5643#5672#0" expanded="true" />
-            <element signature="e#5896#5925#0" expanded="true" />
-            <element signature="e#6073#6102#0" expanded="true" />
-            <element signature="e#8941#8970#0" expanded="true" />
-            <element signature="e#9429#9458#0" expanded="true" />
-            <element signature="e#9649#9678#0" expanded="true" />
-            <element signature="e#9798#9827#0" expanded="true" />
+            <element signature="e#5059#5088#0" expanded="true" />
+            <element signature="e#5690#5719#0" expanded="true" />
+            <element signature="e#5943#5972#0" expanded="true" />
+            <element signature="e#6120#6149#0" expanded="true" />
+            <element signature="e#9047#9076#0" expanded="true" />
+            <element signature="e#9535#9564#0" expanded="true" />
+            <element signature="e#9755#9784#0" expanded="true" />
+            <element signature="e#9904#9933#0" expanded="true" />
           </folding>
         </state>
       </provider>
