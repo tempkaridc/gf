@@ -1,7 +1,7 @@
-var version         = 201810141200;         // Version == 최종수정일 시간 분
+var version         = 201810141300;         // Version == 최종수정일 시간 분
 var updateString    = "2018-10-14 Changelog"
-                    + "\n- 군수 확업 이벤트 버튼 추가 (확률+30%)"
-                    + "\n- Add Logistic Support Event Button (+30%)"
+                    + "\n- 군수 확업 이벤트 버튼 추가"
+                    + "\n- Add Logistic Support Event Button"
                     ;
 
 
@@ -1718,17 +1718,18 @@ function calcSuccessRatio(){
         $('#sum_level').val(tmp);
     }else{tmp = 500;}
 
-    tmp = parseInt(tmp / 5);
-    tmp = tmp * 0.45;
-    tmp = tmp + 15;
-    if(successEvent){tmp = tmp + 30;}
+    var sucsrate = parseInt((parseInt(tmp / 5) * 0.45) + 15);
+    var sucsrateEvent = parseInt((parseInt(tmp / 5) * 0.15) + 15);
 
-    var successText = langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + tmp.toFixed(1) + '%';
-    if(successEvent){successText += ' (+30%)';}
+    if(!successEvent){
+        $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + sucsrate + '%');
+    }else{
+        sucsrate += sucsrateEvent;
+        $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + sucsrate + '%' + ' (+' + sucsrateEvent + '%)');
+    }
 
-
-    $('#per_level').text(successText);
-    success = tmp / 100;
+    success = sucsrate / 100;
+    if(success > 1){success = 1;}
 
     return tmp;
 }
