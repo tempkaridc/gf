@@ -33,18 +33,19 @@
           "OPEN": "도움말 열기",
           "CLOSE": "도움말 닫기",
           "TIPS": {
-            "TIP1": "1. 자원량 / 계약서 획득량은 표 좌측 하단의 <span id=\"help_time\"><a href=\"#toggleTime\">시간당 / 성공시 획득 전환 버튼</a></span> 으로 변경 가능",
+            "TIP1": "1. 자원량 / 계약서 획득량은 표 좌측 하단의 <span id=\"help_time\"><a href=\"#\">시간당 / 성공시 획득 전환 버튼</a></span> 으로 변경 가능",
             "TIP2": "2. 표 상단의 <a href=\"#\">자원명</a> <font color=\"red\">클릭 시</font>, 오름 / 내림차순 정렬",
             "TIP3": "3. 표의 <a href=\"#\">합계</a> 값은 자원비 <font color=\"red\">1 : 1 : 1 : 2.2</font> 로 계산",
             "TIP4": "4. 표의 계약서 획득확률은 <a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\" target=\"_blank\">철혈시트</a> 기준 추정 <font color=\"red\">가중치</font>",
-            "TIP5": "5. 하단 예상 그래프는 <a href=\"#anchor_resource\">현재자원</a> <font color=\"red\">값부터 합산</font>, 미입력시 0부터 계산",
-            "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_resource\">자동회복</a> 활성화 시 3분당 인탄식부 3:3:3:1 회복</div>",
-            "TIP6": "6. <a href=\"#anchor_success\">대성공률</a> 적용 시, 자원 및 계약서 획득률을 대성공 기대치로 재계산",
-            "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 기능/선택 버튼, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> 켜기/끄기 버튼",
-            "TIP8": "8. <a href=\"#anchor_recommend\">자동추천</a> 은 입력된 <font color=\"red\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천",
-            "TIP8a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_areas\">지역선택</a>, <a href=\"#anchor_timeline\">시간대설정</a>, <a href=\"#anchor_success\">대성공률</a>, <a href=\"#anchor_contract\">계약서 획득률</a> 모두 반영</div>",
-            "TIP8b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#anchor_recommend\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>",
-            "TIP8c": "<div style=\"margin-left:10px;\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"
+            "TIP5": "5. 하단 예상 그래프는 <a href=\"#\">현재자원</a> <font color=\"red\">값부터 합산</font>, 미입력시 0부터 계산",
+            "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">자동회복</a> 활성화 시 3분당 인탄식부 3:3:3:1 회복</div>",
+            "TIP6": "6. <a href=\"#\">대성공률</a> 적용 시, 자원 및 계약서 획득률을 대성공 기대치로 재계산",
+            "TIP7": "7. <a href=\"#\">확인주기</a> 적용 시, 모든 군수의 시간을 주기의 배수로 변경",
+            "TIP8": "8. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 기능/선택 버튼, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> 켜기/끄기 버튼",
+            "TIP9": "9. <a href=\"#\">자동추천</a> 은 입력된 <font color=\"red\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천",
+            "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">지역선택</a>, <a href=\"#\">시간대설정</a>, <a href=\"#\">대성공률</a>, <a href=\"#\">계약서 획득률</a> 모두 반영</div>",
+            "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>",
+            "TIP9c": "<div style=\"margin-left:10px;\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"
           },
           "SELAREA": "지역선택",
           "RESOURCE": "현재자원",
@@ -57,6 +58,10 @@
             "SUCSRATIO": "대성공 확률",
             "BTN_OK": "적용",
             "BTN_NO": "미적용"
+          },
+          "INTERVAL":{
+            "TEXT": "확인주기",
+            "BTN": "적용"
           },
           "RECOMMEND": {
             "TITLE": "자동추천",
@@ -170,14 +175,15 @@
             "TIP2": "2. When you click <a href=\"#\">Resource Name</a>, ASC / DESC Sort",
             "TIP3": "3. <a href=\"#\">Total</a> calculated with <font color=\"red\">1x : 1x : 1x : 2.2x</font> multiplier",
             "TIP4": "4. Contract Gain Chance reference: <a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\" target=\"_blank\">Sangvis Ferri Sheet</a> <font color=\"red\">(Assumption)</font>",
-            "TIP5": "5. Graph starts from <a href=\"#anchor_resource\">Pre Resources</a> <font color=\"red\"></font>, default is 0",
-            "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_resource\">Auto Resupply</a> add 3 : 3 : 3 : 1 resource per 3 min</div>",
-            "TIP6": "6. When you apply <a href=\"#anchor_success\">Great Success</a>, recaluculate resource & contracts gain to expectation value",
-            "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> Function / Select Button, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> On / Off Toggle Button",
-            "TIP8": "8. <a href=\"#anchor_recommend\">Recommend</a> provides mission combination with <font color=\"red\">Resource Weight</font>",
-            "TIP8a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#anchor_areas\">Chapters</a>, <a href=\"#anchor_timeline\">Time Periods</a>, <a href=\"#anchor_success\">Great Success</a>, <a href=\"#anchor_contract\">Contract Chance</a></div>",
-            "TIP8b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#anchor_recommend\">Calc weights</a></span> </div>",
-            "TIP8c": "<div style=\"margin-left:10px;\">c. Result % means similarity between input ratio & result</div>"
+            "TIP5": "5. Graph starts from <a href=\"#\">Pre Resources</a> <font color=\"red\"></font>, default is 0",
+            "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">Auto Resupply</a> add 3 : 3 : 3 : 1 resource per 3 min</div>",
+            "TIP6": "6. When you apply <a href=\"#\">Great Success</a>, recaluculate resource & contracts gain to expectation value",
+            "TIP7": "7. When you apply <a href=\"#\">Check Cycle</a>, recalculate every time to multiple of cycle time",
+            "TIP8": "8. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> Function / Select Button, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> On / Off Toggle Button",
+            "TIP9": "9. <a href=\"#\">Recommend</a> provides mission combination with <font color=\"red\">Resource Weight</font>",
+            "TIP9a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#\">Chapters</a>, <a href=\"#\">Time Periods</a>, <a href=\"#\">Great Success</a>, <a href=\"#\">Contract Chance</a></div>",
+            "TIP9b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#\">Calc weights</a></span> </div>",
+            "TIP9c": "<div style=\"margin-left:10px;\">c. Result % means similarity between input ratio & result</div>"
           },
           "SELAREA": "Chapters",
           "RESOURCE": "Pre Resources",
@@ -190,6 +196,10 @@
             "SUCSRATIO": "GS Chance",
             "BTN_OK": "Apply",
             "BTN_NO": "Apply"
+          },
+          "INTERVAL":{
+            "TEXT": "Check Cycle",
+            "BTN": "Apply"
           },
           "RECOMMEND": {
             "TITLE": "Recommend",
@@ -303,14 +313,15 @@
             "TIP2": "2. 表上段の <a href=\"#\">資源</a> <font color=\"red\">クリック時</font>, 昇順 / 降順整列",
             "TIP3": "3. 表の <a href=\"#\">合計</a> は資源比 <font color=\"red\">1 : 1 : 1 : 2.2</font> で計算",
             "TIP4": "4. 表の契約獲得率は <a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls Frontline\" target=\"_blank\">鉄血シート</a> 基準推定 <font color=\"red\">重み付け</font>",
-            "TIP5": "5. 下段予想グラフは <a href=\"#anchor_resource\">現在資源</a> <font color=\"red\">量から合算</font>, 入力なしと０から計算",
-            "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_resource\">自動回復</a> 活性化時3分当たり人弾配パ3:3:3:1回復</div>",
-            "TIP6": "6. <a href=\"#anchor_success\">大成功率</a> 適用時資源及び契約獲得率は大成功期待値で再計算",
-            "TIP7": "7. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 機能/選択ボタン, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> オン・オフボタン",
-            "TIP8": "8. <a href=\"#anchor_recommend\">自動推選</a> は入力された <font color=\"red\">重み付け比率の資源獲得</font>ための配置推選",
-            "TIP8a": "<div style=\"margin-left:10px;\">a. <a href=\"#anchor_areas\">戦役選択</a>, <a href=\"#anchor_timeline\">時間帯設定</a>, <a href=\"#anchor_success\">大成功率</a>, <a href=\"#anchor_contract\">契約獲得率</a> 全て反映</div>",
-            "TIP8b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#anchor_recommend\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>",
-            "TIP8c": "<div style=\"margin-left:10px;\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"
+            "TIP5": "5. 下段予想グラフは <a href=\"#\">現在資源</a> <font color=\"red\">量から合算</font>, 入力なしと０から計算",
+            "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">自動回復</a> 活性化時3分当たり人弾配パ3:3:3:1回復</div>",
+            "TIP6": "6. <a href=\"#\">大成功率</a> 適用時資源及び契約獲得率は大成功期待値で再計算",
+            "TIP7": "7. <a href=\"#\">確認サイクル</a> 適用時全後方支援の時間を確認サイクルの倍数で再計算",
+            "TIP8": "8. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 機能/選択ボタン, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> オン・オフボタン",
+            "TIP9": "9. <a href=\"#\">自動推選</a> は入力された <font color=\"red\">重み付け比率の資源獲得</font>ための配置推選",
+            "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">戦役選択</a>, <a href=\"#\">時間帯設定</a>, <a href=\"#\">大成功率</a>, <a href=\"#\">契約獲得率</a> 全て反映</div>",
+            "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>",
+            "TIP9c": "<div style=\"margin-left:10px;\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"
           },
           "SELAREA": "戦役選択",
           "RESOURCE": "現在資源",
@@ -323,6 +334,10 @@
             "SUCSRATIO": "大成功率",
             "BTN_OK": "適用",
             "BTN_NO": "適用なし"
+          },
+          "INTERVAL":{
+            "TEXT": "確認サイクル",
+            "BTN": "適用"
           },
           "RECOMMEND": {
             "TITLE": "自動推選",
