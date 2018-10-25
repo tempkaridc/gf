@@ -10,7 +10,7 @@
         "FOOD": "식량",
         "PART": "부품",
         "SUM": "합계",
-        "SUMRATIO": "인탄식부 1:1:1:2.2 계산",
+        "SUMRATIO": "자원 합계비> ",
         "TIME": "시간",
         "BTNSUCS": "성공시<br>획득",
         "BTNTIME": "시간당<br>획득",
@@ -35,7 +35,7 @@
           "TIPS": {
             "TIP1": "1. 자원량 / 계약서 획득량은 표 좌측 하단의 <span id=\"help_time\"><a href=\"#\">시간당 / 성공시 획득 전환 버튼</a></span> 으로 변경 가능",
             "TIP2": "2. 표 상단의 <a href=\"#\">자원명</a> <font color=\"red\">클릭 시</font>, 오름 / 내림차순 정렬",
-            "TIP3": "3. 표의 <a href=\"#\">합계</a> 값은 자원비 <font color=\"red\">1 : 1 : 1 : 2.2</font> 로 계산",
+            "TIP3": "3. 표의 <a href=\"#\">합계</a> 값은 <font color=\"red\">자원 합계비</font>에 따라 계산. 기본값 1:1:1:2.2",
             "TIP4": "4. 표의 계약서 획득확률은 <a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\" target=\"_blank\">철혈시트</a> 기준 추정 <font color=\"red\">가중치</font>",
             "TIP5": "5. 하단 예상 그래프는 <a href=\"#\">현재자원</a> <font color=\"red\">값부터 합산</font>, 미입력시 0부터 계산",
             "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">자동회복</a> 활성화 시 3분당 인탄식부 3:3:3:1 회복</div>",
@@ -52,6 +52,10 @@
           "REFILL": "자동회복",
           "SELTIME": "시간대",
           "SELTIMEHOUR": "시간",
+          "SUMRATE":{
+            "TEXT": "자원 합계비",
+            "BTN": "적용"
+          },
           "SUCCESS": {
             "TEXT": "대성공",
             "SUMLEVEL": "제대 레벨합계",
@@ -148,7 +152,7 @@
         "FOOD": "Rations",
         "PART": "Parts",
         "SUM": "Total",
-        "SUMRATIO": "Multiplier - Manpw.(1x) : Ammo(1x) : Rations(1x) : Parts(2x)",
+        "SUMRATIO": "Total Sumrate> ",
         "TIME": "Time",
         "BTNSUCS": "Per<br>Mission",
         "BTNTIME": "Per<br>Hour",
@@ -173,7 +177,7 @@
           "TIPS": {
             "TIP1": "1. Toggle 'Resource & Contract gain per HOUR or MISSION' with <span id=\"help_time\"><a href=\"#toggleTime\">Button left-bottom of the table</a></span>",
             "TIP2": "2. When you click <a href=\"#\">Resource Name</a>, ASC / DESC Sort",
-            "TIP3": "3. <a href=\"#\">Total</a> calculated with <font color=\"red\">1x : 1x : 1x : 2.2x</font> multiplier",
+            "TIP3": "3. <a href=\"#\">Total</a> calculated with <font color=\"red\">Total Sumrate</font> multiplier. Default 1:1:1:2.2",
             "TIP4": "4. Contract Gain Chance reference: <a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\" target=\"_blank\">Sangvis Ferri Sheet</a> <font color=\"red\">(Assumption)</font>",
             "TIP5": "5. Graph starts from <a href=\"#\">Pre Resources</a> <font color=\"red\"></font>, default is 0",
             "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">Auto Resupply</a> add 3 : 3 : 3 : 1 resource per 3 min</div>",
@@ -190,6 +194,10 @@
           "REFILL": "Auto Resupply",
           "SELTIME": "Time Periods",
           "SELTIMEHOUR": "hour",
+          "SUMRATE":{
+            "TEXT": "Total Sumrate",
+            "BTN": "Apply"
+          },
           "SUCCESS": {
             "TEXT": "Great Success",
             "SUMLEVEL": "Echelon's levelsum",
@@ -286,7 +294,7 @@
         "FOOD": "配給",
         "PART": "パーツ",
         "SUM": "合算",
-        "SUMRATIO": "人弾配パ 1:1:1:2.2 計算",
+        "SUMRATIO": "合算レート> ",
         "TIME": "時間",
         "BTNSUCS": "成功時<br>獲得",
         "BTNTIME": "時間当たり<br>獲得",
@@ -311,7 +319,7 @@
           "TIPS": {
             "TIP1": "1. 資源量 / 契約獲得量は表左側下段の <span id=\"help_time\"><a href=\"#toggleTime\">時間当たり / 成功時獲得転換ボタン</a></span> で転換可能",
             "TIP2": "2. 表上段の <a href=\"#\">資源</a> <font color=\"red\">クリック時</font>, 昇順 / 降順整列",
-            "TIP3": "3. 表の <a href=\"#\">合計</a> は資源比 <font color=\"red\">1 : 1 : 1 : 2.2</font> で計算",
+            "TIP3": "3. 表の <a href=\"#\">合計</a> は資源比 <font color=\"red\">合算レート</font>で計算. デフォルトち 1:1:1:2.2",
             "TIP4": "4. 表の契約獲得率は <a href=\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls Frontline\" target=\"_blank\">鉄血シート</a> 基準推定 <font color=\"red\">重み付け</font>",
             "TIP5": "5. 下段予想グラフは <a href=\"#\">現在資源</a> <font color=\"red\">量から合算</font>, 入力なしと０から計算",
             "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">自動回復</a> 活性化時3分当たり人弾配パ3:3:3:1回復</div>",
@@ -328,6 +336,10 @@
           "REFILL": "自動回復",
           "SELTIME": "時間帯設定",
           "SELTIMEHOUR": "時間",
+          "SUMRATE":{
+            "TEXT": "合算レート",
+            "BTN": "適用"
+          },
           "SUCCESS": {
             "TEXT": "大成功率",
             "SUMLEVEL": "梯隊レベル合計",
