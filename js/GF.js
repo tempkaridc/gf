@@ -1,8 +1,9 @@
-var version         = 201810251730;         // Version == 최종수정일 시간 분
-var updateString    = "2018-10-25 Changelog"
+var version         = 201810261800;         // Version == 최종수정일 시간 분
+var updateString    = "2018-10-26 Changelog"
                     + "\n- 11지역 군수 추가"
                     + "\n- 군수 확인주기 기능 추가"
                     + "\n- 자원 합계비 기능 추가"
+                    + "\n- 일부 UI 수정"
                     ;
 
 var selLang         = "ko-kr";   //혹 모르니 기본값 한글로
