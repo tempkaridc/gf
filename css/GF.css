@@ -3,18 +3,23 @@
  */
 
 @media (max-width: 500px){
-    .table-condensed > thead > tr > th,
-    .table-condensed > tbody > tr > th,
-    .table-condensed > tfoot > tr > th,
-    .table-condensed > thead > tr > td,
-    .table-condensed > tbody > tr > td, /*:not(.ExceptToggleBtn) */
-    .table-condensed > tfoot > tr > td{
-        padding-top: 10px;
-        padding-bottom: 10px;
+    .table-expand-mobile{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
     }
+
+    .contract-expand-mobile{
+        width:100% !important;
+    }
+
     .table-font-responsive{
-        font-size: smaller;
+        font-size: 0.8em;   /*확장없이 폰트 사이즈 감소*/
     }
+    .btn-font-responsive{
+        font-size: 0.8em;
+        padding: 5px;       /*누르기 쉽게 위아래로 확장*/
+    }
+
     .table-font-responsive > thead > tr > th,
     .table-font-responsive > tbody > tr > th,
     .table-font-responsive > tfoot > tr > th,
@@ -24,10 +29,7 @@
         padding-top: 5px;
         padding-bottom: 5px;
     }
-    .btn-font-responsive{
-        font-size: x-small;
-        padding: 5px;
-    }
+
     .nav-tabs {
         font-size: small;
     }
@@ -58,3 +60,11 @@
 .table > tbody > tr > td {
     vertical-align: middle;
 }
+
+select#sortContract option[value="7"] {background-image: url(../img/doll.png);}
+/*
+select#sortContract option[value="8"] {background-image:url(img/doll.png);}
+select#sortContract option[value="9"] {background-image:url(others.png);}
+select#sortContract option[value="10"] {background-image:url(others.png);}
+select#sortContract option[value="11"] {background-image:url(others.png);}
+*/

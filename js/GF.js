@@ -79,6 +79,14 @@ $(function (){
 });
 $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
+    sortingTable(id);
+});
+function sortContract(elem){
+    sortingTable(elem.value);
+}
+function sortingTable(id){
+    if(id == 99){return;}                       // 계약서 첫줄 소팅제외
+
     if(0 < id){
         highlight(2);                           // 코드 순서때문에 어쩔수없이 정렬 펑션부분은 하드코딩
         if(id == 5){
@@ -88,6 +96,7 @@ $('[id^=sort-]').off().on('click', function (e) {
             $('#high_04').addClass('success');
         }
     }
+
     if(sortToggle[id] <= 1){
         sortInit(id);
         $('#icon-'+id).addClass('glyphicon-sort-by-order-alt');
@@ -99,7 +108,7 @@ $('[id^=sort-]').off().on('click', function (e) {
         sortTable(document.getElementById("area-list"), id, 1);
         sortToggle[id] = 1;
     }
-});
+}
 $('[id^=btn-area-]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
 
@@ -168,7 +177,6 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#btn_toggle_sucs').addClass('btn-success');
         $('#per_level').removeClass('btn-default');
         $('#per_level').addClass('btn-success');
-        $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN_OK);
         sw_sucs = true;
         highlight(6);
     }else{
@@ -176,7 +184,6 @@ $('#btn_toggle_sucs').off().on('click', function (e) {
         $('#btn_toggle_sucs').addClass('btn-default');
         $('#per_level').removeClass('btn-success');
         $('#per_level').addClass('btn-default');
-        $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN_NO);
         sw_sucs = false;
         highlight(0);
 
@@ -211,13 +218,11 @@ $('#btn_toggle_recovery').off().on('click', function (e) {
     if($('#btn_toggle_recovery').hasClass('btn-default')){
         $('#btn_toggle_recovery').removeClass('btn-default');
         $('#btn_toggle_recovery').addClass('btn-success');
-        $('#str_title_refill').text(langPack.HTML.TABLE.HELP.REFILL + ' ON');
         highlight(5);
         sw_recovery = true;
     }else{
         $('#btn_toggle_recovery').removeClass('btn-success');
         $('#btn_toggle_recovery').addClass('btn-default');
-        $('#str_title_refill').text(langPack.HTML.TABLE.HELP.REFILL + ' OFF');
         highlight(0);
         sw_recovery = false;
     }
@@ -237,7 +242,7 @@ $('#btn_toggle_interval').off().on('click', function (e) {
     }
     refresh();
 });
-$('#btn_apply_sumrate').off().on('click', function (e) {
+$('#btn_change_sumrate').off().on('click', function (e) {
     val_sumRate.h = parseFloat(document.getElementById('sumrate_huma').value);
     val_sumRate.a = parseFloat(document.getElementById('sumrate_ammo').value);
     val_sumRate.f = parseFloat(document.getElementById('sumrate_food').value);
@@ -878,8 +883,8 @@ function clone(obj) {
     return copy;
 }
 function dispTime(){
-    $('#scr-times').text(timeToggle[time_front] + ' ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR); //hours hour 혼용예정
-    $('#scr-timee').text(timeToggle[time_end] + ' ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR);
+    $('#str_selecttime_times').text(timeToggle[time_front] + ' ' + langPack.HTML.TABLE.HELP.TIMESELECT.SELTIMEHOUR); //hours hour 혼용예정
+    $('#str_selecttime_timee').text(timeToggle[time_end] + ' ' + langPack.HTML.TABLE.HELP.TIMESELECT.SELTIMEHOUR);
     objectList.length = 0;
     selectedList.length = 0;
     refresh();
@@ -961,15 +966,17 @@ function calcStage(){
     $('#sumT').text(sumT.slice(0,-2));
 
     var timeTitle = langPack.HTML.TABLE.TICKET_PER_HOUR;
+    var displayH = '/h';
     if(!sw_time){
         timeTitle = langPack.HTML.TABLE.TICKET_PER_RECV;
+        displayH = ''
     }
 
-    if(sumHp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '" style="height:1.7em"><small>(' + (sumHp*100).toFixed(2) +'%) </small></div>';}
-    if(sumAp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '" style="height:1.7em"><small>(' + (sumAp*100).toFixed(2) +'%) </small></div>';}
-    if(sumFp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '" style="height:1.7em"><small>(' + (sumFp*100).toFixed(2) +'%) </small></div>';}
-    if(sumPp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '" style="height:1.7em"><small>(' + (sumPp*100).toFixed(2) +'%) </small></div>';}
-    if(sumTp){sumItem += '<div class-"table-font-responsive;" style="display:inline-block; width:50%;" title="' + timeTitle +'"><img src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '" style="height:1.7em"><small>(' + (sumTp*100).toFixed(2) +'%) </small></div>';}
+    if(sumHp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '" style="height:1.3em"> (' + (sumHp).toFixed(2) + displayH + ') </div>';}
+    if(sumAp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '" style="height:1.3em"> (' + (sumAp).toFixed(2) + displayH + ') </div>';}
+    if(sumFp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '" style="height:1.3em"> (' + (sumFp).toFixed(2) + displayH + ') </div>';}
+    if(sumPp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '" style="height:1.3em"> (' + (sumPp).toFixed(2) + displayH + ') </div>';}
+    if(sumTp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '" style="height:1.3em"> (' + (sumTp).toFixed(2) + displayH + ') </div>';}
 
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
@@ -1243,26 +1250,26 @@ function loadTable(){
             byTime = langPack.HTML.TABLE.TICKET_PER_HOUR;
         }
         var td0 = '<td style="text-align: center; vertical-align:middle; display:none;">';
-        var td10 = '<td style="text-align: center; vertical-align:middle;" width="10%">';
-        var td30 = '<td style="text-align: center; vertical-align:middle;" width="30%">';
+        var td11 = '<td class="table-expand-mobile" style="text-align: center; vertical-align:middle;" width="11%">';
+        var td23 = '<td class="table-expand-mobile" style="text-align: center; vertical-align:middle;" width="23%">';
         var tde = '</td>';
         var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable">';
-        /*00*/item += td10 + objectList[i].Area + '-' + objectList[i].Stage + tde;
-        /*01*/item += td10 + parseInt(objectList[i].Human / perMin) + tde;
-        /*02*/item += td10 + parseInt(objectList[i].Ammo / perMin) + tde;
-        /*03*/item += td10 + parseInt(objectList[i].Food / perMin) + tde;
-        /*04*/item += td10 + parseInt(objectList[i].Part / perMin) + tde;
-        /*05*/item += td10 + parseInt(  objectList[i].Human / perMin * val_sumRate.h +
+        /*00*/item += td11 + objectList[i].Area + '-' + objectList[i].Stage + tde;
+        /*01*/item += td11 + parseInt(objectList[i].Human / perMin) + tde;
+        /*02*/item += td11 + parseInt(objectList[i].Ammo / perMin) + tde;
+        /*03*/item += td11 + parseInt(objectList[i].Food / perMin) + tde;
+        /*04*/item += td11 + parseInt(objectList[i].Part / perMin) + tde;
+        /*05*/item += td11 + parseInt(  objectList[i].Human / perMin * val_sumRate.h +
                                         objectList[i].Ammo / perMin * val_sumRate.a +
                                         objectList[i].Food / perMin * val_sumRate.f +
                                         objectList[i].Part / perMin * val_sumRate.p) + tde;
-        /*06*/item += td10 + parseInt(objectList[i].Time / 60) + ':' + (objectList[i].Time % 60 == 0 ? '00' : objectList[i].Time % 60) + tde;
+        /*06*/item += td11 + parseInt(objectList[i].Time / 60) + ':' + (objectList[i].Time % 60 == 0 ? '00' : objectList[i].Time % 60) + tde;
         /*07*/item += td0 + objectList[i].Ticket_makeDoll / perMin + tde;
         /*08*/item += td0 + objectList[i].Ticket_makeTool / perMin + tde;
         /*09*/item += td0 + objectList[i].Ticket_fastMake / perMin + tde;
         /*10*/item += td0 + objectList[i].Ticket_fastRepair / perMin + tde;
         /*11*/item += td0 + objectList[i].Ticket_Tokken / perMin + tde;
-        /*12*/item += td30;
+        /*12*/item += td23;
         if(objectList[i].Ticket_makeDoll) item      += '<img src="img/doll.png" title="' + byTime + ': ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
         if(objectList[i].Ticket_makeTool) item      += '<img src="img/tool.png" title="' + byTime + ': ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
         if(objectList[i].Ticket_fastMake) item      += '<img src="img/fast.png" title="' + byTime + ': ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
@@ -1556,13 +1563,16 @@ function setLanguage(){
     $('#str_sum').text(langPack.HTML.TABLE.SUM);
     $('#sort-5').attr('title', langPack.HTML.TABLE.SUMRATIO + val_sumRate.h + ':' + val_sumRate.a + ':' + val_sumRate.f + ':' + val_sumRate.p);
     $('#str_time').text(langPack.HTML.TABLE.TIME);
-    $('#sort-7').attr('title', langPack.HTML.TABLE.TICKET_DOLL);
-    $('#sort-8').attr('title', langPack.HTML.TABLE.TICKET_TOOL);
-    $('#sort-9').attr('title', langPack.HTML.TABLE.TICKET_FAST);
-    $('#sort-10').attr('title', langPack.HTML.TABLE.TICKET_REPR);
-    $('#sort-11').attr('title', langPack.HTML.TABLE.TICKET_TOKN);
+
+    $('#sortContract option[value=99]').text(langPack.HTML.TABLE.TICKET);
+    $('#sortContract option[value=7]').text(langPack.HTML.TABLE.TICKET_DOLL);
+    $('#sortContract option[value=8]').text(langPack.HTML.TABLE.TICKET_TOOL);
+    $('#sortContract option[value=9]').text(langPack.HTML.TABLE.TICKET_FAST);
+    $('#sortContract option[value=10]').text(langPack.HTML.TABLE.TICKET_REPR);
+    $('#sortContract option[value=11]').text(langPack.HTML.TABLE.TICKET_TOKN);
+
     $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNTIME);
-    $('#str_selarea').html(langPack.HTML.TABLE.SELAREA);
+    $('#str_selectedarea').html(langPack.HTML.TABLE.SELAREA);
     $('#str_load').text(langPack.HTML.TABLE.LOAD);
     $('#str_save').text(langPack.HTML.TABLE.SAVE);
     $('#str_copy').text(langPack.HTML.TABLE.COPY);
@@ -1581,34 +1591,34 @@ function setLanguage(){
     $('#help_09b').html(langPack.HTML.TABLE.HELP.TIPS.TIP9b);
     $('#help_09c').html(langPack.HTML.TABLE.HELP.TIPS.TIP9c);
 
-    $('#str_title_selarea').text(langPack.HTML.TABLE.HELP.SELAREA);
-    $('#str_title_resource').text(langPack.HTML.TABLE.HELP.RESOURCE);
-    $('#str_title_refill').text(langPack.HTML.TABLE.HELP.REFILL + ' OFF');
+    $('#str_selectarea_title').text(langPack.HTML.TABLE.HELP.AREASELECT.TITLE);
 
-    $('#str_sumrate_title').text(langPack.HTML.TABLE.HELP.SUMRATE.TEXT);
-    $('#btn_apply_sumrate').text(langPack.HTML.TABLE.HELP.SUMRATE.BTN);
+    $('#str_selecttime_title').text(langPack.HTML.TABLE.HELP.TIMESELECT.TITLE);
+    $('#str_selecttime_times').html('0 ' + langPack.HTML.TABLE.HELP.TIMESELECT.SELTIMEHOUR);
+    $('#str_selecttime_timee').html('24 ' + langPack.HTML.TABLE.HELP.TIMESELECT.SELTIMEHOUR);
+
+    $('#str_sumrate_title').text(langPack.HTML.TABLE.HELP.SUMRATE.TITLE);
+    $('#btn_change_sumrate').text(langPack.HTML.TABLE.HELP.SUMRATE.BTN);
     $('#sumrate_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ': ' + val_sumRate.h);
     $('#sumrate_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ': ' + val_sumRate.a);
     $('#sumrate_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ': ' + val_sumRate.f);
     $('#sumrate_part').attr('placeholder', langPack.HTML.TABLE.PART + ': ' + val_sumRate.p);
 
+    $('#str_presource_title').text(langPack.HTML.TABLE.HELP.PRESOURCE.TITLE);
+    $('#btn_toggle_recovery').text(langPack.HTML.TABLE.HELP.PRESOURCE.REFILL);
     $('#pre_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ': 0');
     $('#pre_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ': 0');
     $('#pre_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ': 0');
     $('#pre_part').attr('placeholder', langPack.HTML.TABLE.PART + ': 0');
 
-    $('#str_title_seltime').text(langPack.HTML.TABLE.HELP.SELTIME);
-    $('#scr-times').html('0 ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR);
-    $('#scr-timee').html('24 ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR);
-
-    $('#str_success_title').text(langPack.HTML.TABLE.HELP.SUCCESS.TEXT);
+    $('#str_success_title').text(langPack.HTML.TABLE.HELP.SUCCESS.TITLE);
     $('#sum_level').attr('placeholder', langPack.HTML.TABLE.HELP.SUCCESS.SUMLEVEL + ': 500');
     $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + (val_success * 100).toFixed(1) + '%');
-    $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN_NO);
-    $('#btn_toggle_sucs_event').text(langPack.HTML.INCODE.EVENTBTN);
-    $('#btn_toggle_sucs_event').attr('title', langPack.HTML.INCODE.EVENT);
+    $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN);
+    $('#btn_toggle_sucs_event').text(langPack.HTML.TABLE.HELP.SUCCESS.EVENTBTN);
+    $('#btn_toggle_sucs_event').attr('title', langPack.HTML.TABLE.HELP.SUCCESS.EVENT);
 
-    $('#str_interval_title').text(langPack.HTML.TABLE.HELP.INTERVAL.TEXT);
+    $('#str_interval_title').text(langPack.HTML.TABLE.HELP.INTERVAL.TITLE);
     $('#btn_toggle_interval').html(langPack.HTML.TABLE.HELP.INTERVAL.BTN);
 
     $('#str_rcmd_title').text(langPack.HTML.TABLE.HELP.RECOMMEND.TITLE);
@@ -1718,7 +1728,7 @@ function disp_summary(){
                 stext = stext.slice(0,-2);
                 break;
             case 1:
-                stext = timeToggle[time_front] + "-" + timeToggle[time_end] + ' ' + langPack.HTML.TABLE.HELP.SELTIMEHOUR;
+                stext = timeToggle[time_front] + "-" + timeToggle[time_end] + ' ' + langPack.HTML.TABLE.HELP.TIMESELECT.SELTIMEHOUR;
                 break;
             case 2:
                 var ary = new Array();
@@ -1734,7 +1744,7 @@ function disp_summary(){
                     stext += ary[j] +', ';
                 }
                 stext = stext.slice(0,-2)
-                if(sw_recovery) stext += ' + ' + langPack.HTML.TABLE.HELP.REFILL;
+                if(sw_recovery) stext += ' + ' + langPack.HTML.TABLE.HELP.PRESOURCE.REFILL;
                 break;
             case 3:
                 if(sw_sucs){
@@ -1830,7 +1840,7 @@ function chkScroll(){
 
 function init(){
     //localStorage.removeItem("config");
-    var jsonText = '{"ko":{"HTML":{"TITLE":"소녀전선 - 군수지원 효율계산 / 추천 시뮬레이터","TABLE":{"RSRC":"자원","AREA":"지역","HUMA":"인력","AMMO":"탄약","FOOD":"식량","PART":"부품","SUM":"합계","SUMRATIO":"자원 합계비> ","TIME":"시간","BTNSUCS":"성공시<br>획득","BTNTIME":"시간당<br>획득","SELAREA":"선택<br>지역","LOAD":" 불러오기","SAVE":" 저장","COPY":" 클립보드에 복사","TICKET":"계약서","TICKET_DOLL":"인형제조계약서","TICKET_TOOL":"장비제조계약서","TICKET_FAST":"쾌속제조계약서","TICKET_REPR":"쾌속수복계약서","TICKET_TOKN":"구매 토큰","TICKET_PER_HOUR":"시간당 획득률","TICKET_PER_RECV":"성공시 획득률","PER_HOUR":"시간당","PER_RECV":"성공시","TICKET_RATIO":"획득확률","HELP":{"OPEN":"도움말 열기","CLOSE":"도움말 닫기","TIPS":{"TIP1":"1. 자원량 / 계약서 획득량은 표 좌측 하단의 <span id=\\"help_time\\"><a href=\\"#\\">시간당 / 성공시 획득 전환 버튼</a></span> 으로 변경 가능","TIP2":"2. 표 상단의 <a href=\\"#\\">자원명</a> <font color=\\"red\\">클릭 시</font>, 오름 / 내림차순 정렬","TIP3":"3. 표의 <a href=\\"#\\">합계</a> 값은 <font color=\\"red\\">자원 합계비</font>에 따라 계산. 기본값 1:1:1:2.2","TIP4":"4. 표의 계약서 획득확률은 <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\\" target=\\"_blank\\">철혈시트</a> 기준 추정 <font color=\\"red\\">가중치</font>","TIP5":"5. 하단 예상 그래프는 <a href=\\"#\\">현재자원</a> <font color=\\"red\\">값부터 합산</font>, 미입력시 0부터 계산","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">자동회복</a> 활성화 시 3분당 인탄식부 3:3:3:1 회복</div>","TIP6":"6. <a href=\\"#\\">대성공률</a> 적용 시, 자원 및 계약서 획득률을 대성공 기대치로 재계산","TIP7":"7. <a href=\\"#\\">확인주기</a> 적용 시, 모든 군수의 시간을 주기의 배수로 변경","TIP8":"8. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> 기능/선택 버튼, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> 켜기/끄기 버튼","TIP9":"9. <a href=\\"#\\">자동추천</a> 은 입력된 <font color=\\"red\\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천","TIP9a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">지역선택</a>, <a href=\\"#\\">시간대설정</a>, <a href=\\"#\\">대성공률</a>, <a href=\\"#\\">계약서 획득률</a> 모두 반영</div>","TIP9b":"<div style=\\"margin-left:10px;\\">b. <span id=\\"help_wght\\"><a href=\\"#\\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>","TIP9c":"<div style=\\"margin-left:10px;\\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"},"SELAREA":"지역선택","RESOURCE":"현재자원","REFILL":"자동회복","SELTIME":"시간대","SELTIMEHOUR":"시간","SUMRATE":{"TEXT":"자원 합계비","BTN":"적용"},"SUCCESS":{"TEXT":"대성공","SUMLEVEL":"제대 레벨합계","SUCSRATIO":"대성공 확률","BTN_OK":"적용","BTN_NO":"미적용"},"INTERVAL":{"TEXT":"확인주기","BTN":"적용"},"RECOMMEND":{"TITLE":"자동추천","RATIO":{"BTN_RATIO":"내 가중치","CHOICE":{"DAY":{"TITLE":"일일사용량 기반 계산","TEXT":"하루에 사용하는 자원량에 의거한 개인 가중치 계산","TABLE1":"일일사용량 기반 계산 예","TABLE2":"인형제조 범용1식 4회","TABLE3":"장비제조 범용1식 4회","TABLE4":"전역 9회 클리어","TABLE5":"합계 <small>(아래 입력)</small>","TABLE6":"가중치"},"USES":{"TITLE":"최종목표치 기반 계산","TEXT":"목표로 삼은 자원량에서 역산한 개인 가중치 계산","TABLE1":"최종목표량 기반 계산 예","TABLE2":"현재 자원량 <small>(아래 입력)</small>","TABLE3":"목표 자원량 <small>(아래 입력)</small>","TABLE4":"오차","TABLE5":"가중치","TABLEs1":"현재","TABLEs2":"목표"}},"BTN_CALC":"계산","CALC_TEXT":"\'계산\'클릭 시, 가중치 자동입력"},"SUCSRATIO":"계약서 확률","TEXT_PERHOUR1":"시간당 ","TEXT_PERHOUR2":"개 이상","BTN_RCMD":"지역 추천","RESULT":"추천조합","SIMM":"가중치 일치율"}}},"CHART":{"AREA":"지역:","TIME":"기간:","BTN1":"1일","BTN2":"1주","BTN3":"2주","BTN4":"4주","DAY":"일","HOUR":"시","MIN":"분"},"MODAL":{"LOAD":{"TITLE":"저장된 조합 불러오기","AREA":"지역","HELP":"설명"}},"BOTTOM":{"ADDR":"주소: ","SGST":"건의사항: ","OPTI":"이 페이지는 Chrome, FF, Edge에 최적화되어 있습니다."},"INCODE":{"ALERT1":"최종목표치는 현재보다 크거나 같아야 합니다","ALERT2":"검색 결과가 없습니다","ALERT3":"하나 이상의 군수지역을 선택해야 합니다","ALERT4":"클립보드에 아래 내용을 복사하였습니다\\n\\n","SAVE":"저장할 조합의 이름을 입력하세요","DELETE":"지우기","EVENT":"군수지원 대성공 확률 UP 이벤트","EVENTBTN":"확률UP"}}},"en":{"HTML":{"TITLE":"Girls\' Frontline Logistic Support Calculator","TABLE":{"RSRC":"Resource","AREA":"Mission","HUMA":"Manpw.","AMMO":"Ammo","FOOD":"Rations","PART":"Parts","SUM":"Total","SUMRATIO":"Total Sumrate> ","TIME":"Time","BTNSUCS":"Per<br>Mission","BTNTIME":"Per<br>Hour","SELAREA":"Selected<br>Mission","LOAD":" Load","SAVE":" Save","COPY":" Copy to clipboard","TICKET":"Contracts","TICKET_DOLL":"T-Doll Contract","TICKET_TOOL":"Equipment Production Contract","TICKET_FAST":"Quick Production Contract","TICKET_REPR":"Quick Restoration Contract","TICKET_TOKN":"Token","TICKET_PER_HOUR":"Chance per hour","TICKET_PER_RECV":"Chance per mission","PER_HOUR":"perHour","PER_RECV":"perMission","TICKET_RATIO":"Chance","HELP":{"OPEN":"Open Help","CLOSE":"Close Help","TIPS":{"TIP1":"1. Toggle \'Resource & Contract gain per HOUR or MISSION\' with <span id=\\"help_time\\"><a href=\\"#toggleTime\\">Button left-bottom of the table</a></span>","TIP2":"2. When you click <a href=\\"#\\">Resource Name</a>, ASC / DESC Sort","TIP3":"3. <a href=\\"#\\">Total</a> calculated with <font color=\\"red\\">Total Sumrate</font> multiplier. Default 1:1:1:2.2","TIP4":"4. Contract Gain Chance reference: <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\\" target=\\"_blank\\">Sangvis Ferri Sheet</a> <font color=\\"red\\">(Assumption)</font>","TIP5":"5. Graph starts from <a href=\\"#\\">Pre Resources</a> <font color=\\"red\\"></font>, default is 0","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">Auto Resupply</a> add 3 : 3 : 3 : 1 resource per 3 min</div>","TIP6":"6. When you apply <a href=\\"#\\">Great Success</a>, recaluculate resource & contracts gain to expectation value","TIP7":"7. When you apply <a href=\\"#\\">Check Cycle</a>, recalculate every time to multiple of cycle time","TIP8":"8. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> Function / Select Button, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> On / Off Toggle Button","TIP9":"9. <a href=\\"#\\">Recommend</a> provides mission combination with <font color=\\"red\\">Resource Weight</font>","TIP9a":"<div style=\\"margin-left:10px;\\">a. Reflect <a href=\\"#\\">Chapters</a>, <a href=\\"#\\">Time Periods</a>, <a href=\\"#\\">Great Success</a>, <a href=\\"#\\">Contract Chance</a></div>","TIP9b":"<div style=\\"margin-left:10px;\\">b. Calculate personal resource weights with <span id=\\"help_wght\\"><a href=\\"#\\">Calc weights</a></span> </div>","TIP9c":"<div style=\\"margin-left:10px;\\">c. Result % means similarity between input ratio & result</div>"},"SELAREA":"Chapters","RESOURCE":"Pre Resources","REFILL":"Auto Resupply","SELTIME":"Time Periods","SELTIMEHOUR":"hour","SUMRATE":{"TEXT":"Total Sumrate","BTN":"Apply"},"SUCCESS":{"TEXT":"Great Success","SUMLEVEL":"Echelon\'s levelsum","SUCSRATIO":"GS Chance","BTN_OK":"Apply","BTN_NO":"Apply"},"INTERVAL":{"TEXT":"Check Cycle","BTN":"Apply"},"RECOMMEND":{"TITLE":"Recommend","RATIO":{"BTN_RATIO":"Calc weights","CHOICE":{"DAY":{"TITLE":"Daily Weight","TEXT":"Calculate with daily uses","TABLE1":"Example","TABLE2":"T-DOLL Standard Set x 4","TABLE3":"Equipment Standard Set x 4","TABLE4":"Clear 9 Areas","TABLE5":"Sum <small>(input below)</small>","TABLE6":"Weight"},"USES":{"TITLE":"Target Weight","TEXT":"Calculate with target amount","TABLE1":"Example","TABLE2":"Present Resource <small>(input below)</small>","TABLE3":"Goal Resource <small>(input below)</small>","TABLE4":"Difference","TABLE5":"Weight","TABLEs1":"Pre","TABLEs2":"Obj"}},"BTN_CALC":"Calculate","CALC_TEXT":"Click \'Calculate\' to get your own weight"},"SUCSRATIO":"Contracts","TEXT_PERHOUR1":"Over ","TEXT_PERHOUR2":"/h","BTN_RCMD":"Recommend Combination","RESULT":"Results","SIMM":"Weight Similarity"}}},"CHART":{"AREA":"Area:","TIME":"Period:","BTN1":"1D","BTN2":"1W","BTN3":"2W","BTN4":"4W","DAY":"","HOUR":"","MIN":""},"MODAL":{"LOAD":{"TITLE":"Load saved missions","AREA":"Missions","HELP":"Description"}},"BOTTOM":{"ADDR":"Address: ","SGST":"Suggestions: ","OPTI":"This website is optimized for Chrome, FF, Edge"},"INCODE":{"ALERT1":"Goal must bigger than present","ALERT2":"No result","ALERT3":"You muse select at least one mission","ALERT4":"Copy to clipboard\\n\\n","SAVE":"Name your save","DELETE":"Delete","EVENT":"Great Success rate-up event","EVENTBTN":"Rate-UP"}}},"ja":{"HTML":{"TITLE":"ドールフロ - 後方支援 効率計算 / 推選 シミュレータ","TABLE":{"RSRC":"資源","AREA":"戦役","HUMA":"人力","AMMO":"弾薬","FOOD":"配給","PART":"パーツ","SUM":"合算","SUMRATIO":"合算レート> ","TIME":"時間","BTNSUCS":"成功時<br>獲得","BTNTIME":"時間当たり<br>獲得","SELAREA":"選択<br>戦役","LOAD":" ロード","SAVE":" セーブ","COPY":" クリップボードに複写","TICKET":"契約","TICKET_DOLL":"人形製造契約","TICKET_TOOL":"装備製造契約","TICKET_FAST":"快速製造契約","TICKET_REPR":"快速修復契約","TICKET_TOKN":"購買トークン","TICKET_PER_HOUR":"時間当たり獲得率","TICKET_PER_RECV":"成功時獲得率","PER_HOUR":"時間当たり","PER_RECV":"成功時","TICKET_RATIO":"獲得率","HELP":{"OPEN":"ヘルプを開く","CLOSE":"ヘルプを閉じる","TIPS":{"TIP1":"1. 資源量 / 契約獲得量は表左側下段の <span id=\\"help_time\\"><a href=\\"#toggleTime\\">時間当たり / 成功時獲得転換ボタン</a></span> で転換可能","TIP2":"2. 表上段の <a href=\\"#\\">資源</a> <font color=\\"red\\">クリック時</font>, 昇順 / 降順整列","TIP3":"3. 表の <a href=\\"#\\">合計</a> は資源比 <font color=\\"red\\">合算レート</font>で計算. デフォルトち 1:1:1:2.2","TIP4":"4. 表の契約獲得率は <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls Frontline\\" target=\\"_blank\\">鉄血シート</a> 基準推定 <font color=\\"red\\">重み付け</font>","TIP5":"5. 下段予想グラフは <a href=\\"#\\">現在資源</a> <font color=\\"red\\">量から合算</font>, 入力なしと０から計算","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">自動回復</a> 活性化時3分当たり人弾配パ3:3:3:1回復</div>","TIP6":"6. <a href=\\"#\\">大成功率</a> 適用時資源及び契約獲得率は大成功期待値で再計算","TIP7":"7. <a href=\\"#\\">確認サイクル</a> 適用時全後方支援の時間を確認サイクルの倍数で再計算","TIP8":"8. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> 機能/選択ボタン, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> オン・オフボタン","TIP9":"9. <a href=\\"#\\">自動推選</a> は入力された <font color=\\"red\\">重み付け比率の資源獲得</font>ための配置推選","TIP9a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">戦役選択</a>, <a href=\\"#\\">時間帯設定</a>, <a href=\\"#\\">大成功率</a>, <a href=\\"#\\">契約獲得率</a> 全て反映</div>","TIP9b":"<div style=\\"margin-left:10px;\\">b. <span id=\\"help_wght\\"><a href=\\"#\\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>","TIP9c":"<div style=\\"margin-left:10px;\\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"},"SELAREA":"戦役選択","RESOURCE":"現在資源","REFILL":"自動回復","SELTIME":"時間帯設定","SELTIMEHOUR":"時間","SUMRATE":{"TEXT":"合算レート","BTN":"適用"},"SUCCESS":{"TEXT":"大成功率","SUMLEVEL":"梯隊レベル合計","SUCSRATIO":"大成功率","BTN_OK":"適用","BTN_NO":"適用なし"},"INTERVAL":{"TEXT":"確認サイクル","BTN":"適用"},"RECOMMEND":{"TITLE":"自動推選","RATIO":{"BTN_RATIO":"私の重み付け","CHOICE":{"DAY":{"TITLE":"一日使用量で計算","TEXT":"一日に使用する資源量を基盤とする個人重み付け計算","TABLE1":"一日使用量で計算例","TABLE2":"人形製造汎用式4回","TABLE3":"装備製造汎用式4回","TABLE4":"戦役9回クリア","TABLE5":"合計 <small>(下に入力)</small>","TABLE6":"重み付け"},"USES":{"TITLE":"最終目標値で計算","TEXT":"目標とした資源量から逆算した個人重み付け計算","TABLE1":"最終目標値で計算例","TABLE2":"現在資源量 <small>(下に入力)</small>","TABLE3":"目標資源量 <small>(下に入力)</small>","TABLE4":"誤差","TABLE5":"重み付け","TABLEs1":"現在","TABLEs2":"目標"}},"BTN_CALC":"計算","CALC_TEXT":"\'計算\'クリック時、重み付け自動入力"},"SUCSRATIO":"獲得率","TEXT_PERHOUR1":"時間当たり","TEXT_PERHOUR2":"個以上","BTN_RCMD":"戦役推選","RESULT":"推選結果","SIMM":"重み付け一致率"}}},"CHART":{"AREA":"戦役:","TIME":"期間:","BTN1":"1日","BTN2":"1週","BTN3":"2週","BTN4":"4週","DAY":"日","HOUR":"時","MIN":"分"},"MODAL":{"LOAD":{"TITLE":"セーブされた配置ロード","AREA":"戦役","HELP":"ヘルプ"}},"BOTTOM":{"ADDR":"アドレス: ","SGST":"建議事項: ","OPTI":"このページはChrome、FF、Edgeに最適化されています。"},"INCODE":{"ALERT1":"最終目標値は現在より大きいか同じでなければなりません。","ALERT2":"検索結果が有りません。","ALERT3":"一つ以上の支援を選択してください。","ALERT4":"クリップボードに下の内容を複写しました。","SAVE":"セーブする配置の名前を入力してください。","DELETE":"デリート","EVENT":"後方支援大成功確率UP","EVENTBTN":"確率UP"}}}}';
+    var jsonText = '{"ko":{"HTML":{"TITLE":"소녀전선 - 군수지원 효율계산 / 추천 시뮬레이터","TABLE":{"RSRC":"자원","AREA":"지역","HUMA":"인력","AMMO":"탄약","FOOD":"식량","PART":"부품","SUM":"합계","SUMRATIO":"자원 합계비> ","TIME":"시간","BTNSUCS":"성공시<br>획득","BTNTIME":"시간당<br>획득","SELAREA":"선택<br>지역","LOAD":" 불러오기","SAVE":" 저장","COPY":" 클립보드에 복사","TICKET":"계약서","TICKET_DOLL":"인형제조계약서","TICKET_TOOL":"장비제조계약서","TICKET_FAST":"쾌속제조계약서","TICKET_REPR":"쾌속수복계약서","TICKET_TOKN":"구매 토큰","TICKET_PER_HOUR":"시간당 획득률","TICKET_PER_RECV":"성공시 획득률","PER_HOUR":"시간당","PER_RECV":"성공시","TICKET_RATIO":"획득확률","HELP":{"OPEN":"도움말 열기","CLOSE":"도움말 닫기","TIPS":{"TIP1":"1. 자원량 / 계약서 획득량은 표 좌측 하단의 <span id=\\"help_time\\"><a href=\\"#\\">시간당 / 성공시 획득 전환 버튼</a></span> 으로 변경 가능","TIP2":"2. 표 상단의 <a href=\\"#\\">자원명</a> <font color=\\"red\\">클릭 시</font>, 오름 / 내림차순 정렬","TIP3":"3. 표의 <a href=\\"#\\">합계</a> 값은 <font color=\\"red\\">자원 합계비</font>에 따라 계산. 기본값 1:1:1:2.2","TIP4":"4. 표의 계약서 획득확률은 <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\\" target=\\"_blank\\">철혈시트</a> 기준 추정 <font color=\\"red\\">가중치</font>","TIP5":"5. 하단 예상 그래프는 <a href=\\"#\\">현재자원</a> <font color=\\"red\\">값부터 합산</font>, 미입력시 0부터 계산","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">자동회복</a> 활성화 시 3분당 인탄식부 3:3:3:1 회복</div>","TIP6":"6. <a href=\\"#\\">대성공률</a> 적용 시, 자원 및 계약서 획득률을 대성공 기대치로 재계산","TIP7":"7. <a href=\\"#\\">확인주기</a> 적용 시, 모든 군수의 시간을 주기의 배수로 변경","TIP8":"8. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> 기능/선택 버튼, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> 켜기/끄기 버튼","TIP9":"9. <a href=\\"#\\">자동추천</a> 은 입력된 <font color=\\"red\\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천","TIP9a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">지역선택</a>, <a href=\\"#\\">시간대설정</a>, <a href=\\"#\\">대성공률</a>, <a href=\\"#\\">계약서 획득률</a> 모두 반영</div>","TIP9b":"<div style=\\"margin-left:10px;\\">b. <span id=\\"help_wght\\"><a href=\\"#\\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>","TIP9c":"<div style=\\"margin-left:10px;\\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"},"AREASELECT":{"TITLE":"지역선택"},"TIMESELECT":{"TITLE":"시간대","SELTIMEHOUR":"시간"},"SUMRATE":{"TITLE":"자원 합계비","BTN":"적용"},"PRESOURCE":{"TITLE":"현재자원","REFILL":"자동회복"},"SUCCESS":{"TITLE":"대성공","SUMLEVEL":"제대 레벨합계","SUCSRATIO":"대성공 확률","BTN":"적용","EVENT":"군수지원 대성공 확률 UP 이벤트","EVENTBTN":"확률UP"},"INTERVAL":{"TITLE":"확인주기","BTN":"적용"},"RECOMMEND":{"TITLE":"자동추천","RATIO":{"BTN_RATIO":"내 가중치","CHOICE":{"DAY":{"TITLE":"일일사용량 기반 계산","TEXT":"하루에 사용하는 자원량에 의거한 개인 가중치 계산","TABLE1":"일일사용량 기반 계산 예","TABLE2":"인형제조 범용1식 4회","TABLE3":"장비제조 범용1식 4회","TABLE4":"전역 9회 클리어","TABLE5":"합계 <small>(아래 입력)</small>","TABLE6":"가중치"},"USES":{"TITLE":"최종목표치 기반 계산","TEXT":"목표로 삼은 자원량에서 역산한 개인 가중치 계산","TABLE1":"최종목표량 기반 계산 예","TABLE2":"현재 자원량 <small>(아래 입력)</small>","TABLE3":"목표 자원량 <small>(아래 입력)</small>","TABLE4":"오차","TABLE5":"가중치","TABLEs1":"현재","TABLEs2":"목표"}},"BTN_CALC":"계산","CALC_TEXT":"\'계산\'클릭 시, 가중치 자동입력"},"SUCSRATIO":"계약서 확률","TEXT_PERHOUR1":"시간당 ","TEXT_PERHOUR2":"개 이상","BTN_RCMD":"지역 추천","RESULT":"추천조합","SIMM":"가중치 일치율"}}},"CHART":{"AREA":"지역:","TIME":"기간:","BTN1":"1일","BTN2":"1주","BTN3":"2주","BTN4":"4주","DAY":"일","HOUR":"시","MIN":"분"},"MODAL":{"LOAD":{"TITLE":"저장된 조합 불러오기","AREA":"지역","HELP":"설명"}},"BOTTOM":{"ADDR":"주소: ","SGST":"건의사항: ","OPTI":"이 페이지는 Chrome, FF, Edge에 최적화되어 있습니다."},"INCODE":{"ALERT1":"최종목표치는 현재보다 크거나 같아야 합니다","ALERT2":"검색 결과가 없습니다","ALERT3":"하나 이상의 군수지역을 선택해야 합니다","ALERT4":"클립보드에 아래 내용을 복사하였습니다\\n\\n","SAVE":"저장할 조합의 이름을 입력하세요","DELETE":"지우기"}}},"en":{"HTML":{"TITLE":"Girls\' Frontline Logistic Support Calculator","TABLE":{"RSRC":"Resource","AREA":"Mission","HUMA":"Manpw.","AMMO":"Ammo","FOOD":"Rations","PART":"Parts","SUM":"Total","SUMRATIO":"Total Sumrate> ","TIME":"Time","BTNSUCS":"Per<br>Mission","BTNTIME":"Per<br>Hour","SELAREA":"Selected<br>Mission","LOAD":" Load","SAVE":" Save","COPY":" Copy to clipboard","TICKET":"Contracts","TICKET_DOLL":"T-Doll Contract","TICKET_TOOL":"Equipment Production Contract","TICKET_FAST":"Quick Production Contract","TICKET_REPR":"Quick Restoration Contract","TICKET_TOKN":"Token","TICKET_PER_HOUR":"Chance per hour","TICKET_PER_RECV":"Chance per mission","PER_HOUR":"perHour","PER_RECV":"perMission","TICKET_RATIO":"Chance","HELP":{"OPEN":"Open Help","CLOSE":"Close Help","TIPS":{"TIP1":"1. Toggle \'Resource & Contract gain per HOUR or MISSION\' with <span id=\\"help_time\\"><a href=\\"#toggleTime\\">Button left-bottom of the table</a></span>","TIP2":"2. When you click <a href=\\"#\\">Resource Name</a>, ASC / DESC Sort","TIP3":"3. <a href=\\"#\\">Total</a> calculated with <font color=\\"red\\">Total Sumrate</font> multiplier. Default 1:1:1:2.2","TIP4":"4. Contract Gain Chance reference: <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline\\" target=\\"_blank\\">Sangvis Ferri Sheet</a> <font color=\\"red\\">(Assumption)</font>","TIP5":"5. Graph starts from <a href=\\"#\\">Pre Resources</a> <font color=\\"red\\"></font>, default is 0","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">Auto Resupply</a> add 3 : 3 : 3 : 1 resource per 3 min</div>","TIP6":"6. When you apply <a href=\\"#\\">Great Success</a>, recaluculate resource & contracts gain to expectation value","TIP7":"7. When you apply <a href=\\"#\\">Check Cycle</a>, recalculate every time to multiple of cycle time","TIP8":"8. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> Function / Select Button, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> On / Off Toggle Button","TIP9":"9. <a href=\\"#\\">Recommend</a> provides mission combination with <font color=\\"red\\">Resource Weight</font>","TIP9a":"<div style=\\"margin-left:10px;\\">a. Reflect <a href=\\"#\\">Chapters</a>, <a href=\\"#\\">Time Periods</a>, <a href=\\"#\\">Great Success</a>, <a href=\\"#\\">Contract Chance</a></div>","TIP9b":"<div style=\\"margin-left:10px;\\">b. Calculate personal resource weights with <span id=\\"help_wght\\"><a href=\\"#\\">Calc weights</a></span> </div>","TIP9c":"<div style=\\"margin-left:10px;\\">c. Result % means similarity between input ratio & result</div>"},"AREASELECT":{"TITLE":"Chapters"},"TIMESELECT":{"TITLE":"Time Periods","SELTIMEHOUR":"hour"},"SUMRATE":{"TITLE":"Total Sumrate","BTN":"Apply"},"PRESOURCE":{"TITLE":"Pre Resources","REFILL":"Auto Resupply"},"SUCCESS":{"TITLE":"Great Success","SUMLEVEL":"Echelon\'s levelsum","SUCSRATIO":"GS Chance","BTN":"Apply","EVENT":"Great Success rate-up event","EVENTBTN":"Rate-UP"},"INTERVAL":{"TITLE":"Check Cycle","BTN":"Apply"},"RECOMMEND":{"TITLE":"Recommend","RATIO":{"BTN_RATIO":"Calc weights","CHOICE":{"DAY":{"TITLE":"Daily Weight","TEXT":"Calculate with daily uses","TABLE1":"Example","TABLE2":"T-DOLL Standard Set x 4","TABLE3":"Equipment Standard Set x 4","TABLE4":"Clear 9 Areas","TABLE5":"Sum <small>(input below)</small>","TABLE6":"Weight"},"USES":{"TITLE":"Target Weight","TEXT":"Calculate with target amount","TABLE1":"Example","TABLE2":"Present Resource <small>(input below)</small>","TABLE3":"Goal Resource <small>(input below)</small>","TABLE4":"Difference","TABLE5":"Weight","TABLEs1":"Pre","TABLEs2":"Obj"}},"BTN_CALC":"Calculate","CALC_TEXT":"Click \'Calculate\' to get your own weight"},"SUCSRATIO":"Contracts","TEXT_PERHOUR1":"Over ","TEXT_PERHOUR2":"/h","BTN_RCMD":"Recommend Combination","RESULT":"Results","SIMM":"Weight Similarity"}}},"CHART":{"AREA":"Area:","TIME":"Period:","BTN1":"1D","BTN2":"1W","BTN3":"2W","BTN4":"4W","DAY":"","HOUR":"","MIN":""},"MODAL":{"LOAD":{"TITLE":"Load saved missions","AREA":"Missions","HELP":"Description"}},"BOTTOM":{"ADDR":"Address: ","SGST":"Suggestions: ","OPTI":"This website is optimized for Chrome, FF, Edge"},"INCODE":{"ALERT1":"Goal must bigger than present","ALERT2":"No result","ALERT3":"You muse select at least one mission","ALERT4":"Copy to clipboard\\n\\n","SAVE":"Name your save","DELETE":"Delete"}}},"ja":{"HTML":{"TITLE":"ドールフロ - 後方支援 効率計算 / 推選 シミュレータ","TABLE":{"RSRC":"資源","AREA":"戦役","HUMA":"人力","AMMO":"弾薬","FOOD":"配給","PART":"パーツ","SUM":"合算","SUMRATIO":"合算レート> ","TIME":"時間","BTNSUCS":"成功時<br>獲得","BTNTIME":"時間当たり<br>獲得","SELAREA":"選択<br>戦役","LOAD":" ロード","SAVE":" セーブ","COPY":" クリップボードに複写","TICKET":"契約","TICKET_DOLL":"人形製造契約","TICKET_TOOL":"装備製造契約","TICKET_FAST":"快速製造契約","TICKET_REPR":"快速修復契約","TICKET_TOKN":"購買トークン","TICKET_PER_HOUR":"時間当たり獲得率","TICKET_PER_RECV":"成功時獲得率","PER_HOUR":"時間当たり","PER_RECV":"成功時","TICKET_RATIO":"獲得率","HELP":{"OPEN":"ヘルプを開く","CLOSE":"ヘルプを閉じる","TIPS":{"TIP1":"1. 資源量 / 契約獲得量は表左側下段の <span id=\\"help_time\\"><a href=\\"#toggleTime\\">時間当たり / 成功時獲得転換ボタン</a></span> で転換可能","TIP2":"2. 表上段の <a href=\\"#\\">資源</a> <font color=\\"red\\">クリック時</font>, 昇順 / 降順整列","TIP3":"3. 表の <a href=\\"#\\">合計</a> は資源比 <font color=\\"red\\">合算レート</font>で計算. デフォルトち 1:1:1:2.2","TIP4":"4. 表の契約獲得率は <a href=\\"https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls Frontline\\" target=\\"_blank\\">鉄血シート</a> 基準推定 <font color=\\"red\\">重み付け</font>","TIP5":"5. 下段予想グラフは <a href=\\"#\\">現在資源</a> <font color=\\"red\\">量から合算</font>, 入力なしと０から計算","TIP5a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">自動回復</a> 活性化時3分当たり人弾配パ3:3:3:1回復</div>","TIP6":"6. <a href=\\"#\\">大成功率</a> 適用時資源及び契約獲得率は大成功期待値で再計算","TIP7":"7. <a href=\\"#\\">確認サイクル</a> 適用時全後方支援の時間を確認サイクルの倍数で再計算","TIP8":"8. <div class=\\"btn btn-danger\\"></div><div class=\\"btn btn-primary\\"></div> 機能/選択ボタン, <div class=\\"btn btn-default\\"></div><div class=\\"btn btn-success\\"></div> オン・オフボタン","TIP9":"9. <a href=\\"#\\">自動推選</a> は入力された <font color=\\"red\\">重み付け比率の資源獲得</font>ための配置推選","TIP9a":"<div style=\\"margin-left:10px;\\">a. <a href=\\"#\\">戦役選択</a>, <a href=\\"#\\">時間帯設定</a>, <a href=\\"#\\">大成功率</a>, <a href=\\"#\\">契約獲得率</a> 全て反映</div>","TIP9b":"<div style=\\"margin-left:10px;\\">b. <span id=\\"help_wght\\"><a href=\\"#\\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>","TIP9c":"<div style=\\"margin-left:10px;\\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"},"AREASELECT":{"TITLE":"戦役選択"},"TIMESELECT":{"TITLE":"時間帯設定","SELTIMEHOUR":"時間"},"SUMRATE":{"TITLE":"合算レート","BTN":"適用"},"PRESOURCE":{"TITLE":"現在資源","REFILL":"自動回復"},"SUCCESS":{"TITLE":"大成功率","SUMLEVEL":"梯隊レベル合計","SUCSRATIO":"大成功率","BTN":"適用","EVENT":"後方支援大成功確率UP","EVENTBTN":"確率UP"},"INTERVAL":{"TITLE":"確認サイクル","BTN":"適用"},"RECOMMEND":{"TITLE":"自動推選","RATIO":{"BTN_RATIO":"私の重み付け","CHOICE":{"DAY":{"TITLE":"一日使用量で計算","TEXT":"一日に使用する資源量を基盤とする個人重み付け計算","TABLE1":"一日使用量で計算例","TABLE2":"人形製造汎用式4回","TABLE3":"装備製造汎用式4回","TABLE4":"戦役9回クリア","TABLE5":"合計 <small>(下に入力)</small>","TABLE6":"重み付け"},"USES":{"TITLE":"最終目標値で計算","TEXT":"目標とした資源量から逆算した個人重み付け計算","TABLE1":"最終目標値で計算例","TABLE2":"現在資源量 <small>(下に入力)</small>","TABLE3":"目標資源量 <small>(下に入力)</small>","TABLE4":"誤差","TABLE5":"重み付け","TABLEs1":"現在","TABLEs2":"目標"}},"BTN_CALC":"計算","CALC_TEXT":"\'計算\'クリック時、重み付け自動入力"},"SUCSRATIO":"獲得率","TEXT_PERHOUR1":"時間当たり","TEXT_PERHOUR2":"個以上","BTN_RCMD":"戦役推選","RESULT":"推選結果","SIMM":"重み付け一致率"}}},"CHART":{"AREA":"戦役:","TIME":"期間:","BTN1":"1日","BTN2":"1週","BTN3":"2週","BTN4":"4週","DAY":"日","HOUR":"時","MIN":"分"},"MODAL":{"LOAD":{"TITLE":"セーブされた配置ロード","AREA":"戦役","HELP":"ヘルプ"}},"BOTTOM":{"ADDR":"アドレス: ","SGST":"建議事項: ","OPTI":"このページはChrome、FF、Edgeに最適化されています。"},"INCODE":{"ALERT1":"最終目標値は現在より大きいか同じでなければなりません。","ALERT2":"検索結果が有りません。","ALERT3":"一つ以上の支援を選択してください。","ALERT4":"クリップボードに下の内容を複写しました。","SAVE":"セーブする配置の名前を入力してください。","DELETE":"デリート"}}}}';
     langPacks = JSON.parse(jsonText);
 
     config = localStorage.config;

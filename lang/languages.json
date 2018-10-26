@@ -47,24 +47,31 @@
             "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>",
             "TIP9c": "<div style=\"margin-left:10px;\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"
           },
-          "SELAREA": "지역선택",
-          "RESOURCE": "현재자원",
-          "REFILL": "자동회복",
-          "SELTIME": "시간대",
-          "SELTIMEHOUR": "시간",
+          "AREASELECT":{
+            "TITLE": "지역선택"
+          },
+          "TIMESELECT":{
+            "TITLE": "시간대",
+            "SELTIMEHOUR": "시간"
+          },
           "SUMRATE":{
-            "TEXT": "자원 합계비",
+            "TITLE": "자원 합계비",
             "BTN": "적용"
           },
+          "PRESOURCE":{
+            "TITLE": "현재자원",
+            "REFILL": "자동회복"
+          },
           "SUCCESS": {
-            "TEXT": "대성공",
+            "TITLE": "대성공",
             "SUMLEVEL": "제대 레벨합계",
             "SUCSRATIO": "대성공 확률",
-            "BTN_OK": "적용",
-            "BTN_NO": "미적용"
+            "BTN": "적용",
+            "EVENT": "군수지원 대성공 확률 UP 이벤트",
+            "EVENTBTN": "확률UP"
           },
           "INTERVAL":{
-            "TEXT": "확인주기",
+            "TITLE": "확인주기",
             "BTN": "적용"
           },
           "RECOMMEND": {
@@ -135,9 +142,7 @@
         "ALERT3": "하나 이상의 군수지역을 선택해야 합니다",
         "ALERT4": "클립보드에 아래 내용을 복사하였습니다\n\n",
         "SAVE": "저장할 조합의 이름을 입력하세요",
-        "DELETE": "지우기",
-        "EVENT": "군수지원 대성공 확률 UP 이벤트",
-        "EVENTBTN": "확률UP"
+        "DELETE": "지우기"
       }
     }
   },
@@ -189,24 +194,31 @@
             "TIP9b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#\">Calc weights</a></span> </div>",
             "TIP9c": "<div style=\"margin-left:10px;\">c. Result % means similarity between input ratio & result</div>"
           },
-          "SELAREA": "Chapters",
-          "RESOURCE": "Pre Resources",
-          "REFILL": "Auto Resupply",
-          "SELTIME": "Time Periods",
-          "SELTIMEHOUR": "hour",
+          "AREASELECT":{
+            "TITLE": "Chapters"
+          },
+          "TIMESELECT":{
+            "TITLE": "Time Periods",
+            "SELTIMEHOUR": "hour"
+          },
           "SUMRATE":{
-            "TEXT": "Total Sumrate",
+            "TITLE": "Total Sumrate",
             "BTN": "Apply"
           },
+          "PRESOURCE":{
+            "TITLE": "Pre Resources",
+            "REFILL": "Auto Resupply"
+          },
           "SUCCESS": {
-            "TEXT": "Great Success",
+            "TITLE": "Great Success",
             "SUMLEVEL": "Echelon's levelsum",
             "SUCSRATIO": "GS Chance",
-            "BTN_OK": "Apply",
-            "BTN_NO": "Apply"
+            "BTN": "Apply",
+            "EVENT": "Great Success rate-up event",
+            "EVENTBTN": "Rate-UP"
           },
           "INTERVAL":{
-            "TEXT": "Check Cycle",
+            "TITLE": "Check Cycle",
             "BTN": "Apply"
           },
           "RECOMMEND": {
@@ -277,9 +289,7 @@
         "ALERT3": "You muse select at least one mission",
         "ALERT4": "Copy to clipboard\n\n",
         "SAVE": "Name your save",
-        "DELETE": "Delete",
-        "EVENT": "Great Success rate-up event",
-        "EVENTBTN": "Rate-UP"
+        "DELETE": "Delete"
       }
     }
   },
@@ -331,24 +341,31 @@
             "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>",
             "TIP9c": "<div style=\"margin-left:10px;\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"
           },
-          "SELAREA": "戦役選択",
-          "RESOURCE": "現在資源",
-          "REFILL": "自動回復",
-          "SELTIME": "時間帯設定",
-          "SELTIMEHOUR": "時間",
+          "AREASELECT":{
+            "TITLE": "戦役選択"
+          },
+          "TIMESELECT":{
+            "TITLE": "時間帯設定",
+            "SELTIMEHOUR": "時間"
+          },
           "SUMRATE":{
-            "TEXT": "合算レート",
+            "TITLE": "合算レート",
             "BTN": "適用"
           },
+          "PRESOURCE":{
+            "TITLE": "現在資源",
+            "REFILL": "自動回復"
+          },
           "SUCCESS": {
-            "TEXT": "大成功率",
+            "TITLE": "大成功率",
             "SUMLEVEL": "梯隊レベル合計",
             "SUCSRATIO": "大成功率",
-            "BTN_OK": "適用",
-            "BTN_NO": "適用なし"
+            "BTN": "適用",
+            "EVENT": "後方支援大成功確率UP",
+            "EVENTBTN": "確率UP"
           },
           "INTERVAL":{
-            "TEXT": "確認サイクル",
+            "TITLE": "確認サイクル",
             "BTN": "適用"
           },
           "RECOMMEND": {
@@ -419,9 +436,7 @@
         "ALERT3": "一つ以上の支援を選択してください。",
         "ALERT4": "クリップボードに下の内容を複写しました。",
         "SAVE": "セーブする配置の名前を入力してください。",
-        "DELETE": "デリート",
-        "EVENT": "後方支援大成功確率UP",
-        "EVENTBTN": "確率UP"
+        "DELETE": "デリート"
       }
     }
   }
