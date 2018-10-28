@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>소녀전선 - 군수시간표</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/highcharts.css" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body style="color: dimgray;" onresize="resizeBoxes();">
+<div class="container-fluid" style="height:100%; margin: auto; padding:0px; overflow-x:hidden;">
+    <div class="row no-gutters" style="width:100%; margin: auto; overflow-x:hidden;">
+        <div class="col-md-6 col-xs-12" style="padding:5px;">
+            <div class="col-md-12 col-xs-12">
+                <div id="tbl_left" class="row no-gutters panel panel-primary" style="padding:10px; overflow-x: hidden; overflow-y: scroll;">
+                    <div class="col-md-12 col-xs-12" style="padding:0px;" >
+                        <div id="colTime" class="col-md-4 col-xs-4" style="padding:0px;">
+                            <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">시간</div>
+                        </div>
+                        <div id="colEnc0" class="col-md-2 col-xs-2" style="padding:0px;">
+                            <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">1군수</div>
+                        </div>
+                        <div id="colEnc1" class="col-md-2 col-xs-2" style="padding:0px;">
+                            <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">2군수</div>
+                        </div>
+                        <div id="colEnc2" class="col-md-2 col-xs-2" style="padding:0px;">
+                            <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">3군수</div>
+                        </div>
+                        <div id="colEnc3" class="col-md-2 col-xs-2" style="padding:0px;">
+                            <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">4군수</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xs-12" style="padding:5px;">
+            <div class="col-md-12 col-xs-12">
+                <div id="tbl_right" class="row no-gutters panel panel-primary" style="padding:10px; margin-bottom:10px;">
+                    <table style="width:100%; margin-top:5px;">
+                        <tbody>
+                            <tr>
+                                <td style="width:20%;">
+                                    <div class="btn btn-xs btn-default btn-font-responsive" style="width:100%; background-color:#f7f7f7;">
+                                        <span>기본 설정</span>
+                                    </div>
+                                </td>
+                                <td style="width:80%; border-bottom:1px solid #ccc;">
+                                </td>
+                            </tr>
+                            <tr class="" style="height:10px;"></tr>
+                            <tr class="" style="">
+                                <td style="width:100%; padding-left:5%;" colspan="2">
+                                    <table style="width:100%;">
+                                        <tbody>
+                                        <tr>
+                                            <td width="18%">
+                                                <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                    기상 시간
+                                                </div>
+                                            </td>
+                                            <td width="2%">
+
+                                            </td>
+                                            <td width="20%">
+                                                <select id="selectStart" onChange="selectStart(this);" style="width:100%;">
+                                                    <option value="99" selected>없음</option>
+                                                </select>
+                                            </td>
+                                            <td width="20%">
+
+                                            </td>
+                                            <td width="20%">
+
+                                            </td>
+                                            <td width="20%">
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div style="margin-top:10px; margin-bottom:10px;"></div>
+                                    <table style="width:100%;">
+                                        <tbody>
+                                        <tr>
+                                            <td width="18%">
+                                                <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                    확인 주기
+                                                </div>
+                                            </td>
+                                            <td width="2%">
+
+                                            </td>
+                                            <td width="20%">
+                                                <select id="selectInterval" onChange="selectInterval(this);" style="width:100%;">
+                                                    <option value="0" selected>없음</option>
+                                                    <option value="60">1시간</option>
+                                                    <option value="120">2시간</option>
+                                                    <option value="180">3시간</option>
+                                                    <option value="240">4시간</option>
+                                                    <option value="300">5시간</option>
+                                                    <option value="360">6시간</option>
+                                                </select>
+                                            </td>
+                                            <td width="20%">
+
+                                            </td>
+                                            <td width="20%">
+
+                                            </td>
+                                            <td width="20%">
+
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div style="margin-top:10px; margin-bottom:10px;"></div>
+                                    <table style="width:100%;">
+                                        <tbody>
+                                        <tr>
+                                            <td width="18%">
+                                                <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                    군수 선택
+                                                </div>
+                                            </td>
+                                            <td width="2%">
+
+                                            </td>
+                                            <td width="20%">
+                                                <select id="selectArea-0" onChange="selectArea(this);" style="width:100%;">
+                                                    <option value="99" selected>없음</option>
+                                                </select>
+                                            </td>
+                                            <td width="20%">
+                                                <select id="selectArea-1" onChange="selectArea(this);" style="width:100%;">
+                                                    <option value="99" selected>없음</option>
+                                                </select>
+                                            </td>
+                                            <td width="20%">
+                                                <select id="selectArea-2" onChange="selectArea(this);" style="width:100%;">
+                                                    <option value="99" selected>없음</option>
+                                                </select>
+                                            </td>
+                                            <td width="20%">
+                                                <select id="selectArea-3" onChange="selectArea(this);" style="width:100%;">
+                                                    <option value="99" selected>없음</option>
+                                                </select>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr class="" style="height:5px;"></tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top:15px; margin-bottom:15px;"></div>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:20%;">
+                                <div class="btn btn-xs btn-default btn-font-responsive" style="width:100%; background-color:#f7f7f7;">
+                                    <span>수면군수 설정</span>
+                                </div>
+                            </td>
+                            <td style="width:80%; border-bottom:1px solid #ccc;">
+                                　<font style="color:#bbb;"><small>키입력 예제: 00(Tab)55(Tab)555(Tab)66 = 0-2,5-2,5-3,6-2</small></font>
+                            </td>
+                        </tr>
+                        <tr class="" style="height:10px;"></tr>
+                        <tr class="" style="">
+                            <td style="width:100%; padding-left:5%;" colspan="2">
+                                <table style="width:100%;">
+                                    <tbody>
+                                    <tr>
+                                        <td width="18%">
+                                            <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                취침 시간
+                                            </div>
+                                        </td>
+                                        <td width="2%">
+
+                                        </td>
+                                        <td width="20%">
+                                            <select id="selectSleepStart" onChange="selectSleepStart(this);" style="width:100%;">
+                                                <option value="99" selected>없음</option>
+                                            </select>
+                                        </td>
+                                        <td width="20%">
+
+                                        </td>
+                                        <td width="20%">
+
+                                        </td>
+                                        <td width="20%">
+
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <div style="margin-top:10px; margin-bottom:10px;"></div>
+                                <table style="width:100%;">
+                                    <tbody>
+                                    <tr>
+                                        <td width="18%">
+                                            <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                군수 선택
+                                            </div>
+                                        </td>
+                                        <td width="2%">
+
+                                        </td>
+                                        <td width="20%">
+                                            <select id="selectSleepArea-0" onChange="selectSleepArea(this);" style="width:100%;">
+                                                <option value="99" selected>없음</option>
+                                            </select>
+                                        </td>
+                                        <td width="20%">
+                                            <select id="selectSleepArea-1" onChange="selectSleepArea(this);" style="width:100%;">
+                                                <option value="99" selected>없음</option>
+                                            </select>
+                                        </td>
+                                        <td width="20%">
+                                            <select id="selectSleepArea-2" onChange="selectSleepArea(this);" style="width:100%;">
+                                                <option value="99" selected>없음</option>
+                                            </select>
+                                        </td>
+                                        <td width="20%">
+                                            <select id="selectSleepArea-3" onChange="selectSleepArea(this);" style="width:100%;">
+                                                <option value="99" selected>없음</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="" style="height:5px;"></tr>
+                    </table>
+
+                    <div style="margin-top:15px; margin-bottom:15px;"></div>
+
+                    <table style="width:100%;">
+                        <tbody>
+                        <tr>
+                            <td width="100%">
+                                <div class="btn btn-xs btn-success btn-font-responsive" onclick="preMakeTable();" style="width:100%;">
+                                    테이블 생성
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-md-12 col-xs-12">
+                <div id="tbl_right_bottom" class="row no-gutters panel panel-primary" style="padding:10px;">
+                    <table style="width:100%; margin-top:5px;">
+                        <tbody>
+                        <tr>
+                            <td style="width:20%;">
+                                <div class="btn btn-xs btn-default btn-font-responsive" style="width:100%; background-color:#f7f7f7;">
+                                    <span>일일 결산</span>
+                                </div>
+                            </td>
+                            <td style="width:80%; border-bottom:1px solid #ccc;">
+                            </td>
+                        </tr>
+                        <tr class="" style="height:10px;"></tr>
+                        <tr class="" style="">
+                            <td style="width:100%; padding-left:5%;" colspan="2">
+                                <table class="table table-bordered table-condensed" style="margin-bottom:0px;">
+                                    <tbody>
+                                    <tr class="info">
+                                        <td class="text-center" width="11%"><img src="img/huma.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/ammo.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/food.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/part.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/doll.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/tool.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/fast.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/repr.png" style="height:1.5em;"></td>
+                                        <td class="text-center" width="11%"><img src="img/tokn.png" style="height:1.5em;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center"><span id="result_h">　</span></td>
+                                        <td class="text-center"><span id="result_a">　</span></td>
+                                        <td class="text-center"><span id="result_f">　</span></td>
+                                        <td class="text-center"><span id="result_p">　</span></td>
+                                        <td class="text-center"><span id="result_d">　</span></td>
+                                        <td class="text-center"><span id="result_t">　</span></td>
+                                        <td class="text-center"><span id="result_m">　</span></td>
+                                        <td class="text-center"><span id="result_r">　</span></td>
+                                        <td class="text-center"><span id="result_k">　</span></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="" style="height:5px;"></tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top:15px; margin-bottom:15px;"></div>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tbody>
+                        <tr>
+                            <td style="width:20%;">
+                                <div class="btn btn-xs btn-default btn-font-responsive" style="width:100%; background-color:#f7f7f7;">
+                                    <span>월간 결산</span>
+                                </div>
+                            </td>
+                            <td style="width:80%; border-bottom:1px solid #ccc;">
+                            </td>
+                        </tr>
+                        <tr style="height:10px;"></tr>
+                        <tr>
+                            <td colspan="2" id="tbl_cht" style="width:100%; height:308px; padding:0px;">
+                                <!--<div id="tbl_cht" style="width:98%; height:308px; padding:0px;"></div>-->
+                            </td>
+                        </tr>
+                        <tr class="" style="height:5px;"></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr style="margin-top: 0px; margin-bottom: 0px;">
+    <div class="col-md-4 col-xs-12" style="margin:0px; padding:3px;">
+        <div class="row no-gutter">
+            <small>
+                <div class="col-xs-12">
+                    <span id="str_bottom_addr">주소: </span><a href="http://gunsu.kr" target="_blank">http://gunsu.kr</a><br>
+                </div>
+                <div class="col-xs-12">
+                    <span id="str_bottom_sgst">건의사항: </span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1"
+                                                         target="_blank">Guestbook</a><br>
+                </div>
+            </small>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12" style="margin:0px; padding:3px;">
+        <div class="row no-gutter">
+            <small>
+                <div class="col-xs-12">
+                    Github: <a href="https://github.com/tempkaridc/gf"
+                               target="_blank">https://github.com/tempkaridc/gf</a><br>
+                </div>
+                <div class="col-xs-12">
+                    Last Update: <font color="#db7093"><span id="lastUpdate">2018-10-28 23:00</span></font>
+                </div>
+            </small>
+        </div>
+    </div>
+    <div class="col-md-4 col-xs-12" style="margin:0px; padding:3px;">
+        <small>
+            <div class="row no-gutter">
+                <div class="col-xs-12">
+
+                </div>
+                <div class="col-xs-12">
+                    <!--
+                    <input type="string" class="form-control input-xs" value='<iframe style="display:block; width:100%; height:100%;" src="https://tempkaridc.github.io/gf/"></iframe>' style="padding:0px; height:1.3em; font-size:1.0em; width:80%;">
+                    -->
+                    이 페이지는 Chrome, Firefox, Edge에 최적화되어 있습니다.
+                    <span id="str_bottom_opti"></span>
+                </div>
+            </div>
+        </small>
+    </div>
+</div>
+<script src="js/highcharts.js"></script>
+<script src="js/highcharts-more.js"></script>
+<script src="js/highcharts-boost.js"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/timetable.js"></script>
+</body>
+</html>
