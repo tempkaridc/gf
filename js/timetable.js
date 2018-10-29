@@ -252,7 +252,10 @@ function makeTable(){
                         var emptybox =  '<div class="btn btn-xs btn-title col-md-12 col-xs-12 text-center" style="width:100%; height:'
                             + ((1440 - now - val.sleepPeriod) / 5 * height) +
                             'px;"></div>';
-                        $('#colEnc'+k).append(emptybox);
+
+                        if(((1440 - now - val.sleepPeriod) / 5 * height) > 0){
+                            $('#colEnc'+k).append(emptybox);
+                        }
 
                         var inframe = makeFrame(arr[val.sleepArea[k]]);
                         var colEnc = '<div class="btn btn-xs btn-title col-md-12 col-xs-12 text-center" value="' + val.sleepArea[k]+ '" onclick="popupAlert(this);" style="overflow-y:hidden; width:100%; height:' + (val.sleepPeriod / 5 * height) + 'px;">' + inframe + '</div>';
