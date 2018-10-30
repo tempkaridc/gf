@@ -18,14 +18,12 @@ $(function (){
     resizeBoxes();
     callData();
     loadLastData();
-})
+});
 
 function loadLastData(){
     var config = JSON.parse(localStorage.config);
 
     if(config.timetable === undefined){return;}
-
-    console.log(config.timetable);
 
     val = config.timetable;
 
@@ -325,7 +323,9 @@ function drawChart(){
     var chart_time = new Array();
     var name = ["인력","탄약","식량","부품"];
 
-    var now = (new Date).getTime() + (9 * 60 * 60 * 1000); // GMT+9
+    var date = new Date();
+    var now = date.getTime() - (date.getTimezoneOffset() * 60 * 1000); // GMT+9
+
     var aryLine = new Array();
     for(var i = 0; i < 4; i++){
         var obj = new Array();
@@ -442,11 +442,11 @@ function dispResult(){
     $('#result_a').html(result.a);
     $('#result_f').html(result.f);
     $('#result_p').html(result.p);
-    $('#result_d').html(result.d.toFixed(1) + '개');
-    $('#result_t').html(result.t.toFixed(1) + '개');
-    $('#result_m').html(result.m.toFixed(1) + '개');
-    $('#result_r').html(result.r.toFixed(1) + '개');
-    $('#result_k').html(result.k.toFixed(1) + '개');
+    $('#result_d').html(result.d.toFixed(1));
+    $('#result_t').html(result.t.toFixed(1));
+    $('#result_m').html(result.m.toFixed(1));
+    $('#result_r').html(result.r.toFixed(1));
+    $('#result_k').html(result.k.toFixed(1));
 }
 
 function addResult(elem){

@@ -1038,7 +1038,9 @@ function drawStage(){
     //Mobile Chart Drawing Junction
     if(!sw_drawChart) return;
 
-    now = (new Date).getTime() + (9 * 60 * 60 * 1000); // GMT+9
+    var date = new Date();
+    now = date.getTime() - (date.getTimezoneOffset() * 60 * 1000); // GMT+9
+    console.log(now);
 
     for(i in selectedList){
         var maxTimeRange = 60 * 24 * 30; //60min * 24hours * 30days
