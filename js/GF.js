@@ -3,7 +3,7 @@ var updateString    = "2018-10-28 Changelog"
                     + "\n- 군수 시간표(베타) 기능 추가"
                     ;
 
-var selLang         = 'en';   //기본 언어는 한
+var selLang         = 'ko';   //기본 언어는 한국어
 var langPacks;
 var langPack;
 
@@ -1824,8 +1824,6 @@ function calcSuccessRatio(){
 }
 
 function resizeBoxes(){
-    console.log('call');
-
     var myHeight = 0;
     var myWidth = window.innerWidth;
 
