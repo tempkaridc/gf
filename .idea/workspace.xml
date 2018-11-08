@@ -69,8 +69,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="285">
-              <caret line="1839" column="57" selection-start-line="1839" selection-start-column="57" selection-end-line="1839" selection-end-column="57" />
+            <state relative-caret-position="75">
+              <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
               <folding>
                 <element signature="e#1192#1221#0" expanded="true" />
                 <element signature="e#1719#1748#0" expanded="true" />
@@ -231,9 +231,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>btn-timeta</find>
-      <find>sleepPeriod</find>
-      <find>val_interval</find>
       <find>localStorage.config</find>
       <find>timetable</find>
       <find>수면군수 시</find>
@@ -261,6 +258,9 @@
       <find>sw_drawChart</find>
       <find>resizeBoxe</find>
       <find>resize</find>
+      <find>language</find>
+      <find>lang</find>
+      <find>selLang</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -492,12 +492,12 @@
       <workItem from="1540650991722" duration="57736000" />
       <workItem from="1541467568732" duration="2388000" />
       <workItem from="1541580426839" duration="34000" />
-      <workItem from="1541664565848" duration="1382000" />
+      <workItem from="1541664565848" duration="2284000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="619242000" />
+    <option name="totallyTimeSpent" value="620144000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="859" y="6" width="1627" height="1006" extended-state="0" />
@@ -900,8 +900,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="1839" column="57" selection-start-line="1839" selection-start-column="57" selection-end-line="1839" selection-end-column="57" />
+        <state relative-caret-position="75">
+          <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
           <folding>
             <element signature="e#1192#1221#0" expanded="true" />
             <element signature="e#1719#1748#0" expanded="true" />

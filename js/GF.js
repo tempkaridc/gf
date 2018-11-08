@@ -3,7 +3,7 @@ var updateString    = "2018-10-28 Changelog"
                     + "\n- 군수 시간표(베타) 기능 추가"
                     ;
 
-var selLang         = "ko-kr";   //혹 모르니 기본값 한글로
+var selLang         = 'en';   //기본 언어는 영어로
 var langPacks;
 var langPack;
 
