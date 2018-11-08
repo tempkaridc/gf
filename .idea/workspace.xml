@@ -78,8 +78,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="1850" column="83" lean-forward="true" selection-start-line="1850" selection-start-column="83" selection-end-line="1850" selection-end-column="83" />
+            <state relative-caret-position="719">
+              <caret line="1860" column="21" lean-forward="true" selection-start-line="1860" selection-start-column="21" selection-end-line="1860" selection-end-column="21" />
               <folding>
                 <element signature="e#1192#1221#0" expanded="true" />
                 <element signature="e#1719#1748#0" expanded="true" />
@@ -101,8 +101,8 @@
       <file leaf-file-name="languages.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lang/languages.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="316" column="26" lean-forward="true" selection-start-line="316" selection-start-column="26" selection-end-line="316" selection-end-column="26" />
+            <state relative-caret-position="299">
+              <caret line="20" column="26" selection-end-line="445" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -256,7 +256,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>unique</find>
       <find>a, b,</find>
       <find>a.isArray(</find>
       <find>Array(</find>
@@ -281,11 +280,12 @@
       <find>selectLanguage</find>
       <find>FF</find>
       <find>create</find>
-      <find>시간표</find>
       <find>클립보드</find>
       <find>Create</find>
       <find>COPY</find>
       <find>load</find>
+      <find>시간표</find>
+      <find>시간표 생성</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -331,8 +331,8 @@
         <option value="C:/vas_cpp/www/js/jquery-migrate-3.0.0.min.js" />
         <option value="$PROJECT_DIR$/js/timetable.js" />
         <option value="$PROJECT_DIR$/lang/languages.json" />
-        <option value="$PROJECT_DIR$/js/GF.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/js/GF.js" />
       </list>
     </option>
   </component>
@@ -518,12 +518,12 @@
       <workItem from="1541467568732" duration="2388000" />
       <workItem from="1541580426839" duration="34000" />
       <workItem from="1541664565848" duration="3953000" />
-      <workItem from="1541668884014" duration="2818000" />
+      <workItem from="1541668884014" duration="3129000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="624631000" />
+    <option name="totallyTimeSpent" value="624942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="894" y="26" width="1627" height="1006" extended-state="0" />
@@ -883,13 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lang/languages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="316" column="26" lean-forward="true" selection-start-line="316" selection-start-column="26" selection-end-line="316" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
@@ -940,10 +933,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lang/languages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="299">
+          <caret line="20" column="26" selection-end-line="445" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="1850" column="83" lean-forward="true" selection-start-line="1850" selection-start-column="83" selection-end-line="1850" selection-end-column="83" />
+        <state relative-caret-position="719">
+          <caret line="1860" column="21" lean-forward="true" selection-start-line="1860" selection-start-column="21" selection-end-line="1860" selection-end-column="21" />
           <folding>
             <element signature="e#1192#1221#0" expanded="true" />
             <element signature="e#1719#1748#0" expanded="true" />
