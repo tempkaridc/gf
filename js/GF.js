@@ -30,6 +30,7 @@ var sw_drawChart    = true;         // 차트 드로잉 갱신여부
 var sw_drawReserved = false;        // 차트 드로잉 예약여부
 var sw_interval     = false;        // 확인 주기 적용여부
 var sw_successEvent = false;        // 군수확업 이벤트 트리거
+var sw_onResize     = false;        // 창 리사이즈 이벤트 트리거
 
 var val_success     = 0.6;                                  // 대성공 초기성공률 60%
 var val_interval    = 30;           // 확인 주기 초기값 30분
@@ -820,7 +821,7 @@ function loadSaves(){
     }else{
         saves = JSON.parse(localStorage.saves);
 
-        //임시로 이벤트쪽에서 save 섞인 파일 지우는 코드 삽입해둠...
+        //임시로 이벤트쪽에서 save 섞인 파일 지우는 코드 삽입해둠... 먼 훗날 삭제바람
         if(saves.title !== undefined){
             saves = new Array();
             localStorage.saves = JSON.stringify(saves);
@@ -1040,7 +1041,6 @@ function drawStage(){
 
     var date = new Date();
     now = date.getTime() - (date.getTimezoneOffset() * 60 * 1000); // GMT+9
-    console.log(now);
 
     for(i in selectedList){
         var maxTimeRange = 60 * 24 * 30; //60min * 24hours * 30days
@@ -1825,8 +1825,15 @@ function calcSuccessRatio(){
 }
 
 function resizeBoxes(){
+    if(sw_onResize == false){
+        sw_onResize = true;
+    }else{
+        return;
+    }
+
     var myHeight = 0;
     var myWidth = window.innerWidth;
+
     if( typeof( window.innerWidth ) == 'number' ) {
         myHeight = window.innerHeight;
     } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
@@ -1838,13 +1845,16 @@ function resizeBoxes(){
     if(myWidth <= 991){ //Mobile UI
         document.getElementById('tbl_mid').style.height = myHeight * 0.60 + 'px';
         document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
-        sw_drawChart = false;
-        chkScroll();
+        sw_drawChart = true;
+        //sw_drawChart = false;
+        //chkScroll();
     }else{              //Desktop UI
         document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
         document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
         sw_drawChart = true;
     }
+
+    sw_onResize = false;
 }
 
 $(window).scroll(function() {

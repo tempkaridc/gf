@@ -259,6 +259,7 @@ function makeTable(){
                         var colEnc = '<div class="btn btn-xs btn-title col-md-12 col-xs-12 text-center" value="' + val.sleepArea[k]+ '" onclick="popupAlert(this);" style="overflow-y:hidden; width:100%; height:' + (val.sleepPeriod / 5 * height) + 'px;">' + inframe + '</div>';
 
                         addResult(arr[val.sleepArea[k]]);
+
                         $('#colEnc'+k).append(colEnc);
                     }
                     break;
@@ -273,6 +274,7 @@ function makeTable(){
             }
         }
     }
+
 
     dispResult();
     drawChart();
@@ -476,6 +478,7 @@ function resizeBoxes(){
     } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
         myHeight = document.body.clientHeight;
     }
+
 
     if(myWidth <= 991){ //Mobile UI
         document.getElementById('tbl_left').style.height = myHeight * 0.90 + 'px';
