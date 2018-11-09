@@ -1844,10 +1844,10 @@ function resizeBoxes(){
         //sw_drawChart = false;
         //chkScroll();
     }else{              //Desktop UI 대응형
-        //document.getElementById('tbl_mid').style.height = '700px';
-        //document.getElementById('tbl_cht').style.height = '400px';
-        document.getElementById('tbl_mid').style.height = ((myHeight * 0.9) - 100) + 'px';
-        document.getElementById('tbl_cht').style.height = ((myHeight * 0.40) + 0) + 'px';
+        document.getElementById('tbl_mid').style.height = '592px';
+        document.getElementById('tbl_cht').style.height = '240px';
+        //document.getElementById('tbl_mid').style.height = ((myHeight * 0.9) - 100) + 'px';
+        //document.getElementById('tbl_cht').style.height = ((myHeight * 0.40) + 0) + 'px';
         sw_drawChart = true;
     }
 }
