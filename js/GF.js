@@ -1835,7 +1835,7 @@ function resizeBoxes(){
         myHeight = document.body.clientHeight;
     }
 
-    if(myWidth <= 991){ //Mobile UI
+    if(myWidth <= 991){ //Mobile UI 고정형
         document.getElementById('tbl_mid').style.height = '500px';
         document.getElementById('tbl_cht').style.height = '360px';
         //document.getElementById('tbl_mid').style.height = myHeight * 0.60 + 'px';
@@ -1843,11 +1843,11 @@ function resizeBoxes(){
         sw_drawChart = true;
         //sw_drawChart = false;
         //chkScroll();
-    }else{              //Desktop UI
-        document.getElementById('tbl_mid').style.height = '700px';
-        document.getElementById('tbl_cht').style.height = '400px';
-        //document.getElementById('tbl_mid').style.height = myHeight * 0.80 + 'px';
-        //document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
+    }else{              //Desktop UI 대응형
+        //document.getElementById('tbl_mid').style.height = '700px';
+        //document.getElementById('tbl_cht').style.height = '400px';
+        document.getElementById('tbl_mid').style.height = ((myHeight * 0.9) - 100) + 'px';
+        document.getElementById('tbl_cht').style.height = ((myHeight * 0.40) + 0) + 'px';
         sw_drawChart = true;
     }
 }
