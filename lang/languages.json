@@ -17,7 +17,7 @@
         "SELAREA": "선택<br>지역",
         "LOAD": " 불러오기",
         "SAVE": " 저장",
-        "COPY": " 복사",
+        "COPY": " URL 복사",
         "TIMETABLE": " 시간표",
         "TICKET": "계약서",
         "TICKET_DOLL": "인형제조계약서",
@@ -141,7 +141,7 @@
         "ALERT1": "최종목표치는 현재보다 크거나 같아야 합니다",
         "ALERT2": "검색 결과가 없습니다",
         "ALERT3": "하나 이상의 군수지역을 선택해야 합니다",
-        "ALERT4": "클립보드에 아래 내용을 복사하였습니다\n\n",
+        "ALERT4": "주소가 클립보드에 복사되었습니다",
         "SAVE": "저장할 조합의 이름을 입력하세요",
         "DELETE": "지우기"
       }
@@ -165,7 +165,7 @@
         "SELAREA": "Selected<br>Mission",
         "LOAD": " Load",
         "SAVE": " Save",
-        "COPY": " Copy",
+        "COPY": " Copy URL",
         "TIMETABLE": " Agenda",
         "TICKET": "Contracts",
         "TICKET_DOLL": "T-Doll Contract",
@@ -289,7 +289,7 @@
         "ALERT1": "Goal must bigger than present",
         "ALERT2": "No result",
         "ALERT3": "You muse select at least one mission",
-        "ALERT4": "Copy to clipboard\n\n",
+        "ALERT4": "URL copied to clipboard",
         "SAVE": "Name your save",
         "DELETE": "Delete"
       }
@@ -313,7 +313,7 @@
         "SELAREA": "選択<br>戦役",
         "LOAD": " ロード",
         "SAVE": " セーブ",
-        "COPY": " 複写",
+        "COPY": " URL 複写",
         "TIMETABLE": " タイムテーブル",
         "TICKET": "契約",
         "TICKET_DOLL": "人形製造契約",
@@ -437,7 +437,7 @@
         "ALERT1": "最終目標値は現在より大きいか同じでなければなりません。",
         "ALERT2": "検索結果が有りません。",
         "ALERT3": "一つ以上の支援を選択してください。",
-        "ALERT4": "クリップボードに下の内容を複写しました。",
+        "ALERT4": "クリップボードにURLを複写しました。",
         "SAVE": "セーブする配置の名前を入力してください。",
         "DELETE": "デリート"
       }

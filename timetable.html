@@ -14,7 +14,7 @@
     <div class="row no-gutters" style="width:100%; margin: auto; overflow-x:hidden;">
         <div class="col-md-6 col-xs-12" style="padding:5px;">
             <div class="col-md-12 col-xs-12">
-                <div id="tbl_left" class="row no-gutters panel panel-primary" style="padding:10px; overflow-x: hidden; overflow-y: scroll;">
+                <div id="tbl_left" class="row no-gutters panel panel-primary" style="padding:10px;">
                     <div class="col-md-12 col-xs-12" style="padding:0px;" >
                         <div id="colTime" class="col-md-4 col-xs-4" style="padding:0px;">
                             <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">시간</div>
@@ -56,7 +56,7 @@
                                         <tbody>
                                         <tr>
                                             <td width="18%">
-                                                <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                <div class="btn btn-xs btn-primary btn-font-responsive disabled" style="width:100%;">
                                                     기상 시간
                                                 </div>
                                             </td>
@@ -85,7 +85,7 @@
                                         <tbody>
                                         <tr>
                                             <td width="18%">
-                                                <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                <div class="btn btn-xs btn-primary btn-font-responsive disabled" style="width:100%;">
                                                     확인 주기
                                                 </div>
                                             </td>
@@ -120,7 +120,7 @@
                                         <tbody>
                                         <tr>
                                             <td width="18%">
-                                                <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                                <div class="btn btn-xs btn-primary btn-font-responsive disabled" style="width:100%;">
                                                     군수 선택
                                                 </div>
                                             </td>
@@ -166,7 +166,7 @@
                                 </div>
                             </td>
                             <td style="width:80%; border-bottom:1px solid #ccc;">
-                                　<font style="color:#bbb;"><small>키입력 예제: 00(Tab)55(Tab)555(Tab)66 = 0-2,5-2,5-3,6-2</small></font>
+                                　<font style="color:#bbb;"><small></small></font>
                             </td>
                         </tr>
                         <tr class="" style="height:10px;"></tr>
@@ -176,7 +176,7 @@
                                     <tbody>
                                     <tr>
                                         <td width="18%">
-                                            <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                            <div class="btn btn-xs btn-primary btn-font-responsive disabled" style="width:100%;">
                                                 취침 시간
                                             </div>
                                         </td>
@@ -205,7 +205,7 @@
                                     <tbody>
                                     <tr>
                                         <td width="18%">
-                                            <div class="btn btn-xs btn-primary btn-font-responsive" style="width:100%;">
+                                            <div class="btn btn-xs btn-primary btn-font-responsive disabled" style="width:100%;">
                                                 군수 선택
                                             </div>
                                         </td>
@@ -245,9 +245,14 @@
                     <table style="width:100%;">
                         <tbody>
                         <tr>
-                            <td width="100%">
-                                <div class="btn btn-xs btn-success btn-font-responsive" onclick="preMakeTable();" style="width:100%;">
-                                    테이블 생성
+                            <td width="70%">
+                                <button class="btn btn-xs btn-success btn-font-responsive" onclick="preMakeTable();" style="width:100%;">
+                                    <span class="glyphicon glyphicon-calendar"></span> 테이블 생성
+                                </button>
+                            </td>
+                            <td width="30%">
+                                <div class="btn btn-xs btn-primary btn-font-responsive" onclick="copyURL();" style="width:100%;">
+                                    <span class="glyphicon glyphicon-link"></span> URL 복사
                                 </div>
                             </td>
                         </tr>

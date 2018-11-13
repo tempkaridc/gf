@@ -1,11 +1,15 @@
 var val = new Object();
-val.start       = 99;
+val.start           = 99;
 val.sw_interval     = false;        // 확인 주기 적용여부
-val.interval    = 0;
-val.area        = [99,99,99,99];
-val.sleepStart  = 99;
-val.sleepArea   = [99,99,99,99];
-val.sw_sleep       = false;
+val.interval        = 0;
+val.area            = [99,99,99,99];
+val.sleepStart      = 99;
+val.sleepArea       = [99,99,99,99];
+val.sw_sleep        = false;
+
+var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/_",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9-/_]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+var urlParams = new URLSearchParams(window.location.search);
+var myParam = urlParams.get('code');
 
 var result = new Object();
 
@@ -13,33 +17,40 @@ var arr;
 var timeArr;
 var chart;
 
-
 $(function (){
-    resizeBoxes();
     callData();
-    loadLastData();
+    chkURLhash();
 });
 
-function loadLastData(){
-    var config = JSON.parse(localStorage.config);
+function chkURLhash(){
+    if(myParam != null){
+        try{
+            var param = JSON.parse(Base64.decode(myParam));
+            val.start           = param[0];
+            val.area            = [param[1],param[2],param[3],param[4]];
+            val.sw_interval     = param[5] > 0 ? true : false;
+            val.interval        = param[6];
+            val.sw_sleep        = param[7] > 0 ? true : false;
+            if(val.sw_sleep){
+                val.sleepStart      = param[8];
+                val.sleepArea       = [param[10],param[11],param[12],param[13]];
+            }
 
-    if(config.timetable === undefined){return;}
-
-    val = config.timetable;
-
-    $('#selectStart').val(val.start).change();
-    $('#selectInterval').val(val.interval).change();
-    $('#selectSleepStart').val(val.sleepStart).change();
-    for(var i = 0; i < 4; i++){
-        $('#selectArea-' + i).val(val.area[i]).change();
-        $('#selectSleepArea-' + i).val(val.sleepArea[i]).change();
+            $('#selectStart').val(val.start).change();
+            $('#selectInterval').val(val.interval).change();
+            $('#selectSleepStart').val(val.sleepStart).change();
+            for(var i = 0; i < 4; i++){
+                $('#selectArea-' + i).val(val.area[i]).change();
+                $('#selectSleepArea-' + i).val(val.sleepArea[i]).change();
+            }
+        }catch(e){
+            return;
+        }
+        preMakeTable();
     }
-
-    preMakeTable();
 }
 
 function callData(){
-
     arr = [ // Area, Stage, Time(Min), Huma, Ammo, MRE, Part, Make_Doll, Make_Tool, Fast_Make, Fast_Repair, Tokken
         [0,1,50,0,145,145,0,0,0,0.2,0.5,0],
         [0,2,180,550,0,0,350,0.5,0,0,0,0],
@@ -132,6 +143,35 @@ function selectSleepArea(elem){
     val.sleepArea[parseInt(idx[1])] = parseInt(elem.value);
 }
 
+function copyURL(){
+    preMakeTable();
+
+    var hash = new Array();
+    hash.push(val.start);
+    hash.push(val.area[0]);
+    hash.push(val.area[1]);
+    hash.push(val.area[2]);
+    hash.push(val.area[3]);
+    hash.push(val.sw_interval ? 1 : 0);
+    hash.push(val.interval);
+    hash.push(val.sw_sleep ? 1: 0);
+    hash.push(val.sleepStart);
+    hash.push(val.sleepPeriod);
+    hash.push(val.sleepArea[0]);
+    hash.push(val.sleepArea[1]);
+    hash.push(val.sleepArea[2]);
+    hash.push(val.sleepArea[3]);
+
+    var encodedString = Base64.encode(JSON.stringify(hash));
+
+    var t = document.createElement("textarea");
+    document.body.appendChild(t);
+    t.value = 'https://tempkaridc.github.io/gf/timetable.html?code=' + encodedString;
+    t.select();
+    document.execCommand('copy');
+    document.body.removeChild(t);
+    alert('주소가 클립보드에 복사되었습니다.');
+}
 
 function preMakeTable(){
     if(val.sw_interval == true){
@@ -196,7 +236,7 @@ function clearResult(){
 }
 
 function makeTable(){
-    var height = 5;                 //5분당 몇픽셀을 적용할지 비율
+    var height = 3;                 //5분당 몇픽셀을 적용할지 비율
     var timeCycle = [0,0,0,0];
     var rowspans = [0,0,0,0];
     var sleepCycle = [0,0,0,0];
@@ -232,7 +272,7 @@ function makeTable(){
         var now = (i * 30) + val.start;
         if(now >= 1440){now -= 1440;}
 
-        var colTime = '<div class="btn btn-default col-md-12 col-xs-12 text-center" style="padding-top:auto; padding-bottom:auto; width:100%; height:' + '30px;">' + minToString(now) + ' - ' + minToString((now+30) >= 1440 ? now+30-1440 : now+30) + '</div>';
+        var colTime = '<div class="btn btn-xs btn-default col-md-12 col-xs-12 text-center" style="padding-top:0px; padding-bottom:0px; width:100%; height:' + (height * 6) + 'px;">' + minToString(now) + ' - ' + minToString((now+30) >= 1440 ? now+30-1440 : now+30) + '</div>';
 
         $('#colTime').append(colTime);
 
@@ -256,7 +296,7 @@ function makeTable(){
                         }
 
                         var inframe = makeFrame(arr[val.sleepArea[k]]);
-                        var colEnc = '<div class="btn btn-xs btn-title col-md-12 col-xs-12 text-center" value="' + val.sleepArea[k]+ '" onclick="popupAlert(this);" style="overflow-y:hidden; width:100%; height:' + (val.sleepPeriod / 5 * height) + 'px;">' + inframe + '</div>';
+                        var colEnc = '<div class="btn btn-xs btn-title col-md-12 col-xs-12 text-center" value="' + val.sleepArea[k]+ '" onclick="popupAlert(this);" style="overflow:hidden; width:100%; height:' + (val.sleepPeriod / 5 * height) + 'px;">' + inframe + '</div>';
 
                         addResult(arr[val.sleepArea[k]]);
 
@@ -266,7 +306,7 @@ function makeTable(){
                 }
 
                 var inframe = makeFrame(arr[val.area[k]]);
-                var colEnc = '<div class="btn btn-xs btn-default col-md-12 col-xs-12 text-center" value="' + val.area[k]+ '" onclick="popupAlert(this);" style="overflow-y:hidden; width:100%; height:' + rowspans[k] + 'px;">' + inframe + '</div>';
+                var colEnc = '<div class="btn btn-xs btn-default col-md-12 col-xs-12 text-center" value="' + val.area[k]+ '" onclick="popupAlert(this);" style="overflow:hidden; width:100%; height:' + rowspans[k] + 'px;">' + inframe + '</div>';
 
                 addResult(arr[val.area[k]]);
                 $('#colEnc'+k).append(colEnc);
@@ -278,11 +318,6 @@ function makeTable(){
 
     dispResult();
     drawChart();
-
-    var config = JSON.parse(localStorage.config);
-    config.timetable = val;
-    localStorage.config = JSON.stringify(config);
-
 }
 
 function popupAlert(ont){
@@ -307,10 +342,7 @@ function makeFrame(elem){
     var inframe = "";
     inframe += elem[0] + '-' + elem[1];
     inframe += '<br>' + parseInt(elem[2] / 60) + ':' +  (parseInt(elem[2] % 60) == 0 ? '00' : '30');
-    inframe += '<br>인력:' + elem[3];
-    inframe += '<br>탄약:' + elem[4];
-    inframe += '<br>식량:' + elem[5];
-    inframe += '<br>부품:' + elem[6];
+    inframe += '<br>' + elem[3] + '／' + elem[4] + '／' + elem[5] + '／' + elem[6];
     inframe += '<br>';
     if(elem[7] != 0){inframe += '<img src="img/doll.png" style="height:1.5em;" title="'+elem[7]+'개">'}
     if(elem[8] != 0){inframe += '<img src="img/tool.png" style="height:1.5em;" title="'+elem[8]+'개">'}
@@ -466,26 +498,4 @@ function addResult(elem){
 
 function minToString(time){
     return parseInt(time / 60) + ':' + ((time % 60) == 0 ? '00' : '30');
-}
-
-function resizeBoxes(){
-    var myHeight = 0;
-    var myWidth = window.innerWidth;
-    if( typeof( window.innerWidth ) == 'number' ) {
-        myHeight = window.innerHeight;
-    } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
-        myHeight = document.documentElement.clientHeight;
-    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
-        myHeight = document.body.clientHeight;
-    }
-
-
-    if(myWidth <= 991){ //Mobile UI
-        document.getElementById('tbl_left').style.height = myHeight * 0.90 + 'px';
-        //document.getElementById('tbl_right').style.height = myHeight * 0.40 + 'px';
-        //chkScroll();
-    }else{              //Desktop UI
-        document.getElementById('tbl_left').style.height = myHeight * 0.90 + 'px';
-        //document.getElementById('tbl_right').style.height = myHeight * 0.90 + 'px';
-    }
 }
