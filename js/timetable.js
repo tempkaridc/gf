@@ -342,7 +342,7 @@ function makeFrame(elem){
     var inframe = "";
     inframe += elem[0] + '-' + elem[1];
     inframe += '<br>' + parseInt(elem[2] / 60) + ':' +  (parseInt(elem[2] % 60) == 0 ? '00' : '30');
-    inframe += '<br>' + elem[3] + '/' + elem[4] + '/' + elem[5] + '/' + elem[6];
+    inframe += '<br>' + elem[3] + '/' + elem[4] + '<br>' + elem[5] + '/' + elem[6];
     inframe += '<br>';
     if(elem[7] != 0){inframe += '<img src="img/doll.png" style="height:1.5em;" title="'+elem[7]+'개">'}
     if(elem[8] != 0){inframe += '<img src="img/tool.png" style="height:1.5em;" title="'+elem[8]+'개">'}
