@@ -9,13 +9,14 @@
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 </head>
 
-<body style="color: dimgray;" onresize="resizeBoxes();">
+<body style="color: dimgray;">
 <div class="container-fluid" style="height:100%; margin: auto; padding:0px; overflow-x:hidden;">
     <div class="row no-gutters" style="width:100%; margin: auto; overflow-x:hidden;">
         <div class="col-md-6 col-xs-12" style="padding:5px;">
             <div class="col-md-12 col-xs-12">
                 <div id="tbl_left" class="row no-gutters panel panel-primary" style="padding:10px;">
                     <div class="col-md-12 col-xs-12" style="padding:0px;" >
+                        <!--
                         <div id="colTime" class="col-md-4 col-xs-4" style="padding:0px;">
                             <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">시간</div>
                         </div>
@@ -31,6 +32,28 @@
                         <div id="colEnc3" class="col-md-2 col-xs-2" style="padding:0px;">
                             <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">4군수</div>
                         </div>
+                        -->
+                        <table style="width:100%;">
+                            <tbody style="width:100%;">
+                            <tr style="width:100%;">
+                                <td id="colTime" width="20%" style="vertical-align:top;">
+                                    <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">시간</div>
+                                </td>
+                                <td id="colEnc0" width="20%" style="vertical-align:top;">
+                                    <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">1군수</div>
+                                </td>
+                                <td id="colEnc1" width="20%" style="vertical-align:top;">
+                                    <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">2군수</div>
+                                </td>
+                                <td id="colEnc2" width="20%" style="vertical-align:top;">
+                                    <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">3군수</div>
+                                </td>
+                                <td id="colEnc3" width="20%" style="vertical-align:top;">
+                                    <div class="btn btn-xs btn-default col-md-12 col-xs-12" style="width:100%;">4군수</div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -129,22 +152,22 @@
                                             </td>
                                             <td width="20%">
                                                 <select id="selectArea-0" onChange="selectArea(this);" style="width:100%;">
-                                                    <option value="99" selected>없음</option>
+                                                    <option value="100" selected>없음</option>
                                                 </select>
                                             </td>
                                             <td width="20%">
                                                 <select id="selectArea-1" onChange="selectArea(this);" style="width:100%;">
-                                                    <option value="99" selected>없음</option>
+                                                    <option value="100" selected>없음</option>
                                                 </select>
                                             </td>
                                             <td width="20%">
                                                 <select id="selectArea-2" onChange="selectArea(this);" style="width:100%;">
-                                                    <option value="99" selected>없음</option>
+                                                    <option value="100" selected>없음</option>
                                                 </select>
                                             </td>
                                             <td width="20%">
                                                 <select id="selectArea-3" onChange="selectArea(this);" style="width:100%;">
-                                                    <option value="99" selected>없음</option>
+                                                    <option value="100" selected>없음</option>
                                                 </select>
                                             </td>
                                         </tr>
@@ -185,7 +208,7 @@
                                         </td>
                                         <td width="20%">
                                             <select id="selectSleepStart" onChange="selectSleepStart(this);" style="width:100%;">
-                                                <option value="99" selected>없음</option>
+                                                <option value="100" selected>없음</option>
                                             </select>
                                         </td>
                                         <td width="20%">
@@ -214,22 +237,22 @@
                                         </td>
                                         <td width="20%">
                                             <select id="selectSleepArea-0" onChange="selectSleepArea(this);" style="width:100%;">
-                                                <option value="99" selected>없음</option>
+                                                <option value="100" selected>없음</option>
                                             </select>
                                         </td>
                                         <td width="20%">
                                             <select id="selectSleepArea-1" onChange="selectSleepArea(this);" style="width:100%;">
-                                                <option value="99" selected>없음</option>
+                                                <option value="100" selected>없음</option>
                                             </select>
                                         </td>
                                         <td width="20%">
                                             <select id="selectSleepArea-2" onChange="selectSleepArea(this);" style="width:100%;">
-                                                <option value="99" selected>없음</option>
+                                                <option value="100" selected>없음</option>
                                             </select>
                                         </td>
                                         <td width="20%">
                                             <select id="selectSleepArea-3" onChange="selectSleepArea(this);" style="width:100%;">
-                                                <option value="99" selected>없음</option>
+                                                <option value="100" selected>없음</option>
                                             </select>
                                         </td>
                                     </tr>
@@ -316,7 +339,7 @@
                         <tr>
                             <td style="width:20%;">
                                 <div class="btn btn-xs btn-default btn-font-responsive" style="width:100%; background-color:#f7f7f7;">
-                                    <span>월간 결산</span>
+                                    <span>월별 결산</span>
                                 </div>
                             </td>
                             <td style="width:80%; border-bottom:1px solid #ccc;">

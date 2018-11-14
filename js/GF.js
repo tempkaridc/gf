@@ -39,9 +39,8 @@ var val_sumRate     = new Object(); // 합계 자원비
     val_sumRate.f = 1;
     val_sumRate.p = 2.2;
 
-var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/_",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9-/_]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 var urlParams = new URLSearchParams(window.location.search);
-var myParam = urlParams.get('code');
+var myParam = urlParams.get('c');
 
 var drawTimer;
 
@@ -84,6 +83,8 @@ $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
     sortingTable(id);
 });
+function encodeHEX(ary){var str = "";for(var i in ary){if(ary[i] < 16){str += '0';}str += ary[i].toString(16);}return str;}
+function decodeHEX(str){var strary = new Array();for(var i = 0; i < str.length; i+=2){strary.push(str.substring(i,i+2));}var numary = new Array();for(var i in strary){numary.push(parseInt(strary[i], 16));}return numary;}
 function sortContract(elem){
     sortingTable(elem.value);
 }
@@ -772,10 +773,11 @@ $('#btn-capt').off().on('click', function (e) {
     for(var i in selectedList){
         selectedList[i] = parseInt(selectedList[i]);
     }
-    var encodedString = Base64.encode(JSON.stringify(selectedList));
+    //var encodedString = Base64.encode(JSON.stringify(selectedList));
+    var encodedString = encodeHEX(selectedList);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
-    t.value = 'https://tempkaridc.github.io/gf/index.html?code=' + encodedString;
+    t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString;
     t.select();
     document.execCommand('copy');
     document.body.removeChild(t);
@@ -783,24 +785,25 @@ $('#btn-capt').off().on('click', function (e) {
 });
 $('#btn-timetable').off().on('click', function (e) {
     var code = new Array();
-    code.push(420);      // 8시 시작
+    code.push(42);      // 8시 시작 (420/10)
     for(var i = 0; i < 4; i++){
         if(selectedList[i] === undefined){
-            code.push(99);
+            code.push(10);//    false / 10
         }else{
             code.push(selectedList[i])
         }
     }
     if(sw_interval == true){
-        code.push(1);        // 확인 주기 적용여부
-        code.push(val_interval);
+        code.push(1);           // 확인 주기 적용여부
+        code.push(val_interval / 10);
     }else{
-        code.push(0);        // 확인 주기 적용여부
-        code.push(0);
+        code.push(0);           // 확인 주기 적용여부
+        code.push(0);           // 기본값이 0이더라..?
     }
     code.push(0);           // 수면 False
-    var coded = Base64.encode(JSON.stringify(code));
-    window.open('timetable.html?code=' + coded, '_blank');
+    //var coded = Base64.encode(JSON.stringify(code));
+    var coded = encodeHEX(code);
+    window.open('timetable.html?c=' + coded, '_blank');
 });
 
 $(document).ready(function() {
@@ -1491,7 +1494,8 @@ function refresh(){
 function chkURLhash(){
     if(myParam != null){
         try{
-            var param = JSON.parse(Base64.decode(myParam));
+            //var param = JSON.parse(Base64.decode(myParam));
+            var param = decodeHEX(myParam);
             for(var i in param){
                 clickRow(param[i]);
             }

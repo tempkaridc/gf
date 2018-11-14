@@ -1,15 +1,16 @@
+var falseNumber     = 100; //1시간 40분이니 걸릴 일 없음
+
 var val = new Object();
-val.start           = 99;
+val.start           = falseNumber;
 val.sw_interval     = false;        // 확인 주기 적용여부
 val.interval        = 0;
-val.area            = [99,99,99,99];
-val.sleepStart      = 99;
-val.sleepArea       = [99,99,99,99];
+val.area            = [falseNumber,falseNumber,falseNumber,falseNumber];
+val.sleepStart      = falseNumber;
+val.sleepArea       = [falseNumber,falseNumber,falseNumber,falseNumber];
 val.sw_sleep        = false;
 
-var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-/_",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9-/_]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/rn/g,"n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
 var urlParams = new URLSearchParams(window.location.search);
-var myParam = urlParams.get('code');
+var myParam = urlParams.get('c');
 
 var result = new Object();
 
@@ -25,15 +26,15 @@ $(function (){
 function chkURLhash(){
     if(myParam != null){
         try{
-            var param = JSON.parse(Base64.decode(myParam));
-            val.start           = param[0];
+            var param = decodeHEX(myParam);
+            val.start           = param[0] * 10;
             val.area            = [param[1],param[2],param[3],param[4]];
             val.sw_interval     = param[5] > 0 ? true : false;
-            val.interval        = param[6];
+            val.interval        = param[6] * 10;
             val.sw_sleep        = param[7] > 0 ? true : false;
             if(val.sw_sleep){
-                val.sleepStart      = param[8];
-                val.sleepArea       = [param[10],param[11],param[12],param[13]];
+                val.sleepStart      = param[8] * 10;
+                val.sleepArea       = [param[9],param[10],param[11],param[12]];
             }
 
             $('#selectStart').val(val.start).change();
@@ -43,10 +44,10 @@ function chkURLhash(){
                 $('#selectArea-' + i).val(val.area[i]).change();
                 $('#selectSleepArea-' + i).val(val.sleepArea[i]).change();
             }
+            preMakeTable();
         }catch(e){
             return;
         }
-        preMakeTable();
     }
 }
 
@@ -147,30 +148,36 @@ function copyURL(){
     preMakeTable();
 
     var hash = new Array();
-    hash.push(val.start);
-    hash.push(val.area[0]);
-    hash.push(val.area[1]);
-    hash.push(val.area[2]);
-    hash.push(val.area[3]);
-    hash.push(val.sw_interval ? 1 : 0);
-    hash.push(val.interval);
-    hash.push(val.sw_sleep ? 1: 0);
-    hash.push(val.sleepStart);
-    hash.push(val.sleepPeriod);
-    hash.push(val.sleepArea[0]);
-    hash.push(val.sleepArea[1]);
-    hash.push(val.sleepArea[2]);
-    hash.push(val.sleepArea[3]);
+    /*00*/hash.push(val.start / 10);            //0-141
+    /*01*/hash.push(val.area[0]);               //0-43
+    /*02*/hash.push(val.area[1]);
+    /*03*/hash.push(val.area[2]);
+    /*04*/hash.push(val.area[3]);
+    /*05*/hash.push(val.sw_interval ? 1 : 0);
+    /*06*/hash.push(val.interval / 10);         //0-141
+    /*07*/hash.push(val.sw_sleep ? 1: 0);
+    if(val.sw_sleep){
+    /*08*/hash.push(val.sleepStart / 10);       //0-141
+    /*09*/hash.push(val.sleepArea[0]);
+    /*10*/hash.push(val.sleepArea[1]);
+    /*11*/hash.push(val.sleepArea[2]);
+    /*12*/hash.push(val.sleepArea[3]);
+    }
 
-    var encodedString = Base64.encode(JSON.stringify(hash));
+    console.log(hash);
+    console.log(encodeHEX(hash));
+    console.log(decodeHEX(encodeHEX(hash)));
 
+
+    //var encodedString = Base64.encode(JSON.stringify(hash));
+    var encodedString = encodeHEX(hash);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
-    t.value = 'https://tempkaridc.github.io/gf/timetable.html?code=' + encodedString;
+    t.value = 'https://tempkaridc.github.io/gf/timetable.html?c=' + encodedString;
     t.select();
     document.execCommand('copy');
     document.body.removeChild(t);
-    alert('주소가 클립보드에 복사되었습니다.');
+    alert('주소가 클립보드에 복사되었습니다\n' + t.value);
 }
 
 function preMakeTable(){
@@ -184,12 +191,12 @@ function preMakeTable(){
         }
     }
 
-    if(val.start == 99){
+    if(val.start == falseNumber){
         alert('기상시간을 입력해주세요');
         return;
     }
 
-    if(val.sleepStart == 99){
+    if(val.sleepStart == falseNumber){
         val.sw_sleep = false;
     }else if(val.sleepStart == val.start){
         alert('취침시간과 기상시간은 달라야 합니다');
@@ -203,7 +210,7 @@ function preMakeTable(){
         if(val.sleepPeriod < 0){val.sleepPeriod += 1440;}
 
         for(var i in val.sleepArea){
-            if(val.sleepArea[i] != 99){
+            if(val.sleepArea[i] != falseNumber){
                 if(arr[val.sleepArea[i]][2] > val.sleepPeriod){
                     alert((parseInt(i)+1) + '군수의 소요시간이 수면시간보다 깁니다.');
                     return;
@@ -211,7 +218,6 @@ function preMakeTable(){
             }
         }
     }
-
     makeTable();
 }
 
@@ -243,7 +249,7 @@ function makeTable(){
     var sleeprowspans = [0,0,0,0];
 
     for(var i = 0; i < 4; i++){
-        if(val.area[i] != 99){
+        if(val.area[i] != falseNumber){
             timeCycle[i] = arr[val.area[i]][2];
         }
     }
@@ -254,7 +260,7 @@ function makeTable(){
 
     if(val.sw_sleep == true){
         for(var i = 0; i < 4; i++ ){
-            if(val.sleepArea[i] != 99){
+            if(val.sleepArea[i] != falseNumber){
                 sleepCycle[i] = arr[val.sleepArea[i]][2];
             }
         }
@@ -267,6 +273,7 @@ function makeTable(){
     clearTable();
     clearResult();
 
+    /*
     var num = 1440 / 30;
     for(var i = 0; i < num; i++){
         var now = (i * 30) + val.start;
@@ -277,6 +284,14 @@ function makeTable(){
         $('#colTime').append(colTime);
 
     }
+    */
+    var num = 1440 / 60;
+    for(var i = 0; i < num; i++){
+        var now = (i * 60) + val.start;
+        if(now >= 1440){now -= 1440;}
+        var colTime = '<div class="btn btn-default col-md-12 col-xs-12 text-center" style="width:100%; height:' + (height * 6 * 2) + 'px;">' + minToString(now) + ' - ' + minToString((now+60) >= 1440 ? now+60-1440 : now+60) + '</div>';
+        $('#colTime').append(colTime);
+    }
 
     for(var k = 0; k < 4; k++){
         if(timeCycle[k] > 0){
@@ -286,7 +301,7 @@ function makeTable(){
                 if(now + timeCycle[k] > 1440){break;}
 
                 if((val.sw_sleep == true) && (now + timeCycle[k] > 1440 - val.sleepPeriod)){
-                    if(val.sleepArea[k] != 99){
+                    if(val.sleepArea[k] != falseNumber){
                         var emptybox =  '<div class="btn btn-xs btn-title col-md-12 col-xs-12 text-center" style="width:100%; height:'
                             + ((1440 - now - val.sleepPeriod) / 5 * height) +
                             'px;"></div>';
@@ -340,16 +355,19 @@ function popupAlert(ont){
 
 function makeFrame(elem){
     var inframe = "";
-    inframe += elem[0] + '-' + elem[1];
-    inframe += '<br>' + parseInt(elem[2] / 60) + ':' +  (parseInt(elem[2] % 60) == 0 ? '00' : '30');
-    inframe += '<br>' + elem[3] + '/' + elem[4] + '<br>' + elem[5] + '/' + elem[6];
-    inframe += '<br>';
+    inframe +=  '<table style="margin-left:auto; margin-right:auto; margin-bottom:0px;">' +
+                    '<tbody>' +
+                        '<tr><td colspan="3">'+(elem[0] + '-' + elem[1])+'</td></tr>' +
+                        '<tr><td colspan="3">'+(parseInt(elem[2] / 60) + ':' +  (parseInt(elem[2] % 60) == 0 ? '00' : '30'))+'</td></tr>' +
+                        '<tr><td>'+elem[3]+'</td><td>/</td><td>'+elem[4]+'</td></tr>' +
+                        '<tr><td>'+elem[5]+'</td><td>/</td><td>'+elem[6]+'</td></tr>' +
+                        '<tr><td colspan="3">';
     if(elem[7] != 0){inframe += '<img src="img/doll.png" style="height:1.5em;" title="'+elem[7]+'개">'}
     if(elem[8] != 0){inframe += '<img src="img/tool.png" style="height:1.5em;" title="'+elem[8]+'개">'}
     if(elem[9] != 0){inframe += '<img src="img/fast.png" style="height:1.5em;" title="'+elem[9]+'개">'}
     if(elem[10] != 0){inframe += '<img src="img/repr.png" style="height:1.5em;" title="'+elem[10]+'개">'}
     if(elem[11] != 0){inframe += '<img src="img/tokn.png" style="height:1.5em;" title="'+elem[11]+'개">'}
-
+    inframe += '</td></tr></tbody></table>';
     return inframe;
 }
 
@@ -499,3 +517,6 @@ function addResult(elem){
 function minToString(time){
     return parseInt(time / 60) + ':' + ((time % 60) == 0 ? '00' : '30');
 }
+
+function encodeHEX(ary){var str = "";for(var i in ary){if(ary[i] < 16){str += '0';}str += ary[i].toString(16);}return str;}
+function decodeHEX(str){var strary = new Array();for(var i = 0; i < str.length; i+=2){strary.push(str.substring(i,i+2));}var numary = new Array();for(var i in strary){numary.push(parseInt(strary[i], 16));}return numary;}
