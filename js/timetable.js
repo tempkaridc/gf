@@ -164,11 +164,6 @@ function copyURL(){
     /*12*/hash.push(val.sleepArea[3]);
     }
 
-    console.log(hash);
-    console.log(encodeHEX(hash));
-    console.log(decodeHEX(encodeHEX(hash)));
-
-
     //var encodedString = Base64.encode(JSON.stringify(hash));
     var encodedString = encodeHEX(hash);
     var t = document.createElement("textarea");
@@ -519,4 +514,15 @@ function minToString(time){
 }
 
 function encodeHEX(ary){var str = "";for(var i in ary){if(ary[i] < 16){str += '0';}str += ary[i].toString(16);}return str;}
-function decodeHEX(str){var strary = new Array();for(var i = 0; i < str.length; i+=2){strary.push(str.substring(i,i+2));}var numary = new Array();for(var i in strary){numary.push(parseInt(strary[i], 16));}return numary;}
+
+function decodeHEX(str) {
+    var strary = new Array();
+    for (var i = 0; i < str.length; i += 2) {
+        strary.push(str.substring(i, i + 2));
+    }
+    var numary = new Array();
+    for (var i in strary) {
+        numary.push(parseInt(strary[i], 16));
+    }
+    return numary;
+}

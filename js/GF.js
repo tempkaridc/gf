@@ -774,7 +774,7 @@ $('#btn-capt').off().on('click', function (e) {
     for(var i in selectedList){
         selectedList[i] = parseInt(selectedList[i]);
     }
-    //var encodedString = Base64.encode(JSON.stringify(selectedList));
+    selectedList.sort(sortFunctionPlane);
     var encodedString = encodeHEX(selectedList);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
@@ -783,10 +783,12 @@ $('#btn-capt').off().on('click', function (e) {
     document.execCommand('copy');
     document.body.removeChild(t);
     alert(langPack.HTML.INCODE.ALERT4 + '\n'+ t.value);
+    function sortFunctionPlane(a, b) {if (a === b) {return 0;}else {return (a < b) ? -1 : 1;}}
 });
 $('#btn-timetable').off().on('click', function (e) {
     var code = new Array();
     code.push(42);      // 8시 시작 (420/10)
+    selectedList.sort(sortFunctionPlane);
     for(var i = 0; i < 4; i++){
         if(selectedList[i] === undefined){
             code.push(10);//    false / 10
@@ -805,6 +807,7 @@ $('#btn-timetable').off().on('click', function (e) {
     //var coded = Base64.encode(JSON.stringify(code));
     var coded = encodeHEX(code);
     window.open('timetable.html?c=' + coded, '_blank');
+    function sortFunctionPlane(a, b) {if (a === b) {return 0;}else {return (a < b) ? -1 : 1;}}
 });
 
 $(document).ready(function() {
@@ -1495,7 +1498,6 @@ function refresh(){
 function chkURLhash(){
     if(myParam != null){
         try{
-            //var param = JSON.parse(Base64.decode(myParam));
             var param = decodeHEX(myParam);
             for(var i in param){
                 clickRow(param[i]);
