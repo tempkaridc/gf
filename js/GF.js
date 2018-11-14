@@ -1,6 +1,7 @@
-var version         = 201811132300;         // Version == 최종수정일 시간 분
+var version         = 201811141100;         // Version == 최종수정일 시간 분
 var updateString    = "2018-11-13 Changelog"
                     + "\n- URL복사 추가"
+                    + "\n- URL스타일 변경"
                     ;
 
 var selLang         = 'ko';   //기본 언어는 한국어

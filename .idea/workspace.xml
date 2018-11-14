@@ -76,11 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="787" column="41" lean-forward="true" selection-start-line="787" selection-start-column="41" selection-end-line="787" selection-end-column="41" />
+            <state>
+              <caret column="32" selection-start-column="32" selection-end-column="32" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
@@ -202,11 +202,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="timetable.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="timetable.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/timetable.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="345">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state>
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -337,8 +336,8 @@
         <option value="$PROJECT_DIR$/lang/languages.json" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/timetable.html" />
-        <option value="$PROJECT_DIR$/js/GF.js" />
         <option value="$PROJECT_DIR$/js/timetable.js" />
+        <option value="$PROJECT_DIR$/js/GF.js" />
       </list>
     </option>
   </component>
@@ -528,12 +527,12 @@
       <workItem from="1541664565848" duration="3953000" />
       <workItem from="1541668884014" duration="3979000" />
       <workItem from="1541743989120" duration="8806000" />
-      <workItem from="1542096981380" duration="24086000" />
+      <workItem from="1542096981380" duration="24216000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="658684000" />
+    <option name="totallyTimeSpent" value="658814000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1294" height="1087" extended-state="0" />
@@ -936,33 +935,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="787" column="41" lean-forward="true" selection-start-line="787" selection-start-column="41" selection-end-line="787" selection-end-column="41" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#1187#1216#0" expanded="true" />
-            <element signature="e#1714#1743#0" expanded="true" />
-            <element signature="e#1881#1910#0" expanded="true" />
-            <element signature="e#2015#2044#0" expanded="true" />
-            <element signature="e#5050#5079#0" expanded="true" />
-            <element signature="e#5745#5774#0" expanded="true" />
-            <element signature="e#5942#5971#0" expanded="true" />
-            <element signature="e#6103#6132#0" expanded="true" />
-            <element signature="e#9148#9177#0" expanded="true" />
-            <element signature="e#9656#9685#0" expanded="true" />
-            <element signature="e#9820#9849#0" expanded="true" />
-            <element signature="e#9953#9982#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/timetable.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state>
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -980,6 +955,29 @@
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#img#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="32" selection-start-column="32" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#1187#1216#0" expanded="true" />
+            <element signature="e#1714#1743#0" expanded="true" />
+            <element signature="e#1881#1910#0" expanded="true" />
+            <element signature="e#2015#2044#0" expanded="true" />
+            <element signature="e#5050#5079#0" expanded="true" />
+            <element signature="e#5745#5774#0" expanded="true" />
+            <element signature="e#5942#5971#0" expanded="true" />
+            <element signature="e#6103#6132#0" expanded="true" />
+            <element signature="e#9148#9177#0" expanded="true" />
+            <element signature="e#9656#9685#0" expanded="true" />
+            <element signature="e#9820#9849#0" expanded="true" />
+            <element signature="e#9953#9982#0" expanded="true" />
           </folding>
         </state>
       </provider>
