@@ -878,16 +878,16 @@ function clearRow(){
     for(var i in objectList) {
         var rowName = '#table-row-' + i;
 
-        if ($(rowName).hasClass('danger')) {
-            $(rowName).removeClass('danger');
+        if ($(rowName).hasClass('success')) {
+            $(rowName).removeClass('success');
         }
     }
 }
 function clickRow(index){
     var rowName = '#table-row-' + index;
 
-    if($(rowName).hasClass('danger')){
-        $(rowName).removeClass('danger');
+    if($(rowName).hasClass('success')){
+        $(rowName).removeClass('success');
         for(i in selectedList){
             if(selectedList[i] == index){
                 selectedList.splice(i, 1);
@@ -895,14 +895,13 @@ function clickRow(index){
             }
         }
     }else{
-        $(rowName).addClass('danger');
+        $(rowName).addClass('success');
         selectedList.push(index);
 
         //selectedList.sort(function(a, b){return parseInt(a) - parseInt(b)});
         //지울때 큐순서로 지워지게 하는 기능 보완 없으면 못바꿔
-
         if(selectedList.length > 4){ //Stack Full
-            $('#table-row-' + selectedList[0]).removeClass('danger');
+            $('#table-row-' + selectedList[0]).removeClass('success');
             selectedList.splice(0,1);
         }
     }
