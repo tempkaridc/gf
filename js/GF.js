@@ -771,11 +771,14 @@ $('#btn-save').off().on('click', function (e) {
 });
 
 $('#btn-capt').off().on('click', function (e) {
+    var absSelect = new Array();
     for(var i in selectedList){
-        selectedList[i] = parseInt(selectedList[i]);
+        absSelect.push(
+            ((objectList[parseInt(selectedList[i])].Area * 4) + (objectList[parseInt(selectedList[i])].Stage - 1))
+        );
     }
-    selectedList.sort(sortFunctionPlane);
-    var encodedString = encodeHEX(selectedList);
+    absSelect.sort(sortFunctionPlane);
+    var encodedString = encodeHEX(absSelect);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
     t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString;
