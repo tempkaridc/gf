@@ -781,7 +781,7 @@ $('#btn-capt').off().on('click', function (e) {
     var encodedString = encodeHEX(absSelect);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
-    t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString;
+    t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString + '\n' + cptStr;
     t.select();
     document.execCommand('copy');
     document.body.removeChild(t);
@@ -1026,7 +1026,6 @@ function calcStage(){
         orTime = langPack.HTML.TABLE.PER_HOUR;
     }
 
-    /*
     cptStr = langPack.HTML.TABLE.AREA + ': ' + sumT.slice(0,-2) + '　\n';
     cptStr += langPack.HTML.TABLE.TIME + ': ' + sumTime.slice(0,-2) + '　\n';
     cptStr += langPack.HTML.TABLE.RSRC + '(' + orTime + '): '
@@ -1040,7 +1039,6 @@ function calcStage(){
     if(sumFp){cptStr += langPack.HTML.TABLE.TICKET_FAST + '[' + (sumFp).toFixed(2) + '] ';}
     if(sumPp){cptStr += langPack.HTML.TABLE.TICKET_REPR + '[' + (sumPp).toFixed(2) + '] ';}
     if(sumTp){cptStr += langPack.HTML.TABLE.TICKET_TOKN + '[' + (sumTp).toFixed(2) + '] ';}
-    */
 
     //연속입력시 2초안에 입력시 갱신시점 1초뒤로 재갱신,
     if(sw_drawReserved) clearTimeout(drawTimer);
