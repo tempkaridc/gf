@@ -772,16 +772,12 @@ $('#btn-save').off().on('click', function (e) {
 
 $('#btn-capt').off().on('click', function (e) {
     var absSelect = new Array();
-    for(var i in selectedList){
-        absSelect.push(
-            ((objectList[parseInt(selectedList[i])].Area * 4) + (objectList[parseInt(selectedList[i])].Stage - 1))
-        );
-    }
+    for(var i in selectedList){absSelect.push(((objectList[parseInt(selectedList[i])].Area * 4) + (objectList[parseInt(selectedList[i])].Stage - 1)));}
     absSelect.sort(sortFunctionPlane);
     var encodedString = encodeHEX(absSelect);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
-    t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString + '\n' + cptStr;
+    t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString + '\n' + cptStr; // cptStr
     t.select();
     document.execCommand('copy');
     document.body.removeChild(t);
@@ -791,12 +787,14 @@ $('#btn-capt').off().on('click', function (e) {
 $('#btn-timetable').off().on('click', function (e) {
     var code = new Array();
     code.push(42);      // 8시 시작 (420/10)
-    selectedList.sort(sortFunctionPlane);
+    var absSelect = new Array();
+    for(var i in selectedList){absSelect.push(((objectList[parseInt(selectedList[i])].Area * 4) + (objectList[parseInt(selectedList[i])].Stage - 1)));}
+    absSelect.sort(sortFunctionPlane);
     for(var i = 0; i < 4; i++){
-        if(selectedList[i] === undefined){
+        if(absSelect[i] === undefined){
             code.push(10);//    false / 10
         }else{
-            code.push(selectedList[i])
+            code.push(absSelect[i])
         }
     }
     if(sw_interval == true){

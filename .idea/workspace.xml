@@ -79,8 +79,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="784" selection-start-line="784" selection-end-line="784" />
+            <state relative-caret-position="360">
+              <caret line="802" column="10" lean-forward="true" selection-start-line="802" selection-start-column="10" selection-end-line="802" selection-end-column="10" />
               <folding>
                 <element signature="e#1187#1216#0" expanded="true" />
                 <element signature="e#1714#1743#0" expanded="true" />
@@ -240,8 +240,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>chk</find>
-      <find>table.h</find>
       <find>table.html</find>
       <find>chkURLhash</find>
       <find>rows[i].parentNode</find>
@@ -269,7 +267,9 @@
       <find>console.log</find>
       <find>cpt</find>
       <find>cptStr</find>
+      <find>capt</find>
       <find>'copy</find>
+      <find>table.</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -513,12 +513,12 @@
       <workItem from="1542188052948" duration="79000" />
       <workItem from="1542188784239" duration="26000" />
       <workItem from="1542188834387" duration="27000" />
-      <workItem from="1542353100860" duration="976000" />
+      <workItem from="1542353100860" duration="1921000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="663552000" />
+    <option name="totallyTimeSpent" value="664497000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="60" y="62" width="1546" height="868" extended-state="0" />
@@ -930,8 +930,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="784" selection-start-line="784" selection-end-line="784" />
+        <state relative-caret-position="360">
+          <caret line="802" column="10" lean-forward="true" selection-start-line="802" selection-start-column="10" selection-end-line="802" selection-end-column="10" />
           <folding>
             <element signature="e#1187#1216#0" expanded="true" />
             <element signature="e#1714#1743#0" expanded="true" />
