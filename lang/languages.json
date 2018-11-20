@@ -44,7 +44,7 @@
             "TIP7": "7. <a href=\"#\">확인주기</a> 적용 시, 모든 군수의 시간을 주기의 배수로 변경",
             "TIP8": "8. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 기능/선택 버튼, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> 켜기/끄기 버튼",
             "TIP9": "9. <a href=\"#\">자동추천</a> 은 입력된 <font color=\"red\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천",
-            "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">지역선택</a>, <a href=\"#\">시간대설정</a>, <a href=\"#\">대성공률</a>, <a href=\"#\">계약서 획득률</a> 모두 반영</div>",
+            "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">지역선택</a>, <a href=\"#\">시간대설정</a>, <a href=\"#\">대성공률</a>, <a href=\"#\">계약서 획득률</a>, <a href=\"#\">확인 주기</a>를 모두 반영</div>",
             "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>",
             "TIP9c": "<div style=\"margin-left:10px;\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"
           },
@@ -192,7 +192,7 @@
             "TIP7": "7. When you apply <a href=\"#\">Check Cycle</a>, recalculate every time to multiple of cycle time",
             "TIP8": "8. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> Function / Select Button, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> On / Off Toggle Button",
             "TIP9": "9. <a href=\"#\">Recommend</a> provides mission combination with <font color=\"red\">Resource Weight</font>",
-            "TIP9a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#\">Chapters</a>, <a href=\"#\">Time Periods</a>, <a href=\"#\">Great Success</a>, <a href=\"#\">Contract Chance</a></div>",
+            "TIP9a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#\">Chapters</a>, <a href=\"#\">Time Periods</a>, <a href=\"#\">Great Success</a>, <a href=\"#\">Contract Chance</a>, <a href=\"#\">Check Cycle</a></div>",
             "TIP9b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#\">Calc weights</a></span> </div>",
             "TIP9c": "<div style=\"margin-left:10px;\">c. Result % means similarity between input ratio & result</div>"
           },
@@ -340,7 +340,7 @@
             "TIP7": "7. <a href=\"#\">確認サイクル</a> 適用時全後方支援の時間を確認サイクルの倍数で再計算",
             "TIP8": "8. <div class=\"btn btn-danger\"></div><div class=\"btn btn-primary\"></div> 機能/選択ボタン, <div class=\"btn btn-default\"></div><div class=\"btn btn-success\"></div> オン・オフボタン",
             "TIP9": "9. <a href=\"#\">自動推選</a> は入力された <font color=\"red\">重み付け比率の資源獲得</font>ための配置推選",
-            "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">戦役選択</a>, <a href=\"#\">時間帯設定</a>, <a href=\"#\">大成功率</a>, <a href=\"#\">契約獲得率</a> 全て反映</div>",
+            "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">戦役選択</a>, <a href=\"#\">時間帯設定</a>, <a href=\"#\">大成功率</a>, <a href=\"#\">契約獲得率</a>, <a href=\"#\">確認サイクル</a> 全て反映</div>",
             "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>",
             "TIP9c": "<div style=\"margin-left:10px;\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"
           },
