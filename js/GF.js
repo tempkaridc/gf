@@ -69,6 +69,7 @@ $(function (){
 
     reload();
     refresh();
+
     var rows = document.getElementById("area-list").getElementsByTagName("TR");
     var areaList = saves[$(this).attr('idx')].list;
     for(var i in saves[$(this).attr('idx')].list){
@@ -1461,23 +1462,34 @@ function callData(){
             }else{tmp.Ticket_Tokken     = 0;}
         }
 
-        if( (areaToggle[tmp.Area]) &&
-            (timeToggle[time_front] * 60 <= tmp.Time) &&
-            (tmp.Time <= timeToggle[time_end] * 60)){
+        if( (areaToggle[tmp.Area])
+            && (timeToggle[time_front] * 60 <= tmp.Time)
+            && (tmp.Time <= timeToggle[time_end] * 60)
+        ){
             objectList.push(tmp);
         }
     }
 }
+
 function reload(){
     for(var i in areaToggle){   //전지역 초기화
         areaToggle[i] = 1;
     }
-    time_front = 0, time_end = timeToggle.length- 1;
+    time_front = 0;
+    time_end = timeToggle.length- 1;
+
+    if($('#btn_toggle_interval').hasClass('btn-success')){
+        $('#btn_toggle_interval').removeClass('btn-success');
+        $('#btn_toggle_interval').addClass('btn-default');
+        sw_interval = false;
+    }
+
     for(var i = 0; i < areaToggle.length - 1; i++){
         if(!$('#btn-area-'+i).hasClass('btn-success')){
             $('#btn-area-'+i).addClass('btn-success');
         }
     }
+
     dispTime();
 }
 
