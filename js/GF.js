@@ -91,7 +91,7 @@ function sortContract(elem){
     sortingTable(elem.value);
 }
 function sortingTable(id){
-    if(id == 99){return;}                       // 계약서 첫줄 소팅제외
+    if(id == 99){id = 0; sortToggle[0] = 2;}    // 계약서 첫줄 지역소팅으로 대체
 
     if(0 < id){
         highlight(2);                           // 코드 순서때문에 어쩔수없이 정렬 펑션부분은 하드코딩
@@ -1495,6 +1495,7 @@ function reload(){
 
 function refresh(){
     $('#sort-0').trigger('click');
+    $('#sortContract').val(99);
     objectList.length = 0;
     selectedList.length = 0;
     sync_calcList.length = 0;
