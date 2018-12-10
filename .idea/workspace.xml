@@ -79,8 +79,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="1496" column="30" selection-start-line="1496" selection-start-column="30" selection-end-line="1496" selection-end-column="30" />
+            <state relative-caret-position="449">
+              <caret line="1873" column="21" lean-forward="true" selection-start-line="1873" selection-start-column="21" selection-end-line="1873" selection-end-column="21" />
               <folding>
                 <element signature="e#1187#1216#0" expanded="true" />
                 <element signature="e#1714#1743#0" expanded="true" />
@@ -240,8 +240,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sortfunction</find>
-      <find>'copy'</find>
       <find>sortFunction</find>
       <find>sortFunctionPlane</find>
       <find>console.</find>
@@ -270,6 +268,8 @@
       <find>sortContract</find>
       <find>sortTable</find>
       <find>refresh</find>
+      <find>successRat</find>
+      <find>calcSuccessRatio</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -528,12 +528,12 @@
       <workItem from="1542597005224" duration="599000" />
       <workItem from="1542704462805" duration="834000" />
       <workItem from="1543906948585" duration="1138000" />
-      <workItem from="1544437000112" duration="583000" />
+      <workItem from="1544437000112" duration="1957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="669108000" />
+    <option name="totallyTimeSpent" value="670482000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
@@ -945,8 +945,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="1496" column="30" selection-start-line="1496" selection-start-column="30" selection-end-line="1496" selection-end-column="30" />
+        <state relative-caret-position="449">
+          <caret line="1873" column="21" lean-forward="true" selection-start-line="1873" selection-start-column="21" selection-end-line="1873" selection-end-column="21" />
           <folding>
             <element signature="e#1187#1216#0" expanded="true" />
             <element signature="e#1714#1743#0" expanded="true" />

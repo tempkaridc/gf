@@ -1855,14 +1855,13 @@ function calcSuccessRatio(){
         $('#sum_level').val(tmp);
     }else{tmp = 500;}
 
-    var sucsrate = parseInt((parseInt(tmp / 5) * 0.45) + 15);
-    var sucsrateEvent = parseInt((parseInt(tmp / 5) * 0.15) + 15);
-
+    var sucsrate;
     if(!sw_successEvent){
+        sucsrate = parseInt((parseInt(tmp / 5) * 0.45) + 15);
         $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + sucsrate + '%');
     }else{
-        sucsrate += sucsrateEvent;
-        $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + sucsrate + '%' + ' (+' + sucsrateEvent + '%)');
+        sucsrate = parseInt((parseInt(tmp / 5) * 0.60) + 30);
+        $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + sucsrate + '%' + ' (+' + (parseInt((parseInt(tmp / 5) * 0.60) + 30) - parseInt((parseInt(tmp / 5) * 0.45) + 15)) + '%)');
     }
 
     val_success = sucsrate / 100;
