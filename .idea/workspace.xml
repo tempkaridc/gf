@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="72" column="55" lean-forward="true" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="57" />
+            <state relative-caret-position="745">
+              <caret line="200" column="33" selection-start-line="182" selection-start-column="45" selection-end-line="200" selection-end-column="33" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -76,25 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="449">
-              <caret line="1873" column="21" lean-forward="true" selection-start-line="1873" selection-start-column="21" selection-end-line="1873" selection-end-column="21" />
-              <folding>
-                <element signature="e#1187#1216#0" expanded="true" />
-                <element signature="e#1714#1743#0" expanded="true" />
-                <element signature="e#1909#1938#0" expanded="true" />
-                <element signature="e#2043#2072#0" expanded="true" />
-                <element signature="e#5078#5107#0" expanded="true" />
-                <element signature="e#5773#5802#0" expanded="true" />
-                <element signature="e#6003#6032#0" expanded="true" />
-                <element signature="e#6164#6193#0" expanded="true" />
-                <element signature="e#9209#9238#0" expanded="true" />
-                <element signature="e#9717#9746#0" expanded="true" />
-                <element signature="e#9909#9938#0" expanded="true" />
-                <element signature="e#10042#10071#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="15">
+              <caret line="1873" column="21" selection-start-line="1873" selection-start-column="21" selection-end-line="1873" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -209,15 +195,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="landnametest.dat" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/landname/landnametest.dat">
-          <provider selected="true" editor-type-id="LargeFileEditor">
-            <state relative-caret-position="986595">
-              <caret line="65773" column="6" selection-start-line="65773" selection-start-column="6" selection-end-line="65773" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="bootstrap.min.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/bootstrap.min.css">
           <provider selected="true" editor-type-id="text-editor">
@@ -240,7 +217,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sortFunction</find>
       <find>sortFunctionPlane</find>
       <find>console.</find>
       <find>danger</find>
@@ -259,7 +235,7 @@
       <find>load</find>
       <find>loadTable</find>
       <find>interval</find>
-      <find>function refresh</find>
+      <find />
       <find>callData</find>
       <find>clickable3</find>
       <find>btn_toggle_interval</find>
@@ -270,6 +246,7 @@
       <find>refresh</find>
       <find>successRat</find>
       <find>calcSuccessRatio</find>
+      <find>cap</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -317,8 +294,8 @@
         <option value="$PROJECT_DIR$/timetable.html" />
         <option value="$PROJECT_DIR$/js/timetable.js" />
         <option value="$PROJECT_DIR$/lang/languages.json" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/GF.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -331,17 +308,18 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="64" />
-    <option name="y" value="62" />
-    <option name="width" value="1546" />
-    <option name="height" value="868" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1331" />
+    <option name="y" value="119" />
+    <option name="width" value="1094" />
+    <option name="height" value="1085" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -353,14 +331,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../project/htmlTest" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="settings.editor.selected.configurable" value="preferences.editor" />
@@ -528,18 +505,20 @@
       <workItem from="1542597005224" duration="599000" />
       <workItem from="1542704462805" duration="834000" />
       <workItem from="1543906948585" duration="1138000" />
-      <workItem from="1544437000112" duration="1957000" />
+      <workItem from="1544437000112" duration="5009000" />
+      <workItem from="1544763939907" duration="45000" />
+      <workItem from="1545301790497" duration="3077000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="670482000" />
+    <option name="totallyTimeSpent" value="676656000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1096" extended-state="6" />
+    <frame x="1331" y="119" width="1094" height="1085" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.048828125" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.11595547" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
@@ -598,7 +577,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../__ITS workspace/vas-master_ITS_Merge/vas-master/client/event.html" />
     <entry file="file://$PROJECT_DIR$/../__ITS workspace/vas-master_ITS_Merge/vas-master/client/v2x.html" />
     <entry file="file://$PROJECT_DIR$/../__ITS workspace/vas-master_ITS_Merge/vas-master/client/js/vas-c-ars-1.0.0.js" />
     <entry file="file://$PROJECT_DIR$/../../project/PersonalProjects/PersonalProjects_자동완성 포기/js/GF.js">
@@ -892,10 +870,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/../../project/_____VAS_based_Message_Analyzer2/jsonreader.js" />
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1873" column="21" selection-start-line="1873" selection-start-column="21" selection-end-line="1873" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="72" column="55" lean-forward="true" selection-start-line="72" selection-start-column="55" selection-end-line="72" selection-end-column="57" />
+        <state relative-caret-position="745">
+          <caret line="200" column="33" selection-start-line="182" selection-start-column="45" selection-end-line="200" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -939,27 +925,6 @@
             <element signature="n#style#0;n#td#0;n#tr#0;n#table#6;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="1873" column="21" lean-forward="true" selection-start-line="1873" selection-start-column="21" selection-end-line="1873" selection-end-column="21" />
-          <folding>
-            <element signature="e#1187#1216#0" expanded="true" />
-            <element signature="e#1714#1743#0" expanded="true" />
-            <element signature="e#1909#1938#0" expanded="true" />
-            <element signature="e#2043#2072#0" expanded="true" />
-            <element signature="e#5078#5107#0" expanded="true" />
-            <element signature="e#5773#5802#0" expanded="true" />
-            <element signature="e#6003#6032#0" expanded="true" />
-            <element signature="e#6164#6193#0" expanded="true" />
-            <element signature="e#9209#9238#0" expanded="true" />
-            <element signature="e#9717#9746#0" expanded="true" />
-            <element signature="e#9909#9938#0" expanded="true" />
-            <element signature="e#10042#10071#0" expanded="true" />
           </folding>
         </state>
       </provider>
