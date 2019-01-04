@@ -57,33 +57,32 @@ $(function (){
     resizeBoxes();
     refresh();
     chkURLhash();
-})
-.on('click', '.table-clickable', function(e) {
-    e.preventDefault();
+});
 
-    clickRow($(this).attr('idx'));//고유값
-})
-.on('click', '.table-clickable3', function(e) {
-    e.preventDefault();
-
+$('[id^=sort-]').off().on('click', function (e) {
+    var id = $(this).attr('index');  //close, confirm
+    sortingTable(id);
+});
+function click_table_main(elem){
+    clickRow(parseInt($(elem).attr('idx')));
+}
+function click_table_load(elem){
     reload();
     refresh();
 
     var rows = document.getElementById("area-list").getElementsByTagName("TR");
-    var areaList = saves[$(this).attr('idx')].list;
-    for(var i in saves[$(this).attr('idx')].list){
-        clickRow(saves[$(this).attr('idx')].list[i]);//고유값
+    var areaList = saves[$(elem).attr('idx')].list;
+    for(var i in saves[$(elem).attr('idx')].list){
+        clickRow(saves[$(elem).attr('idx')].list[i]);//고유값
     }
     for(var i in areaList){
         rows[i].parentNode.insertBefore(rows[areaList[i]], rows[i]);
     }
 
     $('#loadModal').modal("hide");
-});
-$('[id^=sort-]').off().on('click', function (e) {
-    var id = $(this).attr('index');  //close, confirm
-    sortingTable(id);
-});
+}
+
+
 function encodeHEX(ary){var str = "";for(var i in ary){if(ary[i] < 16){str += '0';}str += ary[i].toString(16);}return str;}
 function decodeHEX(str){var strary = new Array();for(var i = 0; i < str.length; i+=2){strary.push(str.substring(i,i+2));}var numary = new Array();for(var i in strary){numary.push(parseInt(strary[i], 16));}return numary;}
 function sortContract(elem){
@@ -856,7 +855,7 @@ function loadSaves(){
         var td3 = '<td style="text-align: center; vertical-align:middle;" width="30%">';
         var td6 = '<td style="text-align: center; vertical-align:middle;" width="60%">';
         var tde = '</td>';
-        var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable3">';
+        var item = '<tr id="table-row-' + i + '" idx="' + i + '" onClick="click_table_load(this)";>';
         item += td3 + area.slice(0,-2) + tde;
         item += td6 + saves[i].desc + tde;
         item += td1 + '<div id="remove-save-' + i + '" idx ="' + i + '" title="' + langPack.HTML.INCODE.DELETE + '" class="btn"><i class="glyphicon glyphicon-trash"></i></div>' + tde;
@@ -1011,31 +1010,31 @@ function calcStage(){
     }
 
     if(sumHp){
-        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle +'">';
+        sumItem += '<div class="table-ticket-box" title="' + timeTitle +'">';
         sumItem += '<img class="table-ticket-img" src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '">';
         sumItem += '<span class="table-ticket-outline">' + (sumHp).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(sumAp){
-        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle +'">';
+        sumItem += '<div class="table-ticket-box" title="' + timeTitle +'">';
         sumItem += '<img class="table-ticket-img" src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '">';
         sumItem += '<span class="table-ticket-outline">' + (sumAp).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(sumFp){
-        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle +'">';
+        sumItem += '<div class="table-ticket-box" title="' + timeTitle +'">';
         sumItem += '<img class="table-ticket-img" src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '">';
         sumItem += '<span class="table-ticket-outline">' + (sumFp).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(sumPp) {
-        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle + '">';
+        sumItem += '<div class="table-ticket-box" title="' + timeTitle + '">';
         sumItem += '<img class="table-ticket-img" src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '">';
         sumItem += '<span class="table-ticket-outline">' + (sumPp).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(sumTp){
-        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle + '">';
+        sumItem += '<div class="table-ticket-box" title="' + timeTitle + '">';
         sumItem += '<img class="table-ticket-img" src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '">';
         sumItem += '<span class="table-ticket-outline">' + (sumTp).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
@@ -1319,7 +1318,9 @@ function loadTable(){
         var td11 = '<td class="table-expand-mobile" style="text-align: center; vertical-align:middle;" width="11%">';
         var td23 = '<td style="text-align: center; vertical-align:middle;" width="23%">';
         var tde = '</td>';
-        var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable">';
+        //onClick="btn_toggleMenu(this);"
+        //var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable">';
+        var item = '<tr id="table-row-' + i + '" idx="' + i + '" onClick="click_table_main(this)";>';
         /*00*/item += td11 + objectList[i].Area + '-' + objectList[i].Stage + tde;
         /*01*/item += td11 + parseInt(objectList[i].Human / perMin) + tde;
         /*02*/item += td11 + parseInt(objectList[i].Ammo / perMin) + tde;

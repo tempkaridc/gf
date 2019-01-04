@@ -8,10 +8,6 @@
         padding-bottom: 10px !important;
     }
 
-    .contract-expand-mobile{
-        width:100% !important;
-    }
-
     .table-font-responsive{
         font-size: 0.8em;   /*확장없이 폰트 사이즈 감소*/
     }
