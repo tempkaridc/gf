@@ -45,6 +45,29 @@
     }
 }
 
+.table-ticket-box{
+    margin-left:5px;
+    margin-right:5px;
+    float:left;
+    display:inline-block;
+    position:relative;
+}
+
+.table-ticket-img{
+    display:block;
+    margin:0px;
+    height:1.7em;
+}
+
+.table-ticket-outline{
+    font-weight:bold;
+    font-size:0.6em;
+    position: absolute;
+    top: 1.2em;
+    left: 0em;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
 .tight-input > input{
     margin-right: 0px;
 }

@@ -1,7 +1,6 @@
-var version         = 201811141100;         // Version == 최종수정일 시간 분
-var updateString    = "2018-11-13 Changelog"
-                    + "\n- URL복사 추가"
-                    + "\n- URL스타일 변경"
+var version         = 201901041500;         // Version == 최종수정일 시간 분
+var updateString    = "2019-01-04 Changelog"
+                    + "\n- UI 일부수정"
                     ;
 
 var selLang         = 'ko';   //기본 언어는 한국어
@@ -13,11 +12,11 @@ var selectedList    = new Array();
 var sync_calcList   = new Array();
 
 var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
-var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1];              // [12] 0~11지역
+var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1];            // [12] 0~11지역
 var wghtToggle      = [0,0,0,0];                            // 계약서 가중치 버튼 스위치
 var level           = [0,0.1,0.4,0.7];                      // 계약서 가중치 확률
 var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,12,24];       // [13]
-var menuToggle      = [1,1,1,1,1,1];                          // 메뉴 토글기능
+var menuToggle      = [1,1,1,1,1,1];                        // 메뉴 토글기능
 
 var time_front      = 0;                                    // Head
 var time_end        = timeToggle.length - 1;                // Tail 시간쌍
@@ -32,7 +31,7 @@ var sw_drawReserved = false;        // 차트 드로잉 예약여부
 var sw_interval     = false;        // 확인 주기 적용여부
 var sw_successEvent = false;        // 군수확업 이벤트 트리거
 
-var val_success     = 0.6;                                  // 대성공 초기성공률 60%
+var val_success     = 0.6;          // 대성공 초기성공률 60%
 var val_interval    = 30;           // 확인 주기 초기값 30분
 var val_sumRate     = new Object(); // 합계 자원비
     val_sumRate.h = 1;
@@ -1011,11 +1010,36 @@ function calcStage(){
         displayH = ''
     }
 
-    if(sumHp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '" style="height:1.3em"> (' + (sumHp).toFixed(2) + displayH + ') </div>';}
-    if(sumAp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '" style="height:1.3em"> (' + (sumAp).toFixed(2) + displayH + ') </div>';}
-    if(sumFp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '" style="height:1.3em"> (' + (sumFp).toFixed(2) + displayH + ') </div>';}
-    if(sumPp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '" style="height:1.3em"> (' + (sumPp).toFixed(2) + displayH + ') </div>';}
-    if(sumTp){sumItem += '<div class="contract-expand-mobile" style="display:inline-block; width:50%; font-size:0.9em;" title="' + timeTitle +'"><img src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '" style="height:1.3em"> (' + (sumTp).toFixed(2) + displayH + ') </div>';}
+    if(sumHp){
+        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle +'">';
+        sumItem += '<img class="table-ticket-img" src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '">';
+        sumItem += '<span class="table-ticket-outline">' + (sumHp).toFixed(2) + displayH + '</span>';
+        sumItem += '</div>';
+    }
+    if(sumAp){
+        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle +'">';
+        sumItem += '<img class="table-ticket-img" src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '">';
+        sumItem += '<span class="table-ticket-outline">' + (sumAp).toFixed(2) + displayH + '</span>';
+        sumItem += '</div>';
+    }
+    if(sumFp){
+        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle +'">';
+        sumItem += '<img class="table-ticket-img" src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '">';
+        sumItem += '<span class="table-ticket-outline">' + (sumFp).toFixed(2) + displayH + '</span>';
+        sumItem += '</div>';
+    }
+    if(sumPp) {
+        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle + '">';
+        sumItem += '<img class="table-ticket-img" src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '">';
+        sumItem += '<span class="table-ticket-outline">' + (sumPp).toFixed(2) + displayH + '</span>';
+        sumItem += '</div>';
+    }
+    if(sumTp){
+        sumItem += '<div class="contract-expand-mobile table-ticket-box" title="' + timeTitle + '">';
+        sumItem += '<img class="table-ticket-img" src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '">';
+        sumItem += '<span class="table-ticket-outline">' + (sumTp).toFixed(2) + displayH + '</span>';
+        sumItem += '</div>';
+    }
 
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
@@ -1284,14 +1308,16 @@ function loadTable(){
     $('#area-list').empty();
     var perMin = 1;
     var byTime = langPack.HTML.TABLE.TICKET_PER_RECV;
+    var byTimeShort = '';
     for(var i in objectList){
         if(sw_time){
             perMin = objectList[i].Time / 60;
             byTime = langPack.HTML.TABLE.TICKET_PER_HOUR;
+            byTimeShort = '/h';
         }
         var td0 = '<td style="text-align: center; vertical-align:middle; display:none;">';
         var td11 = '<td class="table-expand-mobile" style="text-align: center; vertical-align:middle;" width="11%">';
-        var td23 = '<td class="table-expand-mobile" style="text-align: center; vertical-align:middle;" width="23%">';
+        var td23 = '<td style="text-align: center; vertical-align:middle;" width="23%">';
         var tde = '</td>';
         var item = '<tr id="table-row-' + i + '" idx="' + i + '" class="table-clickable">';
         /*00*/item += td11 + objectList[i].Area + '-' + objectList[i].Stage + tde;
@@ -1299,23 +1325,48 @@ function loadTable(){
         /*02*/item += td11 + parseInt(objectList[i].Ammo / perMin) + tde;
         /*03*/item += td11 + parseInt(objectList[i].Food / perMin) + tde;
         /*04*/item += td11 + parseInt(objectList[i].Part / perMin) + tde;
-        /*05*/item += td11 + parseInt(  objectList[i].Human / perMin * val_sumRate.h +
-                                        objectList[i].Ammo / perMin * val_sumRate.a +
-                                        objectList[i].Food / perMin * val_sumRate.f +
-                                        objectList[i].Part / perMin * val_sumRate.p) + tde;
+        /*05*/item += td11 + parseInt(objectList[i].Human / perMin * val_sumRate.h +
+                                      objectList[i].Ammo / perMin * val_sumRate.a +
+                                      objectList[i].Food / perMin * val_sumRate.f +
+                                      objectList[i].Part / perMin * val_sumRate.p) + tde;
         /*06*/item += td11 + parseInt(objectList[i].Time / 60) + ':' + (objectList[i].Time % 60 == 0 ? '00' : objectList[i].Time % 60) + tde;
         /*07*/item += td0 + objectList[i].Ticket_makeDoll / perMin + tde;
         /*08*/item += td0 + objectList[i].Ticket_makeTool / perMin + tde;
         /*09*/item += td0 + objectList[i].Ticket_fastMake / perMin + tde;
         /*10*/item += td0 + objectList[i].Ticket_fastRepair / perMin + tde;
         /*11*/item += td0 + objectList[i].Ticket_Tokken / perMin + tde;
-        /*12*/item += td23;
-        if(objectList[i].Ticket_makeDoll) item      += '<img src="img/doll.png" title="' + byTime + ': ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_makeTool) item      += '<img src="img/tool.png" title="' + byTime + ': ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_fastMake) item      += '<img src="img/fast.png" title="' + byTime + ': ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_fastRepair) item    += '<img src="img/repr.png" title="' + byTime + ': ' + (objectList[i].Ticket_fastRepair * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        if(objectList[i].Ticket_Tokken) item        += '<img src="img/tokn.png" title="' + byTime + ': ' + (objectList[i].Ticket_Tokken * 100 / perMin).toFixed(2) + '%" style="height:1.8em;">'
-        item += tde;
+        /*12*/item += td23 + '<div style="width:100%;">';
+                if(objectList[i].Ticket_makeDoll){
+                    item += '<div class="table-ticket-box" title="' + byTime + ': ' + (objectList[i].Ticket_makeDoll * 100 / perMin).toFixed(2) + '%">';
+                    item += '<img src="img/doll.png" class="table-ticket-img">';
+                    item += '<span class="table-ticket-outline">' + (objectList[i].Ticket_makeDoll / perMin).toFixed(2) + byTimeShort + '</span>';
+                    item += '</div>';
+                }
+                if(objectList[i].Ticket_makeTool){
+                    item += '<div class="table-ticket-box" title="' + byTime + ': ' + (objectList[i].Ticket_makeTool * 100 / perMin).toFixed(2) + '%">';
+                    item += '<img src="img/tool.png" class="table-ticket-img">';
+                    item += '<span class="table-ticket-outline">' + (objectList[i].Ticket_makeTool / perMin).toFixed(2) + byTimeShort + '</span>';
+                    item += '</div>';
+                }
+                if(objectList[i].Ticket_fastMake){
+                    item += '<div class="table-ticket-box" title="' + byTime + ': ' + (objectList[i].Ticket_fastMake * 100 / perMin).toFixed(2) + '%">';
+                    item += '<img src="img/fast.png" class="table-ticket-img">';
+                    item += '<span class="table-ticket-outline">' + (objectList[i].Ticket_fastMake / perMin).toFixed(2) + byTimeShort + '</span>';
+                    item += '</div>';
+                }
+                if(objectList[i].Ticket_fastRepair){
+                    item += '<div class="table-ticket-box" title="' + byTime + ': ' + (objectList[i].Ticket_fastRepair * 100 / perMin).toFixed(2) + '%">';
+                    item += '<img src="img/repr.png" class="table-ticket-img">';
+                    item += '<span class="table-ticket-outline">' + (objectList[i].Ticket_fastRepair / perMin).toFixed(2) + byTimeShort + '</span>';
+                    item += '</div>';
+                }
+                if(objectList[i].Ticket_Tokken){
+                    item += '<div class="table-ticket-box" title="' + byTime + ': ' + (objectList[i].Ticket_Tokken * 100 / perMin).toFixed(2) + '%">';
+                    item += '<img src="img/tokn.png" class="table-ticket-img">';
+                    item += '<span class="table-ticket-outline">' + (objectList[i].Ticket_Tokken / perMin).toFixed(2) + byTimeShort + '</span>';
+                    item += '</div>';
+                }
+                item += '</div>' + tde;
         /*13*/item += td0 + objectList[i].Area * 10 + objectList[i].Stage + tde;
         /*14*/item += td0 + objectList[i].Time + tde;
         item += '</tr>';
