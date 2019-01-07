@@ -1,8 +1,13 @@
 /*
-@media (max-width: 991px){
+    Size    HW      MaxWidth
+    xs      mobile  x < 768px
+    sm      tablet  768 <= x < 991
+    md      desktop 992 <= x < 1200
+    lg      desktop 1200 <= x <
+    @media (max-width: 991px){
  */
 
-@media (max-width: 500px){
+@media (max-width: 767px){
     .table-expand-mobile{
         padding-top: 10px !important;
         padding-bottom: 10px !important;
@@ -80,8 +85,8 @@
     vertical-align: middle;
 }
 
-select#sortContract option[value="7"] {background-image: url(../img/doll.png);}
 /*
+select#sortContract option[value="7"] {background-image: url(../img/doll.png);}
 select#sortContract option[value="8"] {background-image:url(img/doll.png);}
 select#sortContract option[value="9"] {background-image:url(others.png);}
 select#sortContract option[value="10"] {background-image:url(others.png);}
