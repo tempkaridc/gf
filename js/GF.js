@@ -39,6 +39,13 @@ var val_sumRate     = new Object(); // 합계 자원비
     val_sumRate.f = 1;
     val_sumRate.p = 2.2;
 
+var val_sumItem     = new Object(); // 합계 아이템
+    val_sumItem.d = 0;
+    val_sumItem.t = 0;
+    val_sumItem.f = 0;
+    val_sumItem.r = 0;
+    val_sumItem.k = 0;
+
 var urlParams = new URLSearchParams(window.location.search);
 var myParam = urlParams.get('c');
 
@@ -970,7 +977,6 @@ function calcStage(){
     var perMin;
 
     for(i in selectedList){
-
         if(sw_time){
             perMin = objectList[selectedList[i]].Time / 60;
         }else{
@@ -1040,6 +1046,8 @@ function calcStage(){
 
     $('#sumItem').empty();
     $('#sumItem').append(sumItem);
+
+
 
     var orTime = langPack.HTML.TABLE.PER_RECV;
     if(sw_time){
@@ -1935,14 +1943,14 @@ function resizeBoxes(){
     if(myWidth < 768){
         //Mobile UI 고정형 bootstrap-xs
         document.getElementById('tbl_mid').style.height = '400px';
-        document.getElementById('tbl_cht').style.height = '360px';
+        document.getElementById('tbl_cht').style.height = '380px';
         //document.getElementById('tbl_mid').style.height = ((myHeight * 0.60) -125) + 'px';
         //document.getElementById('tbl_cht').style.height = myHeight * 0.40 + 'px';
         sw_drawChart = true;
     }else{
         //Desktop UI 대응형 bootstrap-sm
         document.getElementById('tbl_mid').style.height = '570px';
-        document.getElementById('tbl_cht').style.height = '240px';
+        document.getElementById('tbl_cht').style.height = '260px';
         //document.getElementById('tbl_mid').style.height = ((myHeight * 0.9) - 100) + 'px';
         //document.getElementById('tbl_cht').style.height = ((myHeight * 0.40) + 0) + 'px';
         sw_drawChart = true;
