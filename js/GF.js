@@ -1,6 +1,6 @@
-var version         = 201901041500;         // Version == 최종수정일 시간 분
-var updateString    = "2019-01-04 Changelog"
-                    + "\n- UI 일부수정"
+var version         = 201901111930;         // Version == 최종수정일 시간 분
+var updateString    = "2019-01-11 Changelog"
+                    + "\n- Restore Missing Text String (Help #9)"
                     ;
 
 var selLang         = 'ko';   //기본 언어는 한국어
@@ -1716,6 +1716,7 @@ function setLanguage(){
     $('#help_06').html(langPack.HTML.TABLE.HELP.TIPS.TIP6);
     $('#help_07').html(langPack.HTML.TABLE.HELP.TIPS.TIP7);
     $('#help_08').html(langPack.HTML.TABLE.HELP.TIPS.TIP8);
+    $('#help_09').html(langPack.HTML.TABLE.HELP.TIPS.TIP9);
     $('#help_09a').html(langPack.HTML.TABLE.HELP.TIPS.TIP9a);
     $('#help_09b').html(langPack.HTML.TABLE.HELP.TIPS.TIP9b);
     $('#help_09c').html(langPack.HTML.TABLE.HELP.TIPS.TIP9c);
