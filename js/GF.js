@@ -70,9 +70,11 @@ $('[id^=sort-]').off().on('click', function (e) {
     var id = $(this).attr('index');  //close, confirm
     sortingTable(id);
 });
+
 function click_table_main(elem){
     clickRow(parseInt($(elem).attr('idx')));
 }
+
 function click_table_load(elem){
     reload();
     refresh();
@@ -93,6 +95,7 @@ function click_table_load(elem){
 function encodeHEX(ary){var str = "";for(var i in ary){if(ary[i] < 16){str += '0';}str += ary[i].toString(16);}return str;}
 function decodeHEX(str){var strary = new Array();for(var i = 0; i < str.length; i+=2){strary.push(str.substring(i,i+2));}var numary = new Array();for(var i in strary){numary.push(parseInt(strary[i], 16));}return numary;}
 function sortContract(elem){sortingTable(elem.value);}
+
 function sortingTable(id){
     if(id == 99){id = 0; sortToggle[0] = 2;}    // 계약서 첫줄 지역소팅으로 대체
 
@@ -1980,6 +1983,26 @@ function init(){
 
     config = localStorage.config;
 
+    function getLanguage() {
+        var tmp = navigator.language || navigator.userLanguage;
+
+        switch(tmp){
+            case 'ko':
+            case 'ko-KR':
+                return 'ko';
+            case 'ja':
+            case 'ja-JP':
+                return 'ja';
+            case 'en':
+            case 'en-US':
+            case 'en-GB':
+            case 'en-CA':
+                return 'en';
+            default:
+                return 'en';
+        }
+    }
+
     if(config === undefined){         //no config cache
         config = new Object();
         config.time = true;
@@ -1989,9 +2012,10 @@ function init(){
         config.sumrate = val_sumRate;
         localStorage.config = JSON.stringify(config);
 
-        selLang = navigator.language;
+        selLang = getLanguage;
     }else{                      //config cache here
         config = JSON.parse(localStorage.config);
+
         if(config.time !==undefined){
             sw_time = config.time;
         }
@@ -2000,6 +2024,8 @@ function init(){
         }
         if(config.lang !==undefined){
             selLang = config.lang;
+        }else{
+            selLang = getLanguage();
         }
         if(config.menu !==undefined){
             menuToggle = config.menu;
