@@ -1,6 +1,7 @@
-var version         = 201901111930;         // Version == 최종수정일 시간 분
-var updateString    = "2019-01-11 Changelog"
+var version         = 201901161130;         // Version == 최종수정일 시간 분
+var updateString    = "2019-01-16 Changelog"
                     + "\n- Restore Missing Text String (Help #9)"
+                    + "\n- Ticket estimate for chart"
                     ;
 
 var selLang         = 'ko';   //기본 언어는 한국어
@@ -40,11 +41,6 @@ var val_sumRate     = new Object(); // 합계 자원비
     val_sumRate.p = 2.2;
 
 var val_sumItem     = new Object(); // 합계 아이템
-    val_sumItem.d = 0;
-    val_sumItem.t = 0;
-    val_sumItem.f = 0;
-    val_sumItem.r = 0;
-    val_sumItem.k = 0;
 
 var urlParams = new URLSearchParams(window.location.search);
 var myParam = urlParams.get('c');
@@ -460,6 +456,8 @@ $('[id^=btn-rangeSelector]').off().on('click', function (e) {
             break;
     }
     chart.xAxis[0].setExtremes(min, max);
+
+    drawTickets(id);
 });
 $('#auto_calc').off().on('click', function (e) {
     //$('#btn_wgt').trigger('click');
@@ -976,7 +974,11 @@ function sortTable(table, column, sc){
 function calcStage(){
     var sumH = 0, sumA = 0, sumF = 0, sumP = 0, sumAll = 0;
     var sumT = "", sumItem = "", sumTime = "";
-    var sumHp = 0, sumAp = 0, sumFp = 0, sumPp = 0, sumTp = 0;
+    //var sumHp = 0, sumAp = 0, sumFp = 0, sumPp = 0, sumTp = 0;
+    val_sumItem.d = 0;  val_sumItem.t = 0;  val_sumItem.f = 0;  val_sumItem.r = 0;  val_sumItem.k = 0;
+    val_sumItem.dt = 0; val_sumItem.tt = 0; val_sumItem.ft = 0; val_sumItem.rt = 0; val_sumItem.kt = 0;
+
+
     var perMin;
 
     for(i in selectedList){
@@ -995,11 +997,26 @@ function calcStage(){
         sumTime += + parseInt(objectList[selectedList[i]].Time / 60) + ':' + (objectList[selectedList[i]].Time % 60 == 0 ? '00' : objectList[selectedList[i]].Time % 60);
         sumTime += ', ';
 
-        if(objectList[selectedList[i]].Ticket_makeDoll) sumHp += objectList[selectedList[i]].Ticket_makeDoll / perMin;
-        if(objectList[selectedList[i]].Ticket_makeTool) sumAp += objectList[selectedList[i]].Ticket_makeTool / perMin;
-        if(objectList[selectedList[i]].Ticket_fastMake) sumFp += objectList[selectedList[i]].Ticket_fastMake / perMin;
-        if(objectList[selectedList[i]].Ticket_fastRepair) sumPp += objectList[selectedList[i]].Ticket_fastRepair / perMin;
-        if(objectList[selectedList[i]].Ticket_Tokken) sumTp += objectList[selectedList[i]].Ticket_Tokken / perMin;
+        if(objectList[selectedList[i]].Ticket_makeDoll){
+            val_sumItem.d += objectList[selectedList[i]].Ticket_makeDoll;
+            val_sumItem.dt += objectList[selectedList[i]].Ticket_makeDoll / objectList[selectedList[i]].Time * 60;
+        }
+        if(objectList[selectedList[i]].Ticket_makeTool){
+            val_sumItem.t += objectList[selectedList[i]].Ticket_makeTool;
+            val_sumItem.tt += objectList[selectedList[i]].Ticket_makeTool / objectList[selectedList[i]].Time * 60;
+        }
+        if(objectList[selectedList[i]].Ticket_fastMake){
+            val_sumItem.f += objectList[selectedList[i]].Ticket_fastMake;
+            val_sumItem.ft += objectList[selectedList[i]].Ticket_fastMake / objectList[selectedList[i]].Time * 60;
+        }
+        if(objectList[selectedList[i]].Ticket_fastRepair){
+            val_sumItem.r += objectList[selectedList[i]].Ticket_fastRepair;
+            val_sumItem.rt += objectList[selectedList[i]].Ticket_fastRepair / objectList[selectedList[i]].Time * 60;
+        }
+        if(objectList[selectedList[i]].Ticket_Tokken){
+            val_sumItem.k += objectList[selectedList[i]].Ticket_Tokken;
+            val_sumItem.kt += objectList[selectedList[i]].Ticket_Tokken / objectList[selectedList[i]].Time * 60;
+        }
     }
 
     $('#sumH').text(sumH.toFixed(0));
@@ -1016,34 +1033,34 @@ function calcStage(){
         displayH = ''
     }
 
-    if(sumHp){
+    if(val_sumItem.d){
         sumItem += '<div class="table-ticket-box" title="' + timeTitle +'">';
         sumItem += '<img class="table-ticket-img" src="img/doll.png" title="' + langPack.HTML.TABLE.TICKET_DOLL + '">';
-        sumItem += '<span class="table-ticket-outline">' + (sumHp).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline">' + (val_sumItem.d).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
-    if(sumAp){
+    if(val_sumItem.t){
         sumItem += '<div class="table-ticket-box" title="' + timeTitle +'">';
         sumItem += '<img class="table-ticket-img" src="img/tool.png" title="' + langPack.HTML.TABLE.TICKET_TOOL + '">';
-        sumItem += '<span class="table-ticket-outline">' + (sumAp).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline">' + (val_sumItem.t).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
-    if(sumFp){
+    if(val_sumItem.f){
         sumItem += '<div class="table-ticket-box" title="' + timeTitle +'">';
         sumItem += '<img class="table-ticket-img" src="img/fast.png" title="' + langPack.HTML.TABLE.TICKET_FAST + '">';
-        sumItem += '<span class="table-ticket-outline">' + (sumFp).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline">' + (val_sumItem.f).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
-    if(sumPp) {
+    if(val_sumItem.r) {
         sumItem += '<div class="table-ticket-box" title="' + timeTitle + '">';
         sumItem += '<img class="table-ticket-img" src="img/repr.png" title="' + langPack.HTML.TABLE.TICKET_REPR + '">';
-        sumItem += '<span class="table-ticket-outline">' + (sumPp).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline">' + (val_sumItem.r).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
-    if(sumTp){
+    if(val_sumItem.k){
         sumItem += '<div class="table-ticket-box" title="' + timeTitle + '">';
         sumItem += '<img class="table-ticket-img" src="img/tokn.png" title="' + langPack.HTML.TABLE.TICKET_TOKN + '">';
-        sumItem += '<span class="table-ticket-outline">' + (sumTp).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline">' + (val_sumItem.k).toFixed(2) + displayH + '</span>';
         sumItem += '</div>';
     }
 
@@ -1065,11 +1082,11 @@ function calcStage(){
             + langPack.HTML.TABLE.FOOD + '[' + sumF.toFixed(0) + '] '
             + langPack.HTML.TABLE.PART + '[' + sumP.toFixed(0) + ']　\n'
             + langPack.HTML.TABLE.TICKET + '(' + orTime + '): ';
-    if(sumHp){cptStr += langPack.HTML.TABLE.TICKET_DOLL + '[' + (sumHp).toFixed(2) + '] ';}
-    if(sumAp){cptStr += langPack.HTML.TABLE.TICKET_TOOL + '[' + (sumAp).toFixed(2) + '] ';}
-    if(sumFp){cptStr += langPack.HTML.TABLE.TICKET_FAST + '[' + (sumFp).toFixed(2) + '] ';}
-    if(sumPp){cptStr += langPack.HTML.TABLE.TICKET_REPR + '[' + (sumPp).toFixed(2) + '] ';}
-    if(sumTp){cptStr += langPack.HTML.TABLE.TICKET_TOKN + '[' + (sumTp).toFixed(2) + '] ';}
+    if(val_sumItem.d){cptStr += langPack.HTML.TABLE.TICKET_DOLL + '[' + (val_sumItem.d).toFixed(2) + '] ';}
+    if(val_sumItem.t){cptStr += langPack.HTML.TABLE.TICKET_TOOL + '[' + (val_sumItem.t).toFixed(2) + '] ';}
+    if(val_sumItem.f){cptStr += langPack.HTML.TABLE.TICKET_FAST + '[' + (val_sumItem.f).toFixed(2) + '] ';}
+    if(val_sumItem.r){cptStr += langPack.HTML.TABLE.TICKET_REPR + '[' + (val_sumItem.r).toFixed(2) + '] ';}
+    if(val_sumItem.k){cptStr += langPack.HTML.TABLE.TICKET_TOKN + '[' + (val_sumItem.k).toFixed(2) + '] ';}
 
     //연속입력시 2초안에 입력시 갱신시점 1초뒤로 재갱신,
     if(sw_drawReserved) clearTimeout(drawTimer);
@@ -1247,7 +1264,26 @@ function drawStage(){
         $('#text-graphTitle').text(sumT.slice(0,-2));
     }
 
+    drawTickets(0);
+
     chart.xAxis[0].setExtremes(now, now + (1000 * 60 * 60 * 24)); //초기값 X-axis range 1dayms
+}
+
+function drawTickets(range){
+    var time = 24;
+    switch(range){
+        case 0: time = 24;          break;
+        case 1: time = 24 * 7;      break;
+        case 2: time = 24 * 7 * 2;  break;
+        case 3: time = 24 * 7 * 4;  break;
+        default:time = 24;          break;
+    }
+
+    $('#num_chart_doll').text((val_sumItem.dt * time).toFixed(2));
+    $('#num_chart_tool').text((val_sumItem.tt * time).toFixed(2));
+    $('#num_chart_fast').text((val_sumItem.ft * time).toFixed(2));
+    $('#num_chart_repr').text((val_sumItem.rt * time).toFixed(2));
+    $('#num_chart_tokn').text((val_sumItem.kt * time).toFixed(2));
 }
 
 function stackArray(ary, type){
