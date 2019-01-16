@@ -17,7 +17,7 @@ var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1];            // [12] 0~11지역
 var wghtToggle      = [0,0,0,0];                            // 계약서 가중치 버튼 스위치
 var level           = [0,0.1,0.4,0.7];                      // 계약서 가중치 확률
 var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,12,24];       // [13]
-var menuToggle      = [1,1,1,1,1,1];                        // 메뉴 토글기능
+var menuToggle      = [0,0,0,0,0,0,1];                      // 메뉴 토글기능 7개, (도움말 제외)
 
 var time_front      = 0;                                    // Head
 var time_end        = timeToggle.length - 1;                // Tail 시간쌍
