@@ -17,8 +17,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13905">
-              <caret line="988" column="27" selection-start-line="988" selection-start-column="27" selection-end-line="988" selection-end-column="27" />
+            <state relative-caret-position="-4594">
+              <caret line="553" column="97" selection-start-line="553" selection-start-column="97" selection-end-line="553" selection-end-column="97" />
               <folding>
                 <element signature="n#script#1;n#head#0;n#html#0;n#!!top" />
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -107,9 +107,9 @@
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="285">
-              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+              <caret line="19" column="83" lean-forward="true" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
               <folding>
-                <marker date="1547606814567" expanded="true" signature="50769:50780" ph="..." />
+                <marker date="1547607154598" expanded="true" signature="50769:50780" ph="..." />
               </folding>
             </state>
           </provider>
@@ -247,7 +247,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>help</find>
       <find>09a</find>
       <find>tip9</find>
       <find>ko</find>
@@ -277,6 +276,7 @@
       <find>time =</find>
       <find>time = 24</find>
       <find>if(menuToggle</find>
+      <find>total sum</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -548,11 +548,12 @@
       <workItem from="1547601498104" duration="3757000" />
       <workItem from="1547606057008" duration="83000" />
       <workItem from="1547606813004" duration="4000" />
+      <workItem from="1547607113297" duration="55000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="704717000" />
+    <option name="totallyTimeSpent" value="704772000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="0" width="1457" height="1087" extended-state="0" />
@@ -578,23 +579,23 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3295688" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0984375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="REST Client" order="11" weight="0.3315565" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.5274841" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -897,10 +898,24 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../../project/_____VAS_based_Message_Analyzer2/jsonreader.js" />
+    <entry file="file://$PROJECT_DIR$/lang/languages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4755">
+          <caret line="317" column="16" selection-start-line="317" selection-start-column="8" selection-end-line="317" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/GF.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13905">
-          <caret line="988" column="27" selection-start-line="988" selection-start-column="27" selection-end-line="988" selection-end-column="27" />
+        <state relative-caret-position="-4594">
+          <caret line="553" column="97" selection-start-line="553" selection-start-column="97" selection-end-line="553" selection-end-column="97" />
           <folding>
             <element signature="n#script#1;n#head#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -975,26 +990,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lang/languages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4755">
-          <caret line="317" column="16" selection-start-line="317" selection-start-column="8" selection-end-line="317" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/css/GF.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="46" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
-          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <caret line="19" column="83" lean-forward="true" selection-start-line="19" selection-start-column="83" selection-end-line="19" selection-end-column="83" />
           <folding>
-            <marker date="1547606814567" expanded="true" signature="50769:50780" ph="..." />
+            <marker date="1547607154598" expanded="true" signature="50769:50780" ph="..." />
           </folding>
         </state>
       </provider>
