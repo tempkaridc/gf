@@ -13,9 +13,14 @@
         padding-bottom: 10px !important;
     }
 
+    .table-icon-responsive{
+        height: 1.5em !important;
+    }
+
     .table-font-responsive{
         font-size: 0.8em;   /*확장없이 폰트 사이즈 감소*/
     }
+
     .btn-font-responsive{
         font-size: 0.8em;
         padding: 5px;       /*누르기 쉽게 위아래로 확장*/
@@ -46,27 +51,35 @@
     }
 }
 
-.table-ticket-box{
-    margin-left:5px;
-    margin-right:5px;
-    float:left;
-    display:inline-block;
-    position:relative;
-}
-
-.table-ticket-img{
-    display:block;
-    margin:0px;
-    height:1.7em;
-}
-
-.table-ticket-outline{
+.table-ticket-outline-result{
+    display:table-cell;
+    height:1.8em;
+    vertical-align: bottom !important;
     font-weight:bold;
     font-size:0.6em;
-    position: absolute;
-    top: 1.2em;
-    left: 0em;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.table-ticket-box-result {
+    display:inline-table;
+    width:20%;
+    height:100%;
+    text-align:center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+.table-ticket-box{
+    display:inline-table;
+    float:left;
+    height:2em;
+    text-align:center;
+    margin-left:3px;
+    margin-right:3px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
 }
 
 .tight-input > input{
