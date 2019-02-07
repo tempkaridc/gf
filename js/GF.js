@@ -1,7 +1,6 @@
-var version         = 201901161130;         // Version == 최종수정일 시간 분
-var updateString    = "2019-01-16 Changelog"
-                    + "\n- Restore Missing Text String (Help #9)"
-                    + "\n- Ticket estimate for chart"
+var version         = 201902071200;         // Version == 최종수정일 시간 분
+var updateString    = "2019-02-07 Changelog"
+                    + "\n- Bug fixed (sum of contract value)"
                     ;
 
 var selLang         = 'ko';   //기본 언어는 한국어
@@ -1042,27 +1041,27 @@ function calcStage(){
 
     if(val_sumItem.d){
         sumItem += '<div class="table-ticket-box-result" title="' + timeTitle +'" style="background-image: url(\'img/doll.png\');">';
-        sumItem += '<span class="table-ticket-outline-result">' + (val_sumItem.d).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline-result">' + (sw_time ? (val_sumItem.dt).toFixed(2) : (val_sumItem.d).toFixed(2)) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(val_sumItem.t){
         sumItem += '<div class="table-ticket-box-result" title="' + timeTitle +'" style="background-image: url(\'img/tool.png\');">';
-        sumItem += '<span class="table-ticket-outline-result">' + (val_sumItem.t).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline-result">' + (sw_time ? (val_sumItem.tt).toFixed(2) : (val_sumItem.t).toFixed(2)) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(val_sumItem.f){
         sumItem += '<div class="table-ticket-box-result" title="' + timeTitle +'" style="background-image: url(\'img/fast.png\');">';
-        sumItem += '<span class="table-ticket-outline-result">' + (val_sumItem.f).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline-result">' + (sw_time ? (val_sumItem.ft).toFixed(2) : (val_sumItem.f).toFixed(2)) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(val_sumItem.r) {
         sumItem += '<div class="table-ticket-box-result" title="' + timeTitle +'" style="background-image: url(\'img/repr.png\');">';
-        sumItem += '<span class="table-ticket-outline-result">' + (val_sumItem.r).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline-result">' + (sw_time ? (val_sumItem.rt).toFixed(2) : (val_sumItem.r).toFixed(2)) + displayH + '</span>';
         sumItem += '</div>';
     }
     if(val_sumItem.k){
         sumItem += '<div class="table-ticket-box-result" title="' + timeTitle +'" style="background-image: url(\'img/tokn.png\');">';
-        sumItem += '<span class="table-ticket-outline-result">' + (val_sumItem.k).toFixed(2) + displayH + '</span>';
+        sumItem += '<span class="table-ticket-outline-result">' + (sw_time ? (val_sumItem.kt).toFixed(2) : (val_sumItem.k).toFixed(2)) + displayH + '</span>';
         sumItem += '</div>';
     }
 
