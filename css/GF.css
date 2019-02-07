@@ -73,6 +73,7 @@
 .table-ticket-box{
     display:inline-table;
     float:left;
+    min-width:2.1em;
     height:2em;
     text-align:center;
     margin-left:3px;

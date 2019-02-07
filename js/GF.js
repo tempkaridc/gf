@@ -12,7 +12,7 @@ var objectList      = new Array();
 var selectedList    = new Array();
 var sync_calcList   = new Array();
 
-var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
+var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12 ***** 190123 이후 일괄 desc로 폐기. ******
 var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1];            // [12] 0~11지역
 var wghtToggle      = [0,0,0,0];                            // 계약서 가중치 버튼 스위치
 var level           = [0,0.1,0.4,0.7];                      // 계약서 가중치 확률
@@ -101,7 +101,10 @@ function decodeHEX(str){var strary = new Array();for(var i = 0; i < str.length; 
 function sortContract(elem){sortingTable(elem.value);}
 
 function sortingTable(id){
-    if(id == 99){id = 0; sortToggle[0] = 2;}    // 계약서 첫줄 지역소팅으로 대체
+    if(id == 99){                   // 계약서 첫줄 지역소팅으로 대체
+        id = 0;
+        //sortToggle[0] = 2;
+    }
 
     if(0 < id){
         highlight(2);                           // 코드 순서때문에 어쩔수없이 정렬 펑션부분은 하드코딩
@@ -113,17 +116,19 @@ function sortingTable(id){
         }
     }
 
+    sortTable(document.getElementById("area-list"), id, 0);
+
+    /*
     if(sortToggle[id] <= 1){
-        //sortInit(id);
         //$('#icon-'+id).addClass('glyphicon-sort-by-order-alt');
         sortTable(document.getElementById("area-list"), id, 0);
         sortToggle[id] = 2;
     }else{
-        //sortInit(id);
         //$('#icon-'+id).addClass('glyphicon-sort-by-order');
         sortTable(document.getElementById("area-list"), id, 1);
         sortToggle[id] = 1;
     }
+    */
 }
 $('[id^=btn-area-]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
@@ -939,13 +944,6 @@ function dispTime(){
     objectList.length = 0;
     selectedList.length = 0;
     refresh();
-}
-function sortInit(d){
-    for(var i in sortToggle){
-        if(i!=d) sortToggle[i] = 0;
-        $('#icon-'+i).removeClass('glyphicon-sort-by-order');
-        $('#icon-'+i).removeClass('glyphicon-sort-by-order-alt');
-    }
 }
 function sortTable(table, column, sc){
     var rows, switching, i, x, y, shouldSwitch;
