@@ -116,8 +116,8 @@
       <file leaf-file-name="zas.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zas.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="117" column="132" selection-start-line="117" selection-start-column="132" selection-end-line="117" selection-end-column="132" />
+            <state relative-caret-position="467">
+              <caret line="132" column="49" lean-forward="true" selection-start-line="132" selection-start-column="49" selection-end-line="132" selection-end-column="49" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -314,7 +314,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>condensed</find>
       <find>onClick</find>
       <find>tbl_mid</find>
       <find>sort</find>
@@ -344,6 +343,7 @@
       <find>onchange</find>
       <find>sumRate</find>
       <find>idx=&quot;1&quot;</find>
+      <find>.png</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -358,9 +358,9 @@
       <replace>&quot;100&quot;</replace>
       <replace>val_sumItem.d</replace>
       <replace>val_sumItem.k</replace>
-      <replace>0,      0,</replace>
-      <replace>0,      0</replace>
-      <replace>,0,      0,</replace>
+      <replace />
+      <replace />
+      <replace />
       <replace>,^t</replace>
     </replaceStrings>
   </component>
@@ -644,12 +644,12 @@
       <workItem from="1550111230237" duration="1222000" />
       <workItem from="1550476486982" duration="1283000" />
       <workItem from="1551273445069" duration="23803000" />
-      <workItem from="1551362040293" duration="97000" />
+      <workItem from="1551362040293" duration="863000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="769686000" />
+    <option name="totallyTimeSpent" value="770452000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="780" y="88" width="1313" height="744" extended-state="0" />
@@ -1096,8 +1096,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zas.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="117" column="132" selection-start-line="117" selection-start-column="132" selection-end-line="117" selection-end-column="132" />
+        <state relative-caret-position="467">
+          <caret line="132" column="49" lean-forward="true" selection-start-line="132" selection-start-column="49" selection-end-line="132" selection-end-column="49" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
