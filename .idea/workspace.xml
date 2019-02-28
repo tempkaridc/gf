@@ -116,8 +116,8 @@
       <file leaf-file-name="zas.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/zas.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="125" column="204" selection-start-line="125" selection-start-column="204" selection-end-line="125" selection-end-column="204" />
+            <state relative-caret-position="392">
+              <caret line="127" column="173" selection-start-line="127" selection-start-column="173" selection-end-line="127" selection-end-column="173" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -358,9 +358,9 @@
       <replace>&quot;100&quot;</replace>
       <replace>val_sumItem.d</replace>
       <replace>val_sumItem.k</replace>
-      <replace />
-      <replace />
-      <replace />
+      <replace>0,      0,</replace>
+      <replace>0,      0</replace>
+      <replace>,0,      0,</replace>
       <replace>,^t</replace>
     </replaceStrings>
   </component>
@@ -414,7 +414,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="780" />
     <option name="y" value="88" />
     <option name="width" value="1313" />
@@ -644,12 +644,12 @@
       <workItem from="1550111230237" duration="1222000" />
       <workItem from="1550476486982" duration="1283000" />
       <workItem from="1551273445069" duration="23803000" />
-      <workItem from="1551362040293" duration="1268000" />
+      <workItem from="1551362040293" duration="1874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="770857000" />
+    <option name="totallyTimeSpent" value="771463000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="780" y="88" width="1313" height="744" extended-state="0" />
@@ -1096,8 +1096,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/zas.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="125" column="204" selection-start-line="125" selection-start-column="204" selection-end-line="125" selection-end-column="204" />
+        <state relative-caret-position="392">
+          <caret line="127" column="173" selection-start-line="127" selection-start-column="173" selection-end-line="127" selection-end-column="173" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
