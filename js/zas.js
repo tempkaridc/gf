@@ -136,11 +136,12 @@ function reCalc(){
 function chkFire(num){
     if(isNaN(num)){dispFire(3,'화력 계산 불가');return;}
 
+    var min81 = 82;
     if(area == 81){
-        if(num >= 93){
-            dispFire(2, '화력 만족: ' + num + ' (+' + (num - 93) + ')');
+        if(num >= min81){
+            dispFire(2, '화력 만족: ' + num + ' (+' + (num - min81) + ')');
         }else{
-            dispFire(0, '화력 부족: ' + num + ' (' + (num - 93) + ')');
+            dispFire(0, '화력 부족: ' + num + ' (' + (num - min81) + ')');
         }
     }else{
         if(num >= 63){
