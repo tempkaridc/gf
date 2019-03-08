@@ -79,16 +79,48 @@ function reCalc(){
         buffFire = parseFloat(document.getElementById('buff_fire').value),
         buffRate = parseFloat(document.getElementById('buff_rate').value);
 
-    if(dollFire < 0)    dollFire = 0;
-    if(dollFire > 100)  dollFire = 100;
-    if(dollRate < 0)    dollRate = 0;
-    if(dollRate > 121)  dollRate = 121;
-    if(fairyFire < 0)   fairyFire = 0;
-    if(fairyFire > 100) fairyFire = 100;
-    if(buffFire < 0)    buffFire = 0;
-    if(buffFire > 100)  buffFire = 100;
-    if(buffRate < 0)    buffRate = 0;
-    if(buffRate > 100)  buffRate = 100;
+
+
+    if(dollFire < 0)    {
+        dollFire = 0;
+        $('#doll_fire').val(0);
+    }
+    if(dollFire > 100){
+        dollFire = 100;
+        $('#doll_fire').val(100);
+    }
+    if(dollRate < 0){
+        dollRate = 0;
+        $('#doll_rate').val(0);
+    }
+    if(dollRate > 121){
+        dollRate = 121;
+        $('#doll_rate').val(121);
+    }
+    if(fairyFire < 0){
+        fairyFire = 0;
+        $('#fairy_fire').val(0);
+    }
+    if(fairyFire > 100){
+        fairyFire = 100;
+        $('#fairy_fire').val(100);
+    }
+    if(buffFire < 0){
+        buffFire = 0;
+        $('#buff_fire').val(0);
+    }
+    if(buffFire > 100){
+        buffFire = 100;
+        $('#buff_fire').val(100);
+    }
+    if(buffRate < 0){
+        buffRate = 0;
+        $('#buff_rate').val(0);
+    }
+    if(buffRate > 100){
+        buffRate = 100;
+        $('#buff_rate').val(100);
+    }
 
     var finalFire = Math.ceil(Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (0.85) + 2);
     var finalRate = Math.floor(dollRate * (1 + (buffRate / 100)));
@@ -105,10 +137,10 @@ function chkFire(num){
     if(isNaN(num)){dispFire(3,'화력 계산 불가');return;}
 
     if(area == 81){
-        if(num >= 82){
-            dispFire(2, '화력 만족: ' + num + ' (+' + (num - 82) + ')');
+        if(num >= 93){
+            dispFire(2, '화력 만족: ' + num + ' (+' + (num - 93) + ')');
         }else{
-            dispFire(0, '화력 부족: ' + num + ' (' + (num - 82) + ')');
+            dispFire(0, '화력 부족: ' + num + ' (' + (num - 93) + ')');
         }
     }else{
         if(num >= 63){
