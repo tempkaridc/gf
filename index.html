@@ -1,0 +1,1029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="소녀전선, 군수, 계산기, 효율, 추천, Girls'Frontline, Logistics Support, Calculator"/>
+    <meta name="description" content="소녀전선 군수지원 효율 계산 및 자동추천"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="소녀전선-군수지원 효율계산/추천 시뮬레이터"/>
+    <meta property="og:description" content="소녀전선 군수지원 효율 계산 및 자동추천"/>
+
+    <title>소녀전선 - 군수지원 효율계산 / 추천 시뮬레이터</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/highcharts.css" rel="stylesheet"/>
+    <link href="css/GF.css" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Global site tag (gtag.js) - Google Analytics-->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116552461-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+        gtag('config', 'UA-116552461-1');
+    </script>
+</head>
+
+<body style="color: dimgray;"> <!-- onresize="resizeBoxes();" -->
+<div class="container-fluid" style="height:100%; margin: auto; padding:0px; overflow-x:hidden;">
+    <!---->
+    <div class="row no-gutters" style="width:100%; margin: auto; overflow-x:hidden;">
+        <div class="col-xs-12 col-sm-6" style="padding:5px;">
+            <div class="col-md-12 col-xs-12">
+                <div id="tbl_left" class="row no-gutters panel panel-primary">
+                    <div id="tbl_top">
+                        <table class="table table-condensed table-fixed" style="margin-bottom: 0px; height:100%; border-bottom: 1px solid; border-bottom-color: #ccc;">
+                            <tbody>
+                            <tr class="info">
+                                <td id="sort-0" index=0 class="text-center table-expand-mobile" width="14%">
+                                    <span id="str_area"></span>
+                                </td>
+                                <td id="sort-1" index=1 class="text-center table-expand-mobile" width="11%">
+                                    <img src="img/huma.png" class="table-icon-responsive" style="height:1.5em;">
+                                </td>
+                                <td id="sort-2" index=2 class="text-center table-expand-mobile" width="11%">
+                                    <img src="img/ammo.png" class="table-icon-responsive" style="height:1.5em;">
+                                </td>
+                                <td id="sort-3" index=3 class="text-center table-expand-mobile" width="11%">
+                                    <img src="img/food.png" class="table-icon-responsive" style="height:1.5em;">
+                                </td>
+                                <td id="sort-4" index=4 class="text-center table-expand-mobile" width="11%">
+                                    <img src="img/part.png" class="table-icon-responsive" style="height:1.5em;">
+                                </td>
+                                <td id="sort-5" index=5 class="text-center table-expand-mobile" width="11%">
+                                    <span id="str_sum"></span>
+                                </td>
+                                <td id="sort-6" index=6 class="text-center table-expand-mobile" width="11%">
+                                    <span id="str_time"></span>
+                                    <small><span id="icon-6" class="glyphicon"></span></small>
+                                </td>
+                                <td class="table-expand-mobile" width="20%">
+                                    <select id="sortContract" onChange="sortContract(this);" style="width:100%; background-color:#d9edf7; text-align: center;">
+                                        <option value="99" selected>　</option>
+                                        <option value="7"></option>
+                                        <option value="8"></option>
+                                        <option value="9"></option>
+                                        <option value="10"></option>
+                                        <option value="11"></option>
+                                    </select>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="tbl_mid" style="resize:vertical;">
+                        <div id="tbl_mid2" style="height:100%; overflow-x:hidden; overflow-y: scroll;">
+                            <table class="table table-striped table-condensed" style="table-layout: fixed; margin-bottom: 0px; height:100%;">
+                                <tbody id="area-list"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div id="tbl_bot">
+                        <table class="table table-condensed table-fixed" style="margin-bottom: 0px; height:51px !important;">
+                            <tbody>
+                            <tr class="info" style="height:26px;">
+                                <td rowspan="2" width="14%" style="border-right:1px solid; border-right-color:#ddd;">
+                                    <div id="btn-toggleTime" class="btn btn-xs btn-primary"
+                                         style="
+                                            display:block;
+                                            width:100%;
+                                            height:100%;
+                                            padding-top:5px;
+                                            padding-bottom:5px;
+                                            padding-left:0px;
+                                            padding-right:0px;">
+                                    </div>
+                                </td>
+                                <td class="text-center" width="11%"><b><span id="sumH"></span></b></td>
+                                <td class="text-center" width="11%"><b><span id="sumA"></span></b></td>
+                                <td class="text-center" width="11%"><b><span id="sumF"></span></b></td>
+                                <td class="text-center" width="11%"><b><span id="sumP"></span></b></td>
+                                <td class="text-center" width="11%"><b><span id="sumAll"></span></b></td>
+                                <td rowspan="2" class="text-center" width="31%" style="border-left:1px solid; border-left-color:#ddd;">
+                                    <span id="sumT"></span>
+                                </td>
+                            </tr>
+                            <tr class="info" style="height:25px;">
+                                <td colspan="5" class="ticket-center" width="52%" style="padding:0px !important;">
+                                    <div id="sumItem" style="width:100%; height:100%;"></div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="tbl_btn" class="btn-group btn-group-justified" style="width:100%;">
+                        <div class="btn-group">
+                            <button id="btn-load" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-folder-open"></span><span id="str_load"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button id="btn-save" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-floppy-disk"></span><span id="str_save"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button id="btn-timetable" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-calendar"></span><span id="str_timetable"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button id="btn-capt" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-picture"></span><span id="str_capt"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button id="btn-url" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-link"></span><span id="str_copy"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6" style="padding:5px;">
+            <div class="col-xs-12 col-sm-12">
+                <div id="tbl_help" class="row no-gutters panel panel-primary"
+                     style="padding:10px; margin-bottom: 10px;">
+                    <table style="width:100%;">
+                        <tr>
+                            <td style="width:30%;">
+                                <button id="btn-toggleHelp" class="btn btn-xs btn-default btn-font-responsive" style="width:100%; background-color:#f7f7f7;"><span id="str_toggleHelp"></span>
+                                </button>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ddd;">
+
+                            </td>
+                        </tr>
+                    </table>
+                    <div id="panel-help" class="panel panel-default" style="padding:3px; margin-bottom:0px;">
+                        <table class="table table-condensed table-striped" style="font-size: small;">
+                            <tr id="high_01">
+                                <td>
+                                    <span id="help_01"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_02">
+                                <td>
+                                    <span id="help_02"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_03">
+                                <td>
+                                    <span id="help_03"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_04">
+                                <td>
+                                    <span id="help_04"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_05">
+                                <td>
+                                    <span id="help_05"></span>
+                                    <span id="help_05a"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_06">
+                                <td>
+                                    <span id="help_06"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_07">
+                                <td>
+                                    <span id="help_07"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_08">
+                                <td>
+                                    <span id="help_08"></span>
+                                </td>
+                            </tr>
+                            <tr id="high_09">
+                                <td>
+                                    <span id="help_09"></span>
+                                    <span id="help_09a"></span>
+                                    <span id="help_09b"></span>
+                                    <span id="help_09c"></span>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:30%;">
+                                <div id="menu_0" idx="0" class="btn btn-xs btn-default btn-font-responsive"
+                                     style="width:100%; background-color:#f7f7f7;" onClick="btn_toggleMenu(this);"><span
+                                        id="str_selectarea_title"></span></div>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ccc;">
+                                <small><font color="#bbb">　<span id="summ_0"></span></font></small>
+                            </td>
+                        </tr>
+                        <tr id="menu_0_tr1" class="" style="height:5px;"></tr>
+                        <tr id="menu_0_tr2" class="" style="">
+                            <td style="width:100%;" colspan="2">
+                                <div style="margin-left:5%;">
+                                    <div class="btn-group btn-group-justified"
+                                         style="width:100%; display:inline-block;">
+                                        <div class="btn-group">
+                                            <button id="btn-area-0" idx="0" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">0
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-1" idx="1" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">1
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-2" idx="2" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">2
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-3" idx="3" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">3
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-4" idx="4" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">4
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-5" idx="5" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">5
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-6" idx="6" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">6
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-7" idx="7" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">7
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-8" idx="8" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">8
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-9" idx="9" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">9
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-10" idx="10" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">10
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-area-11" idx="11" type="button"
+                                                    class="btn btn-sm btn-success btn-font-responsive">11
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="menu_0_tr3" class="" style="height:5px;"></tr>
+                    </table>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:30%;">
+                                <div id="menu_1" idx="1" class="btn btn-xs btn-default btn-font-responsive"
+                                     style="width:100%; background-color:#f7f7f7;" onClick="btn_toggleMenu(this);"><span
+                                        id="str_selecttime_title"></span></div>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ccc;">
+                                <small><font color="#bbb">　<span id="summ_1"></span></font></small>
+                            </td>
+                        </tr>
+                        <tr id="menu_1_tr1" style="height:5px;"></tr>
+                        <tr id="menu_1_tr2" style="">
+                            <td style="width:100%;" colspan="2">
+                                <div style="margin-left:5%;">
+                                    <table style="width:100%;">
+                                        <tr>
+                                            <td style="width:40%;">
+                                                <div class="btn-group" style="width:100%; display:inline-block;">
+                                                    <button id="btn-times-0" idx="0"
+                                                            class="btn btn-sm btn-primary btn-font-responsive"
+                                                            style="width:20%;">↓
+                                                    </button>
+                                                    <button id="str_selecttime_times" idx="2"
+                                                            class="btn btn-sm btn-primary btn-font-responsive disabled"
+                                                            style="width:60%;"></button>
+                                                    <button id="btn-times-1" idx="1"
+                                                            class="btn btn-sm btn-primary btn-font-responsive"
+                                                            style="width:20%;">↑
+                                                    </button>
+                                                </div>
+                                            </td>
+                                            <td style="width:10%; text-align: center;">
+                                                <b>↔</b>
+                                            </td>
+                                            <td style="width:40%;">
+                                                <div class="btn-group" style="width:100%; display:inline-block;">
+                                                    <button id="btn-timee-0" idx="0"
+                                                            class="btn btn-sm btn-primary btn-font-responsive"
+                                                            style="width:20%;">↓
+                                                    </button>
+                                                    <button id="str_selecttime_timee" idx="2"
+                                                            class="btn btn-sm btn-primary btn-font-responsive disabled"
+                                                            style="width:60%;"></button>
+                                                    <button id="btn-timee-1" idx="1"
+                                                            class="btn btn-sm btn-primary btn-font-responsive"
+                                                            style="width:20%;">↑
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="menu_1_tr3" class="" style="height:5px;"></tr>
+                    </table>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:30%;">
+                                <div id="menu_6" idx="6" class="btn btn-xs btn-default btn-font-responsive"
+                                     style="width:100%; background-color:#f7f7f7;" onClick="btn_toggleMenu(this);"><span
+                                        id="str_sumrate_title"></span></div>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ccc;">
+                                <small><font color="#bbb">　<span id="summ_6"></span></font></small>
+                            </td>
+                        </tr>
+                        <tr id="menu_6_tr1" style="height:5px;"></tr>
+                        <tr id="menu_6_tr2" style="">
+                            <td style="width:100%;" colspan="2">
+                                <div style="margin-left:5%;">
+                                    <div style="width:75%; float:left;">
+                                        <div class="input-group">
+                                            <input id="sumrate_huma" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                            <input id="sumrate_ammo" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                            <input id="sumrate_food" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                            <input id="sumrate_part" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                        </div>
+                                    </div>
+
+                                    <div style="width:23%; float:right;">
+                                        <button id="btn_change_sumrate" class="btn btn-sm btn-primary btn-font-responsive" style="width:100%;"></button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="menu_6_tr3" class="" style="height:5px;"></tr>
+                    </table>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:30%;">
+                                <div id="menu_2" idx="2" class="btn btn-xs btn-default btn-font-responsive"
+                                     style="width:100%; background-color:#f7f7f7;" onClick="btn_toggleMenu(this);"><span
+                                        id="str_presource_title"></span></div>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ccc;">
+                                <small><font color="#bbb">　<span id="summ_2"></span></font></small>
+                            </td>
+                        </tr>
+                        <tr id="menu_2_tr1" style="height:5px;"></tr>
+                        <tr id="menu_2_tr2" style="">
+                            <td style="width:100%;" colspan="2">
+                                <div style="margin-left:5%;">
+                                    <div style="width:75%; float:left;">
+                                        <div class="input-group">
+                                            <input id="pre_huma" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                            <input id="pre_ammo" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                            <input id="pre_food" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                            <input id="pre_part" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="" style="width:25%;">
+                                        </div>
+                                    </div>
+                                    <div style="width:23%; float:right;">
+                                        <button id="btn_toggle_recovery"
+                                                class="btn btn-sm btn-default btn-font-responsive" style="width:100%;">
+                                            <span id="str_title_refill"></span></button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="menu_2_tr3" class="" style="height:5px;"></tr>
+                    </table>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:30%;">
+                                <div id="menu_3" idx="3" class="btn btn-xs btn-default btn-font-responsive"
+                                     style="width:100%; background-color:#f7f7f7;" onClick="btn_toggleMenu(this);"><span
+                                        id="str_success_title"></span></div>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ccc;">
+                                <small><font color="#bbb">　<span id="summ_3"></span></font></small>
+                            </td>
+                        </tr>
+                        <tr id="menu_3_tr1" style="height:5px;"></tr>
+                        <tr id="menu_3_tr2" style="">
+                            <td style="width:100%;" colspan="2">
+                                <div style="margin-left:5%;">
+                                    <div class="tight-input" style="width:35%; display:inline-block;">
+                                        <input id="sum_level" type="number"
+                                               class="form-control input-sm btn-font-responsive" min="0" max="600"
+                                               value="" placeholder="">
+                                    </div>
+                                    <div class="btn-group" style="width:65%; float:right;">
+                                        <button id="per_level" class="btn btn-sm btn-default btn-font-responsive"
+                                                disabled style="width:50%;"></button>
+                                        <button id="btn_toggle_sucs_event"
+                                                class="btn btn-sm btn-default btn-font-responsive"
+                                                style="width:20%; padding-left:0px; padding-right:0px;"></button>
+                                        <button id="btn_toggle_sucs" class="btn btn-sm btn-default btn-font-responsive"
+                                                style="width:30%;"></button>
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="menu_3_tr3" class="" style="height:5px;"></tr>
+                    </table>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:30%;">
+                                <div id="menu_5" idx="5" class="btn btn-xs btn-default btn-font-responsive"
+                                     style="width:100%; background-color:#f7f7f7;" onClick="btn_toggleMenu(this);"><span
+                                        id="str_interval_title"></span></div>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ccc;">
+                                <small><font color="#bbb">　<span id="summ_5"></span></font></small>
+                            </td>
+                        </tr>
+                        <tr id="menu_5_tr1" style="height:5px;"></tr>
+                        <tr id="menu_5_tr2" style="">
+                            <td style="width:100%;" colspan="2">
+                                <div style="margin-left:5%;">
+                                    <select class="form-control" id="selectInterval" onChange="selectInterval(this);" style="width:75%; float:left; height:2.1em;">
+                                        <option value="30">0:30</option>
+                                        <option value="60">1:00</option>
+                                        <option value="90">1:30</option>
+                                        <option value="120">2:00</option>
+                                        <option value="150">2:30</option>
+                                        <option value="180">3:00</option>
+                                        <option value="210">3:30</option>
+                                        <option value="240">4:00</option>
+                                        <option value="270">4:30</option>
+                                        <option value="300">5:00</option>
+                                        <option value="330">5:30</option>
+                                        <option value="360">6:00</option>
+                                        <option value="390">6:30</option>
+                                        <option value="420">7:00</option>
+                                        <option value="450">7:30</option>
+                                        <option value="480">8:00</option>
+                                        <option value="510">8:30</option>
+                                        <option value="540">9:00</option>
+                                        <option value="570">9:30</option>
+                                        <option value="600">10:00</option>
+                                    </select>
+
+                                    <div style="width:23%; float:right;">
+                                        <button id="btn_toggle_interval" class="btn btn-sm btn-default btn-font-responsive" style="width:100%;"></button>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="menu_5_tr3" class="" style="height:5px;"></tr>
+                    </table>
+
+                    <table style="width:100%; margin-top:5px;">
+                        <tr>
+                            <td style="width:30%;">
+                                <div id="menu_4" idx="4" class="btn btn-xs btn-default btn-font-responsive"
+                                     style="width:100%; background-color:#f7f7f7;" onClick="btn_toggleMenu(this);"><span
+                                        id="str_rcmd_title"></span></div>
+                            </td>
+                            <td style="width:70%; border-bottom:1px solid #ccc;">
+                                <small><font color="#bbb">　<span id="summ_4"></span></font></small>
+                            </td>
+                        </tr>
+                        <tr id="menu_4_tr1" style="height:5px;"></tr>
+                        <tr id="menu_4_tr2" style="">
+                            <td style="width:100%;" colspan="2">
+                                <div style="margin-left:5%;">
+                                    <div style="margin-bottom:5px;">
+                                        <button id="my_wght" class="btn btn-sm btn-danger btn-font-responsive"
+                                                style="width:19%; padding-left:0px; padding-right:0px;"><span
+                                                id="str_rcmd_myratio"></span></button>
+
+                                        <!--<div id="wghtModal_margin1" class="hide" style="width:100%; display:inline-block;"></div>-->
+                                        <div id="wghtModal" class="row no-gutter hide"
+                                             style="margin-top:5px; margin-bottom:5px;">
+                                            <div class="col-xs-12">
+                                                <div class="panel panel-primary"
+                                                     style="margin-bottom: 0px; background-color: whitesmoke;">
+                                                    <div class="panel-body" style="padding:5px;">
+                                                        <ul class="nav nav-tabs" style="margin:0px;">
+                                                            <li class="active"><a data-toggle="tab" href="#daily"><span
+                                                                    id="str_rcmd_day_title"></span></a></li>
+                                                            <li><a data-toggle="tab" href="#total"><span
+                                                                    id="str_rcmd_uses_title"></span></a></li>
+                                                        </ul>
+                                                        <div class="tab-content" style="margin-top:5px;">
+                                                            <div id="daily" class="tab-pane fade in active">
+                                                                <small>
+                                                                    <span id="str_rcmd_day_text"
+                                                                          style="padding-left:10px;"></span>
+                                                                </small>
+                                                                <div class="panel panel-primary"
+                                                                     style="padding:5px; margin-top:5px; margin-bottom:5px;">
+                                                                    <table class="table table-condensed table-font-responsive">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th><font color="#4169e1"><span
+                                                                                    id="str_rcmd_day_table1"></span></font>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_day_table1_huma"></span>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_day_table1_ammo"></span>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_day_table1_food"></span>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_day_table1_part"></span>
+                                                                            </th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr>
+                                                                            <td><span id="str_rcmd_day_table2"></span>
+                                                                            </td>
+                                                                            <td>430 x 4</td>
+                                                                            <td>430 x 4</td>
+                                                                            <td>430 x 4</td>
+                                                                            <td>230 x 4</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span id="str_rcmd_day_table3"></span>
+                                                                            </td>
+                                                                            <td>150 x 4</td>
+                                                                            <td>150 x 4</td>
+                                                                            <td>150 x 4</td>
+                                                                            <td>150 x 4</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td><span id="str_rcmd_day_table4"></span>
+                                                                            </td>
+                                                                            <td>100 x 9</td>
+                                                                            <td>300 x 9</td>
+                                                                            <td>300 x 9</td>
+                                                                            <td>50 x 9</td>
+                                                                        </tr>
+                                                                        <tr class="warning">
+                                                                            <td><span id="str_rcmd_day_table5"></span>
+                                                                            </td>
+                                                                            <td>3220</td>
+                                                                            <td>5020</td>
+                                                                            <td>5020</td>
+                                                                            <td>2020</td>
+                                                                        </tr>
+                                                                        <tr class="success">
+                                                                            <td><span id="str_rcmd_day_table6"></span>
+                                                                            </td>
+                                                                            <td>1</td>
+                                                                            <td>1.55</td>
+                                                                            <td>1.55</td>
+                                                                            <td>0.62</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="row no-gutter">
+                                                                    <div class="col-xs-12">
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="use_huma" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="use_ammo" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="use_food" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="use_part" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:17%; display:inline-block;">
+                                                                            <div id="btn_calcUse"
+                                                                                 class="btn btn-sm btn-success btn-font-responsive"
+                                                                                 style="width:100%;"></div>
+                                                                        </div>
+                                                                        <div style="float:right;">
+                                                                            <font color="gray">
+                                                                                <small><span
+                                                                                        id="str_rcmd_ratio_text"></span>
+                                                                                </small>
+                                                                            </font>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div id="total" class="tab-pane fade">
+                                                                <small>
+                                                                    <span id="str_rcmd_uses_text"
+                                                                          style="padding-left:10px;"></span>
+                                                                </small>
+                                                                <div class="panel panel-primary"
+                                                                     style="padding:5px; margin-top:5px; margin-bottom:5px;">
+                                                                    <table class="table table-condensed table-font-responsive">
+                                                                        <thead>
+                                                                        <tr>
+                                                                            <th><font color="#4169e1"><span
+                                                                                    id="str_rcmd_uses_table1"></span></font>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_uses_table1_huma"></span>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_uses_table1_ammo"></span>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_uses_table1_food"></span>
+                                                                            </th>
+                                                                            <th><span
+                                                                                    id="str_rcmd_uses_table1_part"></span>
+                                                                            </th>
+                                                                        </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                        <tr class="warning">
+                                                                            <td><span id="str_rcmd_uses_table2"></span>
+                                                                            </td>
+                                                                            <td>33400</td>
+                                                                            <td>8600</td>
+                                                                            <td>69800</td>
+                                                                            <td>2200</td>
+                                                                        </tr>
+                                                                        <tr class="warning">
+                                                                            <td><span id="str_rcmd_uses_table3"></span>
+                                                                            </td>
+                                                                            <td>100000</td>
+                                                                            <td>100000</td>
+                                                                            <td>100000</td>
+                                                                            <td>60000</td>
+                                                                        </tr>
+                                                                        <tr class="danger">
+                                                                            <td><span id="str_rcmd_uses_table4"></span>
+                                                                            </td>
+                                                                            <td>66600</td>
+                                                                            <td>91400</td>
+                                                                            <td>30200</td>
+                                                                            <td>57800</td>
+                                                                        </tr>
+                                                                        <tr class="success">
+                                                                            <td><span id="str_rcmd_uses_table5"></span>
+                                                                            </td>
+                                                                            <td>1</td>
+                                                                            <td>1.37</td>
+                                                                            <td>0.45</td>
+                                                                            <td>0.86</td>
+                                                                        </tr>
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                                <div class="row no-gutter">
+                                                                    <div class="col-xs-12">
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="pre2_huma" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="pre2_ammo" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="pre2_food" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="pre2_part" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-xs-12">
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="fin_huma" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="fin_ammo" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="fin_food" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:19%; display:inline-block;">
+                                                                            <input id="fin_part" type="number"
+                                                                                   class="form-control input-sm btn-font-responsive"
+                                                                                   min="1" value="" placeholder="">
+                                                                        </div>
+                                                                        <div style="width:17%; display:inline-block;">
+                                                                            <div id="btn_calcUse2"
+                                                                                 class="btn btn-sm btn-success btn-font-responsive"
+                                                                                 style="width:100%;"></div>
+                                                                        </div>
+                                                                        <div style="float:right;">
+                                                                            <font color="gray">
+                                                                                <small><span
+                                                                                        id="str_rcmd_ratio_text2"></span>
+                                                                                </small>
+                                                                            </font>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div style="display:inline; position:absolute; top:5px; right:20px; ">
+                                                            <button id="close_wght" class="btn btn-sm btn-danger">X
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!--<div id="wghtModal_margin2" class="hide" style="width:15%; display:inline-block;"></div>-->
+                                        <div class="input-group" style="width:80%; float:right; margin-bottom:5px;">
+                                            <input id="wgt_huma" style="width:25%;" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="">
+                                            <input id="wgt_ammo" style="width:25%;" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="">
+                                            <input id="wgt_food" style="width:25%;" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="">
+                                            <input id="wgt_part" style="width:25%;" type="number"
+                                                   class="form-control input-sm btn-font-responsive" min="0" value=""
+                                                   placeholder="">
+                                        </div>
+                                    </div>
+                                    <div class="btn-group-justified" style="margin-bottom:5px;">
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-primary btn-font-responsive disabled"
+                                                    style="margin-right: 0px; width:95%;"><span
+                                                    id="str_rcmd_sucsratio"></span></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-tglT0" idx="0"
+                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
+                                                    src="img/doll.png" style="height:1.6em;"><span id="btn-tglT0_text"
+                                                                                                   class="btn-font-responsive"
+                                                                                                   style="padding:0px;"> ≥ 0</span>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-tglT1" idx="1"
+                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
+                                                    src="img/tool.png" style="height:1.6em;"><span id="btn-tglT1_text"
+                                                                                                   class="btn-font-responsive"
+                                                                                                   style="padding:0px;"> ≥ 0</span>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-tglT2" idx="2"
+                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
+                                                    src="img/fast.png" style="height:1.6em;"><span id="btn-tglT2_text"
+                                                                                                   class="btn-font-responsive"
+                                                                                                   style="padding:0px;"> ≥ 0</span>
+                                            </button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-tglT3" idx="3"
+                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
+                                                    src="img/repr.png" style="height:1.6em;"><span id="btn-tglT3_text"
+                                                                                                   class="btn-font-responsive"
+                                                                                                   style="padding:0px;"> ≥ 0</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div style="margin-bottom:5px;">
+                                        <div id="auto_calc" class="btn btn-sm btn-primary"
+                                             style="width:80%; float:right; margin-bottom:5px;"></div>
+                                    </div>
+                                    <div id="recommendLine" class="btn-group-justified hide">
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-primary btn-font-responsive disabled"
+                                                    style="width:95%;"><span id="str_rcmd_result"></span></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-rec0" idx=0
+                                                    class="btn btn-sm btn-default btn-font-responsive"
+                                                    style="width:100%;"></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-rec1" idx=1
+                                                    class="btn btn-sm btn-default btn-font-responsive"
+                                                    style="width:100%;"></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-rec2" idx=2
+                                                    class="btn btn-sm btn-default btn-font-responsive"
+                                                    style="width:100%;"></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-rec3" idx=3
+                                                    class="btn btn-sm btn-default btn-font-responsive"
+                                                    style="width:100%;"></button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </td>
+                        </tr>
+                        <tr id="menu_4_tr3" class="" style="height:1px;"></tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+                <div id="tbl_chtbox" class="row no-gutters panel panel-primary" style="position:relative; padding:0px; margin-bottom: 10px;">
+                    <div id="tbl_cht" class="col-xs-12" style="padding:0px;"></div>
+                    <div class="btn-group" role="group" style="position:absolute; top: 10px; left: 10px;">
+                        <button class="btn btn-xs btn-default disabled" style="width:50px;"><span
+                                id="str_chart_area"></span></button>
+                        <button class="btn btn-xs btn-default disabled" style=""><b><span
+                                id="text-graphTitle"></span></b></button>
+                    </div>
+                    <div class="btn-group" role="group" style="position:absolute; top: 10px; right: 10px;">
+                        <button class="btn btn-xs btn-default disabled" style="width:50px;"><span
+                                id="str_chart_time"></span></button>
+                        <button id="btn-rangeSelector-0" idx="0" class="btn btn-xs btn-success" style="width:30px;">
+                            <span id="str_chart_btn1"></span></button>
+                        <button id="btn-rangeSelector-1" idx="1" class="btn btn-xs btn-default" style="width:30px;">
+                            <span id="str_chart_btn2"></span></button>
+                        <button id="btn-rangeSelector-2" idx="2" class="btn btn-xs btn-default" style="width:30px;">
+                            <span id="str_chart_btn3"></span></button>
+                        <button id="btn-rangeSelector-3" idx="3" class="btn btn-xs btn-default" style="width:30px;">
+                            <span id="str_chart_btn4"></span></button>
+                    </div>
+                    <div class="btn-group btn-group-justified" style="width:100%;">
+                        <div class="btn-group">
+                            <button class="btn btn-xs btn-default" style="width:100%;"><img src="img/doll.png" style="height:1.4em; float:left;"><span id="num_chart_doll" style="float:right; color:#666;"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-xs btn-default" style="width:100%;"><img src="img/tool.png" style="height:1.4em; float:left;"><span id="num_chart_tool" style="float:right; color:#666;"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-xs btn-default" style="width:100%;"><img src="img/fast.png" style="height:1.4em; float:left;"><span id="num_chart_fast" style="float:right; color:#666;"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-xs btn-default" style="width:100%;"><img src="img/repr.png" style="height:1.4em; float:left;"><span id="num_chart_repr" style="float:right; color:#666;"></span></button>
+                        </div>
+                        <div class="btn-group">
+                            <button class="btn btn-xs btn-default" style="width:100%;"><img src="img/tokn.png" style="height:1.4em; float:left;"><span id="num_chart_tokn" style="float:right; color:#666;"></span></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Modal_Layer-->
+    <div class="modal fade" id="loadModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <span id="str_modal_load_title"></span>
+                    <div class="panel panel-primary" style="padding:5px; margin-top:10px;">
+                        <table class="table table-striped table-condensed">
+                            <thead>
+                            <tr>
+                                <th width="30%" style="text-align: center; vertical-align:middle;"><span
+                                        id="str_modal_load_area"></span></th>
+                                <th width="60%" style="text-align: center; vertical-align:middle;"><span
+                                        id="str_modal_load_desc"></span></th>
+                                <th width="10%" style="text-align: center; vertical-align:middle;"></th>
+                            </tr>
+                            </thead>
+                            <tbody id="load-list">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Bottom_Layer-->
+    <hr style="margin-top: 0px; margin-bottom: 0px;">
+    <div class="col-xs-12 col-sm-4" style="margin:0px; padding:3px;">
+        <div class="row no-gutter">
+            <small>
+                <div class="col-xs-12">
+                    <span id="str_bottom_addr"></span><a href="http://gunsu.kr" target="_blank">http://gunsu.kr</a><br>
+                </div>
+                <div class="col-xs-12">
+                    <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1"
+                                                         target="_blank">Guestbook</a><br>
+                </div>
+            </small>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4" style="margin:0px; padding:3px;">
+        <div class="row no-gutter">
+            <small>
+                <div class="col-xs-12">
+                    Github: <a href="https://github.com/tempkaridc/gf"
+                               target="_blank">https://github.com/tempkaridc/gf</a><br>
+                </div>
+                <div class="col-xs-12">
+                    Last Update: <font color="#db7093"><span id="lastUpdate"></span></font>
+                </div>
+                <!--
+                <div class="col-xs-12">
+                    Github Page: <a href="https://tempkaridc.github.io/gf/" target="_blank">https://tempkaridc.github.io/gf/</a><br>
+                </div>
+                -->
+            </small>
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-4" style="margin:0px; padding:3px;">
+        <small>
+            <div class="row no-gutter">
+                <div class="col-xs-12">
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Languages:
+                            </td>
+                            <td style="padding-left:5px;">
+                                <select id="selectLang" onChange="selectLanguage(this);">
+                                    <option value="ko" selected>Korean</option>
+                                    <option value="en">English</option>
+                                    <option value="ja">Japanese</option>
+                                </select>
+                            </td>
+                            <td style="padding-left:5px;">
+                                <img src="img/kr.png" style="padding-right:2px;">
+                                <img src="img/en.png" style="padding-right:2px;">
+                                <img src="img/ja.png" style="padding-right:2px;">
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-12">
+                    <!--
+                    <input type="string" class="form-control input-xs" value='<iframe style="display:block; width:100%; height:100%;" src="https://tempkaridc.github.io/gf/"></iframe>' style="padding:0px; height:1.3em; font-size:1.0em; width:80%;">
+                    -->
+                    <!--이 페이지는 Chrome, Firefox, Edge에 최적화되어 있습니다.-->
+                    <span id="str_bottom_opti"></span>
+                </div>
+            </div>
+        </small>
+    </div>
+    <!--<div class="btn btn-xs btn-default" onClick="btn_test(this);">TEST</div>-->
+</div>
+<script src="js/highcharts.js"></script>
+<script src="js/highcharts-more.js"></script>
+<script src="js/highcharts-boost.js"></script>
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/html2canvas.js"></script>
+<script src="js/GF.js"></script>
+</body>
+</html>

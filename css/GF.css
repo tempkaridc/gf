@@ -1,0 +1,109 @@
+/*
+    Size    HW      MaxWidth
+    xs      mobile  x < 768px
+    sm      tablet  768 <= x < 991
+    md      desktop 992 <= x < 1200
+    lg      desktop 1200 <= x <
+    @media (max-width: 991px){
+ */
+
+@media (max-width: 767px){
+    .table-expand-mobile{
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+    }
+
+    .table-icon-responsive{
+        height: 1.5em !important;
+    }
+
+    .table-font-responsive{
+        font-size: 0.8em;   /*확장없이 폰트 사이즈 감소*/
+    }
+
+    .btn-font-responsive{
+        font-size: 0.8em;
+        padding: 5px;       /*누르기 쉽게 위아래로 확장*/
+    }
+
+    .table-font-responsive > thead > tr > th,
+    .table-font-responsive > tbody > tr > th,
+    .table-font-responsive > tfoot > tr > th,
+    .table-font-responsive > thead > tr > td,
+    .table-font-responsive > tbody > tr > td,
+    .table-font-responsive > tfoot > tr > td {
+        padding-top: 5px;
+        padding-bottom: 5px;
+    }
+
+    .nav-tabs {
+        font-size: small;
+    }
+
+    .table-fixed {
+        table-layout:fixed;
+    }
+
+    .table-fixed td {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+    }
+}
+
+.table-ticket-outline-result{
+    display:table-cell;
+    height:1.8em;
+    vertical-align: bottom !important;
+    font-weight:bold;
+    font-size:0.6em;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+.table-ticket-box-result {
+    display:inline-table;
+    float:left;
+    width:20%;
+    height:100%;
+    text-align:center;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+.table-ticket-box{
+    display:inline-table;
+    float:left;
+    min-width:2.1em;
+    height:2em;
+    text-align:center;
+    margin-left:3px;
+    margin-right:3px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+.tight-input > input{
+    margin-right: 0px;
+}
+
+.highcharts-title {
+    fill: #FFFFFF;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+
+/*
+select#sortContract option[value="7"] {background-image: url(../img/doll.png);}
+select#sortContract option[value="8"] {background-image:url(img/doll.png);}
+select#sortContract option[value="9"] {background-image:url(others.png);}
+select#sortContract option[value="10"] {background-image:url(others.png);}
+select#sortContract option[value="11"] {background-image:url(others.png);}
+*/
