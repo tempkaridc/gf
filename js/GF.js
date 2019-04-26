@@ -1,4 +1,4 @@
-var version         = 201904161500;         // Version == 최종수정일 시간 분
+var version         = 201904261500;         // Version == 최종수정일 시간 분
 var updateString    = "2019-04-26 Changelog"
                     + "\n- Add Capture for test"
                     ;

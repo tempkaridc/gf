@@ -14,11 +14,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2100">
-              <caret line="147" column="41" selection-start-line="147" selection-start-column="41" selection-end-line="147" selection-end-column="41" />
+            <state>
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -126,13 +125,9 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="highcharts.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="highcharts.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/highcharts.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" />
-            </state>
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="html2canvas.js" pinned="false" current-in-tab="false">
@@ -343,8 +338,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tbl_btn</find>
-      <find>data-html2canvas-ignore</find>
       <find>IGNORE_ATTRIBUTE</find>
       <find>RF_ANALYSIS</find>
       <find>testSet</find>
@@ -373,6 +366,8 @@
       <find>str_copy</find>
       <find>str_toggle</find>
       <find>sortToggle</find>
+      <find>font</find>
+      <find>gly</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -691,15 +686,15 @@
       <workItem from="1555913227771" duration="11311000" />
       <workItem from="1556258575249" duration="268000" />
       <workItem from="1556258949768" duration="89000" />
-      <workItem from="1556260055339" duration="236000" />
+      <workItem from="1556260055339" duration="415000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="794070000" />
+    <option name="totallyTimeSpent" value="794249000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="68" y="198" width="1504" height="870" extended-state="0" />
+    <frame x="412" y="296" width="1504" height="870" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1297043" />
@@ -1120,10 +1115,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="2065" column="967" selection-start-line="2065" selection-start-column="967" selection-end-line="2065" selection-end-column="967" />
+          <folding>
+            <element signature="e#1200#1229#0" expanded="true" />
+            <element signature="e#1727#1756#0" expanded="true" />
+            <element signature="e#1922#1951#0" expanded="true" />
+            <element signature="e#2056#2085#0" expanded="true" />
+            <element signature="e#5091#5120#0" expanded="true" />
+            <element signature="e#5783#5812#0" expanded="true" />
+            <element signature="e#6013#6042#0" expanded="true" />
+            <element signature="e#6174#6203#0" expanded="true" />
+            <element signature="e#9217#9246#0" expanded="true" />
+            <element signature="e#9725#9754#0" expanded="true" />
+            <element signature="e#9917#9946#0" expanded="true" />
+            <element signature="e#10050#10079#0" expanded="true" />
+            <marker date="1556259029698" expanded="true" signature="52276:52287" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/highcharts.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2100">
-          <caret line="147" column="41" selection-start-line="147" selection-start-column="41" selection-end-line="147" selection-end-column="41" />
+        <state>
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1194,35 +1213,6 @@
             <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="2065" column="967" selection-start-line="2065" selection-start-column="967" selection-end-line="2065" selection-end-column="967" />
-          <folding>
-            <element signature="e#1200#1229#0" expanded="true" />
-            <element signature="e#1727#1756#0" expanded="true" />
-            <element signature="e#1922#1951#0" expanded="true" />
-            <element signature="e#2056#2085#0" expanded="true" />
-            <element signature="e#5091#5120#0" expanded="true" />
-            <element signature="e#5783#5812#0" expanded="true" />
-            <element signature="e#6013#6042#0" expanded="true" />
-            <element signature="e#6174#6203#0" expanded="true" />
-            <element signature="e#9217#9246#0" expanded="true" />
-            <element signature="e#9725#9754#0" expanded="true" />
-            <element signature="e#9917#9946#0" expanded="true" />
-            <element signature="e#10050#10079#0" expanded="true" />
-            <marker date="1556259029698" expanded="true" signature="52276:52287" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/highcharts.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
