@@ -5,6 +5,7 @@
 
  License: www.highcharts.com/license
 */
+/*T*/
 (function (R, K) {
     "object" === typeof module && module.exports ? module.exports = R.document ? K(R) : K : R.Highcharts = K(R)
 })("undefined" !== typeof window ? window : this, function (R) {
