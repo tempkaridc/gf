@@ -14,10 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
+            <state relative-caret-position="195">
+              <caret line="13" column="27" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="27" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -101,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="2065" column="967" selection-start-line="2065" selection-start-column="967" selection-end-line="2065" selection-end-column="967" />
+            <state relative-caret-position="120">
+              <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
               <folding>
                 <element signature="e#1200#1229#0" expanded="true" />
                 <element signature="e#1727#1756#0" expanded="true" />
@@ -119,7 +120,6 @@
                 <element signature="e#9725#9754#0" expanded="true" />
                 <element signature="e#9917#9946#0" expanded="true" />
                 <element signature="e#10050#10079#0" expanded="true" />
-                <marker date="1556259029698" expanded="true" signature="52276:52287" ph="..." />
               </folding>
             </state>
           </provider>
@@ -338,7 +338,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>IGNORE_ATTRIBUTE</find>
       <find>RF_ANALYSIS</find>
       <find>testSet</find>
       <find>options</find>
@@ -347,13 +346,13 @@
       <find>click</find>
       <find>drawStage</find>
       <find>table-row-</find>
-      <find>var item =</find>
+      <find />
       <find>clickRow</find>
       <find>attr</find>
-      <find>function clickRow</find>
+      <find />
       <find>#tbl_mid</find>
       <find>config.</find>
-      <find>config =</find>
+      <find />
       <find>resizeBo</find>
       <find>570</find>
       <find>tbl_mid</find>
@@ -362,12 +361,13 @@
       <find>scr.mid</find>
       <find>test</find>
       <find>capt</find>
-      <find>cptStr</find>
       <find>str_copy</find>
       <find>str_toggle</find>
       <find>sortToggle</find>
       <find>font</find>
       <find>gly</find>
+      <find>str</find>
+      <find>cptStr</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -382,9 +382,9 @@
       <replace>&quot;100&quot;</replace>
       <replace>val_sumItem.d</replace>
       <replace>val_sumItem.k</replace>
-      <replace>0,      0,</replace>
-      <replace>0,      0</replace>
-      <replace>,0,      0,</replace>
+      <replace />
+      <replace />
+      <replace />
       <replace>,^t</replace>
     </replaceStrings>
   </component>
@@ -424,8 +424,8 @@
         <option value="$PROJECT_DIR$/css/GF.css" />
         <option value="$PROJECT_DIR$/lang/languages.json" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/GF.js" />
         <option value="$PROJECT_DIR$/js/highcharts.js" />
+        <option value="$PROJECT_DIR$/js/GF.js" />
       </list>
     </option>
   </component>
@@ -438,18 +438,17 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="412" />
-    <option name="y" value="296" />
-    <option name="width" value="1504" />
-    <option name="height" value="870" />
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="548" />
+    <option name="y" value="295" />
+    <option name="width" value="1204" />
+    <option name="height" value="696" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -471,6 +470,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -687,17 +687,18 @@
       <workItem from="1556258575249" duration="268000" />
       <workItem from="1556258949768" duration="89000" />
       <workItem from="1556260055339" duration="415000" />
+      <workItem from="1556269313521" duration="2467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="794249000" />
+    <option name="totallyTimeSpent" value="796716000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="412" y="296" width="1504" height="870" extended-state="0" />
+    <frame x="548" y="295" width="1204" height="696" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1297043" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12962963" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
@@ -717,23 +718,23 @@
       <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
+      <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3295688" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.0984375" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Version Control" order="10" />
-      <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="REST Client" order="11" weight="0.3315565" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.5274841" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="10" />
+      <window_info anchor="bottom" id="Find" order="1" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -1115,34 +1116,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="2065" column="967" selection-start-line="2065" selection-start-column="967" selection-end-line="2065" selection-end-column="967" />
-          <folding>
-            <element signature="e#1200#1229#0" expanded="true" />
-            <element signature="e#1727#1756#0" expanded="true" />
-            <element signature="e#1922#1951#0" expanded="true" />
-            <element signature="e#2056#2085#0" expanded="true" />
-            <element signature="e#5091#5120#0" expanded="true" />
-            <element signature="e#5783#5812#0" expanded="true" />
-            <element signature="e#6013#6042#0" expanded="true" />
-            <element signature="e#6174#6203#0" expanded="true" />
-            <element signature="e#9217#9246#0" expanded="true" />
-            <element signature="e#9725#9754#0" expanded="true" />
-            <element signature="e#9917#9946#0" expanded="true" />
-            <element signature="e#10050#10079#0" expanded="true" />
-            <marker date="1556259029698" expanded="true" signature="52276:52287" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/highcharts.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
+        <state relative-caret-position="195">
+          <caret line="13" column="27" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="27" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1212,6 +1192,27 @@
             <element signature="n#style#0;n#hr#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+          <folding>
+            <element signature="e#1200#1229#0" expanded="true" />
+            <element signature="e#1727#1756#0" expanded="true" />
+            <element signature="e#1922#1951#0" expanded="true" />
+            <element signature="e#2056#2085#0" expanded="true" />
+            <element signature="e#5091#5120#0" expanded="true" />
+            <element signature="e#5783#5812#0" expanded="true" />
+            <element signature="e#6013#6042#0" expanded="true" />
+            <element signature="e#6174#6203#0" expanded="true" />
+            <element signature="e#9217#9246#0" expanded="true" />
+            <element signature="e#9725#9754#0" expanded="true" />
+            <element signature="e#9917#9946#0" expanded="true" />
+            <element signature="e#10050#10079#0" expanded="true" />
           </folding>
         </state>
       </provider>

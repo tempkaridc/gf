@@ -1,4 +1,4 @@
-var version         = 201904261500;         // Version == 최종수정일 시간 분
+var version         = 201904301200;         // Version == 최종수정일 시간 분
 var updateString    = "2019-04-26 Changelog"
                     + "\n- Add Capture for test"
                     ;
@@ -831,7 +831,8 @@ $('#btn-url').off().on('click', function (e) {
     var encodedString = encodeHEX(absSelect);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
-    t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString; // + '\n' + cptStr; // cptStr
+    //t.value = 'https://tempkaridc.github.io/gf/index.html?c=' + encodedString; // + '\n' + cptStr; // cptStr
+    t.value = cptStr + ' https://tempkaridc.github.io/gf/index.html?c=' + encodedString; // + '\n' + cptStr; // cptStr
     t.select();
     document.execCommand('copy');
     document.body.removeChild(t);
@@ -1114,7 +1115,8 @@ function calcStage(){
         orTime = langPack.HTML.TABLE.PER_HOUR;
     }
 
-    //cptStr = langPack.HTML.TABLE.AREA + ': ' + sumT.slice(0,-2) + '　\n';
+    //cptStr = langPack.HTML.TABLE.AREA + ': ' + sumT.slice(0,-2);// + '　\n';
+    cptStr = sumT.slice(0,-2);// + '　\n';
 
 
     /* 클립보드 간략화
