@@ -17,8 +17,8 @@
       <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+            <state relative-caret-position="180">
+              <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -346,13 +346,13 @@
       <find>click</find>
       <find>drawStage</find>
       <find>table-row-</find>
-      <find />
+      <find>var item =</find>
       <find>clickRow</find>
       <find>attr</find>
-      <find />
+      <find>function clickRow</find>
       <find>#tbl_mid</find>
       <find>config.</find>
-      <find />
+      <find>config =</find>
       <find>resizeBo</find>
       <find>570</find>
       <find>tbl_mid</find>
@@ -382,9 +382,9 @@
       <replace>&quot;100&quot;</replace>
       <replace>val_sumItem.d</replace>
       <replace>val_sumItem.k</replace>
-      <replace />
-      <replace />
-      <replace />
+      <replace>0,      0,</replace>
+      <replace>0,      0</replace>
+      <replace>,0,      0,</replace>
       <replace>,^t</replace>
     </replaceStrings>
   </component>
@@ -438,7 +438,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="1">
+  <component name="ProjectFrameBounds">
     <option name="x" value="980" />
     <option name="y" value="196" />
     <option name="width" value="1204" />
@@ -687,12 +687,12 @@
       <workItem from="1556258575249" duration="268000" />
       <workItem from="1556258949768" duration="89000" />
       <workItem from="1556260055339" duration="415000" />
-      <workItem from="1556269313521" duration="4839000" />
+      <workItem from="1556269313521" duration="5465000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="799088000" />
+    <option name="totallyTimeSpent" value="799714000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="980" y="196" width="1204" height="696" extended-state="0" />
@@ -1142,8 +1142,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+        <state relative-caret-position="180">
+          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
