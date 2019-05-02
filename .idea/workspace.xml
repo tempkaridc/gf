@@ -14,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="27" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="27" />
+            <state relative-caret-position="225">
+              <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -102,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GF.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
+            <state relative-caret-position="435">
+              <caret line="1995" column="1" lean-forward="true" selection-start-line="1995" selection-start-column="1" selection-end-line="1995" selection-end-column="1" />
               <folding>
                 <element signature="e#1200#1229#0" expanded="true" />
                 <element signature="e#1727#1756#0" expanded="true" />
@@ -219,8 +219,8 @@
       <file leaf-file-name="languages.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lang/languages.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4440">
-              <caret line="296" column="7" selection-start-line="296" selection-start-column="7" selection-end-line="296" selection-end-column="7" />
+            <state relative-caret-position="305">
+              <caret line="167" column="24" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -422,10 +422,10 @@
         <option value="$PROJECT_DIR$/js/zas.js" />
         <option value="$PROJECT_DIR$/zas.html" />
         <option value="$PROJECT_DIR$/css/GF.css" />
-        <option value="$PROJECT_DIR$/lang/languages.json" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/highcharts.js" />
         <option value="$PROJECT_DIR$/js/GF.js" />
+        <option value="$PROJECT_DIR$/lang/languages.json" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -439,8 +439,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds" extendedState="1">
-    <option name="x" value="548" />
-    <option name="y" value="295" />
+    <option name="x" value="980" />
+    <option name="y" value="196" />
     <option name="width" value="1204" />
     <option name="height" value="696" />
   </component>
@@ -687,15 +687,15 @@
       <workItem from="1556258575249" duration="268000" />
       <workItem from="1556258949768" duration="89000" />
       <workItem from="1556260055339" duration="415000" />
-      <workItem from="1556269313521" duration="2467000" />
+      <workItem from="1556269313521" duration="4839000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="796716000" />
+    <option name="totallyTimeSpent" value="799088000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="548" y="295" width="1204" height="696" extended-state="0" />
+    <frame x="980" y="196" width="1204" height="696" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12962963" />
@@ -1102,13 +1102,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lang/languages.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4440">
-          <caret line="296" column="7" selection-start-line="296" selection-start-column="7" selection-end-line="296" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/GF.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="960">
@@ -1119,10 +1112,38 @@
     <entry file="file://$PROJECT_DIR$/js/highcharts.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/lang/languages.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="167" column="24" selection-start-line="167" selection-start-column="24" selection-end-line="167" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/GF.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="1995" column="1" lean-forward="true" selection-start-line="1995" selection-start-column="1" selection-end-line="1995" selection-end-column="1" />
+          <folding>
+            <element signature="e#1200#1229#0" expanded="true" />
+            <element signature="e#1727#1756#0" expanded="true" />
+            <element signature="e#1922#1951#0" expanded="true" />
+            <element signature="e#2056#2085#0" expanded="true" />
+            <element signature="e#5091#5120#0" expanded="true" />
+            <element signature="e#5783#5812#0" expanded="true" />
+            <element signature="e#6013#6042#0" expanded="true" />
+            <element signature="e#6174#6203#0" expanded="true" />
+            <element signature="e#9217#9246#0" expanded="true" />
+            <element signature="e#9725#9754#0" expanded="true" />
+            <element signature="e#9917#9946#0" expanded="true" />
+            <element signature="e#10050#10079#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="27" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="27" />
+        <state relative-caret-position="225">
+          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -1192,27 +1213,6 @@
             <element signature="n#style#0;n#hr#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#div#3;n#div#0;n#body#0;n#html#0;n#!!top" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/GF.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="92" column="34" lean-forward="true" selection-start-line="92" selection-start-column="34" selection-end-line="92" selection-end-column="34" />
-          <folding>
-            <element signature="e#1200#1229#0" expanded="true" />
-            <element signature="e#1727#1756#0" expanded="true" />
-            <element signature="e#1922#1951#0" expanded="true" />
-            <element signature="e#2056#2085#0" expanded="true" />
-            <element signature="e#5091#5120#0" expanded="true" />
-            <element signature="e#5783#5812#0" expanded="true" />
-            <element signature="e#6013#6042#0" expanded="true" />
-            <element signature="e#6174#6203#0" expanded="true" />
-            <element signature="e#9217#9246#0" expanded="true" />
-            <element signature="e#9725#9754#0" expanded="true" />
-            <element signature="e#9917#9946#0" expanded="true" />
-            <element signature="e#10050#10079#0" expanded="true" />
           </folding>
         </state>
       </provider>
