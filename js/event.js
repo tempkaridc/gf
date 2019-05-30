@@ -1,5 +1,6 @@
 var quests;
 var thisEvent;
+var newEvent;
 var saves;
 
 $(document).ready(function() {
@@ -17,8 +18,141 @@ $(function (){
 });
 
 function init(){
-    thisEvent = "스칼렛 위치 이벤트,,,,,,,,,,*주의사항 #1: 연동되지 않는 미션들은 한칸씩 공백을 두고 입력할 것\n" +
-        "1주차,18-07-14 ~ 18-08-03,,2주차,18-07-21 ~ 18-08-03,,3주차,18-07-28 ~ 18-08-03,,,\"*주의사항 #2: 보상 입력시 쉼표(,) 사용불가, 특문쉼표로 대용(，)\"\n" +
+    newEvent = new Object();
+    newEvent.title = "꿀벌과 토끼풀";
+    newEvent.dateWeek1 = "19-05-13 ~ 19-05-19";
+    newEvent.dateWeek2 = "19-05-20 ~ 19-05-26";
+    newEvent.dateWeek3 = "19-05-27 ~ 19-06-02";
+
+    newEvent.w1 = new Array();
+    newEvent.w1.push(
+                        ["누적 로그인 %n일",
+                        [1,2,3,5,8,10,12],
+                        [10,20,20,30,30,50,100]]
+    );
+    newEvent.w1.push(
+                        ["칭찬받기 %n회",
+                        [10,30,50,100],
+                        [20,30,50,100]]
+    );
+    newEvent.w1.push(
+                        ["인형제조권 %n장 소모",
+                        [10,20,50,100],
+                        [20,30,50,100]]
+    );
+    newEvent.w1.push(
+                        ["전역 클리어 %n회",
+                        [10,20,50,100],
+                        [20,30,50,100]]
+    );
+    newEvent.w1.push(
+                        ["전투 S랭크 %n회",
+                        [10,30,50,100],
+                        [10,30,50,100]]
+    );
+    newEvent.w1.push(
+                        ["인형제조권 %n장 소모",
+                        [10,20,50,100],
+                        [20,30,50,100]]
+    );
+    newEvent.w1.push(
+                        ["4성 인형 제조 %n회",
+                        [1,5],
+                        [20,30]]
+    );
+    newEvent.w1.push(
+                        ["5성 인형 제조 %n회",
+                        [1,5],
+                        [50,100]]
+    );
+
+    newEvent.w2 = new Array();
+    newEvent.w2.push(
+                        ["선물주기 %n회",
+                        [10,20,50,100],
+                        [10,20,30,50]]
+    );
+    newEvent.w2.push(
+                        ["인형구조 %n회(자율x)",
+                        [10,30,50,100],
+                        [20,30,50,100]]
+    );
+    newEvent.w2.push(
+                        ["토큰소모 %n개",
+                        [100,200,500,1000],
+                        [20,30,150,200]]
+    );
+    newEvent.w2.push(
+                        ["전지소모 %n개",
+                        [200,500,1000],
+                        [20,50,100]]
+    );
+    newEvent.w2.push(
+                        ["교정권소모 %n개",
+                        [50,100,300,500],
+                        [20,30,50,100]]
+    );
+    newEvent.w2.push(
+                        ["스킬훈련 %n회(인형&요정)",
+                        [1,3,5,10],
+                        [10,20,50,100]]
+    );
+    newEvent.w3 = new Array();
+    newEvent.w3.push(
+                        ["인형수복 %n회",
+                        [10,20,30],
+                        [10,20,30]]
+    );
+    newEvent.w3.push(
+                        ["모의점수사용 %n점",
+                        [10,30,50],
+                        [10,30,30]]
+    );
+    newEvent.w3.push(
+                        ["증폭캡슐사용 %n개",
+                        [10,30,50],
+                        [20,30,50]]
+    );
+    newEvent.w3.push(
+                        ["군수지원 누적 %n시간",
+                        [100,200,300],
+                        [20,30,50]]
+    );
+    newEvent.w3.push(
+                        ["칭찬하기 %n회",
+                        [10,30,50],
+                        [20,30,50]]
+    );
+    newEvent.w3.push(
+                        ["군수지원 대성공 %n회",
+                        [3,5,10],
+                        [10,20,30]]
+    );
+
+    newEvent.reward = new Array();
+    newEvent.reward.push(
+        [100,200,500,800,1200,1800,2000,2400,3000],
+        [
+            "탄약/식량 1000",
+            "강화캡슐 20, 쾌속수복 5",
+            "쾌속제조 5, HK416 아이콘, 중급훈련칩 200",
+            "인형제조 5, 전지 200, 기억파편 100",
+            "구매토큰 20, 쾌속훈련 1, 대체코어 10",
+            "R93, 카리나 제복 스킨(중복지급 x)",
+            "기억파편 100, 고급훈련칩 200, 이벤트 가구, 모의점수 10",
+            "기억파편 200, 구매토큰 50, 인형제조 10, 챌린저 훈장 1",
+            "챌린저 훈장 1"
+        ]
+    );
+
+    makeQuests2(newEvent);
+
+    console.log(newEvent);
+
+    //newEvent.w1.push
+    thisEvent =
+        "스칼렛 위치 이벤트,,,,,,,,,,*주의사항 #1: 연동되지 않는 미션들은 한칸씩 공백을 두고 입력할 것\n" +
+        "1주차,18-07-14 ~ 18-08-03,,2주차,18-07-21 ~ 18-08-03,,3주차,18-07-28 ~ 18-08-03,,,\n" +
         "미션,포인트,추가보상,미션,포인트,추가보상,미션,포인트,추가보상,누적포인트,보상\n" +
         "로그인 1일,10,,전지 200개 획득,20,,구매토큰 소모 100개,20,,100,탄약，식량 1000\n" +
         "로그인 2일,20,,전지 500개 획득,50,,구매토큰 소모 200개,30,,200,증폭캡슐 20개，쾌속수복 5장\n" +
@@ -105,6 +239,96 @@ function CSV( $data ){
     result.length = result.length - 1;
     return result;
 }
+
+function makeQuests2(obj){
+    var quests = new Object();
+
+    //Non-Array Initialize
+    quests.title = obj.title;
+    quests.dateWeek1 = obj.dateWeek1;
+    quests.dateWeek2 = obj.dateWeek2;
+    quests.dateWeek3 = obj.dateWeek3;
+    quests.list = new Array();
+    quests.reward = new Array();
+
+    var numOfQuest = 0;
+    var subNumOfQuest = 0;
+
+    //Week1 Array Make
+    for(var i = 3; i < obj.length; i++){
+        if(ary[i][0] == ""){
+            numOfQuest++;
+            subNumOfQuest = 0;
+            continue;
+        }
+        var quest = new Object();
+        quest.text    = ary[i][0];
+        quest.pt      = parseInt(ary[i][1]);
+        quest.add     = ary[i][2];
+        quest.week    = 1;
+        quest.qnum    = numOfQuest;
+        quest.snum    = subNumOfQuest++;
+        quest.enabled = true;
+        quests.list.push(quest);
+    }
+
+    /*
+    //Week2 Array Make
+    numOfQuest = 0;
+    subNumOfQuest = 0;
+    for(var i = 3; i < ary.length; i++){
+        if(ary[i][3] == ""){
+            numOfQuest++;
+            subNumOfQuest = 0;
+            continue;
+        }
+        var quest = new Object();
+        quest.text    = ary[i][3];
+        quest.pt      = parseInt(ary[i][4]);
+        quest.add     = ary[i][5];
+        quest.week    = 2;
+        quest.qnum    = numOfQuest;
+        quest.snum    = subNumOfQuest++;
+        quest.enabled = true;
+        quests.list.push(quest);
+    }
+
+    //Week3 Array Make
+    numOfQuest = 0;
+    subNumOfQuest = 0;
+    for(var i = 3; i < ary.length; i++){
+        if(ary[i][6] == ""){
+            numOfQuest++;
+            subNumOfQuest = 0;
+            continue;
+        }
+        var quest = new Object();
+        quest.text    = ary[i][6];
+        quest.pt      = parseInt(ary[i][7]);
+        quest.add     = ary[i][8];
+        quest.week    = 3;
+        quest.qnum    = numOfQuest;
+        quest.snum    = subNumOfQuest++;
+        quest.enabled = true;
+        quests.list.push(quest);
+    }
+
+    for(var i = 3; i < ary.length; i++){
+        if(ary[i][9] == ""){
+            continue;
+        }
+        var rwd = new Object();
+        rwd.pt = parseInt(ary[i][9]);
+        rwd.text = ary[i][10];
+        quests.reward.push(rwd);
+    }
+    */
+
+    console.log(quests);
+
+    return;
+}
+
 function makeQuests(ary){
     quests = new Object();
 
@@ -186,6 +410,9 @@ function makeQuests(ary){
         rwd.text = ary[i][10];
         quests.reward.push(rwd);
     }
+
+    console.log(quests);
+
     return;
 }
 

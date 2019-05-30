@@ -2002,9 +2002,11 @@ function calcSuccessRatio(){
     var sucsrate;
     if(!sw_successEvent){
         sucsrate = parseInt((parseInt(tmp / 5) * 0.45) + 15);
+        if(sucsrate > 100){sucsrate = 100;}
         $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + sucsrate + '%');
     }else{
         sucsrate = parseInt((parseInt(tmp / 5) * 0.60) + 30);
+        if(sucsrate > 100){sucsrate = 100;}
         $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + sucsrate + '%' + ' (+' + (parseInt((parseInt(tmp / 5) * 0.60) + 30) - parseInt((parseInt(tmp / 5) * 0.45) + 15)) + '%)');
     }
 
