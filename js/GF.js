@@ -394,28 +394,23 @@ $('[id^=btn-tgl]').off().on('click', function (e) {
     if(wghtToggle[id] == level[0]){    //dflt -> sucs
         $('#btn-tglT' + id).removeClass('btn-default');
         $('#btn-tglT' + id).addClass('btn-success');
-        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[1]);
-        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[1] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2); // 시간당 0 개 이상
         wghtToggle[id] = level[1];
     }else if(wghtToggle[id] == level[1]){    //sucs -> warn
         $('#btn-tglT' + id).removeClass('btn-success');
         $('#btn-tglT' + id).addClass('btn-warning');
-        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[2]);
-        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[2] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
         wghtToggle[id] = level[2];
     }else if(wghtToggle[id] == level[2]) {    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-warning');
         $('#btn-tglT' + id).addClass('btn-danger');
-        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[3]);
-        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[3] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
         wghtToggle[id] = level[3];
     }else if(wghtToggle[id] == level[3]){    //warn -> dang
         $('#btn-tglT' + id).removeClass('btn-danger');
         $('#btn-tglT' + id).addClass('btn-default');
-        $('#btn-tglT' + id + '_text').text(' ≥ ' + level[0]);
-        $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + ' ' + level[4] + ' ' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
         wghtToggle[id] = level[0];
     }
+    $('#btn-tglT' + id + '_text').text(' ≥ ' + wghtToggle[id]);
+    $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[id] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2); // 시간당 0 개 이상
+
 });
 $('[id^=btn-rec]').off().on('click', function (e) {
     //재정렬후 재위치
@@ -1887,10 +1882,10 @@ function setLanguage(){
     $('#str_rcmd_sucsratio').text(langPack.HTML.TABLE.HELP.RECOMMEND.SUCSRATIO);
     $('#auto_calc').text(langPack.HTML.TABLE.HELP.RECOMMEND.BTN_RCMD);
     $('#str_rcmd_result').text(langPack.HTML.TABLE.HELP.RECOMMEND.RESULT);
-    $('#btn-tglT0').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
-    $('#btn-tglT1').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
-    $('#btn-tglT2').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
-    $('#btn-tglT3').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + '0' + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+    $('#btn-tglT0').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[0] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+    $('#btn-tglT1').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[1] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+    $('#btn-tglT2').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[2] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
+    $('#btn-tglT3').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[3] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
 
     $('#str_chart_area').text(langPack.HTML.CHART.AREA);
     $('#str_chart_time').text(langPack.HTML.CHART.TIME);
