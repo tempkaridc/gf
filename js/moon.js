@@ -64,28 +64,15 @@ function makeBlank(x, y){
 
     for(var i = -1; i < 2; i++){
         for(var j = -1; j < 2; j++){
-            if(list[y+i][x+j] !== undefined){
-                if(i != j){
-                    list[y+i][x+j] = 0;
+            if(list[y+i] !== undefined){
+                if(list[y+i][x+j] !== undefined){
+                    if(i != j){
+                        list[y+i][x+j] = 0;
+                    }
                 }
             }
         }
     }
-
-
-    /*
-    list[y-1][x-1] = 0;
-    list[y-1][x-0] = 0;
-    list[y-1][x+1] = 0;
-
-    list[y][x-1] = 0;
-    list[y][x-0] = 0;
-    list[y][x+1] = 0;
-
-    list[y+1][x-1] = 0;
-    list[y+1][x-0] = 0;
-    list[y+1][x+1] = 0;
-    */
 
     $('#I' + (x-1) + '-' + (y-1)).attr("src",'img/moon/0.png');
     $('#I' + (x+0) + '-' + (y-1)).attr("src",'img/moon/0.png');
@@ -185,6 +172,8 @@ function mouseover(me){
     var x = parseInt(coord[0]);
     var y = parseInt(coord[1]);
 
+    if((x==71)||(y==23))return;
+
     var iam = new Array();
     iam.push(document.getElementById(x + '-' + y));
     iam.push(document.getElementById((x+1) + '-' + y));
@@ -192,7 +181,9 @@ function mouseover(me){
     iam.push(document.getElementById((x+1) + '-' + (y+1)));
 
     for(var i = 0; i < iam.length; i++){
-        iam[i].style.backgroundColor = '#ffff0055';
+        if((iam[i] !== undefined) && (iam[i] != null)){
+            iam[i].style.backgroundColor = '#ffff0055';
+        }
     }
 }
 
@@ -201,6 +192,8 @@ function mouseout(me){
     var coord = id.split('-');
     var x = parseInt(coord[0]);
     var y = parseInt(coord[1]);
+
+    if((x==71)||(y==23))return;
 
     var iam = new Array();
     iam.push(document.getElementById(x + '-' + y));
@@ -267,7 +260,7 @@ function decodeDupl(dupl){
     }
 }
 */
-
+/*
 var file = document.querySelector('#getfile');
 
 file.onchange = function () {
@@ -348,3 +341,4 @@ function contrastImage(imageData, contrast) {  // contrast as an integer percent
     }
     return imageData;  //optional (e.g. for filter function chaining)
 }
+*/
