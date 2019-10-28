@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Moon Phase Placer [BETA]</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/highcharts.css" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon_moon.ico">
+</head>
+
+<body style="color: dimgray; padding-top:20px;">
+    <div class="container-fluid" style="width:1024px; margin: auto; padding:0px; overflow:hidden;">
+        <div class="col-xs-12" style="text-align: center; margin-bottom:10px;">
+            <b>Moon Phase Placer [BETA]</b>
+        </div>
+
+        <table style="width:1024px; height:342px; border: 1px solid; border-color: #ddd; overflow:hidden; margin-bottom: 5px;">
+            <tbody id="table-body" style="width:100%;">
+
+            </tbody>
+        </table>
+
+        <div style="margin-bottom: 5px;">
+            <button class="btn btn-sm btn-primary" style="width:160px; float:left;"  onClick="btn_copy();">COPY</button>
+            <button class="btn btn-sm btn-danger" style="width:160px; float:right;" onClick="btn_input();">INPUT</button>
+            <input id="code" class="form-control input-sm btn-font-responsive" value="" style="width:704px;">
+        </div>
+
+        <table style="width:1024px; overflow:hidden;">
+            <tbody style="width:100%;">
+            <tr>
+                <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-danger"><img src="img/moon/1.png" style="width:14px;"></div><span id="num1" style="padding:5px;">0</span></td>
+                <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-danger"><img src="img/moon/2.png" style="width:14px;"></div><span id="num2" style="padding:5px;">0</span></td>
+                <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-danger"><img src="img/moon/3.png" style="width:14px;"></div><span id="num3" style="padding:5px;">0</span></td>
+                <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-danger"><img src="img/moon/4.png" style="width:14px;"></div><span id="num4" style="padding:5px;">0</span></td>
+                <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-danger"><img src="img/moon/5.png" style="width:14px;"></div><span id="num5" style="padding:5px;">0</span></td>
+                <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-danger"><img src="img/moon/6.png" style="width:14px;"></div><span id="num6" style="padding:5px;">0</span></td>
+                <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-default"><img src="img/moon/b.png" style="width:14px;"></div><span id="sumb" style="padding:5px;">0</span></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+<script src="js/jquery-2.2.4.min.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/moon.js"></script>
+
+</html>

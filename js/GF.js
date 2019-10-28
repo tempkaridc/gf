@@ -1,6 +1,6 @@
-var version         = 201904301200;         // Version == 최종수정일 시간 분
-var updateString    = "2019-04-26 Changelog"
-                    + "\n- Add Capture for test"
+var version         = 201910281700;         // Version == 최종수정일 시간 분
+var updateString    = "2019-10-28 Changelog"
+                    + "\n- Bug fixed: UI"
                     ;
 
 var selLang         = 'ko';   //기본 언어는 한국어
