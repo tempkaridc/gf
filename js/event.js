@@ -228,6 +228,7 @@ function readCSV(myFile){
     //reader.readAsBinaryString(myFile.files[0]);
     reader.readAsText(myFile.files[0], 'ISO-8859-1');
 }
+
 function CSV( $data ){
     var i, result;
     result = $data.split('\n');

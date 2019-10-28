@@ -7,8 +7,8 @@ $( document ).ready( function()
         var item = '<tr>';
 
         for(var x = 0; x < 72; x++){
-            var td =    '<td id="' + x + '-' + y + '" style="width:14px; height:14px; border: 1px solid; border-color: #ddd; position:relative;" onClick="btn_toggleCCW(this);" oncontextmenu="javascript:btn_toggleCW(this); return false;" unselectable>' +
-                            '<img id="I' + x + '-' + y + '" src="img/moon/0.png" style="z-index:-1; width:28px; height:28px; position:absolute; top:0px; left:0px;">' +
+            var td =    '<td id="' + x + '-' + y + '" style="width:14px; height:14px; border: 1px solid; border-color: #ddd; position:relative;" onClick="btn_toggleCCW(this);" oncontextmenu="javascript:btn_toggleCW(this); return false;" onmouseover="mouseover(this);" onmouseout="mouseout(this);" unselectable>' +
+                            '<img id="I' + x + '-' + y + '" src="img/moon/0.png" style="z-index:1; width:28px; height:28px; position:absolute; top:0px; left:0px;">' +
                         '</td>';
             item += td;
             list[y].push(0);
@@ -179,6 +179,41 @@ function btn_input(){  //DecodeDupl
     countb();
 }
 
+function mouseover(me){
+    var id = $(me).attr('id');
+    var coord = id.split('-');
+    var x = parseInt(coord[0]);
+    var y = parseInt(coord[1]);
+
+    var iam = new Array();
+    iam.push(document.getElementById(x + '-' + y));
+    iam.push(document.getElementById((x+1) + '-' + y));
+    iam.push(document.getElementById(x + '-' + (y+1)));
+    iam.push(document.getElementById((x+1) + '-' + (y+1)));
+
+    for(var i = 0; i < iam.length; i++){
+        iam[i].style.backgroundColor = '#ffff0055';
+    }
+}
+
+function mouseout(me){
+    var id = $(me).attr('id');
+    var coord = id.split('-');
+    var x = parseInt(coord[0]);
+    var y = parseInt(coord[1]);
+
+    var iam = new Array();
+    iam.push(document.getElementById(x + '-' + y));
+    iam.push(document.getElementById((x+1) + '-' + y));
+    iam.push(document.getElementById(x + '-' + (y+1)));
+    iam.push(document.getElementById((x+1) + '-' + (y+1)));
+
+    for(var i = 0; i < iam.length; i++){
+        iam[i].style.backgroundColor = '';
+    }
+}
+
+
 function encodeDupl(){
     var line = new Array();
     var dupl = new Array();
@@ -232,3 +267,84 @@ function decodeDupl(dupl){
     }
 }
 */
+
+var file = document.querySelector('#getfile');
+
+file.onchange = function () {
+    var fileList = file.files ;
+
+    // 읽기
+    var reader = new FileReader();
+    reader.readAsDataURL(fileList [0]);
+
+    //로드 한 후
+    reader.onload = function  () {
+        //썸네일 이미지 생성
+        var tempImage = new Image(); //drawImage 메서드에 넣기 위해 이미지 객체화
+        tempImage.src = reader.result; //data-uri를 이미지 객체에 주입
+        tempImage.onload = function() {
+            //리사이즈를 위해 캔버스 객체 생성
+            var canvas = document.createElement('canvas');
+            var context = canvas.getContext('2d');
+
+            var ww = 72 * 9;
+            var hh = 24 * 9;
+            //캔버스 크기 설정
+            canvas.width = ww;
+            canvas.height = hh;
+
+            //이미지를 캔버스에 그리기
+            context.drawImage(this, 0, 0, ww, hh);
+
+            var dataURI = context.getImageData(0, 0, ww, hh);
+
+            var data = dataURI.data;
+
+            for(var i = 0, l = data.length; i < l; i += 4 ) {
+                var rgb = Math.round( ( data[ i ] + data[ i + 1 ] + data[ i + 2 ] ) / 3 );
+                data[ i ]     = rgb;
+                data[ i + 1 ] = rgb;
+                data[ i + 2 ] = rgb;
+                data[ i + 3 ] = 255;
+            }
+
+            context.putImageData( dataURI, 0, 0 );
+
+            contrastImage(dataURI, 50); //-100 ~ 100
+
+            console.log(dataURI);
+
+
+
+            for(var y = 0; y < hh; y=y+3){
+                for(var x = 0; x < ww; x=x+3){
+
+                    var index = (y * dataURI.width + x) * 4;
+                    var pix = new Object();
+                    pix.red = dataURI.data[index];
+                    pix.green = dataURI.data[index + 1];
+                    pix.blue = dataURI.data[index + 2];
+                    //pix.alpha = dataURI.data[index + 3];
+
+                }
+            }
+
+
+        };
+    };
+};
+
+function contrastImage(imageData, contrast) {  // contrast as an integer percent
+    var data = imageData.data;  // original array modified, but canvas not updated
+    contrast *= 2.55; // or *= 255 / 100; scale integer percent to full range
+    var factor = (255 + contrast) / (255.01 - contrast);  //add .1 to avoid /0 error
+
+    for(var i=0;i<data.length;i+=4)  //pixel values in 4-byte blocks (r,g,b,a)
+    {
+        data[i] = factor * (data[i] - 128) + 128;     //r value
+        data[i+1] = factor * (data[i+1] - 128) + 128; //g value
+        data[i+2] = factor * (data[i+2] - 128) + 128; //b value
+
+    }
+    return imageData;  //optional (e.g. for filter function chaining)
+}

@@ -27,7 +27,7 @@
             <input id="code" class="form-control input-sm btn-font-responsive" value="" style="width:704px;">
         </div>
 
-        <table style="width:1024px; overflow:hidden;">
+        <table style="width:1024px; overflow:hidden; margin-bottom: 5px;">
             <tbody style="width:100%;">
             <tr>
                 <td width="14%" style="padding-left:2px;"><div class="btn btn-xs btn-danger"><img src="img/moon/1.png" style="width:14px;"></div><span id="num1" style="padding:5px;">0</span></td>
@@ -40,6 +40,24 @@
             </tr>
             </tbody>
         </table>
+
+        <table style="width:1024px; overflow:hidden;">
+            <tbody style="width:100%;">
+            <tr>
+                <td width="14%" style="padding-left:2px;">
+                    <label class="btn btn-danger btn-xs" style="float:left;">Image Upload
+                        <input type="file" id="getfile" accept="image/*" style="display:none;">
+                    </label>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+
+        <img id="thumbnail" src="" width="100" alt="썸네일영역 (클릭하면 다운로드 가능)">
+
+
+
     </div>
 </body>
 
