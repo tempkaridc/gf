@@ -32,6 +32,7 @@
         "PER_RECV": "완료시",
         "TICKET_RATIO": "획득확률",
         "HELP": {
+          "RESET": "초기화",
           "OPEN": "도움말 열기",
           "CLOSE": "도움말 닫기",
           "TIPS": {
@@ -143,6 +144,7 @@
         "ALERT2": "검색 결과가 없습니다",
         "ALERT3": "하나 이상의 군수지역을 선택해야 합니다",
         "ALERT4": "주소가 클립보드에 복사되었습니다",
+        "ALERT5": "모든 설정을 초기화하고 페이지를 새로 고칩니다",
         "SAVE": "저장할 조합의 이름을 입력하세요",
         "DELETE": "지우기"
       }
@@ -181,6 +183,7 @@
         "PER_RECV": "perArea",
         "TICKET_RATIO": "Chance",
         "HELP": {
+          "RESET": "Reset",
           "OPEN": "Open Help",
           "CLOSE": "Close Help",
           "TIPS": {
@@ -292,6 +295,7 @@
         "ALERT2": "No result",
         "ALERT3": "You muse select at least one area",
         "ALERT4": "URL copied to clipboard",
+        "ALERT5": "Return settings to default and refresh current page",
         "SAVE": "Name your save",
         "DELETE": "Delete"
       }
@@ -330,6 +334,7 @@
         "PER_RECV": "完了時",
         "TICKET_RATIO": "獲得率",
         "HELP": {
+          "RESET": "デフォルト",
           "OPEN": "ヘルプを開く",
           "CLOSE": "ヘルプを閉じる",
           "TIPS": {
@@ -441,6 +446,7 @@
         "ALERT2": "検索結果が有りません。",
         "ALERT3": "一つ以上の支援を選択してください。",
         "ALERT4": "クリップボードにURLを複写しました。",
+        "ALERT5": "すべての設定を初期状態に戻します。",
         "SAVE": "セーブする配置の名前を入力してください。",
         "DELETE": "デリート"
       }
