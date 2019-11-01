@@ -819,7 +819,7 @@
                                         <div class="btn-group">
                                             <button id="btn-tglT0" idx="0"
                                                     class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/doll.png" style="height:1.6em;"><span id="btn-tglT0_text"
+                                                    src="img/doll.png" style="height:1.6em;"><span id="label-tglT0"
                                                                                                    class="btn-font-responsive"
                                                                                                    style="padding:0px;"> ≥ 0</span>
                                             </button>
@@ -827,7 +827,7 @@
                                         <div class="btn-group">
                                             <button id="btn-tglT1" idx="1"
                                                     class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/tool.png" style="height:1.6em;"><span id="btn-tglT1_text"
+                                                    src="img/tool.png" style="height:1.6em;"><span id="label-tglT1"
                                                                                                    class="btn-font-responsive"
                                                                                                    style="padding:0px;"> ≥ 0</span>
                                             </button>
@@ -835,7 +835,7 @@
                                         <div class="btn-group">
                                             <button id="btn-tglT2" idx="2"
                                                     class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/fast.png" style="height:1.6em;"><span id="btn-tglT2_text"
+                                                    src="img/fast.png" style="height:1.6em;"><span id="label-tglT2"
                                                                                                    class="btn-font-responsive"
                                                                                                    style="padding:0px;"> ≥ 0</span>
                                             </button>
@@ -843,7 +843,7 @@
                                         <div class="btn-group">
                                             <button id="btn-tglT3" idx="3"
                                                     class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/repr.png" style="height:1.6em;"><span id="btn-tglT3_text"
+                                                    src="img/repr.png" style="height:1.6em;"><span id="label-tglT3"
                                                                                                    class="btn-font-responsive"
                                                                                                    style="padding:0px;"> ≥ 0</span>
                                             </button>
@@ -954,6 +954,17 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="noticeModal" role="dialog">
+        <div class="modal-dialog" style="width:500px;">
+            <div class="modal-content" style="width:100%;">
+                <div class="modal-body" style="width:100%;">
+                    <b><div id="str_notice_head" style="width:100%; margin-bottom:5px;"></div></b>
+                    <img id="pic_notice" src="img/notice.png" style="width:100%; margin-bottom:5px;">
+                    <div id="str_notice" style="width:100%; padding-left:5px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Bottom_Layer-->
     <hr style="margin-top: 0px; margin-bottom: 0px;">
     <div class="col-xs-12 col-sm-4" style="margin:0px; padding:3px;">
@@ -1015,8 +1026,8 @@
                 </div>
                 <div class="col-xs-12">
                     Beta:
+                    <a href="https://tempkaridc.github.io/gf/timetable.html" target="_blank">Agenda</a>,
                     <a href="https://tempkaridc.github.io/gf/zas.html" target="_blank">ZAS Calc</a>,
-                    <!--<a href="https://tempkaridc.github.io/gf/event.html" target="_blank">Pt Event</a>,-->
                     <a href="https://tempkaridc.github.io/gf/moon.html" target="_blank">Legoplacer</a>
                 </div>
             </div>

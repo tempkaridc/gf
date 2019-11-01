@@ -1,10 +1,14 @@
-var version         = 201910291400;         // Version == 최종수정일 시간 분
-var updateString    = "2019-10-29 Changelog"
-                    + "\n- Bug fixed: UI"
-                    + "\n- Func: Reset"
-                    ;
+var version         = 201911011500;         // Version == 최종수정일 시간 분
 
-var selLang         = 'ko';   //기본 언어는 한국어
+var updateDate      = 'Changelog (2019-11-01)';
+var updateString    = '\
+                        - subdivide Contract Weight<br> \
+                        - add Reset Button<br> \
+                        - Bug fixed: UI<br>\
+                      ';
+var updateImage     = true;
+
+var selLang         = 'ko';
 var langPacks;
 var langPack;
 
@@ -17,8 +21,7 @@ var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:de
 //***********************************
 
 var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1];            // [12] 0~11지역
-var wghtToggle      = [0,0,0,0];                            // 계약서 가중치 버튼 스위치
-var level           = [0,0.1,0.4,0.7];                      // 계약서 가중치 확률
+var wghtToggle      = [0,0,0,0];                            // 계약서 4종 가중치 0 ~ 1.0
 var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,12,24];       // [13]
 var menuToggle      = [0,0,0,0,1,0,0];                      // 메뉴 토글기능 7개, (도움말 제외)
 
@@ -396,26 +399,21 @@ $('#btn_calcUse2').off().on('click', function (e) {
     $('#recommendLine').addClass('hide');
     $('#tbl_cht').empty();
 });
-$('[id^=btn-tgl]').off().on('click', function (e) {
+$('[id^=btn-tglT]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
-    if(wghtToggle[id] == level[0]){    //dflt -> sucs
-        $('#btn-tglT' + id).removeClass('btn-default');
-        $('#btn-tglT' + id).addClass('btn-success');
-        wghtToggle[id] = level[1];
-    }else if(wghtToggle[id] == level[1]){    //sucs -> warn
-        $('#btn-tglT' + id).removeClass('btn-success');
-        $('#btn-tglT' + id).addClass('btn-warning');
-        wghtToggle[id] = level[2];
-    }else if(wghtToggle[id] == level[2]) {    //warn -> dang
-        $('#btn-tglT' + id).removeClass('btn-warning');
-        $('#btn-tglT' + id).addClass('btn-danger');
-        wghtToggle[id] = level[3];
-    }else if(wghtToggle[id] == level[3]){    //warn -> dang
-        $('#btn-tglT' + id).removeClass('btn-danger');
-        $('#btn-tglT' + id).addClass('btn-default');
-        wghtToggle[id] = level[0];
+    var btn = document.getElementById('btn-tglT' + id);
+
+    if(wghtToggle[id] == 1) {
+        wghtToggle[id] = 0;
+        btn.style.backgroundColor = '#fff';
+        btn.style.borderColor = '#ccc';
+    }else{
+        wghtToggle[id] = ((wghtToggle[id] * 10) + 1) / 10; //Floating Point Error
+        btn.style.backgroundColor = '#5cb85c' + (wghtToggle[id] * 10).toString(16) + '0' ;
+        btn.style.borderColor = '#398439' + (wghtToggle[id] * 10).toString(16) + '0' ;
     }
-    $('#btn-tglT' + id + '_text').text(' ≥ ' + wghtToggle[id]);
+
+    $('#label-tglT' + id).text(' ≥ ' + wghtToggle[id]);
     $('#btn-tglT' + id).attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[id] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2); // 시간당 0 개 이상
 
 });
@@ -734,6 +732,7 @@ $('#auto_calc').off().on('click', function (e) {
         return combs;
     }
 });
+
 $('#btn-toggleTime').off().on('click', function (e) {
     highlight(1);
     if(sw_time){
@@ -750,6 +749,7 @@ $('#btn-toggleTime').off().on('click', function (e) {
     localStorage.config = JSON.stringify(config);
     refresh();
 });
+
 $('#btn-toggleHelp').off().on('click', function (e) {
     if($('#panel-help').hasClass('hide')){
         config.help = true;
@@ -763,13 +763,7 @@ $('#btn-toggleHelp').off().on('click', function (e) {
         $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.OPEN);
     }
 });
-$('#btn-toggleNotice').off().on('click', function (e) {
-    if($('#panel-notice').hasClass('hide')){
-        $('#panel-notice').removeClass('hide');
-    }else{
-        $('#panel-notice').addClass('hide');
-    }
-});
+
 $('#btn-load').off().on('click', function (e) {
     loadSaves();
     $('#loadModal').modal("show");
@@ -2091,7 +2085,7 @@ function init(){
             case 'en-CA':
                 return 'en';
             default:
-                return 'en';
+                return 'en';    //기본언어 'en'
         }
     }
 
@@ -2123,7 +2117,11 @@ function init(){
             menuToggle = config.menu;
         }
         if((config.version === undefined) || (config.version < version)){
-            alert(updateString);
+            $('#str_notice_head').html(updateDate);
+            $('#str_notice').html(updateString);
+            if(updateImage){$('#pic_notice').removeClass('hide');}else{$('#pic_notice').addClass('hide');}
+            $('#noticeModal').modal("show");
+
             config.version = version;
             localStorage.config = JSON.stringify(config);
         }
@@ -2175,6 +2173,6 @@ function init(){
     var date = version + "";
     date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12);
     $('#lastUpdate').text(date);
-
     $('#loadModal').modal("hide");
+    $('#noticeModal').modal("hide");
 }
