@@ -1,4 +1,4 @@
-var version         = 201911011500;         // Version == 최종수정일 시간 분
+var version         = 201911011501;         // Version == 최종수정일 시간 분
 
 var updateDate      = 'Changelog (2019-11-01)';
 var updateString    = '\
