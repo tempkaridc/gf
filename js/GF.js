@@ -1,12 +1,10 @@
-var version         = 201911011504;         // Version == 최종수정일 시간 분
+var version         = 201912192200;         // Version == 최종수정일 시간 분
 
 var updateDate      = 'Changelog (' + version.toString().substring(0,4) + "-" + version.toString().substring(4,6) + "-" + version.toString().substring(6,8) + ')';
 var updateString    = '\
-                        - subdivide Contract Weight<br> \
-                        - add Reset Button<br> \
-                        - Bug fixed: UI<br>\
+                        - Area 12 added <br> \
                       ';
-var updateImage     = true;
+var updateImage     = false;
 
 var selLang         = 'ko';
 var langPacks;

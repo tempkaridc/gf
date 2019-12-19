@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f90f1999-6cc9-42a9-8984-38b0cb740a26" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/lang/zas.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/GF.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/GF.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/moon.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/moon.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/js/zas.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/zas.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lang/languages.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/languages.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lang/zas.json" beforeDir="false" afterPath="$PROJECT_DIR$/lang/zas.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/moon.html" beforeDir="false" afterPath="$PROJECT_DIR$/moon.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/zas.html" beforeDir="false" afterPath="$PROJECT_DIR$/zas.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -113,8 +109,8 @@
       <file leaf-file-name="GF.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/GF.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="1540" column="81" selection-start-line="1540" selection-start-column="81" selection-end-line="1540" selection-end-column="81" />
+            <state relative-caret-position="325">
+              <caret line="2123" column="26" selection-start-line="2123" selection-start-column="26" selection-end-line="2123" selection-end-column="26" />
               <folding>
                 <element signature="e#1214#1243#0" expanded="true" />
                 <element signature="e#1741#1770#0" expanded="true" />
@@ -147,7 +143,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>notice</find>
       <find>date</find>
       <find>var date</find>
       <find>function</find>
@@ -177,6 +172,7 @@
       <find>Toggle</find>
       <find>btn-area</find>
       <find>summ_</find>
+      <find>updateImage</find>
     </findStrings>
     <replaceStrings>
       <replace>table-sm</replace>
@@ -533,12 +529,12 @@
       <workItem from="1575973478561" duration="211000" />
       <workItem from="1576131811119" duration="926000" />
       <workItem from="1576142655845" duration="1873000" />
-      <workItem from="1576758713423" duration="250000" />
+      <workItem from="1576758713423" duration="712000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="873161000" />
+    <option name="totallyTimeSpent" value="873623000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="3" width="1932" height="1085" extended-state="0" />
@@ -864,8 +860,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/GF.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="1540" column="81" selection-start-line="1540" selection-start-column="81" selection-end-line="1540" selection-end-column="81" />
+        <state relative-caret-position="325">
+          <caret line="2123" column="26" selection-start-line="2123" selection-start-column="26" selection-end-line="2123" selection-end-column="26" />
           <folding>
             <element signature="e#1214#1243#0" expanded="true" />
             <element signature="e#1741#1770#0" expanded="true" />
