@@ -218,7 +218,7 @@
           },
           "SUCCESS": {
             "TITLE": "Great Success",
-            "SUMLEVEL": "Echelon's levelsum",
+            "SUMLEVEL": "Levelsum",
             "SUCSRATIO": "GS Chance",
             "BTN": "Apply",
             "EVENT": "Great Success rate-up event",

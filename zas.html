@@ -11,7 +11,7 @@
 
 <body style="color: dimgray;">
 <div class="container-fluid" style="width:360px; margin: auto; padding:0px; overflow-x:hidden;">
-    <div class="panel panel-primary" style="margin-top:10px; padding:5px;" onmouseover="reCalc();">
+    <div class="panel panel-primary" style="margin-top:10px; padding:5px; margin-bottom:5px;" onmouseover="reCalc();">
         <span>1링크 1스킬 자스런 계산기</span>
         <img src="img/zas/zas.gif" style="height:2em; float:right;">
 
@@ -137,7 +137,29 @@
             </div>
         </div>
     </div>
-    <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
+    <div style="float:right;">
+        <table>
+            <tbody>
+            <tr>
+                <td style="padding-left:5px;">
+                    <img src="img/kr.png" style="padding-right:2px;">
+                    <img src="img/en.png" style="padding-right:2px;">
+                    <img src="img/ja.png" style="padding-right:2px;">
+                </td>
+                <td style="padding-left:5px;">
+                    <select id="selectLang" onChange="selectLanguage(this);">
+                        <option value="ko" selected>Korean</option>
+                        <option value="en">English</option>
+                        <option value="ja">Japanese</option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="float:left;">
+        <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
+    </div>
 </div>
 
 <div class="modal fade" id="help0" role="dialog">
