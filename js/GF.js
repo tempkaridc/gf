@@ -1,8 +1,7 @@
-var version         = 201912192200;         // Version == 최종수정일 시간 분
+var version         = 201912241000;         // Version == 최종수정일 시간 분
 
 var updateDate      = 'Changelog (' + version.toString().substring(0,4) + "-" + version.toString().substring(4,6) + "-" + version.toString().substring(6,8) + ')';
-var updateString    = '\
-                        - Area 12 added <br> \
+var updateString    = '- Area 12 added <br> \
                       ';
 var updateImage     = false;
 
@@ -1534,10 +1533,10 @@ function callData(){
         [11,    2,      240,    360,    540,    540,    0,      1,      0,      0,      0,      0   ],
         [11,    3,      480,    0,      750,    1500,   250,    0,      0,      0,      0.5,    0   ],
         [11,    4,      600,    0,      1650,   0,      900,    0,      0,      1,      0,      0   ],
-        [12,    1,      60,     0,      220,    220,    0,      0,      0.5,    0,      0,      0   ],
+        [12,    1,      60,     0,      220,    220,    0,      0,      0.2,    0,      0,      0   ],
         [12,    2,      90,     360,    0,      0,      120,    0,      0,      0,      0,      0   ],
-        [12,    3,      540,    800,    1200,   1200,   0,      0,      0,      0.5,    0,      0   ],
-        [12,    4,      720,    1800,   0,      1800,   0,      0.5,    0,      0,      0,      0   ]
+        [12,    3,      540,    800,    1200,   1200,   0,      0,      0,      1,    0,      0   ],
+        [12,    4,      720,    1800,   0,      1800,   0,      1,    0,      0,      0,      0   ]
     ];
 
     if(sw_interval == true){
