@@ -24,9 +24,28 @@ var frame   = [
     [       999,        0,          0       ]
 ];
 
+var langPack;
+var langPacks;
+var config = {};
+
 $(function (){
+    // load config
+    try {
+        config = JSON.parse(localStorage.config)
+    } catch (err) {
+    }
 
-
+    // load language pack
+    const xhr = new XMLHttpRequest()
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            langPacks = xhr.response
+            selectLanguage(config.lang)
+        }
+    }
+    xhr.open('GET', './lang/zas.json')
+    xhr.responseType = 'json'
+    xhr.send()
 });
 
 function btn_selArea(idx){
@@ -135,26 +154,26 @@ function reCalc(){
 }
 
 function chkFire(num){
-    if(isNaN(num)){dispFire(3,'화력 계산 불가');return;}
+    if(isNaN(num)){dispFire(3,langPack.result.fire.fail);return;}
 
     var min81 = 82;
     if(area == 81){
         if(num >= min81){
-            dispFire(2, '화력 만족: ' + num + ' (+' + (num - min81) + ')');
+            dispFire(2, `${langPack.result.fire.enable}: ${num} (${num - min81})`);
         }else{
-            dispFire(0, '화력 부족: ' + num + ' (' + (num - min81) + ')');
+            dispFire(0, `${langPack.result.fire.disable}: ${num} (${num - min81})`);
         }
     }else{
         if(num >= 63){
-            dispFire(2, '화력 만족: ' + num + ' (+' + (num - 63) + ')');
+            dispFire(2, `${langPack.result.fire.enable}: ${num} (${num - 63})`);
         }else{
-            dispFire(0, '화력 부족: ' + num + ' (' + (num - 63) + ')');
+            dispFire(0, `${langPack.result.fire.disable}: ${num} (${num - 63})`);
         }
     }
 }
 
 function chkRate(num){
-    if(isNaN(num)){dispRate(3,'사속 계산 불가');return;}
+    if(isNaN(num)){dispRate(3,langPack.result.rate.fail);return;}
 
     if(area == 81){
         for(var i = 0; i < frame.length - 1; i++){
@@ -204,19 +223,19 @@ function dispRate(i, num){
     switch(i){
         case 0:
             $('#btn-calc-rate').addClass("btn-danger");
-            $('#btn-calc-rate').text('사속: ' + num + ' (불가능)');
+            $('#btn-calc-rate').text(`${langPack.rate}: ${num} (${langPack.result.rate.impossible})`);
             break;
         case 1:
             $('#btn-calc-rate').addClass("btn-warning");
-            $('#btn-calc-rate').text('사속: ' + num + ' (주의, 자스 4번 필수) ');
+            $('#btn-calc-rate').text(`${langPack.rate}: ${num} (${langPack.result.rate.warning})`);
             break;
         case 2:
             $('#btn-calc-rate').addClass("btn-success");
-            $('#btn-calc-rate').text('사속: ' + num + ' (안전)');
+            $('#btn-calc-rate').text(`${langPack.rate}: ${num} (${langPack.result.rate.safe})`);
             break;
         case 3:
             $('#btn-calc-rate').addClass("btn-default");
-            $('#btn-calc-rate').text("사속 계산 불가");
+            $('#btn-calc-rate').text(langPack.result.rate.fail);
             break;
         default:
             break;
@@ -224,7 +243,7 @@ function dispRate(i, num){
 }
 
 
-function selectLanguage(){
+function selectLanguage(selLang){
     switch(selLang){
         case 'ko':
             langPack = langPacks.ko;
@@ -246,150 +265,30 @@ function selectLanguage(){
 }
 
 function setLanguage(){
-    //langPack <- 언어별 Language Package
-    document.title = langPack.HTML.TITLE;
-    /*
-    $('#str_area').text(langPack.HTML.TABLE.AREA);
-    $('#str_huma').text(langPack.HTML.TABLE.HUMA);
-    $('#str_ammo').text(langPack.HTML.TABLE.AMMO);
-    $('#str_food').text(langPack.HTML.TABLE.FOOD);
-    $('#str_part').text(langPack.HTML.TABLE.PART);
-    $('#str_sum').text(langPack.HTML.TABLE.SUM);
-    $('#sort-5').attr('title', langPack.HTML.TABLE.SUMRATIO + val_sumRate.h + ':' + val_sumRate.a + ':' + val_sumRate.f + ':' + val_sumRate.p);
-    $('#str_time').text(langPack.HTML.TABLE.TIME);
+    document.title = langPack.title
 
-    $('#sortContract option[value=99]').text(langPack.HTML.TABLE.TICKET);
-    $('#sortContract option[value=7]').text(langPack.HTML.TABLE.TICKET_DOLL);
-    $('#sortContract option[value=8]').text(langPack.HTML.TABLE.TICKET_TOOL);
-    $('#sortContract option[value=9]').text(langPack.HTML.TABLE.TICKET_FAST);
-    $('#sortContract option[value=10]').text(langPack.HTML.TABLE.TICKET_REPR);
-    $('#sortContract option[value=11]').text(langPack.HTML.TABLE.TICKET_TOKN);
+    $('#text-title').text(langPack.title)
+    $('#text-area').text(langPack.area)
 
-    $('#btn-toggleTime').html(langPack.HTML.TABLE.BTNTIME);
-    $('#str_selectedarea').html(langPack.HTML.TABLE.SELAREA);
-    $('#str_load').text(langPack.HTML.TABLE.LOAD);
-    $('#str_save').text(langPack.HTML.TABLE.SAVE);
-    $('#str_capt').text(langPack.HTML.TABLE.CAPT);
-    $('#str_copy').text(langPack.HTML.TABLE.COPY);
-    $('#str_timetable').text(langPack.HTML.TABLE.TIMETABLE);
+    $('#text-doll-title').text(langPack.doll.title)
+    $('#doll_fire').attr('placeholder', langPack.doll.fire)
+    $('#doll_rate').attr('placeholder', langPack.doll.rate)
 
-    $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.OPEN);
-    $('#str_reset').text(langPack.HTML.TABLE.HELP.RESET);
-    $('#help_01').html(langPack.HTML.TABLE.HELP.TIPS.TIP1);
-    $('#help_02').html(langPack.HTML.TABLE.HELP.TIPS.TIP2);
-    $('#help_03').html(langPack.HTML.TABLE.HELP.TIPS.TIP3);
-    $('#help_04').html(langPack.HTML.TABLE.HELP.TIPS.TIP4);
-    $('#help_05').html(langPack.HTML.TABLE.HELP.TIPS.TIP5);
-    $('#help_05a').html(langPack.HTML.TABLE.HELP.TIPS.TIP5a);
-    $('#help_06').html(langPack.HTML.TABLE.HELP.TIPS.TIP6);
-    $('#help_07').html(langPack.HTML.TABLE.HELP.TIPS.TIP7);
-    $('#help_08').html(langPack.HTML.TABLE.HELP.TIPS.TIP8);
-    $('#help_09').html(langPack.HTML.TABLE.HELP.TIPS.TIP9);
-    $('#help_09a').html(langPack.HTML.TABLE.HELP.TIPS.TIP9a);
-    $('#help_09b').html(langPack.HTML.TABLE.HELP.TIPS.TIP9b);
-    $('#help_09c').html(langPack.HTML.TABLE.HELP.TIPS.TIP9c);
+    $('#text-fairy-title').text(langPack.fairy.title)
+    $('#fairy_fire').attr('placeholder', langPack.fairy.fire)
 
-    $('#str_selectarea_title').text(langPack.HTML.TABLE.HELP.AREASELECT.TITLE);
+    $('#text-place-title').text(langPack.place.title)
+    $('#buff_fire').attr('placeholder', langPack.place.fire)
+    $('#buff_rate').attr('placeholder', langPack.place.rate)
 
-    $('#str_selecttime_title').text(langPack.HTML.TABLE.HELP.TIMESELECT.TITLE);
-    $('#str_selecttime_times').html('0 ' + langPack.HTML.TABLE.HELP.TIMESELECT.SELTIMEHOUR);
-    $('#str_selecttime_timee').html('24 ' + langPack.HTML.TABLE.HELP.TIMESELECT.SELTIMEHOUR);
+    $('#text-result-title').text(langPack.result.title)
 
-    $('#str_sumrate_title').text(langPack.HTML.TABLE.HELP.SUMRATE.TITLE);
-    $('#btn_change_sumrate').text(langPack.HTML.TABLE.HELP.SUMRATE.BTN);
-    $('#sumrate_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ': ' + val_sumRate.h);
-    $('#sumrate_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ': ' + val_sumRate.a);
-    $('#sumrate_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ': ' + val_sumRate.f);
-    $('#sumrate_part').attr('placeholder', langPack.HTML.TABLE.PART + ': ' + val_sumRate.p);
+    $('#btn-help').text(langPack.qna.title)
 
-    $('#str_presource_title').text(langPack.HTML.TABLE.HELP.PRESOURCE.TITLE);
-    $('#btn_toggle_recovery').text(langPack.HTML.TABLE.HELP.PRESOURCE.REFILL);
-    $('#pre_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ': 0');
-    $('#pre_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ': 0');
-    $('#pre_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ': 0');
-    $('#pre_part').attr('placeholder', langPack.HTML.TABLE.PART + ': 0');
+    for (let i = 1; i <= 8; i++) {
+        $(`#btn-help-${i}`).text(langPack.qna[`q${i}`])
+        $(`#btn-help-${i}a p`).html(langPack.qna[`a${i}`])
+    }
 
-    $('#str_success_title').text(langPack.HTML.TABLE.HELP.SUCCESS.TITLE);
-    $('#sum_level').attr('placeholder', langPack.HTML.TABLE.HELP.SUCCESS.SUMLEVEL + ': 500');
-    $('#per_level').text(langPack.HTML.TABLE.HELP.SUCCESS.SUCSRATIO + ': ' + (val_success * 100).toFixed(1) + '%');
-    $('#btn_toggle_sucs').html(langPack.HTML.TABLE.HELP.SUCCESS.BTN);
-    $('#btn_toggle_sucs_event').text(langPack.HTML.TABLE.HELP.SUCCESS.EVENTBTN);
-    $('#btn_toggle_sucs_event').attr('title', langPack.HTML.TABLE.HELP.SUCCESS.EVENT);
-
-    $('#str_interval_title').text(langPack.HTML.TABLE.HELP.INTERVAL.TITLE);
-    $('#btn_toggle_interval').html(langPack.HTML.TABLE.HELP.INTERVAL.BTN);
-
-    $('#str_rcmd_title').text(langPack.HTML.TABLE.HELP.RECOMMEND.TITLE);
-    $('#str_rcmd_myratio').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_RATIO);
-    $('#str_rcmd_day_title').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TITLE);
-    $('#str_rcmd_day_text').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TEXT);
-    $('#str_rcmd_day_table1').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE1);
-    $('#str_rcmd_day_table1_huma').text(langPack.HTML.TABLE.HUMA);
-    $('#str_rcmd_day_table1_ammo').text(langPack.HTML.TABLE.AMMO);
-    $('#str_rcmd_day_table1_food').text(langPack.HTML.TABLE.FOOD);
-    $('#str_rcmd_day_table1_part').text(langPack.HTML.TABLE.PART);
-    $('#str_rcmd_day_table2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE2);
-    $('#str_rcmd_day_table3').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE3);
-    $('#str_rcmd_day_table4').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE4);
-    $('#str_rcmd_day_table5').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE5);
-    $('#str_rcmd_day_table6').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE6);
-    $('#use_huma').attr('placeholder', langPack.HTML.TABLE.HUMA);
-    $('#use_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO);
-    $('#use_food').attr('placeholder', langPack.HTML.TABLE.FOOD);
-    $('#use_part').attr('placeholder', langPack.HTML.TABLE.PART);
-    $('#btn_calcUse').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_CALC);
-    $('#str_rcmd_ratio_text').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CALC_TEXT);
-
-    $('#str_rcmd_uses_title').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TITLE);
-    $('#str_rcmd_uses_text').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TEXT);
-    $('#str_rcmd_uses_table1').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE1);
-    $('#str_rcmd_uses_table1_huma').text(langPack.HTML.TABLE.HUMA);
-    $('#str_rcmd_uses_table1_ammo').text(langPack.HTML.TABLE.AMMO);
-    $('#str_rcmd_uses_table1_food').text(langPack.HTML.TABLE.FOOD);
-    $('#str_rcmd_uses_table1_part').text(langPack.HTML.TABLE.PART);
-    $('#str_rcmd_uses_table2').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE2);
-    $('#str_rcmd_uses_table3').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE3);
-    $('#str_rcmd_uses_table4').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE4);
-    $('#str_rcmd_uses_table5').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE5);
-    $('#pre2_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.HUMA);
-    $('#pre2_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.AMMO);
-    $('#pre2_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.FOOD);
-    $('#pre2_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.PART);
-    $('#fin_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.HUMA);
-    $('#fin_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.AMMO);
-    $('#fin_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.FOOD);
-    $('#fin_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.PART);
-    $('#btn_calcUse2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_CALC);
-    $('#str_rcmd_ratio_text2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CALC_TEXT);
-
-    $('#wgt_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ':1');
-    $('#wgt_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ':1.5');
-    $('#wgt_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ':1.5');
-    $('#wgt_part').attr('placeholder', langPack.HTML.TABLE.PART + ':0.6');
-
-    $('#str_rcmd_sucsratio').text(langPack.HTML.TABLE.HELP.RECOMMEND.SUCSRATIO);
-    $('#auto_calc').text(langPack.HTML.TABLE.HELP.RECOMMEND.BTN_RCMD);
-    $('#str_rcmd_result').text(langPack.HTML.TABLE.HELP.RECOMMEND.RESULT);
-    $('#btn-tglT0').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[0] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
-    $('#btn-tglT1').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[1] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
-    $('#btn-tglT2').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[2] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
-    $('#btn-tglT3').attr('title', langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR1 + wghtToggle[3] + langPack.HTML.TABLE.HELP.RECOMMEND.TEXT_PERHOUR2);
-
-    $('#str_chart_area').text(langPack.HTML.CHART.AREA);
-    $('#str_chart_time').text(langPack.HTML.CHART.TIME);
-    $('#str_chart_btn1').text(langPack.HTML.CHART.BTN1);
-    $('#str_chart_btn2').text(langPack.HTML.CHART.BTN2);
-    $('#str_chart_btn3').text(langPack.HTML.CHART.BTN3);
-    $('#str_chart_btn4').text(langPack.HTML.CHART.BTN4);
-
-    $('#str_modal_load_title').text(langPack.HTML.MODAL.LOAD.TITLE);
-    $('#str_modal_load_area').text(langPack.HTML.MODAL.LOAD.AREA);
-    $('#str_modal_load_desc').text(langPack.HTML.MODAL.LOAD.HELP);
-
-    $('#str_bottom_addr').text(langPack.HTML.BOTTOM.ADDR);
-    $('#str_bottom_sgst').text(langPack.HTML.BOTTOM.SGST);
-    $('#str_bottom_opti').text(langPack.HTML.BOTTOM.OPTI);
-
-    refresh();
-    */
+    reCalc()
 }
