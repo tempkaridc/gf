@@ -131,9 +131,11 @@
                         <div class="btn-group">
                             <button id="btn-timetable" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-calendar"></span><span id="str_timetable"></span></button>
                         </div>
+                        <!--
                         <div class="btn-group">
                             <button id="btn-capt" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-picture"></span><span id="str_capt"></span></button>
                         </div>
+                        -->
                         <div class="btn-group">
                             <button id="btn-url" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-link"></span><span id="str_copy"></span></button>
                         </div>
@@ -143,8 +145,7 @@
         </div>
         <div class="col-xs-12 col-sm-6" style="padding:5px;">
             <div class="col-xs-12 col-sm-12">
-                <div id="tbl_help" class="row no-gutters panel panel-primary"
-                     style="padding:10px; margin-bottom: 10px;">
+                <div id="tbl_help" class="row no-gutters panel panel-primary" style="padding:10px; margin-bottom: 10px;">
                     <table style="width:100%;">
                         <tr>
                             <td style="width:30%;">
@@ -374,20 +375,32 @@
                         <tr id="menu_6_tr2" style="">
                             <td style="width:100%;" colspan="2">
                                 <div style="margin-left:5%;">
-                                    <div style="width:75%; float:left;">
+                                    <div style="width:75%; float:left; position:relative;">
                                         <div class="input-group">
                                             <input id="sumrate_huma" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
                                             <input id="sumrate_ammo" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
                                             <input id="sumrate_food" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
                                             <input id="sumrate_part" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
+                                        </div>
+                                        <div style="position:absolute; width:100%; top:0px; left:0px; height:28px;">
+                                            <table style="margin:0px; width:100%; height:100%;">
+                                                <tbody>
+                                                <tr style="height:100%;">
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/huma.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/ammo.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/food.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/part.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
 
@@ -415,20 +428,32 @@
                         <tr id="menu_2_tr2" style="">
                             <td style="width:100%;" colspan="2">
                                 <div style="margin-left:5%;">
-                                    <div style="width:75%; float:left;">
+                                    <div style="width:75%; float:left; position:relative;">
                                         <div class="input-group">
                                             <input id="pre_huma" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
                                             <input id="pre_ammo" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
                                             <input id="pre_food" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
                                             <input id="pre_part" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
-                                                   placeholder="" style="width:25%;">
+                                                   placeholder="" style="width:25%; background: transparent;">
+                                        </div>
+                                        <div style="position:absolute; width:100%; top:0px; left:0px; height:28px;">
+                                            <table style="margin:0px; width:100%; height:100%;">
+                                                <tbody>
+                                                <tr style="height:100%;">
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/huma.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/ammo.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/food.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                    <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/part.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
                                     <div style="width:23%; float:right;">
@@ -524,8 +549,11 @@
                         </tr>
                         <tr id="menu_5_tr3" class="" style="height:5px;"></tr>
                     </table>
-
-                    <table style="width:100%; margin-top:5px;">
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12">
+                <div class="row no-gutters panel panel-primary" style="padding:10px; margin-bottom: 10px;">
+                    <table style="width:100%; margin:0px;">
                         <tr>
                             <td style="width:30%;">
                                 <div id="menu_4" idx="4" class="btn btn-xs btn-default btn-font-responsive"
@@ -632,27 +660,33 @@
                                                                 </div>
                                                                 <div class="row no-gutter">
                                                                     <div class="col-xs-12">
-                                                                        <div style="width:19%; display:inline-block;">
+                                                                        <div class="input-group" style="width:80%; float:left; position:relative;">
                                                                             <input id="use_huma" type="number"
                                                                                    class="form-control input-sm btn-font-responsive"
-                                                                                   min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
+                                                                                   min="1" value="" placeholder="" style="width:25%; background: transparent;">
                                                                             <input id="use_ammo" type="number"
                                                                                    class="form-control input-sm btn-font-responsive"
-                                                                                   min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
+                                                                                   min="1" value="" placeholder="" style="width:25%; background: transparent;">
                                                                             <input id="use_food" type="number"
                                                                                    class="form-control input-sm btn-font-responsive"
-                                                                                   min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
+                                                                                   min="1" value="" placeholder="" style="width:25%; background: transparent;">
                                                                             <input id="use_part" type="number"
                                                                                    class="form-control input-sm btn-font-responsive"
-                                                                                   min="1" value="" placeholder="">
+                                                                                   min="1" value="" placeholder="" style="width:25%; background: transparent;">
+                                                                            <div style="position:absolute; width:100%; top:0px; left:0px; height:28px;">
+                                                                                <table style="margin:0px; width:100%; height:100%;">
+                                                                                    <tbody>
+                                                                                    <tr style="height:100%;">
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/huma.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/ammo.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/food.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/part.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
-                                                                        <div style="width:17%; display:inline-block;">
+                                                                        <div style="width:19%; display:inline-block; float:right;">
                                                                             <div id="btn_calcUse"
                                                                                  class="btn btn-sm btn-success btn-font-responsive"
                                                                                  style="width:100%;"></div>
@@ -732,49 +766,62 @@
                                                                 </div>
                                                                 <div class="row no-gutter">
                                                                     <div class="col-xs-12">
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="pre2_huma" type="number"
+                                                                        <div class="input-group" style="width:80%; float:left; position:relative;">
+                                                                            <input id="pre2_huma" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="pre2_ammo" type="number"
+                                                                            <input id="pre2_ammo" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="pre2_food" type="number"
+                                                                            <input id="pre2_food" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="pre2_part" type="number"
+                                                                            <input id="pre2_part" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
+                                                                            <div style="position:absolute; width:100%; top:0px; left:0px; height:28px;">
+                                                                                <table style="margin:0px; width:100%; height:100%;">
+                                                                                    <tbody>
+                                                                                    <tr style="height:100%;">
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/huma.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/ammo.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/food.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/part.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="col-xs-12">
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="fin_huma" type="number"
+                                                                    <div class="col-xs-12" style="margin-top:-1px;">
+                                                                        <div class="input-group" style="width:80%; float:left; position:relative;">
+                                                                            <input id="fin_huma" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="fin_ammo" type="number"
+                                                                            <input id="fin_ammo" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="fin_food" type="number"
+                                                                            <input id="fin_food" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
-                                                                        </div>
-                                                                        <div style="width:19%; display:inline-block;">
-                                                                            <input id="fin_part" type="number"
+                                                                            <input id="fin_part" type="number" style="width:25%; background: transparent;"
                                                                                    class="form-control input-sm btn-font-responsive"
                                                                                    min="1" value="" placeholder="">
+                                                                            <div style="position:absolute; width:100%; top:0px; left:0px; height:28px;">
+                                                                                <table style="margin:0px; width:100%; height:100%;">
+                                                                                    <tbody>
+                                                                                    <tr style="height:100%;">
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/huma.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/ammo.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/food.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                        <td width="25%" style="padding:3px 10px 1px 0px; background-color: white;"><img src="img/part.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                                                    </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
                                                                         </div>
-                                                                        <div style="width:17%; display:inline-block;">
+
+                                                                        <div style="width:19%; display:inline-block; float:right;">
                                                                             <div id="btn_calcUse2"
                                                                                  class="btn btn-sm btn-success btn-font-responsive"
                                                                                  style="width:100%;"></div>
@@ -800,65 +847,90 @@
                                         </div>
 
                                         <!--<div id="wghtModal_margin2" class="hide" style="width:15%; display:inline-block;"></div>-->
-                                        <div class="input-group" style="width:80%; float:right; margin-bottom:5px;">
-                                            <input id="wgt_huma" style="width:25%;" type="number"
+                                        <div class="input-group" style="width:80%; float:right; margin-bottom:5px; position:relative;">
+                                            <input id="wgt_huma" style="width:25%; background: transparent;" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
                                                    placeholder="">
-                                            <input id="wgt_ammo" style="width:25%;" type="number"
+                                            <input id="wgt_ammo" style="width:25%; background: transparent;" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
                                                    placeholder="">
-                                            <input id="wgt_food" style="width:25%;" type="number"
+                                            <input id="wgt_food" style="width:25%; background: transparent;" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
                                                    placeholder="">
-                                            <input id="wgt_part" style="width:25%;" type="number"
+                                            <input id="wgt_part" style="width:25%; background: transparent;" type="number"
                                                    class="form-control input-sm btn-font-responsive" min="0" value=""
                                                    placeholder="">
+                                            <div style="position:absolute; width:100%; top:0px; left:0px; height:28px;">
+                                                <table style="margin:0px; width:100%; height:100%;">
+                                                    <tbody>
+                                                    <tr style="height:100%;">
+                                                        <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/huma.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                        <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/ammo.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                        <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/food.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                        <td width="25%" style="padding:3px 10px 1px 0px;"><img src="img/part.png" style="opacity: 0.2; height:1.4em;" align="right"></img></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="btn-group-justified" style="margin-bottom:5px;">
-                                        <div class="btn-group">
-                                            <button class="btn btn-sm btn-default btn-font-responsive"
-                                                    style="margin-right: 0px; width:95%; background-color:#f7f7f7;"><span
-                                                    id="str_rcmd_sucsratio"></span></button>
+                                    <div style="width:100%; position:relative">
+                                        <div class="btn-group-justified" style="margin-bottom:5px; position:relative; z-index:1;">
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm btn-default btn-font-responsive" style="margin-right: 0px; width:95%; background-color:#f7f7f7;">
+                                                    <span id="str_rcmd_sucsratio"></span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button id="btn-tglT0" idx="0" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                    <span id="label-tglT0" class="btn-font-responsive" style="padding:0px;">0　≤ </span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button id="btn-tglT1" idx="1" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                    <span id="label-tglT1" class="btn-font-responsive" style="padding:0px;">0　≤ </span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button id="btn-tglT2" idx="2" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                    <span id="label-tglT2" class="btn-font-responsive" style="padding:0px;">0　≤</span>
+                                                </button>
+                                            </div>
+                                            <div class="btn-group">
+                                                <button id="btn-tglT3" idx="3" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                    <span id="label-tglT3" class="btn-font-responsive" style="padding:0px;">0　≤ </span>
+                                                </button>
+                                            </div>
+
                                         </div>
-                                        <div class="btn-group">
-                                            <button id="btn-tglT0" idx="0"
-                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/doll.png" style="height:1.6em;"><span id="label-tglT0"
-                                                                                                   class="btn-font-responsive"
-                                                                                                   style="padding:0px;"> ≥ 0</span>
-                                            </button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button id="btn-tglT1" idx="1"
-                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/tool.png" style="height:1.6em;"><span id="label-tglT1"
-                                                                                                   class="btn-font-responsive"
-                                                                                                   style="padding:0px;"> ≥ 0</span>
-                                            </button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button id="btn-tglT2" idx="2"
-                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/fast.png" style="height:1.6em;"><span id="label-tglT2"
-                                                                                                   class="btn-font-responsive"
-                                                                                                   style="padding:0px;"> ≥ 0</span>
-                                            </button>
-                                        </div>
-                                        <div class="btn-group">
-                                            <button id="btn-tglT3" idx="3"
-                                                    class="btn btn-sm btn-default btn-font-responsive" title=""><img
-                                                    src="img/repr.png" style="height:1.6em;"><span id="label-tglT3"
-                                                                                                   class="btn-font-responsive"
-                                                                                                   style="padding:0px;"> ≥ 0</span>
-                                            </button>
+                                        <div style="position:absolute; width:100%; top:0px; left:0px; height:28px;">
+                                            <table style="margin:0px; width:100%; height:100%;">
+                                                <tbody>
+                                                <tr style="height:100%;">
+                                                    <td width="20%" style="padding:3px 10px 1px 0px;"></td>
+                                                    <td width="20%" style="padding:3px 10px 1px 0px;"><img src="img/doll.png" style="height:1.4em;" align="right"></img></td>
+                                                    <td width="20%" style="padding:3px 10px 1px 0px;"><img src="img/tool.png" style="height:1.4em;" align="right"></img></td>
+                                                    <td width="20%" style="padding:3px 10px 1px 0px;"><img src="img/fast.png" style="height:1.4em;" align="right"></img></td>
+                                                    <td width="20%" style="padding:3px 10px 1px 0px;"><img src="img/repr.png" style="height:1.4em;" align="right"></img></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
                                         </div>
                                     </div>
-                                    <div style="margin-bottom:5px;">
-                                        <div id="auto_calc" class="btn btn-sm btn-primary"
-                                             style="width:80%; float:right; margin-bottom:5px;"></div>
+                                    <div style="margin-bottom:0px; width:100%;">
+                                        <table style="width:100%;">
+                                            <tbody>
+                                            <tr>
+                                                <td width="20%">　</td>
+                                                <td width="80%">
+                                                    <div id="auto_calc" class="btn btn-sm btn-primary" style="width:100%;"></div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+
                                     </div>
-                                    <div id="recommendLine" class="btn-group-justified hide">
+                                    <div id="recommendLine" class="btn-group-justified hide" style="margin-top:5px;">
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-primary btn-font-responsive disabled"
                                                     style="width:95%;"><span id="str_rcmd_result"></span></button>
@@ -884,7 +956,32 @@
                                                     style="width:100%;"></button>
                                         </div>
                                     </div>
-
+                                    <div id="feedbackLine" class="btn-group-justified hide" style="margin-top:5px;">
+                                        <div class="btn-group">
+                                            <button class="btn btn-xs btn-primary btn-font-responsive disabled"
+                                                    style="width:95%;"><span id="str_feedback"></span></button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-fdb0" idx=0
+                                                    class="btn btn-xs btn-default btn-font-responsive"
+                                                    style="width:100%;" title="+0.1"><img src="img/huma.png" style="height:1.4em;">　Up</button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-fdb1" idx=1
+                                                    class="btn btn-xs btn-default btn-font-responsive"
+                                                    style="width:100%;" title="+0.1"><img src="img/ammo.png" style="height:1.4em;">　Up</button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-fdb2" idx=2
+                                                    class="btn btn-xs btn-default btn-font-responsive"
+                                                    style="width:100%;" title="+0.1"><img src="img/food.png" style="height:1.4em;">　Up</button>
+                                        </div>
+                                        <div class="btn-group">
+                                            <button id="btn-fdb3" idx=3
+                                                    class="btn btn-xs btn-default btn-font-responsive"
+                                                    style="width:100%;" title="+0.1"><img src="img/part.png" style="height:1.4em;">　Up</button>
+                                        </div>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -1054,6 +1151,7 @@
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/bootstrap.js"></script>
 <script src="js/html2canvas.js"></script>
+<script src="js/params.js"></script>
 <script src="js/GF.js"></script>
 </body>
 </html>
