@@ -30,22 +30,41 @@ var config = {};
 
 $(function (){
     // load config
-    try {
-        config = JSON.parse(localStorage.config)
-    } catch (err) {
-    }
+    config = JSON.parse(localStorage.config);   // handle undefined case below
+    langPacks = JSON.parse(jsonText_zas);       // avoid async processes
 
-    // load language pack
-    const xhr = new XMLHttpRequest()
-    xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            langPacks = xhr.response
-            selectLanguage(config.lang)
+    if(config === undefined){
+        selLang = getLanguage;
+    }else{
+        config = JSON.parse(localStorage.config);
+        if(config.lang !==undefined){
+            selLang = config.lang;
+        }
+        else{
+            selLang = getLanguage();
         }
     }
-    xhr.open('GET', './lang/zas.json')
-    xhr.responseType = 'json'
-    xhr.send()
+    $('#selectLang').val(selLang).change();
+
+    function getLanguage() {
+        var tmp = navigator.language || navigator.userLanguage;
+
+        switch(tmp){
+            case 'ko':
+            case 'ko-KR':
+                return 'ko';
+            case 'ja':
+            case 'ja-JP':
+                return 'ja';
+            case 'en':
+            case 'en-US':
+            case 'en-GB':
+            case 'en-CA':
+                return 'en';
+            default:
+                return 'en';    //기본언어 'en'
+        }
+    }
 });
 
 function btn_selArea(idx){
@@ -99,8 +118,6 @@ function reCalc(){
         buffFire = parseFloat(document.getElementById('buff_fire').value),
         buffRate = parseFloat(document.getElementById('buff_rate').value);
 
-
-
     if(dollFire < 0)    {
         dollFire = 0;
         $('#doll_fire').val(0);
@@ -145,10 +162,6 @@ function reCalc(){
     var finalFire = Math.ceil(Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (0.85) + 2);
     var finalRate = Math.floor(dollRate * (1 + (buffRate / 100)));
 
-    console.log('fire ' + finalFire);
-    console.log('rate ' + finalRate);
-
-
     chkFire(finalFire);
     chkRate(finalRate);
 }
@@ -159,15 +172,15 @@ function chkFire(num){
     var min81 = 82;
     if(area == 81){
         if(num >= min81){
-            dispFire(2, `${langPack.result.fire.enable}: ${num} (${num - min81})`);
+            dispFire(2, langPack.result.fire.enable + num + ' (+' + (num - min81) + ')');
         }else{
-            dispFire(0, `${langPack.result.fire.disable}: ${num} (${num - min81})`);
+            dispFire(0, langPack.result.fire.disable + num + ' (' + (num - min81) + ')');
         }
     }else{
         if(num >= 63){
-            dispFire(2, `${langPack.result.fire.enable}: ${num} (${num - 63})`);
+            dispFire(2, langPack.result.fire.enable + num + ' (+' + (num - min63) + ')');
         }else{
-            dispFire(0, `${langPack.result.fire.disable}: ${num} (${num - 63})`);
+            dispFire(0, langPack.result.fire.disable + num + ' (' + (num - min63) + ')');
         }
     }
 }
@@ -223,15 +236,15 @@ function dispRate(i, num){
     switch(i){
         case 0:
             $('#btn-calc-rate').addClass("btn-danger");
-            $('#btn-calc-rate').text(`${langPack.rate}: ${num} (${langPack.result.rate.impossible})`);
+            $('#btn-calc-rate').text(num + ' (' + langPack.result.rate.impossible + ')');
             break;
         case 1:
             $('#btn-calc-rate').addClass("btn-warning");
-            $('#btn-calc-rate').text(`${langPack.rate}: ${num} (${langPack.result.rate.warning})`);
+            $('#btn-calc-rate').text(num + ' (' + langPack.result.rate.warning + ')');
             break;
         case 2:
             $('#btn-calc-rate').addClass("btn-success");
-            $('#btn-calc-rate').text(`${langPack.rate}: ${num} (${langPack.result.rate.safe})`);
+            $('#btn-calc-rate').text(num + ' (' + langPack.result.rate.safe + ')');
             break;
         case 3:
             $('#btn-calc-rate').addClass("btn-default");
@@ -265,29 +278,36 @@ function selectLanguage(selLang){
 }
 
 function setLanguage(){
-    document.title = langPack.title
+    document.title = langPack.title;
 
-    $('#text-title').text(langPack.title)
-    $('#text-area').text(langPack.area)
+    $('#text-title').text(langPack.title);
+    $('#text-area').text(langPack.area);
 
-    $('#text-doll-title').text(langPack.doll.title)
-    $('#doll_fire').attr('placeholder', langPack.doll.fire)
-    $('#doll_rate').attr('placeholder', langPack.doll.rate)
+    $('#text-doll-title').text(langPack.doll.title);
+    $('#doll_fire').attr('placeholder', langPack.doll.fire);
+    $('#doll_rate').attr('placeholder', langPack.doll.rate);
 
-    $('#text-fairy-title').text(langPack.fairy.title)
-    $('#fairy_fire').attr('placeholder', langPack.fairy.fire)
+    $('#text-fairy-title').text(langPack.fairy.title);
+    $('#fairy_fire').attr('placeholder', langPack.fairy.fire);
 
-    $('#text-place-title').text(langPack.place.title)
-    $('#buff_fire').attr('placeholder', langPack.place.fire)
-    $('#buff_rate').attr('placeholder', langPack.place.rate)
+    $('#text-place-title').text(langPack.place.title);
+    $('#buff_fire').attr('placeholder', langPack.place.fire);
+    $('#buff_rate').attr('placeholder', langPack.place.rate);
 
-    $('#text-result-title').text(langPack.result.title)
+    $('#text-result-title').text(langPack.result.title);
 
-    $('#btn-help').text(langPack.qna.title)
+    $('#help_pic_stat').attr("src", 'img/zas/help_stat_' + config.lang + '.png');
+    $('#help_pic_fairy').attr("src", 'img/zas/help_fairy_' + config.lang + '.png');
+    $('#help_pic_buff').attr("src", 'img/zas/help_buff_' + config.lang + '.png');
+
+    $('#btn-name-fire').text(langPack.fire);
+    $('#btn-name-rate').text(langPack.rate);
+
+    $('#btn-help').text(langPack.qna.title);
 
     for (let i = 1; i <= 8; i++) {
-        $(`#btn-help-${i}`).text(langPack.qna[`q${i}`])
-        $(`#btn-help-${i}a p`).html(langPack.qna[`a${i}`])
+        $('#btn-help-'+i).text(langPack.qna['q'+ i]);
+        $('#btn-help-'+i+'t').html(langPack.qna['a'+ i]);
     }
 
     reCalc()

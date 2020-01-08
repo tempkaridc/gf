@@ -18,7 +18,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/highcharts.css" rel="stylesheet"/>
     <link href="css/GF.css" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="icon/favicon.ico">
 
     <!-- Global site tag (gtag.js) - Google Analytics-->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116552461-1"></script>
@@ -131,11 +131,9 @@
                         <div class="btn-group">
                             <button id="btn-timetable" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-calendar"></span><span id="str_timetable"></span></button>
                         </div>
-                        <!--
                         <div class="btn-group">
                             <button id="btn-capt" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-picture"></span><span id="str_capt"></span></button>
                         </div>
-                        -->
                         <div class="btn-group">
                             <button id="btn-url" class="btn btn-xs btn-primary btn-font-responsive"><span class="glyphicon glyphicon-link"></span><span id="str_copy"></span></button>
                         </div>
@@ -882,22 +880,22 @@
                                                 </button>
                                             </div>
                                             <div class="btn-group">
-                                                <button id="btn-tglT0" idx="0" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                <button id="btn-tglT0" idx="0" class="btn btn-sm btn-default" title="" style="text-align:left; background-color: transparent;">
                                                     <span id="label-tglT0" class="btn-font-responsive" style="padding:0px;">0　≤ </span>
                                                 </button>
                                             </div>
                                             <div class="btn-group">
-                                                <button id="btn-tglT1" idx="1" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                <button id="btn-tglT1" idx="1" class="btn btn-sm btn-default" title="" style="text-align:left; background-color: transparent;">
                                                     <span id="label-tglT1" class="btn-font-responsive" style="padding:0px;">0　≤ </span>
                                                 </button>
                                             </div>
                                             <div class="btn-group">
-                                                <button id="btn-tglT2" idx="2" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                <button id="btn-tglT2" idx="2" class="btn btn-sm btn-default" title="" style="text-align:left; background-color: transparent;">
                                                     <span id="label-tglT2" class="btn-font-responsive" style="padding:0px;">0　≤</span>
                                                 </button>
                                             </div>
                                             <div class="btn-group">
-                                                <button id="btn-tglT3" idx="3" class="btn btn-sm btn-default btn-font-responsive" title="" style="text-align:left; background-color: transparent;">
+                                                <button id="btn-tglT3" idx="3" class="btn btn-sm btn-default" title="" style="text-align:left; background-color: transparent;">
                                                     <span id="label-tglT3" class="btn-font-responsive" style="padding:0px;">0　≤ </span>
                                                 </button>
                                             </div>
@@ -1067,6 +1065,15 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="captureModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <img id="captCanvas">
+                </div>
+            </div>
+        </div>
+    </div>
     <!--Bottom_Layer-->
     <hr style="margin-top: 0px; margin-bottom: 0px;">
     <div class="col-xs-12 col-sm-4" style="margin:0px; padding:3px;">
@@ -1090,10 +1097,10 @@
                                target="_blank">https://github.com/tempkaridc/gf</a><br>
                 </div>
                 <div class="col-xs-12">
-                    Beta:
-                    <a href="https://tempkaridc.github.io/gf/timetable.html" target="_blank">Agenda</a>,
+                    Link:
                     <a href="https://tempkaridc.github.io/gf/zas.html" target="_blank">ZAS Calc</a>,
-                    <a href="https://tempkaridc.github.io/gf/moon.html" target="_blank">Legoplacer</a>
+                    <a href="https://tempkaridc.github.io/gf/moon.html" target="_blank">Lego Placer</a>,
+                    <a href="https://tempkaridc.github.io/gf/timetable.html" target="_blank">Logistics Agenda<small>[Beta]</small></a>
                 </div>
             </small>
         </div>

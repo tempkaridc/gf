@@ -6,21 +6,19 @@
     <title>ZAS Calculator [BETA]</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/highcharts.css" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon_zas.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="icon/favicon_zas.ico">
 </head>
 
 <body style="color: dimgray;">
 <div class="container-fluid" style="width:360px; margin: auto; padding:0px; overflow-x:hidden;">
     <div class="panel panel-primary" style="margin-top:10px; padding:5px; margin-bottom:5px;" onmouseover="reCalc();">
-        <span id="text-title">1링크 1스킬 자스런 계산기</span>
+        <span id="text-title"></span>
         <img src="img/zas/zas.gif" style="height:2em; float:right;">
 
         <hr style="margin-top:5px; margin-bottom:5px;">
         <div>
             <div style="width:100%;">
-                <span id="text-area" style="font-size:0.9em;">
-                    지역:
-                </span>
+                <span id="text-area" style="font-size:0.9em;"></span>
             </div>
             <div class="btn-group btn-group-justified" style="width:100%; display:inline-block;">
                 <div class="btn-group">
@@ -39,19 +37,17 @@
         <hr style="margin-top:5px; margin-bottom:5px;">
         <div>
             <div style="width:100%;">
-                <span id="text-doll-title" style="font-size:0.9em;">
-                    인형 스탯:
-                </span>
+                <span id="text-doll-title" style="font-size:0.9em;"></span>
                 <button id="btn-doll-help" type="button" class="btn btn-xs btn-danger"  style="height:1.5em !important; float:right;" onClick="btn_showModal(0);" tabindex="-1">?</button>
             </div>
             <div class="input-group" style="width:100%;">
                 <input id="doll_fire" type="number"
                        class="form-control input-sm btn-font-responsive" min="0" value=""
-                       placeholder="화력 합계 입력" style="width:50%;"
+                       placeholder="" style="width:50%;"
                        onChange="reCalc();">
                 <input id="doll_rate" type="number"
                        class="form-control input-sm btn-font-responsive" min="0" value="" max="120"
-                       placeholder="사속 합계 입력" style="width:50%;"
+                       placeholder="" style="width:50%;"
                        onChange="reCalc();">
             </div>
         </div>
@@ -59,15 +55,13 @@
         <hr style="margin-top:5px; margin-bottom:5px;">
         <div>
             <div style="width:100%;">
-                <span id="text-fairy-title" style="font-size:0.9em;">
-                    요정 스탯:
-                </span>
+                <span id="text-fairy-title" style="font-size:0.9em;"></span>
                 <button id="btn-fairy-help" type="button" class="btn btn-xs btn-danger" style="height:1.5em !important; float:right;" onClick="btn_showModal(1);" tabindex="-1">?</button>
             </div>
             <div class="input-group" style="width:100%;">
                 <input id="fairy_fire" type="number"
                        class="form-control input-sm btn-font-responsive" min="0" value=""
-                       placeholder="화력(%) 입력" style="width:50%;"
+                       placeholder="" style="width:50%;"
                        onChange="reCalc();">
                 <input type="number"
                        class="form-control input-sm btn-font-responsive" min="0" value=""
@@ -78,19 +72,17 @@
         <hr style="margin-top:5px; margin-bottom:5px;">
         <div>
             <div style="width:100%;">
-                <span id="text-place-title" style="font-size:0.9em;">
-                    진형 버프 합계:
-                </span>
+                <span id="text-place-title" style="font-size:0.9em;"></span>
                 <button id="btn-buff-help" type="button" class="btn btn-xs btn-danger" style="height:1.5em !important; float:right;" onClick="btn_showModal(2);" tabindex="-1">?</button>
             </div>
             <div class="input-group" style="width:100%;">
                 <input id="buff_fire" type="number"
                        class="form-control input-sm btn-font-responsive" min="0" value=""
-                       placeholder="화력버프 합계(%) 입력" style="width:50%;"
+                       placeholder="" style="width:50%;"
                        onChange="reCalc();">
                 <input id="buff_rate" type="number"
                        class="form-control input-sm btn-font-responsive" min="0" value=""
-                       placeholder="사속버프 합계(%) 입력" style="width:50%;"
+                       placeholder="" style="width:50%;"
                        onChange="reCalc();">
             </div>
         </div>
@@ -98,75 +90,83 @@
         <hr style="margin-top:5px; margin-bottom:5px;">
         <div>
             <div style="width:100%;">
-                <span id="text-result-title" style="font-size:0.9em;">
-                    <b>계산 결과:</b>
-                </span>
+                <span id="text-result-title" style="font-size:0.9em;"></span>
+            </div>
+            <div class="btn-group" role="group" style="width:100%; display:inline-block; margin-bottom:-1px; font-size:0.5rem;">
+                <button id="btn-name-fire" type="button" class="btn btn-xs btn-title" style="width:49%; float:left;" tabindex="-1" disabled></button>
+                <button id="btn-name-rate" type="button" class="btn btn-xs btn-title" style="width:49%; float:right;" tabindex="-1" disabled></button>
             </div>
             <div class="btn-group" role="group" style="width:100%; display:inline-block;">
-                <button id="btn-calc-fire" type="button" class="btn btn-sm btn-default" style="width:50%;" tabindex="-1">화력 계산 불가</button>
-                <button id="btn-calc-rate" type="button" class="btn btn-sm btn-default" style="width:50%;" tabindex="-1">사속 계산 불가</button>
+                <button id="btn-calc-fire" type="button" class="btn btn-sm btn-default" style="width:49%; float:left;" tabindex="-1"></button>
+                <button id="btn-calc-rate" type="button" class="btn btn-sm btn-default" style="width:49%; float:right;" tabindex="-1"></button>
             </div>
         </div>
 
         <hr style="margin-top:5px; margin-bottom:5px;">
-        <div style="width:100%;">
-            <div id="btn-help" class="btn btn-xs btn-danger" style="width:100%; margin-bottom:1px;" onclick="btn_openHelp(this)">자스런중에 자꾸 사고가 나요...</div>
+        <div style="width:100%; font-size:12px;">
+            <div id="btn-help" class="btn btn-xs btn-danger" style="width:100%; margin-bottom:1px;" onclick="btn_openHelp(this)"></div>
 
-            <div id="btn-help-1" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(1)">Q. 요정의 지령스킬을 껐는가?</div>
-            <div id="btn-help-1a" class="btn-xs hide" style="text-align:left; width:100%;" disabled><p>A. 요정 스킬 발동시 자스의 화력/사속이 변경될 수 있으므로<br>지령스킬 사용은 하지 말 것</p><img src="img/zas/auto2.png"></div>
-            <div id="btn-help-2" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(2)">Q. 요정특성이 [돌격계]인가?</div>
-            <div id="btn-help-2a" class="btn-xs hide" style="text-align:left; width:100%;" disabled><p>A. 돌격계 특성은 자스의 화력/사속에 영향을 미치므로<br>돌격계 특성의 사용은 지양할 것</p></div>
-            <div id="btn-help-3" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(3)">Q. 승객에게 탄약/식량이 남아있는가?</div>
-            <div id="btn-help-3a" class="btn-xs hide" style="text-align:left; width:100%;" disabled><p>A. 승객이 철댕이를 잡으면 유탄이 엉뚱한데로 날아가므로<br>반드시 퇴각으로 승객의 탄식을 제거할 것</p><img src="img/zas/supl.png"></div>
-            <div id="btn-help-4" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(4)">Q. 승객이 최근 편제확대를 했는가?</div>
-            <div id="btn-help-4a" class="btn-xs hide" style="text-align:left; width:100%;" disabled><p>A. 편제확대시 승객의 탄약/식량이 보급되므로<br>편확 후 반드시 퇴각으로 탄식을 제거할 것</p><img src="img/zas/supl.png"></div>
-            <div id="btn-help-5" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(5)">Q. 진형이 ㄴ 모양인가??</div>
-            <div id="btn-help-5a" class="btn-xs hide" style="text-align:left; width:100%;" disabled><p>A. 이 외 모양의 진형에 위치한 인형은 무조건 공격받으니<br>진형 모양은 ㄴ 모양으로 고정할 것</p><img src="img/zas/formation.png" style="width:100%;"></div>
-            <div id="btn-help-6" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(6)">Q. 자스 위치가 4번인가?</div>
-            <div id="btn-help-6a" class="btn-xs hide" style="text-align:left; width:100%;" disabled><p>A. 8-1n은 4번 고정 추천. 사속 주의구간은 4번 필수<br>6-3n은 1번 고정 필수<br>이 외 이동속도 이유로도 4번 추천</p><img src="img/zas/formation.png" style="width:100%;"></div>
-            <div id="btn-help-7" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(7)">Q. 전투 자동스킬을 켰는가?</div>
-            <div id="btn-help-7a" class="btn-xs hide" style="text-align:left; width:100%;" disabled><p>A. AUTO 자동스킬 활성화를 안하면 자스가 유탄을 쏘지 않는다</p><img src="img/zas/auto.png"></div>
-            <div id="btn-help-8" class="btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(8)">Q. 그 외 기출유형</div>
-            <div id="btn-help-8a" class="btn btn-xs hide" style="text-align:left; width:100%;" disabled><p>
-                Q1. 2링크 이상 자스런시 유탄발사후 철댕이가 살아남음.<br>
-                A1. 화력이 너무높다<br>
-                Q2. 장댕이가 유탄쏘기전에 나를 때림<br>
-                A2. 사속이 부족하다<br>
-                Q3. 철댕이가 유탄소기전에 나를 때림<br>
-                A3. 화력이 부족하다
-            </p></div>
+            <div id="btn-help-1" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(1)"></div>
+            <div id="btn-help-1a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-1t" ></span><img src="img/zas/auto2.png"></div>
+            <div id="btn-help-2" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(2)"></div>
+            <div id="btn-help-2a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-2t" ></span></div>
+            <div id="btn-help-3" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(3)"></div>
+            <div id="btn-help-3a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-3t" ></span><img src="img/zas/supl.png"></div>
+            <div id="btn-help-4" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(4)"></div>
+            <div id="btn-help-4a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-4t" ></span><img src="img/zas/supl.png"></div>
+            <div id="btn-help-5" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(5)"></div>
+            <div id="btn-help-5a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-5t" ></span><img src="img/zas/formation.png" style="width:100%;"></div>
+            <div id="btn-help-6" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(6)"></div>
+            <div id="btn-help-6a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-6t" ></span><img src="img/zas/formation.png" style="width:100%;"></div>
+            <div id="btn-help-7" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(7)"></div>
+            <div id="btn-help-7a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-7t" ></span><img src="img/zas/auto.png"></div>
+            <div id="btn-help-8" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(8)"></div>
+            <div id="btn-help-8a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-8t" ></span></div>
         </div>
     </div>
-    <div style="float:right;">
-        <table>
-            <tbody>
-            <tr>
-                <td style="padding-left:5px;">
-                    <img src="img/kr.png" style="padding-right:2px;">
-                    <img src="img/en.png" style="padding-right:2px;">
-                    <img src="img/ja.png" style="padding-right:2px;">
-                </td>
-                <td style="padding-left:5px;">
-                    <select id="selectLang" onChange="selectLanguage(this.value);">
-                        <option value="ko" selected>Korean</option>
-                        <option value="en">English</option>
-                        <option value="ja">Japanese</option>
-                    </select>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div style="font-size:12px;">
+        <div class="col-xs-12" style="margin-bottom:3px;">
+            <div style="float:right;">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td style="padding-left:5px;">
+                            <img src="img/kr.png" style="padding-right:2px;">
+                            <img src="img/en.png" style="padding-right:2px;">
+                            <img src="img/ja.png" style="padding-right:2px;">
+                        </td>
+                        <td style="padding-left:5px;">
+                            <select id="selectLang" onChange="selectLanguage(this.value);">
+                                <option value="ko" selected>Korean</option>
+                                <option value="en">English</option>
+                                <option value="ja">Japanese</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="float:left;">
+                <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            Links:
+            <a href="https://tempkaridc.github.io/gf/" target="_blank">Logistics Calc</a>,
+            <a href="https://tempkaridc.github.io/gf/timetable.html" target="_blank">Agenda</a>,
+            <a href="https://tempkaridc.github.io/gf/moon.html" target="_blank">Legoplacer</a>
+        </div>
     </div>
-    <div style="float:left;">
-        <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
-    </div>
+
 </div>
 
 <div class="modal fade" id="help0" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-body">
-                <img src="img/zas/help_stat.png" style="width:100%;" onClick="btn_hideModal(0);">
+                <div style="position:relative; width:100%; font-size:1vw; color:lawngreen;">
+                    <img id="help_pic_stat" src="img/zas/help_stat_en.png" style="width:100%;" onClick="btn_hideModal(0);">
+                </div>
             </div>
         </div>
     </div>
@@ -175,8 +175,8 @@
 <div class="modal fade" id="help1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-body">
-                <img src="img/zas/help_fairy.png" style="width:100%;" onClick="btn_hideModal(1);">
+            <div class="modal-body" style="position:relative;">
+                <img id="help_pic_fairy" src="img/zas/help_fairy_en.png" style="width:100%;" onClick="btn_hideModal(1);">
             </div>
         </div>
     </div>
@@ -185,8 +185,8 @@
 <div class="modal fade" id="help2" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-body" style="padding:2px;">
-                <img src="img/zas/help_buff.png" style="width:100%; align:middle;" onClick="btn_hideModal(2);">
+            <div class="modal-body" style="position:relative;">
+                <img id="help_pic_buff" src="img/zas/help_buff_en.png" style="width:100%; align:middle;" onClick="btn_hideModal(2);">
             </div>
         </div>
     </div>
@@ -195,6 +195,7 @@
 
 <script src="js/jquery-2.2.4.min.js"></script>
 <script src="js/bootstrap.js"></script>
+<script src="js/params.js"></script>
 <script src="js/zas.js"></script>
 </body>
 </html>

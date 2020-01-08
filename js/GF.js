@@ -1,11 +1,11 @@
-var lastUpdate      = '2020-01-07 20:20'
+var lastUpdate      = '2020-01-08 18:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
 var updateString    = '\
                         Happy New Year <br> \
                         - 12-1 tool-contract prob. changed 20% → 40% <br> \
-                        - Temporarily disable [Caputre] function <br> \
+                        - Now support multi-language on Zas Calculator <br> \
                         - Minor UI tweak<br> \
                       ';
 
@@ -835,10 +835,12 @@ function captureImage(){
 
         var link = document.createElement('a');
 
-        if (typeof link.download === 'string'){
+        var name = "L";
+        for(var i in selectedList){name += '_' + parseInt(selectedList[i] / 4) + parseInt((selectedList[i] % 4) + 1);}
 
+        if (typeof link.download === 'string'){
             link.href = canvas.toDataURL();
-            link.download = 'gunsu.png';
+            link.download = name + '.png';
 
             //Firefox requires the link to be in the body
             document.body.appendChild(link);
@@ -2078,7 +2080,6 @@ function init(){
     //localStorage.removeItem("config");
 
     langPacks = JSON.parse(jsonText);
-
     config = localStorage.config;
 
     function getLanguage() {
@@ -2182,8 +2183,6 @@ function init(){
         }
     });
 
-    var date = version + "";
-    date = date.substring(0,4) + "-" + date.substring(4,6) + "-" + date.substring(6,8) + " " + date.substring(8,10) + ":" + date.substring(10,12);
-    $('#lastUpdate').text(date);
+    $('#lastUpdate').text(lastUpdate);
     $('#loadModal').modal("hide");
 }
