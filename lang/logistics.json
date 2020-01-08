@@ -90,7 +90,8 @@
                   "TABLE3": "장비제조 범용1식 4회",
                   "TABLE4": "전역 9회 클리어",
                   "TABLE5": "합계 <small>(아래 입력)</small>",
-                  "TABLE6": "가중치"
+                  "TABLE6": "가중치",
+                  "TABLEs1": "사용량"
                 },
                 "USES": {
                   "TITLE": "최종목표치 기반 계산",
@@ -242,7 +243,8 @@
                   "TABLE3": "Equipment Standard Set x 4",
                   "TABLE4": "Clear 9 Areas",
                   "TABLE5": "Sum <small>(input below)</small>",
-                  "TABLE6": "Weight"
+                  "TABLE6": "Weight",
+                  "TABLEs1": "Usage"
                 },
                 "USES": {
                   "TITLE": "Target Weight",
@@ -252,8 +254,8 @@
                   "TABLE3": "Goal Resource <small>(input below)</small>",
                   "TABLE4": "Difference",
                   "TABLE5": "Weight",
-                  "TABLEs1": "Pre",
-                  "TABLEs2": "Obj"
+                  "TABLEs1": "Now",
+                  "TABLEs2": "Goal"
                 }
               },
               "BTN_CALC": "Calculate",
@@ -394,7 +396,8 @@
                   "TABLE3": "装備製造汎用式4回",
                   "TABLE4": "戦役9回クリア",
                   "TABLE5": "合計 <small>(下に入力)</small>",
-                  "TABLE6": "重み付け"
+                  "TABLE6": "重み付け",
+                  "TABLEs1": "使用量"
                 },
                 "USES": {
                   "TITLE": "最終目標値で計算",

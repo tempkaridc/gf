@@ -23,7 +23,7 @@ var sync_calcList   = new Array();
 var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 //***********************************
 
-var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1,1];            // [13] 0~12지역
+var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1,1];          // [13] 0~12지역
 var wghtToggle      = [0,0,0,0];                            // 계약서 4종 가중치 0 ~ 1.0
 var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,12,24];       // [13]
 var menuToggle      = [0,0,0,0,1,0,0];                      // 메뉴 토글기능 7개, (도움말 제외)
@@ -35,7 +35,7 @@ var sw_sucs         = false;        // 대성공 적용여부
 var sw_recovery     = false;        // 자원회복 적용여부
 var sw_zero         = true;         // 자원량 0 표기여부
 var sw_time         = true;         // 표 자원 시간당 표기 적용여부
-var sw_help         = false;         // 도움말 보기 적용여부
+var sw_help         = false;        // 도움말 보기 적용여부
 var sw_drawChart    = true;         // 차트 드로잉 갱신여부
 var sw_drawReserved = false;        // 차트 드로잉 예약여부
 var sw_interval     = false;        // 확인 주기 적용여부
@@ -1844,14 +1844,10 @@ function setLanguage(){
     $('#str_rcmd_day_table4').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE4);
     $('#str_rcmd_day_table5').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE5);
     $('#str_rcmd_day_table6').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLE6);
-    //$('#use_huma').attr('placeholder', langPack.HTML.TABLE.HUMA);
-    //$('#use_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO);
-    //$('#use_food').attr('placeholder', langPack.HTML.TABLE.FOOD);
-    //$('#use_part').attr('placeholder', langPack.HTML.TABLE.PART);
-    $('#use_huma').attr('placeholder', 'Usage');
-    $('#use_ammo').attr('placeholder', 'Usage');
-    $('#use_food').attr('placeholder', 'Usage');
-    $('#use_part').attr('placeholder', 'Usage');
+    $('#use_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLEs1);
+    $('#use_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLEs1);
+    $('#use_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLEs1);
+    $('#use_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.DAY.TABLEs1);
     $('#btn_calcUse').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_CALC);
     $('#str_rcmd_ratio_text').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CALC_TEXT);
 
@@ -1866,29 +1862,17 @@ function setLanguage(){
     $('#str_rcmd_uses_table3').html(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE3);
     $('#str_rcmd_uses_table4').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE4);
     $('#str_rcmd_uses_table5').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLE5);
-    //$('#pre2_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.HUMA);
-    //$('#pre2_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.AMMO);
-    //$('#pre2_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.FOOD);
-    //$('#pre2_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1 + langPack.HTML.TABLE.PART);
-    //$('#fin_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.HUMA);
-    //$('#fin_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.AMMO);
-    //$('#fin_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.FOOD);
-    //$('#fin_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2 + langPack.HTML.TABLE.PART);
-    $('#pre2_huma').attr('placeholder', 'Now');
-    $('#pre2_ammo').attr('placeholder', 'Now');
-    $('#pre2_food').attr('placeholder', 'Now');
-    $('#pre2_part').attr('placeholder', 'Now');
-    $('#fin_huma').attr('placeholder', 'Goal');
-    $('#fin_ammo').attr('placeholder', 'Goal');
-    $('#fin_food').attr('placeholder', 'Goal');
-    $('#fin_part').attr('placeholder', 'Goal');
+    $('#pre2_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1);
+    $('#pre2_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1);
+    $('#pre2_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1);
+    $('#pre2_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs1);
+    $('#fin_huma').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2);
+    $('#fin_ammo').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2);
+    $('#fin_food').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2);
+    $('#fin_part').attr('placeholder', langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CHOICE.USES.TABLEs2);
     $('#btn_calcUse2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.BTN_CALC);
     $('#str_rcmd_ratio_text2').text(langPack.HTML.TABLE.HELP.RECOMMEND.RATIO.CALC_TEXT);
 
-    //$('#wgt_huma').attr('placeholder', langPack.HTML.TABLE.HUMA + ':1');
-    //$('#wgt_ammo').attr('placeholder', langPack.HTML.TABLE.AMMO + ':1.5');
-    //$('#wgt_food').attr('placeholder', langPack.HTML.TABLE.FOOD + ':1.5');
-    //$('#wgt_part').attr('placeholder', langPack.HTML.TABLE.PART + ':0.6');
     $('#wgt_huma').attr('placeholder', '1');
     $('#wgt_ammo').attr('placeholder', '1.5');
     $('#wgt_food').attr('placeholder', '1.5');
