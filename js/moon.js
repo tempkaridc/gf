@@ -1,4 +1,10 @@
 var list = new Array();
+var img;
+var original = [];
+var ox = 0, oy = 0;
+var zoom = 100;
+var cache_data;
+var threshold = 100;
 
 $( document ).ready( function()
 {
@@ -17,6 +23,48 @@ $( document ).ready( function()
         $('#table-body').append(item);
     }
     disableSelection(document.body);
+
+    var deltaX, deltaY;
+    var startingPos = [];
+    var isDragging = false;
+    var startDrag = false;
+
+    $('#canvas2')
+        .mousedown(function (evt) {
+            startingPos = [evt.pageX, evt.pageY];
+            startDrag = true;
+        })
+        .mousemove(function (evt) {
+            if(startDrag == true){
+                isDragging = true;
+                if (!(evt.pageX === startingPos[0] && evt.pageY === startingPos[1])) {
+                    if(isDragging == true){
+                        deltaX = startingPos[0] - evt.pageX;
+                        deltaY = startingPos[1] - evt.pageY;
+                        move_image(parseFloat(deltaX*100/zoom), parseFloat(deltaY*100/zoom));
+                    }
+                }
+            }
+
+        })
+        .mouseleave(function (){
+            if(isDragging == true){
+                ox += parseFloat(deltaX*100/zoom);
+                oy += parseFloat(deltaY*100/zoom);
+            }
+            startDrag = false;
+            isDragging = false;
+            startingPos = [];
+        })
+        .mouseup(function () {
+            if(isDragging == true){
+                ox += parseFloat(deltaX*100/zoom);
+                oy += parseFloat(deltaY*100/zoom);
+            }
+            startDrag = false;
+            isDragging = false;
+            startingPos = [];
+        });
 });
 
 function btn_toggleCW(me){
@@ -211,6 +259,8 @@ function encodeDupl(){
     var line = new Array();
     var dupl = new Array();
 
+    //console.log(list);
+
     for(var y = 0; y < 24; y++){
         for(var x = 0; x < 72; x++){
             line.push(list[y][x]);
@@ -233,6 +283,7 @@ function encodeDupl(){
     }
     dupl.push(key);
     dupl.push(stack.toString(16));
+    console.log(dupl.toString());
 
     $('#code').val(dupl.toString());
 }
@@ -342,3 +393,259 @@ function contrastImage(imageData, contrast) {  // contrast as an integer percent
     return imageData;  //optional (e.g. for filter function chaining)
 }
 */
+
+$('#uppic').click(function (e) {e.preventDefault();$('#pic').click();});
+
+function uploadPic(myFile){
+    var reader = new FileReader();
+    reader.onload = function () {
+        loadImage(reader.result);
+    };
+    reader.readAsDataURL(myFile.files[0], 'ISO-8859-1');
+}
+
+function loadImage(file){
+    img = new Image();
+    //img.src = './wa.jpg';
+    img.src = file;
+    img.onload = setTimeout(function(e){resize_image();},1000);
+}
+
+function resize_image(event){
+    if(event !== undefined){if(event.deltaY < 0){zoom *= 1.04;}else{zoom *= 0.96;}}else{zoom *= 1};
+    var cvs1 = document.getElementById('canvas1');
+    var ctx1 = cvs1.getContext("2d");
+    ratio = parseFloat(zoom / 100);
+    var cw = img.width * 10;
+    var ch = img.height * 10;
+    ctx1.clearRect(0, 0, cvs1.width, cvs1.height);
+    ctx1.drawImage(img,ox,oy,cw,ch,0,0,cw*ratio,ch*ratio);
+    grayscale_image();
+}
+
+function move_image(x, y){
+    var cvs1 = document.getElementById('canvas1');
+    var ctx1 = cvs1.getContext("2d");
+    ratio = parseFloat(zoom / 100);
+    var cw = img.width * 10;
+    var ch = img.height * 10;
+    ctx1.clearRect(0, 0, cvs1.width, cvs1.height);
+    ctx1.drawImage(img,ox+x,oy+y,cw,ch,0,0,cw*ratio,ch*ratio);
+    grayscale_image();
+}
+
+function setLevel(val){
+    threshold = val;
+    grayscale_image();
+}
+function grayscale_image(){
+
+    cache_data = new Array();
+
+    backup_image();
+    function backup_image(){
+        var cvs1 = document.getElementById('canvas1');
+        var ctx1 = cvs1.getContext('2d');
+        var imageData = ctx1.getImageData(0, 0, cvs1.width, cvs1.height);
+        var data = imageData.data;
+        for (var i = 0; i < data.length; i += 4) {
+            original[i] = data[i];
+            original[i + 1] = data[i + 1];
+            original[i + 2] = data[i + 2];
+        }
+    }
+    var cvs1 = document.getElementById('canvas1');
+    var ctx1 = cvs1.getContext("2d");
+    var cvs2 = document.getElementById('canvas2');
+    var ctx2 = cvs2.getContext('2d');
+
+    var imageData = ctx1.getImageData(0, 0, cvs1.width, cvs1.height);
+    var data = imageData.data;
+    for (var i = 0; i < data.length; i += 4) {
+        var avg = (original[i] + original[i + 1] + original[i + 2]) / 3;
+        if(avg > threshold){avg = 255;}else{avg = 0;}
+        data[i] = avg;      // red
+        data[i + 1] = avg;  // green
+        data[i + 2] = avg;  // blue
+    }
+    ctx2.putImageData(imageData, 0, 0);
+
+    small_image();
+}
+
+function small_image(){
+    var cvs2 = document.getElementById('canvas2');
+    var cvs3 = document.getElementById('canvas3');
+    var ctx3 = cvs3.getContext('2d');
+    var cvs4 = document.getElementById('canvas4');
+    var ctx4 = cvs4.getContext('2d');
+
+    cvs3.width = cvs2.width / 3;
+    cvs3.height = cvs2.height / 3;
+    ctx3.drawImage(cvs2, 0, 0, cvs2.width, cvs2.height, 0, 0, cvs3.width, cvs3.height);
+
+    cvs4.width = cvs2.width / 9;
+    cvs4.height = cvs2.height / 9;
+    ctx4.drawImage(cvs2, 0, 0, cvs2.width, cvs2.height, 0, 0, cvs4.width, cvs4.height);
+
+    preview_image();
+
+    cache_data = new Array();
+    var imageData = ctx3.getImageData(0, 0, cvs3.width, cvs3.height);
+    var data = imageData.data;
+    for (var i = 0; i < data.length; i += 4) {
+        cache_data.push(data[i]);
+    }
+}
+
+function preview_image(){
+    var cvs4 = document.getElementById('canvas4');
+    var cvs5 = document.getElementById('canvas5');
+    var ctx5 = cvs5.getContext('2d');
+    cvs5.width = cvs4.width * 9;
+    cvs5.height = cvs4.height * 9;
+    ctx5.drawImage(cvs4, 0, 0, cvs4.width, cvs4.height, 0, 0, cvs5.width, cvs5.height);
+}
+
+var x1 = 108, y1 = 36;
+var x3 = 36, y3 = 12;
+
+function make3x3cell(){
+    var normalArray = cache_data;
+    //console.log(normalArray);
+
+    var cell_1x1 = new Array();
+    var cell_3x3 = new Array();
+    for(var y = 0; y < 36; y++){cell_1x1.push(new Array(108));}
+    for(var y = 0; y < 12; y++){cell_3x3.push(new Array(36));}
+
+    //cell_1x1
+    var i = 0;
+    for(var y = 0; y < 36; y++){
+        for(var x = 0; x < 108; x++){
+            cell_1x1[y][x] = normalArray[i++];
+        }
+    }
+    //console.log(cell_1x1);
+
+    //cell_3x3
+    var cx = 0; cy = 0;
+    for(var y = 0; y < 36; y += 3){
+        for(var x = 0; x < 108; x += 3){
+            cell_3x3[cy][cx] = [
+                cell_1x1[y][x], cell_1x1[y][x+1], cell_1x1[y][x+2],
+                cell_1x1[y+1][x], cell_1x1[y+1][x+1], cell_1x1[y+1][x+2],
+                cell_1x1[y+2][x], cell_1x1[y+2][x+1], cell_1x1[y+2][x+2]
+            ];
+            cx++;
+        }
+        cx = 0;
+        cy++;
+        if(cy > 11) break;
+    }
+
+    for(var y = 0; y < 12; y++){
+        for(var x = 0; x < 36; x++){
+            for(var i = 0; i < 9; i++){
+                if(cell_3x3[y][x][i] == 255)
+                    cell_3x3[y][x][i] = 1;
+            }
+        }
+    }
+
+    compareCell(cell_3x3);
+}
+
+function compareCell(input){
+    const blocks = [
+        // 0: Blank
+        [1,1,1,
+            1,1,1,
+            1,1,1],
+        // 1:
+        [0,0,0,
+            0,0,0,
+            0,0,0],
+        // 2:
+        [0,0,0,
+            0,1,0,
+            0,0,0],
+        // 3:
+        [0,1,1,
+            0,0,1,
+            0,0,0],
+        // 4:
+        [0,0,0,
+            0,0,1,
+            0,1,1],
+        // 5:
+        [0,0,0,
+            1,0,0,
+            1,1,0],
+        // 6:
+        [1,1,0,
+            1,0,0,
+            0,0,0],
+    ];
+
+    var result = new Array(24);
+    for(var i = 0; i < 24; i++){result[i] = new Array(72).fill(0);}
+
+    //36x12
+    for(var y = 0; y < 12; y++){
+        for(var x = 0; x < 36; x++){
+            var obj = new Object();
+            obj.top = 0;
+            obj.idx = 0;
+            //Type Loop
+            for(var t = 0; t < 7; t++){
+                var sum_score = 0;
+                for(var i = 0; i < 9; i++){
+                    if(input[y][x][i] == blocks[t][i]){
+                        sum_score += 1;
+                    }
+                }
+                if(sum_score > obj.top){
+                    obj.top = sum_score;
+                    obj.idx = t;
+                }
+            }
+            //console.log(top_score);
+            result[y*2][x*2] = obj.idx;
+        }
+    }
+    encodeDupl2(result);
+
+
+}
+
+function encodeDupl2(list){
+    var line = new Array();
+    var dupl = new Array();
+
+    for(var y = 0; y < 24; y++){
+        for(var x = 0; x < 72; x++){
+            line.push(list[y][x]);
+        }
+    }
+
+    var key = line[0];
+    var stack = 1;
+
+    for(var i = 1; i < 1728; i++){
+        if(line[i] == key){
+            stack++;
+        }else{
+            dupl.push(key);
+            dupl.push(stack.toString(16));
+
+            key = line[i];
+            stack = 1;
+        }
+    }
+    dupl.push(key);
+    dupl.push(stack.toString(16));
+
+    $('#code').val(dupl.toString());
+    $('#inputbtn').click();
+}

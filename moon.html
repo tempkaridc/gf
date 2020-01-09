@@ -23,7 +23,7 @@
 
         <div style="margin-bottom: 5px;">
             <button class="btn btn-sm btn-primary" style="width:160px; float:left;"  onClick="btn_copy();">COPY</button>
-            <button class="btn btn-sm btn-danger" style="width:160px; float:right;" onClick="btn_input();">INPUT</button>
+            <button id="inputbtn" class="btn btn-sm btn-danger" style="width:160px; float:right;" onClick="btn_input();">INPUT</button>
             <input id="code" class="form-control input-sm btn-font-responsive" value="" style="width:704px;">
         </div>
 
@@ -57,6 +57,46 @@
 
         <img id="thumbnail" src="" width="100" alt="썸네일영역 (클릭하면 다운로드 가능)">
         -->
+        <table style="margin:20px auto 0px auto; width:680px; height:160px;">
+            <tbody>
+            <tr>
+                <td>
+                    <div style="float:left;">
+                        Original
+                    </div>
+                    <div style="float:right; margin-right:14px;">
+                        <button id="uppic">Upload</button>
+                        <input id="pic" type="file" onchange="uploadPic(this);" style="display:none;"/>
+                    </div>
+
+                </td>
+                <td>Preview</td>
+            </tr>
+            <tr>
+                <td>
+                    <canvas id="canvas2" width="324" height="108" style="float:left; border:1px solid black; background-color:white;" onmousewheel="resize_image(event)"></canvas>
+                </td>
+                <td>
+                    <canvas id="canvas5" width="324" height="108" style="float:right; border:1px solid black; background-color:white;"></canvas>
+                </td>
+            </tr>
+            <tr style="height:30px;">
+                <td colspan="2">
+                    <div class="slidecontainer" style="width:90%; float:left;">
+                        <input id="grayLevel" type="range" min="0" max="255" value="100" class="slider" onmousemove="setLevel(this.value);" style="width:100%;">
+                    </div>
+                    <div style="width:10%; float:right; position:relative;">
+                        <button onclick="make3x3cell();" style="position:absolute; right:0px;">Submit</button>
+                    </div>
+
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <canvas id="canvas1" width="324" height="108" style="float:left; border:1px solid black; display:none; background-color:white;"></canvas>
+        <canvas id="canvas3" width="324" height="108" style="float:left; border:1px solid black; display:none; background-color:white;"></canvas>
+        <canvas id="canvas4" width="324" height="108" style="float:left; border:1px solid black; display:none; background-color:white;"></canvas>
+
 
 
     </div>
