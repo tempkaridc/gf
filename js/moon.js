@@ -408,7 +408,12 @@ function loadImage(file){
     img = new Image();
     //img.src = './wa.jpg';
     img.src = file;
-    img.onload = setTimeout(function(e){resize_image();},1000);
+    img.onload = setTimeout(function(e){
+        var cvs1 = document.getElementById('canvas1');
+        var ctx1 = cvs1.getContext("2d");
+        ctx1.clearRect(0, 0, cvs1.width, cvs1.height);
+        resize_image();
+        },1000);
 }
 
 function resize_image(event){
