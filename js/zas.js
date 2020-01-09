@@ -31,7 +31,7 @@ var config = {};
 $(function (){
     // load config
     config = JSON.parse(localStorage.config);   // handle undefined case below
-    langPacks = JSON.parse(jsonText_zas);       // avoid async processes
+    langPacks = languagepack_zas;
 
     if(config === undefined){
         selLang = getLanguage;
