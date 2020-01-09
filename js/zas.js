@@ -178,9 +178,9 @@ function chkFire(num){
         }
     }else{
         if(num >= 63){
-            dispFire(2, langPack.result.fire.enable + num + ' (+' + (num - min63) + ')');
+            dispFire(2, langPack.result.fire.enable + num + ' (+' + (num - 63) + ')');
         }else{
-            dispFire(0, langPack.result.fire.disable + num + ' (' + (num - min63) + ')');
+            dispFire(0, langPack.result.fire.disable + num + ' (' + (num - 63) + ')');
         }
     }
 }
