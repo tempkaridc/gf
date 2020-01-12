@@ -308,9 +308,9 @@ function setLanguage(){
 
     $('#text-result-title').text(langPack.result.title);
 
-    $('#help_pic_stat').attr("src", 'img/zas/help_stat_' + config.lang + '.png');
-    $('#help_pic_fairy').attr("src", 'img/zas/help_fairy_' + config.lang + '.png');
-    $('#help_pic_buff').attr("src", 'img/zas/help_buff_' + config.lang + '.png');
+    $('#help_pic_stat').attr("src", 'img/zas/help_stat_' + selLang + '.png');
+    $('#help_pic_fairy').attr("src", 'img/zas/help_fairy_' + selLang + '.png');
+    $('#help_pic_buff').attr("src", 'img/zas/help_buff_' + selLang + '.png');
 
     $('#btn-name-fire').text(langPack.fire);
     $('#btn-name-rate').text(langPack.rate);
@@ -322,5 +322,5 @@ function setLanguage(){
         $('#btn-help-'+i+'t').html(langPack.qna['a'+ i]);
     }
 
-    reCalc()
+    reCalc();
 }
