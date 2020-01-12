@@ -26,7 +26,7 @@ var frame   = [
 
 var langPack;
 var langPacks;
-var config = {};
+var config;
 
 $(function (){
     // load config
@@ -37,7 +37,7 @@ $(function (){
         selLang = getLanguage;
     }else{
         config = JSON.parse(localStorage.config);
-        if(config.lang !==undefined){
+        if(config.lang !== undefined){
             selLang = config.lang;
         }
         else{
