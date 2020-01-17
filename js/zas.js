@@ -24,29 +24,16 @@ var frame   = [
     [       999,        0,          0       ]
 ];
 
+var selLang         = 'ko';
 var langPack;
 var langPacks;
-var config = {};
+var config;
 
 $(function (){
-    // load config
-    config = JSON.parse(localStorage.config);   // handle undefined case below
     langPacks = languagepack_zas;
-
-    if(config === undefined){
-        selLang = getLanguage;
-    }else{
-        config = JSON.parse(localStorage.config);
-        if(config.lang !==undefined){
-            selLang = config.lang;
-        }
-        else{
-            selLang = getLanguage();
-        }
-    }
-    $('#selectLang').val(selLang).change();
-
-    function getLanguage() {
+	config = localStorage.config;
+    
+	function getLanguage() {
         var tmp = navigator.language || navigator.userLanguage;
 
         switch(tmp){
@@ -65,6 +52,25 @@ $(function (){
                 return 'en';    //기본언어 'en'
         }
     }
+	
+	if(config === undefined){         //no config cache
+        selLang = getLanguage();
+		
+		config = new Object();
+        config.lang = selLang;
+        localStorage.config = JSON.stringify(config);
+    }else{                      //config cache here
+        config = JSON.parse(localStorage.config);
+
+        if(config.lang !==undefined){
+            selLang = config.lang;
+        }else{
+            selLang = getLanguage();
+        }
+    }
+
+    $('#selectLang').val(selLang).change();
+	
 });
 
 function btn_selArea(idx){
@@ -256,8 +262,13 @@ function dispRate(i, num){
 }
 
 
-function selectLanguage(selLang){
-    switch(selLang){
+function selectLanguage(elem){
+    selLang = elem.value;
+    loadLanguage();
+}
+
+function loadLanguage(){
+	switch(selLang){
         case 'ko':
             langPack = langPacks.ko;
             break;
@@ -271,10 +282,11 @@ function selectLanguage(selLang){
             langPack = langPacks.ko;
             break;
     }
-    config.lang = selLang;
+		
+	config.lang = selLang;
     localStorage.config = JSON.stringify(config);
-
-    setLanguage();
+	
+	setLanguage();
 }
 
 function setLanguage(){
@@ -296,9 +308,9 @@ function setLanguage(){
 
     $('#text-result-title').text(langPack.result.title);
 
-    $('#help_pic_stat').attr("src", 'img/zas/help_stat_' + config.lang + '.png');
-    $('#help_pic_fairy').attr("src", 'img/zas/help_fairy_' + config.lang + '.png');
-    $('#help_pic_buff').attr("src", 'img/zas/help_buff_' + config.lang + '.png');
+    $('#help_pic_stat').attr("src", 'img/zas/help_stat_' + selLang + '.png');
+    $('#help_pic_fairy').attr("src", 'img/zas/help_fairy_' + selLang + '.png');
+    $('#help_pic_buff').attr("src", 'img/zas/help_buff_' + selLang + '.png');
 
     $('#btn-name-fire').text(langPack.fire);
     $('#btn-name-rate').text(langPack.rate);
@@ -310,5 +322,5 @@ function setLanguage(){
         $('#btn-help-'+i+'t').html(langPack.qna['a'+ i]);
     }
 
-    reCalc()
+    reCalc();
 }

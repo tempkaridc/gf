@@ -2089,7 +2089,7 @@ function init(){
         config.sumrate = val_sumRate;
         localStorage.config = JSON.stringify(config);
 
-        selLang = getLanguage;
+        selLang = getLanguage();
     }else{                      //config cache here
         config = JSON.parse(localStorage.config);
 
