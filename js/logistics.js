@@ -1,13 +1,8 @@
-var lastUpdate      = '2020-01-08 18:00'
+var lastUpdate      = '2020-01-17 10:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
-var updateString    = '\
-                        Happy New Year <br> \
-                        - 12-1 tool-contract prob. changed 20% → 40% <br> \
-                        - Now support multi-language on Zas Calculator <br> \
-                        - Minor UI tweak<br> \
-                      ';
+var updateString    = "- 12-1 Tool-Contract prob. changed 40% → 50% <br>";
 
 var updateImage     = false;
 
@@ -44,20 +39,20 @@ var sw_successEvent = false;        // 군수확업 이벤트 트리거
 var val_success     = 0.6;          // 대성공 초기성공률 60%
 var val_interval    = 30;           // 확인 주기 초기값 30분
 var val_sumRate     = new Object(); // 합계 자원비
-    val_sumRate.h = 1;
-    val_sumRate.a = 1;
-    val_sumRate.f = 1;
-    val_sumRate.p = 2.2;
+    val_sumRate.h   = 1;
+    val_sumRate.a   = 1;
+    val_sumRate.f   = 1;
+    val_sumRate.p   = 2.2;
 
 var val_sumItem     = new Object(); // 합계 아이템
 
-var urlParams = new URLSearchParams(window.location.search);
-var myParam = urlParams.get('c');
+var urlParams       = new URLSearchParams(window.location.search);
+var myParam         = urlParams.get('c');
 
 var drawTimer;
 
 var chart;
-var chart_time = new Array();
+var chart_time      = new Array();
 var now;
 
 var cptStr;
@@ -2115,7 +2110,7 @@ function init(){
         if((config.version === undefined) || (config.version < version)){
             $('#str_notice_head').html(updateDate);
             $('#str_notice').html(updateString);
-            if(updateImage){$('#pic_notice').removeClass('hide');}else{$('#pic_notice').addClass('hide');}
+            if(updateImage == true){$('#pic_notice').removeClass('hide');}else{$('#pic_notice').addClass('hide');}
             $('#noticeModal').modal("show");
 
             config.version = version;
