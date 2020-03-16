@@ -89,7 +89,8 @@
 }
 
 .highcharts-title {
-    fill: #FFFFFF;
+    fill: #0000000E;
+    font-size: 1em;
 }
 
 ::-webkit-scrollbar {

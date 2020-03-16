@@ -14,7 +14,7 @@ $(function (){
 })
 .on('click', '.table-clickable', function(e) {
     e.preventDefault();
-    clickRow(parseInt($(this).attr('idx')));//고유값
+        clickRow(parseInt($(this).attr('idx')));//고유값
 });
 
 function init(){

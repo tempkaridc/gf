@@ -1308,6 +1308,7 @@ function drawStage(){
             min: 0
         },
         tooltip: {
+            valueDecimals: 0,
             xDateFormat: "%B %d" + langPack.HTML.CHART.DAY + " %A, %H" + langPack.HTML.CHART.HOUR + " %M" + langPack.HTML.CHART.MIN,
             split: true,
             padding: 3
@@ -1663,82 +1664,22 @@ function loadLanguage(){
     switch(selLang){
         case 'ko':
             langPack = langPacks.ko;
-            Highcharts.setOptions({
-                lang: {
-                    months: [
-                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-                    ],
-                    shortMonths: [
-                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-                    ],
-                    weekdays: [
-                        '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
-                    ],
-                    shortWeekdays: [
-                        '일','월','화','수','목','금','토'
-                    ]
-                }
-            });
             break;
         case 'en':
             langPack = langPacks.en;
-            Highcharts.setOptions({
-                lang: {
-                    months: [
-                        'January','February','March','April','May','June','July','August','September','October','November','December'
-                    ],
-                    shortMonths: [
-                        'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'
-                    ],
-                    weekdays: [
-                        'Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'
-                    ],
-                    shortWeekdays: [
-                        'Sun','Mon','Tue','Wed','Thu','Fri','Sat'
-                    ]
-                }
-            });
             break;
         case 'ja':
             langPack = langPacks.ja;
-            Highcharts.setOptions({
-                lang: {
-                    months: [
-                        '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
-                    ],
-                    shortMonths: [
-                        '1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'
-                    ],
-                    weekdays: [
-                        '日','月','火','水','木','金','土'
-                    ],
-                    shortWeekdays: [
-                        '日','月','火','水','木','金','土'
-                    ]
-                }
-            });
             break;
         default:
             langPack = langPacks.ko;
-            Highcharts.setOptions({
-                lang: {
-                    months: [
-                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-                    ],
-                    shortMonths: [
-                        '1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'
-                    ],
-                    weekdays: [
-                        '일요일','월요일','화요일','수요일','목요일','금요일','토요일'
-                    ],
-                    shortWeekdays: [
-                        '일','월','화','수','목','금','토'
-                    ]
-                }
-            });
             break;
     }
+
+    Highcharts.setOptions(langPack.CHART);
+
     config.lang = selLang;
+
     localStorage.config = JSON.stringify(config);
 
     setLanguage();
