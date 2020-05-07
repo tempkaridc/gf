@@ -1,8 +1,9 @@
-var lastUpdate      = '2020-01-17 10:00'
+var lastUpdate      = '2020-05-07 14:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
-var updateString    = "- 12-1 Tool-Contract prob. changed 40% → 50% <br>";
+var updateString    = '- Area 13 added. <br>- Contract rate of area 13 is temporarly 20% each.';
+
 
 var updateImage     = false;
 
@@ -14,11 +15,8 @@ var objectList      = new Array();
 var selectedList    = new Array();
 var sync_calcList   = new Array();
 
-// 190123 이후 일괄 desc로 폐기. ******
 var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
-//***********************************
-
-var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1,1];          // [13] 0~12지역
+var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1,1,1];        // [14] 0 ~ 13지역
 var wghtToggle      = [0,0,0,0];                            // 계약서 4종 가중치 0 ~ 1.0
 var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,12,24];       // [13]
 var menuToggle      = [0,0,0,0,1,0,0];                      // 메뉴 토글기능 7개, (도움말 제외)
@@ -116,28 +114,25 @@ function sortingTable(id){
         }
     }
 
+    /*
     if((id == 6) || (id == 0)){ //지역 & 시간은 asc로 sorting
         sortTable(document.getElementById("area-list"), id, 1);
     }else{
         sortTable(document.getElementById("area-list"), id, 0);
     }
+    */
 
 
-    /****** 190123 이후 일괄 desc로 폐기. ******
     if(sortToggle[id] <= 1){
-        //$('#icon-'+id).addClass('glyphicon-sort-by-order-alt');
         sortTable(document.getElementById("area-list"), id, 0);
         sortToggle[id] = 2;
     }else{
-        //$('#icon-'+id).addClass('glyphicon-sort-by-order');
         sortTable(document.getElementById("area-list"), id, 1);
         sortToggle[id] = 1;
     }
-    */
-}
-$('[id^=btn-area-]').off().on('click', function (e) {
-    var id = parseInt($(this).attr('idx'));
 
+}
+function btn_selArea(id){
     if($('#btn-area-' + id).hasClass('btn-success')){
         $('#btn-area-' + id).removeClass('btn-success');
         $('#btn-area-' + id).addClass('btn-default');
@@ -148,7 +143,7 @@ $('[id^=btn-area-]').off().on('click', function (e) {
         areaToggle[id] = 1;
     }
     refresh();
-});
+}
 $('[id^=btn-times-]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
     if(id == 0){
@@ -1997,6 +1992,18 @@ function chkScroll(){
 }
 
 function init(){
+
+    $('#area_btn_list').empty();
+    for(var i = 0; i < areaToggle.length; i++){
+        var btn = '<div class="btn-group">';
+            if(areaToggle[i] == 0){
+                btn += '<button id="btn-area-'+i+'" type="button" class="btn btn-sm btn-default btn-font-responsive" style="padding:0.5rem" onclick="btn_selArea('+i+')">'+i+'</button>';
+            }else if(areaToggle[i] == 1){
+                btn += '<button id="btn-area-'+i+'" type="button" class="btn btn-sm btn-success btn-font-responsive" style="padding:0.5rem" onclick="btn_selArea('+i+')">'+i+'</button>';
+            }
+            btn += '</div>';
+        $('#area_btn_list').append(btn);
+    }
 
     langPacks = languagePack_logistics;
     config = localStorage.config;
