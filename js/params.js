@@ -1,3 +1,24 @@
+/*****************************************************************************************************
+ *
+ * [Logistics Contract Rate References]
+ *
+ * Area 0-10:
+ *  Sangvis Ferri Sheet
+ *  https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline
+ *  Assumption, Not verified
+ *
+ * Area 11-12:
+ *  Real Observation by developer
+ *  Area 11 Sample: 140 Logistics Complete Results without Great Success Case
+ *  Area 12 Sample: 210 Logistics Complete Results without Great Success Case
+ *  Area 13 Sample: Temporary 20% (2020-05-07). Observation would start at 2020-05-12
+ *
+ * Extra Refernces:
+ *  Plan to ask for feedback
+ *  https://docs.google.com/spreadsheets/d/1ah2JO6ggWuVaBho9yxgDMC-ucEKA8C42SBkjIlnIcWk
+ *
+ *****************************************************************************************************/
+
 var arr = [
 //  Area,   Stage,  Time,   Huma,   Ammo,   MRE,    Part,   Doll,   Tool,   Fast,   Repr,   Tokn
     [0,     1,      50,     0,      145,    145,    0,      0,      0,      0.2,    0.5,    0   ],
@@ -56,8 +77,4 @@ var arr = [
     [13,    2,      360,    800,    800,    800,    300,    0,      0,      0,      0,      0   ],
     [13,    3,      1440,   0,      4000,   0,      1200,   0,      0.2,    0,      0,      0   ],
     [13,    4,      360,    0,      0,      0,      1000,   0.2,    0,      0,      0,      0   ]
-
 ];
-
-// https://docs.google.com/spreadsheets/d/1ah2JO6ggWuVaBho9yxgDMC-ucEKA8C42SBkjIlnIcWk
-// 시간될 때 위 시트 제작자와 모수 관련 상의해 볼 것
