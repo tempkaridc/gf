@@ -34,6 +34,7 @@ var languagePack_logistics =
                     "TICKET_RATIO": "획득확률",
                     "HELP": {
                         "RESET": "초기화",
+                        "NOTICE": "공지사항",
                         "OPEN": "도움말 열기",
                         "CLOSE": "도움말 닫기",
                         "TIPS": {
@@ -203,6 +204,7 @@ var languagePack_logistics =
                     "TICKET_RATIO": "Chance",
                     "HELP": {
                         "RESET": "Reset",
+                        "NOTICE": "Changelog",
                         "OPEN": "Open Help",
                         "CLOSE": "Close Help",
                         "TIPS": {
@@ -372,6 +374,7 @@ var languagePack_logistics =
                     "TICKET_RATIO": "獲得率",
                     "HELP": {
                         "RESET": "デフォルト",
+                        "NOTICE": "アップデート",
                         "OPEN": "ヘルプを開く",
                         "CLOSE": "ヘルプを閉じる",
                         "TIPS": {

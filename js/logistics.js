@@ -1,4 +1,4 @@
-var lastUpdate      = '2020-05-07 14:00'
+var lastUpdate      = '2020-05-07 15:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
@@ -190,6 +190,13 @@ function btn_toggleMenu(btn){
     disp_summary();
     config.menu = menuToggle;
     localStorage.config = JSON.stringify(config);
+}
+
+function btn_notice(){
+    $('#str_notice_head').html(updateDate);
+    $('#str_notice').html(updateString);
+    if(updateImage == true){$('#pic_notice').removeClass('hide');}else{$('#pic_notice').addClass('hide');}
+    $('#noticeModal').modal("show");
 }
 
 function btn_reset(){
@@ -1708,6 +1715,7 @@ function setLanguage(){
     $('#str_timetable').text(langPack.HTML.TABLE.TIMETABLE);
 
     $('#str_toggleHelp').text(langPack.HTML.TABLE.HELP.OPEN);
+    $('#str_btnNotice').text(langPack.HTML.TABLE.HELP.NOTICE);
     $('#str_reset').text(langPack.HTML.TABLE.HELP.RESET);
     $('#help_01').html(langPack.HTML.TABLE.HELP.TIPS.TIP1);
     $('#help_02').html(langPack.HTML.TABLE.HELP.TIPS.TIP2);
