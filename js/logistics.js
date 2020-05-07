@@ -2,7 +2,7 @@ var lastUpdate      = '2020-05-07 15:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
-var updateString    = '- Area 13 added. <br>- Contract rate of area 13 is temporarly 20% each.';
+var updateString    = '- Area 13 added. <br>- Contract rate of area 13 is temporarly 20% each. <br>- Contract Rate Reference (<font style="color:blue;"><a href="https://github.com/tempkaridc/gf/blob/master/js/params.js" target="_blank">Link</a></font>)';
 
 
 var updateImage     = false;
