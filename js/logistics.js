@@ -18,7 +18,7 @@ var objectList      = new Array();
 var selectedList    = new Array();
 var sync_calcList   = new Array();
 
-var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
+//var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1,1,1];        // [14] 0 ~ 13지역
 var wghtToggle      = [0,0,0,0];                            // 계약서 4종 가중치 0 ~ 1.0
 var timeToggle      = [0,1,2,3,4,5,6,7,8,9,10,12,24];       // [13]
@@ -104,7 +104,7 @@ function sortContract(elem){sortingTable(elem.value);}
 function sortingTable(id){
     if(id == 99){                               // 계약서 첫줄 지역소팅으로 대체
         id = 0;
-        //sortToggle[0] = 2;    ***** 190123 이후 일괄 desc로 폐기. ******
+        //sortToggle[0] = 2;                    ***** 190123 이후 일괄 desc로 폐기. ******
     }
 
     if(0 < id){
@@ -117,7 +117,7 @@ function sortingTable(id){
         }
     }
 
-    if((id == 6) || (id == 0)){ //지역 & 시간은 asc로 sorting
+    if((id == 0) || (id == 6)){ //지역 & 시간은 asc로 sorting
         sortTable(document.getElementById("area-list"), id, 1);
     }else{
         sortTable(document.getElementById("area-list"), id, 0);
@@ -1731,6 +1731,7 @@ function setLanguage(){
     $('#help_09a').html(langPack.HTML.TABLE.HELP.TIPS.TIP9a);
     $('#help_09b').html(langPack.HTML.TABLE.HELP.TIPS.TIP9b);
     $('#help_09c').html(langPack.HTML.TABLE.HELP.TIPS.TIP9c);
+    $('#help_09d').html(langPack.HTML.TABLE.HELP.TIPS.TIP9d);
 
     $('#str_selectarea_title').text(langPack.HTML.TABLE.HELP.AREASELECT.TITLE);
 

@@ -50,7 +50,8 @@ var languagePack_logistics =
                             "TIP9": "9. <a href=\"#\">자동추천</a> 은 입력된 <font color=\"red\">가중치 비율의 자원 획득</font>을 위한 군수 조합 추천",
                             "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">지역선택</a>, <a href=\"#\">시간대설정</a>, <a href=\"#\">대성공률</a>, <a href=\"#\">계약서 획득률</a>, <a href=\"#\">확인 주기</a>를 모두 반영</div>",
                             "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">내 가중치</a></span> 버튼 클릭 시, 개인 가중치 계산 가능</div>",
-                            "TIP9c": "<div style=\"margin-left:10px;\">c. 추천조합의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>"
+                            "TIP9c": "<div style=\"margin-left:10px;\">c. 결과의 백분율 표시는 입력된 가중치와 결과값 사이의 가중치 일치율을 의미</div>",
+                            "TIP9d": "<div style=\"margin-left:10px;\">d. 계산 시 자원량이 적은 초반지역 [1~4지역] 제외 추천</div>"
                         },
                         "AREASELECT": {
                             "TITLE": "지역선택"
@@ -212,7 +213,7 @@ var languagePack_logistics =
                             "TIP2": "2. Click <a href=\"#\">Resource Name</a>, to sort with it",
                             "TIP3": "3. <a href=\"#\">Total</a> calculated with <font color=\"red\">Total Sumrate</font> multiplier. Default 1:1:1:2.2",
                             "TIP4": "4. Contract Gain Chance Reference(<font style=\"color:blue;\"><a href=\"https://github.com/tempkaridc/gf/blob/master/js/params.js\" target=\"_blank\">Link</a></font>)",
-                            "TIP5": "5. Graph starts from <a href=\"#\">Pre Resources</a> <font color=\"red\"></font>, default is 0",
+                            "TIP5": "5. Graph starts from <a href=\"#\">Pre Resources</a><font color=\"red\"></font>, default is 0",
                             "TIP5a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">Auto Resupply</a> add 3 : 3 : 3 : 1 resource per 3 min</div>",
                             "TIP6": "6. When you apply <a href=\"#\">Great Success</a>, recaluculate resource & contracts gain to expectation value",
                             "TIP7": "7. When you apply <a href=\"#\">Check Cycle</a>, recalculate every time to multiple of cycle time",
@@ -220,7 +221,8 @@ var languagePack_logistics =
                             "TIP9": "9. <a href=\"#\">Recommend</a> provides area combination with <font color=\"red\">Resource Weight</font>",
                             "TIP9a": "<div style=\"margin-left:10px;\">a. Reflect <a href=\"#\">Chapters</a>, <a href=\"#\">Time Periods</a>, <a href=\"#\">Great Success</a>, <a href=\"#\">Contract Chance</a>, <a href=\"#\">Check Cycle</a></div>",
                             "TIP9b": "<div style=\"margin-left:10px;\">b. Calculate personal resource weights with <span id=\"help_wght\"><a href=\"#\">Calc weights</a></span> </div>",
-                            "TIP9c": "<div style=\"margin-left:10px;\">c. Result % means similarity between input ratio & result</div>"
+                            "TIP9c": "<div style=\"margin-left:10px;\">c. Result % means similarity between input ratio & result</div>",
+                            "TIP9d": "<div style=\"margin-left:10px;\">d. It is recommended to exclude early stages [Area 1~4]</div>"
                         },
                         "AREASELECT": {
                             "TITLE": "Chapters"
@@ -390,7 +392,8 @@ var languagePack_logistics =
                             "TIP9": "9. <a href=\"#\">自動推選</a> は入力された <font color=\"red\">重み付け比率の資源獲得</font>ための配置推選",
                             "TIP9a": "<div style=\"margin-left:10px;\">a. <a href=\"#\">戦役選択</a>, <a href=\"#\">時間帯設定</a>, <a href=\"#\">大成功率</a>, <a href=\"#\">契約獲得率</a>, <a href=\"#\">確認サイクル</a> 全て反映</div>",
                             "TIP9b": "<div style=\"margin-left:10px;\">b. <span id=\"help_wght\"><a href=\"#\">私の重み付け</a></span> ボタンクリック時、個人重み付け計算可能</div>",
-                            "TIP9c": "<div style=\"margin-left:10px;\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>"
+                            "TIP9c": "<div style=\"margin-left:10px;\">c. 推選配置の百分率表しは入力された重み付けと結果値あいだの重み付け一致率を意味します。</div>",
+                            "TIP9d": "<div style=\"margin-left:10px;\">d. 初期段階[戦役1~4]を除外することをお勧めします。</div>"
                         },
                         "AREASELECT": {
                             "TITLE": "戦役選択"
