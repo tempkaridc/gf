@@ -2,7 +2,10 @@ var lastUpdate      = '2020-05-07 15:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
-var updateString    = '- Area 13 added. <br>- Contract rate of area 13 is temporarly 20% each. <br>- Contract Rate Reference (<font style="color:blue;"><a href="https://github.com/tempkaridc/gf/blob/master/js/params.js" target="_blank">Link</a></font>)';
+
+var updateString    =   '- Area 13 added. <br>' +
+                        '- Contract rate of area 13 is temporarly 20% each. <br>' +
+                        '- Contract Rate Reference(<font style="color:blue;"><a href="https://github.com/tempkaridc/gf/blob/master/js/params.js" target="_blank">Link</a></font>)';
 
 
 var updateImage     = false;
@@ -114,15 +117,13 @@ function sortingTable(id){
         }
     }
 
-    /*
     if((id == 6) || (id == 0)){ //지역 & 시간은 asc로 sorting
         sortTable(document.getElementById("area-list"), id, 1);
     }else{
         sortTable(document.getElementById("area-list"), id, 0);
     }
-    */
 
-
+    /*
     if(sortToggle[id] <= 1){
         sortTable(document.getElementById("area-list"), id, 0);
         sortToggle[id] = 2;
@@ -130,7 +131,7 @@ function sortingTable(id){
         sortTable(document.getElementById("area-list"), id, 1);
         sortToggle[id] = 1;
     }
-
+    */
 }
 function btn_selArea(id){
     if($('#btn-area-' + id).hasClass('btn-success')){

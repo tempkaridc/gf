@@ -39,7 +39,7 @@ var languagePack_logistics =
                         "CLOSE": "도움말 닫기",
                         "TIPS": {
                             "TIP1": "1. 자원량 / 계약서 획득량은 표 좌측 하단의 <span id=\"help_time\"><a href=\"#\">시간당 / 완료시 획득 전환 버튼</a></span> 으로 변경 가능",
-                            "TIP2": "2. 표 상단의 <a href=\"#\">자원명</a> <font color=\"red\">클릭 시</font>, 오름 / 내림차순 정렬",
+                            "TIP2": "2. 표 상단의 <a href=\"#\">자원명</a> <font color=\"red\">클릭 시</font>, 해당 자원 우선 정렬",
                             "TIP3": "3. 표의 <a href=\"#\">합계</a> 값은 <font color=\"red\">자원 합계비</font>에 따라 계산. 기본값 1:1:1:2.2",
                             "TIP4": "4. 계약서 획득확률 참고자료(<font style=\"color:blue;\"><a href=\"https://github.com/tempkaridc/gf/blob/master/js/params.js\" target=\"_blank\">링크</a></font>)",
                             "TIP5": "5. 하단 예상 그래프는 <a href=\"#\">현재자원</a> <font color=\"red\">값부터 합산</font>, 미입력시 0부터 계산",
@@ -209,7 +209,7 @@ var languagePack_logistics =
                         "CLOSE": "Close Help",
                         "TIPS": {
                             "TIP1": "1. Toggle 'Resource & Contract gain per HOUR or AREA' with <span id=\"help_time\"><a href=\"#toggleTime\">Button left-bottom of the table</a></span>",
-                            "TIP2": "2. When you click <a href=\"#\">Resource Name</a>, ASC / DESC Sort",
+                            "TIP2": "2. Click <a href=\"#\">Resource Name</a>, to sort with it",
                             "TIP3": "3. <a href=\"#\">Total</a> calculated with <font color=\"red\">Total Sumrate</font> multiplier. Default 1:1:1:2.2",
                             "TIP4": "4. Contract Gain Chance Reference(<font style=\"color:blue;\"><a href=\"https://github.com/tempkaridc/gf/blob/master/js/params.js\" target=\"_blank\">Link</a></font>)",
                             "TIP5": "5. Graph starts from <a href=\"#\">Pre Resources</a> <font color=\"red\"></font>, default is 0",
@@ -379,7 +379,7 @@ var languagePack_logistics =
                         "CLOSE": "ヘルプを閉じる",
                         "TIPS": {
                             "TIP1": "1. 資源量 / 契約獲得量は表左側下段の <span id=\"help_time\"><a href=\"#toggleTime\">一時間 / 完了時獲得転換ボタン</a></span> で転換可能",
-                            "TIP2": "2. 表上段の <a href=\"#\">資源</a> <font color=\"red\">クリック時</font>, 昇順 / 降順整列",
+                            "TIP2": "2. 表上段の <a href=\"#\">資源</a> <font color=\"red\">クリック時</font>, 整列",
                             "TIP3": "3. 表の <a href=\"#\">合計</a> は資源比 <font color=\"red\">合算レート</font>で計算. デフォルトち 1:1:1:2.2",
                             "TIP4": "4. 表の契約獲得率(<font style=\"color:blue;\"><a href=\"https://github.com/tempkaridc/gf/blob/master/js/params.js\" target=\"_blank\">リンク</a></font>)",
                             "TIP5": "5. 下段予想グラフは <a href=\"#\">現在資源</a> <font color=\"red\">量から合算</font>, 入力なしと０から計算",
