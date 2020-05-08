@@ -992,9 +992,10 @@ function clickRow(index){
         selectedList.push(index);
 
         //selectedList.sort(function(a, b){return parseInt(a) - parseInt(b)});
-        //지울때 큐순서로 지워지게 하는 기능 보완 없으면 못바꿔
+        //지울때 큐순서로 지워지게 하는 기능 보완 없으면 못바꿔!
         if(selectedList.length > 4){ //Stack Full
             $('#table-row-' + selectedList[0]).removeClass('success');
+            document.querySelector('#table-row-' + selectedList[0]).setAttribute('data-html2canvas-ignore',''); //Pure JS
             selectedList.splice(0,1);
         }
     }
