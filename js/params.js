@@ -13,7 +13,10 @@
  *  Area 12 Sample: 210 Logistics Complete Results without Great Success Case
  *  Area 13 Sample: Temporary 20% (2020-05-07). Observation would start at 2020-05-12
  *
- * Extra Refernces:
+ *  If there is question for the data, please ask at below bbs. (English Available)
+ *  BBS: http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1
+ *
+ * Extra Reference:
  *  Plan to ask for feedback
  *  https://docs.google.com/spreadsheets/d/1ah2JO6ggWuVaBho9yxgDMC-ucEKA8C42SBkjIlnIcWk
  *
