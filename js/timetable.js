@@ -117,7 +117,7 @@ function copyURL(){
     var encodedString = encodeHEX(hash);
     var t = document.createElement("textarea");
     document.body.appendChild(t);
-    t.value = 'https://tempkaridc.github.io/gf/timetable.html?c=' + encodedString;
+    t.value = 'https://tempkaridc.github.io/gf/agenda.html?c=' + encodedString;
     t.select();
     document.execCommand('copy');
     document.body.removeChild(t);

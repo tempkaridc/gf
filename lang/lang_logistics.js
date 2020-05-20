@@ -111,7 +111,7 @@ var languagePack_logistics =
                                 "BTN_CALC": "계산",
                                 "CALC_TEXT": "'계산'클릭 시, 가중치 자동입력"
                             },
-                            "SUCSRATIO": "계약서 확률",
+                            "SUCSRATIO": "계약서",
                             "TEXT_PERHOUR1": "시간당 ",
                             "TEXT_PERHOUR2": "개 이상",
                             "BTN_RCMD": "지역 추천",

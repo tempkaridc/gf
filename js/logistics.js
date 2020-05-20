@@ -18,6 +18,9 @@ var objectList      = new Array();
 var selectedList    = new Array();
 var sync_calcList   = new Array();
 
+var highReturnPt    = 0.5;              // 상위 50% 군수는 고효율 군수로 분류
+var rankTable       = new Array();
+
 //var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1,1,1];        // [14] 0 ~ 13지역
 var wghtToggle      = [0,0,0,0];                            // 계약서 4종 가중치 0 ~ 1.0
@@ -36,6 +39,7 @@ var sw_drawChart    = true;         // 차트 드로잉 갱신여부
 var sw_drawReserved = false;        // 차트 드로잉 예약여부
 var sw_interval     = false;        // 확인 주기 적용여부
 var sw_successEvent = false;        // 군수확업 이벤트 트리거
+var sw_calcHigh     = false;        // 고효율군수 클릭했는가?
 
 var val_success     = 0.6;          // 대성공 초기성공률 60%
 var val_interval    = 30;           // 확인 주기 초기값 30분
@@ -471,7 +475,12 @@ $('[id^=btn-fdb]').off().on('click', function (e) {
             break;
     }
 
-    $('#auto_calc').trigger('click');
+    if(sw_calcHigh == false){
+        $('#auto_calc').trigger('click');
+    }else{
+        $('#auto_calc_high').trigger('click');
+    }
+
 });
 $('[id^=btn-rangeSelector]').off().on('click', function (e) {
     var id = parseInt($(this).attr('idx'));
@@ -509,9 +518,17 @@ $('[id^=btn-rangeSelector]').off().on('click', function (e) {
 
     drawTickets(id);
 });
-$('#auto_calc').off().on('click', function (e) {
-    //$('#btn_wgt').trigger('click');
 
+$('#auto_calc').off().on('click', function (e) {
+    auto_calculation(0);
+});
+
+$('#auto_calc_high').off().on('click', function (e) {
+    auto_calculation(1);
+});
+
+function auto_calculation(type){
+    var originalList;
     var usedRes = new Object();
     var usedResA = new Array();
     sync_calcList.length = 0;
@@ -548,6 +565,14 @@ $('#auto_calc').off().on('click', function (e) {
 
     var numAry = new Array();
     for(var i in objectList){
+        if(type == 1){
+            console.log(objectList[i].highReturn);
+            if(objectList[i].highReturn == 0){
+                console.log('aaak!');
+                continue;     //여기서 저효율 군수 걸러내면됨
+            }
+        }
+
         numAry.push(i);
     }
     var comb = k_combinations(numAry, 4);
@@ -768,7 +793,7 @@ $('#auto_calc').off().on('click', function (e) {
         }
         return combs;
     }
-});
+}
 
 $('#btn-toggleTime').off().on('click', function (e) {
     highlight(1);
@@ -898,7 +923,7 @@ $('#btn-timetable').off().on('click', function (e) {
     code.push(0);           // 수면 False
     //var coded = Base64.encode(JSON.stringify(code));
     var coded = encodeHEX(code);
-    window.open('timetable.html?c=' + coded, '_blank');
+    window.open('agenda.html?c=' + coded, '_blank');
     function sortFunctionPlane(a, b) {if (a === b) {return 0;}else {return (a < b) ? -1 : 1;}}
 });
 
@@ -1525,7 +1550,6 @@ function loadTable(){
     }
 }
 function callData(){
-
     if(sw_interval == true){
         for(var i in arr){
             if((arr[i][2] % val_interval) == 0){
@@ -1536,11 +1560,39 @@ function callData(){
         }
     }
 
-    for(var i in arr){
+    // ======= Rank
+    rankTable = new Array();
+    for(var i = 0; i < arr.length; i++){
+        var tot = arr[i][3] / (arr[i][2] / 60) * val_sumRate.h +
+                  arr[i][4] / (arr[i][2] / 60) * val_sumRate.a +
+                  arr[i][5] / (arr[i][2] / 60) * val_sumRate.f +
+                  arr[i][6] / (arr[i][2] / 60) * val_sumRate.p;
+        var obj = {"id":i, "val":parseInt(tot)};
+        rankTable.push(obj);
+    }
+    for(var i = 0; i < rankTable.length; i++){
+        var rank = 0;
+        if(i == j){
+            continue;
+        }else{
+            for(var j = 0; j < rankTable.length; j++){
+                if(rankTable[i].val > rankTable[j].val){
+                    rank++;
+                }
+            }
+        }
+        rankTable[i].rank = rank;
+        if(rank >= parseInt(arr.length * (1 - highReturnPt))){rankTable[i].highReturn = 1;}else{rankTable[i].highReturn = 0;}
+    }
+    // ======= Rank End
+
+    for(var i = 0; i < arr.length; i++){
         var tmp = new Object();
         tmp.Area = arr[i][0];
         tmp.Stage = arr[i][1];
         tmp.Time = arr[i][2];
+
+        tmp.highReturn = rankTable[i].highReturn;
 
         if(sw_sucs){
             tmp.Human   = arr[i][3] * (0.5 * val_success + 1);
@@ -1588,13 +1640,14 @@ function callData(){
             }else{tmp.Ticket_Tokken     = 0;}
         }
 
-        if( (areaToggle[tmp.Area])
+        if((areaToggle[tmp.Area])
             && (timeToggle[time_front] * 60 <= tmp.Time)
             && (tmp.Time <= timeToggle[time_end] * 60)
         ){
             objectList.push(tmp);
         }
     }
+    console.log(objectList);
 }
 
 function reload(){

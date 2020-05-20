@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>VECTOR Calculator [BETA]</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/highcharts.css" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/x-icon" href="icon/favicon_zas.ico">
+</head>
+
+<body style="color: dimgray;">
+<div class="container-fluid" style="width:360px; margin: auto; padding:0px; overflow-x:hidden;">
+    <div class="panel panel-primary" style="margin-top:10px; padding:5px; margin-bottom:5px;" onmouseover="reCalc();">
+        <span id="text-title"></span>
+        <img src="img/vec/vec.gif" style="height:2em; float:right;">
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div>
+            <div style="width:100%;">
+                <span id="text-area" style="font-size:0.9em;"></span>
+            </div>
+            <div class="btn-group btn-group-justified" style="width:100%; display:inline-block;">
+                <div class="btn-group">
+                    <button id="btn-area-134" type="button" class="btn btn-sm btn-primary" tabindex="-1">
+                        13-4
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+
+        <div>
+            <div style="width:100%;">
+                <span id="text-doll-title" style="font-size:0.9em;"></span>
+            </div>
+            <div class="input-group" style="width:100%;">
+                <input id="doll_fire" type="number"
+                       class="form-control input-sm btn-font-responsive" min="0" value=""
+                       placeholder="" style="width:94%;"
+                       onChange="reCalc();">
+                <button id="btn-doll-help" type="button" class="btn btn-xs btn-danger"  style="height:1.5em !important; float:right;" onClick="btn_showModal(0);" tabindex="-1">?</button>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div>
+            <div style="width:100%;">
+                <span id="text-fairy-title" style="font-size:0.9em;"></span>
+
+            </div>
+            <div class="input-group" style="width:100%;">
+                <input id="fairy_fire" type="number"
+                       class="form-control input-sm btn-font-responsive" min="0" value=""
+                       placeholder="" style="width:94%;"
+                       onChange="reCalc();">
+                <button id="btn-fairy-help" type="button" class="btn btn-xs btn-danger" style="height:1.5em !important; float:right;" onClick="btn_showModal(1);" tabindex="-1">?</button>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div>
+            <div style="width:100%;">
+                <span id="text-place-title" style="font-size:0.9em;"></span>
+
+            </div>
+            <div class="input-group" style="width:100%;">
+                <input id="buff_fire" type="number"
+                       class="form-control input-sm btn-font-responsive" min="0" value=""
+                       placeholder="" style="width:94%;"
+                       onChange="reCalc();">
+                <button id="btn-buff-help" type="button" class="btn btn-xs btn-danger" style="height:1.5em !important; float:right;" onClick="btn_showModal(2);" tabindex="-1">?</button>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div>
+            <div style="width:100%;">
+                <span id="text-speed-title" style="font-size:0.9em;"></span>
+            </div>
+            <div style="width:100%; display:inline-block;">
+                <div class="col-sm-12" style="padding:0px;">
+                    <button id="btn-type-0" type="button" class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;" onclick="btn_selType(0);">
+                        <img src="img/vec/hg.png" style="width:100%;">
+                    </button>
+                    <button id="btn-type-1" type="button" class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;" onclick="btn_selType(1);">
+                        <img src="img/vec/smg.png" style="width:100%;">
+                    </button>
+                    <button id="btn-type-2" type="button" class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;" onclick="btn_selType(2);">
+                        <img src="img/vec/ar.png" style="width:100%;">
+                    </button>
+                    <button id="btn-type-3" type="button" class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;" onclick="btn_selType(3);">
+                        <img src="img/vec/rf.png" style="width:100%;">
+                    </button>
+                    <button id="btn-type-4" type="button" class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;" onclick="btn_selType(4);">
+                        <img src="img/vec/sg.png" style="width:100%;">
+                    </button>
+                    <button id="btn-type-5" type="button" class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;" onclick="btn_selType(5);">
+                        <img src="img/vec/mg.png" style="width:100%;">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div>
+            <div style="width:100%;">
+                <span id="text-talent-title" style="font-size:0.9em;"></span>
+            </div>
+            <div style="width:100%; display:inline-block;">
+                <div class="col-sm-12" style="padding:0px;">
+                    <button id="btn-talent-0" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(0);">
+                    </button>
+                    <button id="btn-talent-1" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(1);">
+                    </button>
+                    <button id="btn-talent-2" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(2);">
+                    </button>
+                    <button id="btn-talent-3" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(3);">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div>
+            <div style="width:100%;">
+                <span id="text-result-title" style="font-size:0.9em;"></span>
+            </div>
+            <div class="btn-group" role="group" style="width:100%; display:inline-block; margin-bottom:-1px; font-size:0.5rem;">
+                <button id="btn-name-fire" type="button" class="btn btn-xs btn-title" style="width:100%; float:left;" tabindex="-1" disabled></button>
+            </div>
+            <div class="btn-group" role="group" style="width:100%; display:inline-block;">
+                <button id="btn-calc-fire" type="button" class="btn btn-sm btn-default" style="width:100%; float:left;" tabindex="-1"></button>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div style="width:100%; font-size:12px;">
+            <div id="btn-help" class="btn btn-xs btn-danger" style="width:100%; margin-bottom:1px;" onclick="btn_openHelp(this)"></div>
+            <div id="btn-help-1" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(1)"></div>
+            <div id="btn-help-1a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-1t" ></span><img src="img/zas/auto2.png"></div>
+            <div id="btn-help-2" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(2)"></div>
+            <div id="btn-help-2a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-2t" ></span></div>
+            <div id="btn-help-3" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(3)"></div>
+            <div id="btn-help-3a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-3t" ></span><img src=""></div>
+            <div id="btn-help-4" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(4)"></div>
+            <div id="btn-help-4a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-4t" ></span><img src=""></div>
+            <div id="btn-help-5" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(5)"></div>
+            <div id="btn-help-5a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-5t" ></span><img src="" style="width:100%;"></div>
+        </div>
+    </div>
+    <div style="font-size:12px;">
+        <div class="col-xs-12" style="margin-bottom:3px;">
+            <div style="float:right;">
+                <table>
+                    <tbody>
+                    <tr>
+                        <td style="padding-left:5px;">
+                            <img src="img/kr.png" style="padding-right:2px;">
+                            <img src="img/en.png" style="padding-right:2px;">
+                            <img src="img/ja.png" style="padding-right:2px;">
+                        </td>
+                        <td style="padding-left:5px;">
+                            <select id="selectLang" onChange="selectLanguage(this);">
+                                <option value="ko" selected>Korean</option>
+                                <option value="en">English</option>
+                                <option value="ja">Japanese</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div style="float:left;">
+                <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
+            </div>
+        </div>
+        <div class="col-xs-12">
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        Link:
+                    </td>
+                    <td style="padding-left:5px;">
+                        <select onChange="if(this.value) window.open(this.value);">
+                            <option value="" selected>[Page List]</option>
+                            <option value="https://tempkaridc.github.io/gf/">Logistics Calculator</option>
+                            <option value="https://tempkaridc.github.io/gf/zas.html">8-1n ZAS Calculator</option>
+                            <option value="https://tempkaridc.github.io/gf/vec.html">13-4 Vector Calculator</option>
+                            <option value="https://tempkaridc.github.io/gf/moon.html">Lego Placer</option>
+                            <option value="https://tempkaridc.github.io/gf/agenda.html">Logistics Agenda [Beta]</option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<div class="modal fade" id="help0" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div style="position:relative; width:100%; font-size:1vw; color:lawngreen;">
+                    <img id="help_pic_stat" src="img/vec/help_stat_en.png" style="width:100%;" onClick="btn_hideModal(0);">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="help1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="position:relative;">
+                <img id="help_pic_fairy" src="img/vec/help_fairy_en.png" style="width:100%;" onClick="btn_hideModal(1);">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="help2" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="position:relative;">
+                <img id="help_pic_buff" src="img/vec/help_buff_en.png" style="width:100%; align:middle;" onClick="btn_hideModal(2);">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="js/extlib/jquery-2.2.4.min.js"></script>
+<script src="js/extlib/bootstrap.js"></script>
+<script src="js/params.js"></script>
+<script src="lang/lang_vec.js"></script>
+<script src="js/vec.js"></script>
+</body>
+</html>

@@ -861,6 +861,9 @@
                                                 <td width="80%">
                                                     <div id="auto_calc" class="btn btn-sm btn-primary" style="width:100%;"></div>
                                                 </td>
+                                                <td width="40%" style="display:none;">
+                                                    <div id="auto_calc_high" class="btn btn-sm btn-danger" style="width:100%;">고효율</div>
+                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -1035,10 +1038,25 @@
                                target="_blank">https://github.com/tempkaridc/gf</a><br>
                 </div>
                 <div class="col-xs-12">
-                    Link:
-                    <a href="https://tempkaridc.github.io/gf/zas.html" target="_blank">ZAS Calc</a>,
-                    <a href="https://tempkaridc.github.io/gf/moon.html" target="_blank">Lego Placer</a>,
-                    <a href="https://tempkaridc.github.io/gf/timetable.html" target="_blank">Logistics Agenda<small>[Beta]</small></a>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <td>
+                                Link:
+                            </td>
+                            <td style="padding-left:5px;">
+                                <select onChange="if(this.value) window.open(this.value);">
+                                    <option value="" selected>[Page List]</option>
+                                    <option value="https://tempkaridc.github.io/gf/">Logistics Calculator</option>
+                                    <option value="https://tempkaridc.github.io/gf/zas.html">8-1n ZAS Calculator</option>
+                                    <option value="https://tempkaridc.github.io/gf/vec.html">13-4 Vector Calculator</option>
+                                    <option value="https://tempkaridc.github.io/gf/moon.html">Lego Placer</option>
+                                    <option value="https://tempkaridc.github.io/gf/agenda.html">Logistics Agenda [Beta]</option>
+                                </select>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
                 </div>
             </small>
         </div>

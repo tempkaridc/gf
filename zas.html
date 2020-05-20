@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>ZAS Calculator [BETA]</title>
+    <title>ZAS Calculator</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/highcharts.css" rel="stylesheet"/>
     <link rel="shortcut icon" type="image/x-icon" href="icon/favicon_zas.ico">
@@ -151,10 +151,25 @@
             </div>
         </div>
         <div class="col-xs-12">
-            Links:
-            <a href="https://tempkaridc.github.io/gf/" target="_blank">Logistics Calc</a>,
-            <a href="https://tempkaridc.github.io/gf/timetable.html" target="_blank">Agenda</a>,
-            <a href="https://tempkaridc.github.io/gf/moon.html" target="_blank">Legoplacer</a>
+            <table>
+                <tbody>
+                <tr>
+                    <td>
+                        Link:
+                    </td>
+                    <td style="padding-left:5px;">
+                        <select onChange="if(this.value) window.open(this.value);">
+                            <option value="" selected>[Page List]</option>
+                            <option value="https://tempkaridc.github.io/gf/">Logistics Calculator</option>
+                            <option value="https://tempkaridc.github.io/gf/zas.html">8-1n ZAS Calculator</option>
+                            <option value="https://tempkaridc.github.io/gf/vec.html">13-4 Vector Calculator</option>
+                            <option value="https://tempkaridc.github.io/gf/moon.html">Lego Placer</option>
+                            <option value="https://tempkaridc.github.io/gf/agenda.html">Logistics Agenda [Beta]</option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
