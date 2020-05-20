@@ -1,7 +1,7 @@
 var languagepack_vec =
     {
         "ko":{
-            "title":"1링크 100레벨 10스킬 벡터런 계산기",
+            "title":"1링크 10스킬 벡터런 계산기",
             "area":"지역",
             "fire":"화력",
             "doll":{
@@ -17,10 +17,10 @@ var languagepack_vec =
                 "fire":"화력버프 합계(%) 입력"
             },
             "speed":{
-                "title":"승객 명단: "
+                "title":"승객: "
             },
             "talent":{
-                "title":"5성 요정 특성: <small>(100% 발동)</small>",
+                "title":"요정 특성: <small>(5성 필수 = 100% 발동)</small>",
                 "t1":"살상계 I",
                 "t2":"살상계 II",
                 "t3":"선봉계",
@@ -37,13 +37,13 @@ var languagepack_vec =
             "qna":{
                 "title":"벡터런중에 자꾸 사고가 나요...",
                 "q1":"Q. 진형이 ㄷ 모양인가?",
-                "a1":"A. HG, SMG, AR, RF 배치 시, ㄷ 진형으로 고정<br>SG MG RF(with Suit) 배치 시, P/b 진형도 가능",
+                "a1":"A. HG, SMG, AR, RF 배치 시, ㄷ 진형으로 고정<br>SG MG RF(미채 착용) 배치 시, p/b 진형도 가능<br>",
                 "q2":"Q. 전투 자동스킬을 켰는가?",
                 "a2":"A. AUTO 자동스킬 활성화를 안하면 벡터가 화염병을 던지지 않는다<br>"
             }
         },
         "ja":{
-            "title":"1リンク スキルレベル1 ZASラン計算機",
+            "title":"1リンク スキルレベル10 Vectorラン計算機",
             "area":"ステージ",
             "fire":"火力",
             "doll":{
@@ -60,7 +60,14 @@ var languagepack_vec =
                 "fire":"火力バフ合計(%)"
             },
             "speed":{
-                "title":"승객 명단: "
+                "title":"乗客 : "
+            },
+            "talent":{
+                "title":"妖精天賦: <small>(★5推薦 = 100% 発動)</small>",
+                "t1":"殺傷型 I",
+                "t2":"殺傷型 II",
+                "t3":"先鋒型",
+                "t4":"激昂型"
             },
             "result":{
                 "title":"計算結果: ",
@@ -71,17 +78,11 @@ var languagepack_vec =
                 }
             },
             "qna":{
-                "title":"벡터런중에 자꾸 사고가 나요...",
-                "q1":"Q. 요정의 지령스킬을 껐는가?",
-                "a1":"A. 요정 스킬 발동시 자스의 화력/사속이 변경될 수 있으므로, 지령스킬 사용은 하지 말 것<br>",
-                "q2":"Q. 승객에게 탄약/식량이 남아있는가?",
-                "a2":"A. 승객이 철댕이를 잡으면 유탄이 엉뚱한데로 날아가므로, 반드시 퇴각으로 승객의 탄식을 제거할 것<br>",
-                "q3":"Q. 승객이 최근 편제확대를 했는가?",
-                "a3":"A. 편제확대시 승객의 탄약/식량이 보급되므로, 편확 후 반드시 퇴각으로 탄식을 제거할 것<br>",
-                "q4":"Q. 진형이 ㄷ 모양인가??",
-                "a4":"A. 이 외 모양의 진형에 위치한 인형은 무조건 공격받으니, 진형 모양은 ㄷ 모양으로 고정할 것<br>",
-                "q5":"Q. 전투 자동스킬을 켰는가?",
-                "a5":"A. AUTO 자동스킬 활성화를 안하면 벡터가 화염병을 던지지 않는다<br>"
+                "title":"トラブルシューティング",
+                "q1":"Q. 陣形はCになっていますか？",
+                "a1":"A. HG,SMG,AR,RF配置時の陣形は必ずCに。<br>SG,MG,RF(カモフラージュマント着用)配置時の陣形はpやbも可能<br>",
+                "q2":"Q. 人形のスキル自動発動をONにしていますか？",
+                "a2":"A. Vectorはスキルによりグレネードを発射して敵を倒します。スキル自動発動をONにしましょう<br>"
             }
         },
         "en":{
@@ -101,7 +102,14 @@ var languagepack_vec =
                 "fire":"Dmg. Buff (%)"
             },
             "speed":{
-                "title":"승객 명단: "
+                "title":"Passengers: "
+            },
+            "talent":{
+                "title":"Fairy Talent: <small>(Recommend 5-Star, active rate 100%)</small>",
+                "t1":"Damage I",
+                "t2":"Damage II",
+                "t3":"Charge",
+                "t4":"Fervor"
             },
             "result":{
                 "title":"Result: ",
@@ -112,17 +120,11 @@ var languagepack_vec =
                 }
             },
             "qna":{
-                "title":"벡터런중에 자꾸 사고가 나요...",
-                "q1":"Q. 요정의 지령스킬을 껐는가?",
-                "a1":"A. 요정 스킬 발동시 자스의 화력/사속이 변경될 수 있으므로, 지령스킬 사용은 하지 말 것<br>",
-                "q2":"Q. 승객에게 탄약/식량이 남아있는가?",
-                "a2":"A. 승객이 철댕이를 잡으면 유탄이 엉뚱한데로 날아가므로, 반드시 퇴각으로 승객의 탄식을 제거할 것<br>",
-                "q3":"Q. 승객이 최근 편제확대를 했는가?",
-                "a3":"A. 편제확대시 승객의 탄약/식량이 보급되므로, 편확 후 반드시 퇴각으로 탄식을 제거할 것<br>",
-                "q4":"Q. 진형이 ㄷ 모양인가??",
-                "a4":"A. 이 외 모양의 진형에 위치한 인형은 무조건 공격받으니, 진형 모양은 ㄷ 모양으로 고정할 것<br>",
-                "q5":"Q. 전투 자동스킬을 켰는가?",
-                "a5":"A. AUTO 자동스킬 활성화를 안하면 벡터가 화염병을 던지지 않는다<br>"
+                "title":"Troubleshooting",
+                "q1":"DID YOU USE C Formation?",
+                "a1":"MUST use C formation with HG, SMG, AR, and RF<br>Able to use p/b formation with SG, MG, RF(with Suit)<br>",
+                "q2":"DID YOU TURN ON AUTOSKILL?",
+                "a2":"IF NOT, SHE WILL NOT FIRE GRENADE<br>"
             }
         }
     };

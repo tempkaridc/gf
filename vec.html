@@ -6,7 +6,7 @@
     <title>VECTOR Calculator [BETA]</title>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/highcharts.css" rel="stylesheet"/>
-    <link rel="shortcut icon" type="image/x-icon" href="icon/favicon_zas.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="icon/favicon_vec.ico">
 </head>
 
 <body style="color: dimgray;">
@@ -107,8 +107,7 @@
                     <button id="btn-type-6" type="button" class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;" onclick="btn_selType(6);">
                         <img src="img/vec/suit.png" style="width:100%;">
                     </button>
-                    <div class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;"></div>
-                    <div class="btn btn-sm btn-default col-sm-2 col-xs-2" style="padding:0rem;"></div>
+                    <div class="btn btn-sm col-sm-4 col-xs-4" style="padding:0rem; text-align:left;"><small> *Suit Recommended</small></div>
                 </div>
             </div>
         </div>
@@ -135,7 +134,7 @@
         <hr style="margin-top:5px; margin-bottom:5px;">
         <div>
             <div style="width:100%;">
-                <span id="text-result-title" style="font-size:0.9em;"></span>
+                <b><span id="text-result-title" style="font-size:0.9em;"></span></b>
             </div>
             <div class="btn-group" role="group" style="width:100%; display:inline-block; margin-bottom:-1px; font-size:0.5rem;">
                 <button id="btn-name-fire" type="button" class="btn btn-xs btn-title" style="width:100%; float:left;" tabindex="-1" disabled></button>
@@ -145,23 +144,17 @@
             </div>
         </div>
 
-        <hr style="margin-top:5px; margin-bottom:5px;">
+        <hr style="margin-top:5px; margin-bottom:15px;">
         <div style="width:100%; font-size:12px;">
             <div id="btn-help" class="btn btn-xs btn-danger" style="width:100%; margin-bottom:1px;" onclick="btn_openHelp(this)"></div>
             <div id="btn-help-1" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(1)"></div>
-            <div id="btn-help-1a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-1t" ></span><img src="img/zas/auto2.png"></div>
+            <div id="btn-help-1a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-1t" ></span><img src="img/vec/formation.png" style="width:100%;"></div>
             <div id="btn-help-2" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(2)"></div>
-            <div id="btn-help-2a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-2t" ></span></div>
-            <div id="btn-help-3" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(3)"></div>
-            <div id="btn-help-3a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-3t" ></span><img src=""></div>
-            <div id="btn-help-4" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(4)"></div>
-            <div id="btn-help-4a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-4t" ></span><img src=""></div>
-            <div id="btn-help-5" class="btn btn-xs btn-primary hide" style="text-align:left; width:100%; margin-bottom:1px;" onclick="btn_toggleHelp(5)"></div>
-            <div id="btn-help-5a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-5t" ></span><img src="" style="width:100%;"></div>
+            <div id="btn-help-2a" class="hide" style="margin-bottom:5px; padding:5px; text-align:left; width:100%;" ><span id="btn-help-2t" ></span><img src="img/vec/auto.png"></div>
         </div>
     </div>
     <div style="font-size:12px;">
-        <div class="col-xs-12" style="margin-bottom:3px;">
+        <div class="col-xs-12" style="margin-bottom:3px; padding:0px;">
             <div style="float:right;">
                 <table>
                     <tbody>
@@ -183,30 +176,28 @@
                 </table>
             </div>
             <div style="float:left;">
-                <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            Link:
+                        </td>
+                        <td style="padding-left:5px;">
+                            <select onChange="if(this.value) window.open(this.value);">
+                                <option value="" selected>- Pages -</option>
+                                <option value="https://tempkaridc.github.io/gf/">Logistics Calculator</option>
+                                <option value="https://tempkaridc.github.io/gf/zas.html">8-1n ZAS Calculator</option>
+                                <option value="https://tempkaridc.github.io/gf/vec.html">13-4 Vector Calculator</option>
+                                <option value="https://tempkaridc.github.io/gf/moon.html">Lego Placer</option>
+                                <option value="https://tempkaridc.github.io/gf/agenda.html">Logistics Agenda [Beta]</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-        <div class="col-xs-12">
-            <table>
-                <tbody>
-                <tr>
-                    <td>
-                        Link:
-                    </td>
-                    <td style="padding-left:5px;">
-                        <select onChange="if(this.value) window.open(this.value);">
-                            <option value="" selected>[Page List]</option>
-                            <option value="https://tempkaridc.github.io/gf/">Logistics Calculator</option>
-                            <option value="https://tempkaridc.github.io/gf/zas.html">8-1n ZAS Calculator</option>
-                            <option value="https://tempkaridc.github.io/gf/vec.html">13-4 Vector Calculator</option>
-                            <option value="https://tempkaridc.github.io/gf/moon.html">Lego Placer</option>
-                            <option value="https://tempkaridc.github.io/gf/agenda.html">Logistics Agenda [Beta]</option>
-                        </select>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </div>
+        <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
     </div>
 
 </div>

@@ -90,7 +90,26 @@
         <hr style="margin-top:5px; margin-bottom:5px;">
         <div>
             <div style="width:100%;">
-                <span id="text-result-title" style="font-size:0.9em;"></span>
+                <span id="text-talent-title" style="font-size:0.9em;"></span>
+            </div>
+            <div style="width:100%; display:inline-block;">
+                <div class="col-sm-12" style="padding:0px;">
+                    <button id="btn-talent-0" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(0);">
+                    </button>
+                    <button id="btn-talent-1" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(1);">
+                    </button>
+                    <button id="btn-talent-2" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(2);">
+                    </button>
+                    <button id="btn-talent-3" type="button" class="btn btn-sm btn-default col-sm-3 col-xs-3" style="padding:0rem;" onclick="btn_selTalent(3);">
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <hr style="margin-top:5px; margin-bottom:5px;">
+        <div>
+            <div style="width:100%;">
+                <b><span id="text-result-title" style="font-size:0.9em;"></span></b>
             </div>
             <div class="btn-group" role="group" style="width:100%; display:inline-block; margin-bottom:-1px; font-size:0.5rem;">
                 <button id="btn-name-fire" type="button" class="btn btn-xs btn-title" style="width:49%; float:left;" tabindex="-1" disabled></button>
@@ -102,7 +121,7 @@
             </div>
         </div>
 
-        <hr style="margin-top:5px; margin-bottom:5px;">
+        <hr style="margin-top:5px; margin-bottom:15px;">
         <div style="width:100%; font-size:12px;">
             <div id="btn-help" class="btn btn-xs btn-danger" style="width:100%; margin-bottom:1px;" onclick="btn_openHelp(this)"></div>
 
@@ -125,7 +144,7 @@
         </div>
     </div>
     <div style="font-size:12px;">
-        <div class="col-xs-12" style="margin-bottom:3px;">
+        <div class="col-xs-12" style="margin-bottom:3px; padding:0px;">
             <div style="float:right;">
                 <table>
                     <tbody>
@@ -147,29 +166,29 @@
                 </table>
             </div>
             <div style="float:left;">
-                <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
+                <table>
+                    <tbody>
+                    <tr>
+                        <td>
+                            Link:
+                        </td>
+                        <td style="padding-left:5px;">
+                            <select onChange="if(this.value) window.open(this.value);">
+                                <option value="" selected>- Pages -</option>
+                                <option value="https://tempkaridc.github.io/gf/">Logistics Calculator</option>
+                                <option value="https://tempkaridc.github.io/gf/zas.html">8-1n ZAS Calculator</option>
+                                <option value="https://tempkaridc.github.io/gf/vec.html">13-4 Vector Calculator</option>
+                                <option value="https://tempkaridc.github.io/gf/moon.html">Lego Placer</option>
+                                <option value="https://tempkaridc.github.io/gf/agenda.html">Logistics Agenda [Beta]</option>
+                            </select>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         <div class="col-xs-12">
-            <table>
-                <tbody>
-                <tr>
-                    <td>
-                        Link:
-                    </td>
-                    <td style="padding-left:5px;">
-                        <select onChange="if(this.value) window.open(this.value);">
-                            <option value="" selected>[Page List]</option>
-                            <option value="https://tempkaridc.github.io/gf/">Logistics Calculator</option>
-                            <option value="https://tempkaridc.github.io/gf/zas.html">8-1n ZAS Calculator</option>
-                            <option value="https://tempkaridc.github.io/gf/vec.html">13-4 Vector Calculator</option>
-                            <option value="https://tempkaridc.github.io/gf/moon.html">Lego Placer</option>
-                            <option value="https://tempkaridc.github.io/gf/agenda.html">Logistics Agenda [Beta]</option>
-                        </select>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
+            <span id="str_bottom_sgst"></span><a href="http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1" target="_blank">Guestbook</a><br>
         </div>
     </div>
 

@@ -19,6 +19,13 @@ var languagepack_zas =
                 "fire":"화력버프 합계(%) 입력",
                 "rate":"사속버프 합계(%) 입력"
             },
+            "talent":{
+                "title":"요정 특성: <small>(★5 필수 = 100% 발동)</small>",
+                "t1":"살상계 I",
+                "t2":"살상계 II",
+                "t3":"돌격계",
+                "t4":"격양계"
+            },
             "result":{
                 "title":"계산 결과: ",
                 "fire":{
@@ -72,6 +79,13 @@ var languagepack_zas =
                 "fire":"火力バフ合計(%)",
                 "rate":"射速バフ合計(%)"
             },
+            "talent":{
+                "title":"妖精天賦: <small>(★5推薦 = 100% 発動)</small>",
+                "t1":"殺傷型 I",
+                "t2":"殺傷型 II",
+                "t3":"突撃型",
+                "t4":"激昂型"
+            },
             "result":{
                 "title":"計算結果: ",
                 "fire":{
@@ -124,6 +138,13 @@ var languagepack_zas =
                 "title":"Formation Buff: ",
                 "fire":"Dmg. Buff (%)",
                 "rate":"RoF. Buff (%)"
+            },
+            "talent":{
+                "title":"Fairy Talent: <small>(Recommend ★5 = active rate 100%)</small>",
+                "t1":"Damage I",
+                "t2":"Damage II",
+                "t3":"Assualt",
+                "t4":"Fervor"
             },
             "result":{
                 "title":"Result: ",

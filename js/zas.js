@@ -24,6 +24,14 @@ var frame   = [
     [       999,        0,          0       ]
 ];
 
+//                      살상1   살상2    돌격     격양
+var selected_talent     = [ 0,      0,      0,      0   ];
+var fairy_talent_fire   = [ 12,     15,     10,     8  ];
+var fairy_talent_rate   = [ 0,      0,      8,      0  ];
+var buff_talent_fire    = 0;
+var buff_talent_rate    = 0;
+
+
 var selLang         = 'ko';
 var langPack;
 var langPacks;
@@ -72,6 +80,36 @@ $(function (){
     $('#selectLang').val(selLang).change();
 	
 });
+
+
+function disp_selTalent(){
+    for(var i = 0; i < selected_talent.length; i++){
+        if(selected_talent[i] == 1){
+            $('#btn-talent-' + i).removeClass('btn-default');
+            $('#btn-talent-' + i).addClass('btn-success');
+        }else{
+            $('#btn-talent-' + i).removeClass('btn-success');
+            $('#btn-talent-' + i).addClass('btn-default');
+        }
+    }
+}
+
+function btn_selTalent(id){
+    if(selected_talent[id] == 1){
+        selected_talent[id] = 0;
+        buff_talent_fire = 0;
+        buff_talent_rate = 0;
+    }else{
+        for(var i = 0; i < selected_talent.length; i++){
+            selected_talent[i] = 0;
+        }
+        selected_talent[id] = 1;
+        buff_talent_fire = fairy_talent_fire[id];
+        buff_talent_rate = fairy_talent_rate[id];
+    }
+    disp_selTalent();
+    reCalc();
+}
 
 function btn_selArea(idx){
     switch(idx){
@@ -165,8 +203,8 @@ function reCalc(){
         $('#buff_rate').val(100);
     }
 
-    var finalFire = Math.ceil(Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (0.85) + 2);
-    var finalRate = Math.floor(dollRate * (1 + (buffRate / 100)));
+    var finalFire = Math.ceil(Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (1 + (buff_talent_fire / 100)) + 2); // * (0.85)
+    var finalRate = Math.floor(dollRate * (1 + (buffRate / 100)) * (1 + (buff_talent_rate / 100)));
 
     chkFire(finalFire);
     chkRate(finalRate);
@@ -175,12 +213,13 @@ function reCalc(){
 function chkFire(num){
     if(isNaN(num)){dispFire(3,langPack.result.fire.fail);return;}
 
-    var min81 = 82;
+    var minFire = 93;
+
     if(area == 81){
-        if(num >= min81){
-            dispFire(2, langPack.result.fire.enable + num + ' (+' + (num - min81) + ')');
+        if(num >= minFire){
+            dispFire(2, langPack.result.fire.enable + num + ' (+' + (num - minFire) + ')');
         }else{
-            dispFire(0, langPack.result.fire.disable + num + ' (' + (num - min81) + ')');
+            dispFire(0, langPack.result.fire.disable + num + ' (' + (num - minFire) + ')');
         }
     }else{
         if(num >= 63){
@@ -305,6 +344,11 @@ function setLanguage(){
     $('#text-place-title').text(langPack.place.title);
     $('#buff_fire').attr('placeholder', langPack.place.fire);
     $('#buff_rate').attr('placeholder', langPack.place.rate);
+
+    $('#text-talent-title').html(langPack.talent.title);
+    for (let i = 1; i <= 4; i++) {
+        $('#btn-talent-'+(i-1)).text(langPack.talent['t'+ i]);
+    }
 
     $('#text-result-title').text(langPack.result.title);
 

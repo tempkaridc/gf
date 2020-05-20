@@ -169,8 +169,7 @@ function reCalc(){
         $('#buff_fire').val(100);
     }
 
-    var finalFire = Math.ceil(
-                                Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (1 + (buff_talent / 100)));// *(0.85)
+    var finalFire = Math.ceil(Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (1 + (buff_talent / 100)));
 
     chkFire(finalFire);
 }
