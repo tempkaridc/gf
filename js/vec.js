@@ -170,13 +170,7 @@ function reCalc(){
     }
 
     var finalFire = Math.ceil(
-                                Math.ceil(
-                                            dollFire * (1 + (fairyFire / 100))
-                                )
-                                * (1 + (buffFire / 100))
-                                * (1 + (buff_talent / 100))
-                                * (0.85)
-                                + 2);
+                                Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (1 + (buff_talent / 100)));// *(0.85)
 
     chkFire(finalFire);
 }
