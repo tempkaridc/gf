@@ -4,7 +4,7 @@ var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 var updateDate      = 'Changelog (' + lastUpdate + ')';
 
 var updateString    =   '- Added 13-4 Vector Calculator. (<font style="color:blue;"><a href="https://tempkaridc.github.io/gf/vec.html" target="_blank">Link</a></font>)<br>' +
-                        '- Modified 8-1n ZAS Calculator. (<font style="color:blue;"><a href="https://tempkaridc.github.io/gf/zas.html" target="_blank">Link</a></font>);
+                        '- Modified 8-1n ZAS Calculator. (<font style="color:blue;"><a href="https://tempkaridc.github.io/gf/zas.html" target="_blank">Link</a></font>)';
 
 var updateImage     = false;
 
