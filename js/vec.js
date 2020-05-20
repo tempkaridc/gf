@@ -8,13 +8,14 @@ var langPack;
 var langPacks;
 var config;
 
-//                      HG  SMG AR  RF  SG  MG
-var selected_enc = [    0,  0,  0,  0,  0,  0   ];
-var moving_speed = [    15, 12, 10, 7,  6,  4   ];
-var type_minFire = [    998,998,132,128,126,124 ];
-//                      살상1 살상2 선봉  격양
-var selected_talent = [  0, 0 ,0, 0 ];
-var fairy_talent  = [    12,   15,   8,  10      ];
+//                      HG  SMG AR  RF  SG  MG  RF(S)
+var selected_enc = [    0,  0,  0,  0,  0,  0,  0   ];
+var moving_speed = [    15, 12, 10, 7,  6,  4,  4   ];
+var type_minFire = [    142,142,132,128,126,124,124 ];
+
+//                      살상1   살상2    선봉     격양
+var selected_talent = [ 0,      0,      0,      0   ];
+var fairy_talent    = [ 12,     15,     8,      10  ];
 var buff_talent = 0;
 
 $(function (){
@@ -84,7 +85,6 @@ function btn_selTalent(id){
         selected_talent[id] = 1;
         buff_talent = fairy_talent[id];
     }
-
     disp_selTalent();
     reCalc();
 }
@@ -103,6 +103,14 @@ function disp_selType(){
 
 function btn_selType(id){
     if(selected_enc[id] == 1){selected_enc[id] = 0;}else{selected_enc[id] = 1;}
+    if(id == 3){
+        if(selected_enc[id] == 1){
+            $('#btn-type-extra').show();
+        }else{
+            $('#btn-type-extra').hide();
+            selected_enc[6] = 0;
+        }
+    }
     disp_selType();
     reCalc();
 }
@@ -162,13 +170,13 @@ function reCalc(){
     }
 
     var finalFire = Math.ceil(
-                        Math.ceil(
-                            dollFire * (1 + (fairyFire / 100))
-                        )
-                        * (1 + (buffFire / 100))
-                        * (1 + (buff_talent / 100))
-                        * (0.85)
-                        + 2);
+                                Math.ceil(
+                                            dollFire * (1 + (fairyFire / 100))
+                                )
+                                * (1 + (buffFire / 100))
+                                * (1 + (buff_talent / 100))
+                                * (0.85)
+                                + 2);
 
     chkFire(finalFire);
 }
@@ -283,7 +291,7 @@ function setLanguage(){
 
     $('#btn-help').text(langPack.qna.title);
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 2; i++) {
         $('#btn-help-'+i).text(langPack.qna['q'+ i]);
         $('#btn-help-'+i+'t').html(langPack.qna['a'+ i]);
     }
