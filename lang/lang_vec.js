@@ -86,7 +86,7 @@ var languagepack_vec =
             }
         },
         "en":{
-            "title":"1-Link 1Lv-Skill ZAS Calculator",
+            "title":"1-Link 10Lv-Skill Vector Calculator",
             "area":"Area",
             "fire":"Damage",
             "doll":{
