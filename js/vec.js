@@ -11,7 +11,7 @@ var config;
 //                      HG  SMG AR  RF  SG  MG  RF(S)
 var selected_enc = [    0,  0,  0,  0,  0,  0,  0   ];
 var moving_speed = [    15, 12, 10, 7,  6,  4,  4   ];
-var type_minFire = [    142,142,132,128,126,124,124 ];
+var type_minFire = [    142,142,140,128,126,124,124 ];
 
 //                      살상1   살상2    선봉     격양
 var selected_talent = [ 0,      0,      0,      0   ];
