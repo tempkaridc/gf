@@ -16,7 +16,7 @@ var type_minFire = [    142,142,140,128,126,124,124 ];
 //                      살상1   살상2    선봉     격양
 var selected_talent = [ 0,      0,      0,      0   ];
 var fairy_talent    = [ 12,     15,     8,      10  ];
-var buff_talent = 0;
+var buff_talent     = 0;
 
 $(function (){
     langPacks = languagepack_vec;

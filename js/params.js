@@ -22,6 +22,8 @@
  *
  *****************************************************************************************************/
 
+var timeOriginal; // Original time array for area. Used for recover interval function. arr[i][2]
+
 var arr = [
 //  Area,   Stage,  Time,   Huma,   Ammo,   MRE,    Part,   Doll,   Tool,   Fast,   Repr,   Tokn
     [0,     1,      50,     0,      145,    145,    0,      0,      0,      0.2,    0.5,    0   ],
