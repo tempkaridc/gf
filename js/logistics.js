@@ -1,4 +1,4 @@
-var lastUpdate      = '2020-05-27 12:05'
+var lastUpdate      = '2020-05-28 12:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
@@ -7,6 +7,7 @@ var updateString    =       '- Added <i>13-4 Vector Calculator</i>. (<font style
                     +   '<br>- Modified <i>8-1n ZAS Calculator</i>. (<font style="color:blue;"><a href="https://tempkaridc.github.io/gf/zas.html" target="_blank">Link</a></font>)'
                     +   '<br>- Bugfix #1: Contract error on 13-1 (repair to quick production)'
                     +   '<br>- Bugfix #2: Recover area time when out of <i>Check Cycle</i> function'
+                    +   '<br>- Bugfix #3: Change T-Doll Input Guide image of Vector Calculator'
                     ;
 
 var updateImage     = false;
@@ -18,8 +19,6 @@ var langPack;
 var objectList      = new Array();
 var selectedList    = new Array();
 var sync_calcList   = new Array();
-
-var rankTable       = new Array();
 
 //var sortToggle      = [0,0,0,0,0,0,0,0,0,0,0,0];            // 0:none 1:asc 2:desc //지역, 인탄식부, 합계, 시간, 계약서5종 = 12
 var areaToggle      = [1,1,1,1,1,1,1,1,1,1,1,1,1,1];        // [14] 0 ~ 13지역

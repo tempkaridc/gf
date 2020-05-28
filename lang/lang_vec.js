@@ -39,7 +39,11 @@ var languagepack_vec =
                 "q1":"Q. 진형이 ㄷ 모양인가?",
                 "a1":"A. HG, SMG, AR, RF 배치 시, ㄷ 진형으로 고정<br>SG MG RF(미채 착용) 배치 시, p/b 진형도 가능<br>",
                 "q2":"Q. 전투 자동스킬을 켰는가?",
-                "a2":"A. AUTO 자동스킬 활성화를 안하면 벡터가 화염병을 던지지 않는다<br>"
+                "a2":"A. AUTO 자동스킬 활성화를 안하면 벡터가 화염병을 던지지 않는다<br>",
+                "q3":"Q. 화력 버프를 가장 쉽게 줄 수 있는 방법은?",
+                "a3":"A. 흥국이(40%)/개조흥국이(45%) 7번, 벡터 8번 배치<br>",
+                "q4":"Q. 꼭 벡터로만 가능한가?",
+                "a4":"A. 현 시점에서의 대체재로는 2개조 UZI 추천<br>"
             }
         },
         "ja":{
@@ -79,10 +83,14 @@ var languagepack_vec =
             },
             "qna":{
                 "title":"トラブルシューティング",
-                "q1":"Q. 陣形はCになっていますか？",
+                "q1":"Q. 陣形はCになっていますか?",
                 "a1":"A. HG,SMG,AR,RF配置時の陣形は必ずCに。<br>SG,MG,RF(カモフラージュマント着用)配置時の陣形はpやbも可能<br>",
-                "q2":"Q. 人形のスキル自動発動をONにしていますか？",
-                "a2":"A. Vectorはスキルによりグレネードを発射して敵を倒します。スキル自動発動をONにしましょう<br>"
+                "q2":"Q. 人形のスキル自動発動をONにしていますか?",
+                "a2":"A. Vectorはスキルによりグレネードを発射して敵を倒します。スキル自動発動をONにしましょう<br>",
+                "q3":"Q. 最も簡単な火力上昇の方法?",
+                "a3":"A. 416(40%)/416 MOD(45%)は7番に, Vectorは8番に4番配置<br>",
+                "q4":"Q. Vectorにしかできないか?",
+                "a4":"A. Micro UZI MOD 配置<br>"
             }
         },
         "en":{
@@ -124,7 +132,11 @@ var languagepack_vec =
                 "q1":"DID YOU USE C Formation?",
                 "a1":"MUST use C formation with HG, SMG, AR, and RF<br>Able to use p/b formation with SG, MG, RF(with Suit)<br>",
                 "q2":"DID YOU TURN ON AUTOSKILL?",
-                "a2":"IF NOT, SHE WILL NOT FIRE GRENADE<br>"
+                "a2":"IF NOT, SHE WILL NOT FIRE GRENADE<br>",
+                "q3":"EASIEST WAY FOR DMG. BUFF?",
+                "a3":"HK416(40%)/HK416 MOD1(45%) on NUM7, Vector on NUM8<br>",
+                "q4":"ONLY FOR VECTOR?",
+                "a4":"UZI MOD2 is recommended nowtime<br>"
             }
         }
     };

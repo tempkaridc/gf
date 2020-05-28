@@ -1,6 +1,7 @@
 /*
  * Reference #1: https://gall.dcinside.com/mgallery/board/view/?id=micateam&no=1530572
  * Reference #2: https://gall.dcinside.com/mgallery/board/view/?id=micateam&no=1531236
+ * Reference #3: https://gall.dcinside.com/mgallery/board/view/?id=micateam&no=1535521
  */
 
 var selLang         = 'ko';
@@ -284,7 +285,7 @@ function setLanguage(){
 
     $('#btn-help').text(langPack.qna.title);
 
-    for (let i = 1; i <= 2; i++) {
+    for (let i = 1; i <= 4; i++) {
         $('#btn-help-'+i).text(langPack.qna['q'+ i]);
         $('#btn-help-'+i+'t').html(langPack.qna['a'+ i]);
     }
