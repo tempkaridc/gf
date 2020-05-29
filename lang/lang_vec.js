@@ -37,7 +37,7 @@ var languagepack_vec =
             "qna":{
                 "title":"벡터런중에 자꾸 사고가 나요...",
                 "q1":"Q. 진형이 ㄷ 모양인가?",
-                "a1":"A. HG, SMG, AR, RF 배치 시, ㄷ 진형으로 고정<br>SG MG RF(미채 착용) 배치 시, p/b 진형도 가능<br>",
+                "a1":"A. HG, SMG, AR, RF 배치 시, ㄷ 진형으로 고정<br>MG, RF(미채 착용) 배치 시, p/b 진형도 가능<br>",
                 "q2":"Q. 전투 자동스킬을 켰는가?",
                 "a2":"A. AUTO 자동스킬 활성화를 안하면 벡터가 화염병을 던지지 않는다<br>",
                 "q3":"Q. 화력 버프를 가장 쉽게 줄 수 있는 방법은?",
@@ -84,7 +84,7 @@ var languagepack_vec =
             "qna":{
                 "title":"トラブルシューティング",
                 "q1":"Q. 陣形はCになっていますか?",
-                "a1":"A. HG,SMG,AR,RF配置時の陣形は必ずCに。<br>SG,MG,RF(カモフラージュマント着用)配置時の陣形はpやbも可能<br>",
+                "a1":"A. HG,SMG,AR,RF配置時の陣形は必ずCに。<br>MG, RF(カモフラージュマント着用)配置時の陣形はpやbも可能<br>",
                 "q2":"Q. 人形のスキル自動発動をONにしていますか?",
                 "a2":"A. Vectorはスキルによりグレネードを発射して敵を倒します。スキル自動発動をONにしましょう<br>",
                 "q3":"Q. 最も簡単な火力上昇の方法?",
@@ -130,7 +130,7 @@ var languagepack_vec =
             "qna":{
                 "title":"Troubleshooting",
                 "q1":"DID YOU USE C Formation?",
-                "a1":"MUST use C formation with HG, SMG, AR, and RF<br>Able to use p/b formation with SG, MG, RF(with Suit)<br>",
+                "a1":"MUST use C formation with HG, SMG, AR, and RF<br>Able to use p/b formation with MG, RF(with Suit)<br>",
                 "q2":"DID YOU TURN ON AUTOSKILL?",
                 "a2":"IF NOT, SHE WILL NOT FIRE GRENADE<br>",
                 "q3":"EASIEST WAY FOR DMG. BUFF?",
