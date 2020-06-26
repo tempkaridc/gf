@@ -1,13 +1,12 @@
-var lastUpdate      = '2020-05-28 12:00'
+var lastUpdate      = '2020-06-26 17:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
 
-var updateString    =       '- Added <i>13-4 Vector Calculator</i>. (<font style="color:blue;"><a href="https://tempkaridc.github.io/gf/vec.html" target="_blank">Link</a></font>)'
-                    +   '<br>- Modified <i>8-1n ZAS Calculator</i>. (<font style="color:blue;"><a href="https://tempkaridc.github.io/gf/zas.html" target="_blank">Link</a></font>)'
-                    +   '<br>- Bugfix #1: Contract error on 13-1 (repair to quick production)'
-                    +   '<br>- Bugfix #2: Recover area time when out of <i>Check Cycle</i> function'
-                    +   '<br>- Bugfix #3: Change T-Doll Input Guide image of Vector Calculator'
+var updateString    =   '- Modified Area 13 <i>Logistics Contract Rate</i>. (<font style="color:blue;"><a href="hhttps://github.com/tempkaridc/gf/blob/master/js/params.js" target="_blank">Link</a></font>)'
+                    +   '<br> > 13-1 Quick Production Contract (20% → 100%)'
+                    +   '<br> > 13-3 Equipment Production Contract (20% → 100%)'
+                    +   '<br> > 13-4 Doll Production Contract (20% → 100%)'
                     ;
 
 var updateImage     = false;

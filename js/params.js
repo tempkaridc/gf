@@ -7,14 +7,15 @@
  *  https://pan.baidu.com/s/1c3iS9Ks#list/path=/Girls%20Frontline
  *  Assumption, Not verified
  *
- * Area 11-12:
- *  Real Observation by developer
+ * Area 11-13:
+ *  Real Observation by developer, KR Server Reference.
  *  Area 11 Sample: 140 Logistics Complete Results without Great Success Case
  *  Area 12 Sample: 210 Logistics Complete Results without Great Success Case
- *  Area 13 Sample: Temporary 20% (2020-05-07). Observation would start at 2020-05-12
+ *  Area 13 Sample: 120 Logistics Complete Results without Great Success Case (2020-06-27)
  *
  *  If there is question for the data, please ask at below bbs. (English Available)
- *  BBS: http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1
+ *  BBS:
+ *  http://users3.smartgb.com/g/g.php?a=s&i=g36-28145-f1
  *
  * Extra Reference:
  *  Plan to ask for feedback
@@ -78,8 +79,8 @@ var arr = [
     [12,    2,      90,     360,    0,      0,      120,    0,      0,      0,      0,      0   ],
     [12,    3,      540,    800,    1200,   1200,   0,      0,      0,      1,      0,      0   ],
     [12,    4,      720,    1800,   0,      1800,   0,      1,      0,      0,      0,      0   ],
-    [13,    1,      180,    0,      0,      1200,   0,      0,      0,      0.2,    0,      0   ],
+    [13,    1,      180,    0,      0,      1200,   0,      0,      0,      1,      0,      0   ],
     [13,    2,      360,    800,    800,    800,    300,    0,      0,      0,      0,      0   ],
-    [13,    3,      1440,   0,      4000,   0,      1200,   0,      0.2,    0,      0,      0   ],
-    [13,    4,      360,    0,      0,      0,      1000,   0.2,    0,      0,      0,      0   ]
+    [13,    3,      1440,   0,      4000,   0,      1200,   0,      1,      0,      0,      0   ],
+    [13,    4,      360,    0,      0,      0,      1000,   1,      0,      0,      0,      0   ]
 ];
