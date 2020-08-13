@@ -1,12 +1,10 @@
-var lastUpdate      = '2020-06-26 17:00'
+var lastUpdate      = '2020-08-13 17:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
 
-var updateString    =   '- Modified Area 13 <i>Logistics Contract Rate</i>. (<font style="color:blue;"><a href="https://github.com/tempkaridc/gf/blob/master/js/params.js" target="_blank">Link</a></font>)'
-                    +   '<br> > 13-1 Quick Production Contract (20% → 100%)'
-                    +   '<br> > 13-3 Equipment Production Contract (20% → 100%)'
-                    +   '<br> > 13-4 Doll Production Contract (20% → 100%)'
+var updateString    =   '13-4 Vector Simulator'
+                    +   '<br> > Guide update: Remove formation recommendation'
                     ;
 
 var updateImage     = false;
