@@ -1,28 +1,42 @@
-var area    = 81;   //8-1n default
-var frame   = [
-    //      0:불가능,    1:위험,     2: 안전
+/*
+ * Reference
+ * 1.
+ *      https://gall.dcinside.com/mgallery/board/view/?id=micateam&no=363156
+ * 2.
+ *      https://gall.dcinside.com/mgallery/board/view/?id=micateam&no=393875
+ * 3.
+ *      https://gall.dcinside.com/mgallery/board/view/?id=micateam&no=1635670
+ *      https://gall.dcinside.com/mgallery/board/view/?id=micateam&no=1637488
+ */
+
+var area    = 81;   // 8-1n default
+var frame   = [     // frame i <= x < i+1
+    //      0:불가능,    1: 안전,     2:위험
     //      frame       6-3n        8-1n
-    [       0,          0,          0       ],
-    [       52,         0,          1       ],
-    [       54,         0,          2       ],
-    [       56,         2,          2       ],
-    [       61,         2,          2       ],
-    [       63,         2,          2       ],
-    [       58,         0,          0       ],
-    [       66,         0,          1       ],
-    [       69,         2,          2       ],
-    [       72,         2,          2       ],
+    [       0,          0,          1       ],
+    [       51,         0,          0       ],
+    [       52,         2,          0       ],
+    [       54,         0,          1       ],
+    [       56,         1,          1       ],
+    [       58,         1,          1       ],
+    [       61,         1,          1       ],
+    [       63,         0,          0       ],
+    [       66,         2,          2       ],
+    [       69,         1,          1       ],
+    [       72,         1,          1       ],
     [       76,         0,          0       ],
-    [       79,         2,          2       ],
-    [       84,         2,          2       ],
+    [       79,         1,          1       ],
+    [       84,         1,          1       ],
     [       89,         0,          0       ],
-    [       94,         2,          2       ],
+    [       94,         1,          1       ],
     [       101,        0,          0       ],
-    [       108,        2,          2       ],
-    [       116,        0,          2       ],
+    [       108,        1,          0       ],
+    [       116,        0,          1       ],
     [       121,        0,          0       ],
     [       999,        0,          0       ]
 ];
+var dangerZone = 0;
+
 
 //                      살상1   살상2    돌격     격양
 var selected_talent     = [ 0,      0,      0,      0   ];
@@ -30,7 +44,6 @@ var fairy_talent_fire   = [ 12,     15,     10,     8  ];
 var fairy_talent_rate   = [ 0,      0,      8,      0  ];
 var buff_talent_fire    = 0;
 var buff_talent_rate    = 0;
-
 
 var selLang         = 'ko';
 var langPack;
@@ -134,6 +147,8 @@ function btn_selArea(idx){
 }
 
 function btn_showModal(idx){
+    if((idx == 3) && (dangerZone == 0)){return;}
+
     $('#help'+idx).modal("show");
 }
 
@@ -277,6 +292,7 @@ function dispRate(i, num){
     $('#btn-calc-rate').removeClass("btn-warning");
     $('#btn-calc-rate').removeClass("btn-success");
     $('#btn-calc-rate').removeClass("btn-default");
+    dangerZone = 0;
 
     switch(i){
         case 0:
@@ -284,12 +300,13 @@ function dispRate(i, num){
             $('#btn-calc-rate').text(num + ' (' + langPack.result.rate.impossible + ')');
             break;
         case 1:
-            $('#btn-calc-rate').addClass("btn-warning");
-            $('#btn-calc-rate').text(num + ' (' + langPack.result.rate.warning + ')');
-            break;
-        case 2:
             $('#btn-calc-rate').addClass("btn-success");
             $('#btn-calc-rate').text(num + ' (' + langPack.result.rate.safe + ')');
+            break;
+        case 2:
+            $('#btn-calc-rate').addClass("btn-warning");
+            $('#btn-calc-rate').text(num + ' (' + langPack.result.rate.warning + ')');
+            dangerZone = 1;
             break;
         case 3:
             $('#btn-calc-rate').addClass("btn-default");
@@ -299,7 +316,6 @@ function dispRate(i, num){
             break;
     }
 }
-
 
 function selectLanguage(elem){
     selLang = elem.value;
@@ -355,6 +371,7 @@ function setLanguage(){
     $('#help_pic_stat').attr("src", 'img/zas/help_stat_' + selLang + '.png');
     $('#help_pic_fairy').attr("src", 'img/zas/help_fairy_' + selLang + '.png');
     $('#help_pic_buff').attr("src", 'img/zas/help_buff_' + selLang + '.png');
+    $('#help_pic_danger').attr("src", 'img/zas/help_danger_' + selLang + '.png');
 
     $('#btn-name-fire').text(langPack.fire);
     $('#btn-name-rate').text(langPack.rate);

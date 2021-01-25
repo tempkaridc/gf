@@ -147,27 +147,27 @@ function reCalc(){
         dollFire = 0;
         $('#doll_fire').val(0);
     }
-    if(dollFire > 100){
-        dollFire = 100;
-        $('#doll_fire').val(100);
+    if(dollFire > 200){
+        dollFire = 200;
+        $('#doll_fire').val(200);
     }
 
     if(fairyFire < 0){
         fairyFire = 0;
         $('#fairy_fire').val(0);
     }
-    if(fairyFire > 100){
-        fairyFire = 100;
-        $('#fairy_fire').val(100);
+    if(fairyFire > 150){
+        fairyFire = 150;
+        $('#fairy_fire').val(150);
     }
 
     if(buffFire < 0){
         buffFire = 0;
         $('#buff_fire').val(0);
     }
-    if(buffFire > 100){
-        buffFire = 100;
-        $('#buff_fire').val(100);
+    if(buffFire > 250){
+        buffFire = 250;
+        $('#buff_fire').val(250);
     }
 
     var finalFire = Math.ceil(Math.ceil(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (1 + (buff_talent / 100)));

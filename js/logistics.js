@@ -1,10 +1,12 @@
-var lastUpdate      = '2020-08-13 17:00'
+var lastUpdate      = '2021-01-25 12:00'
 var version         = parseInt(lastUpdate.replace(/[^0-9]/g,''));
 
 var updateDate      = 'Changelog (' + lastUpdate + ')';
 
 var updateString    =   '13-4 Vector Simulator'
-                    +   '<br> > Guide update: Remove formation recommendation'
+                    +   '<br> > Change Maximum value of input stat'
+                    +   '<br> 8-1n Zas Simulator'
+                    +   '<br> > Update firerate table'
                     ;
 
 var updateImage     = false;

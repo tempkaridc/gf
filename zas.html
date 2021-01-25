@@ -117,7 +117,7 @@
             </div>
             <div class="btn-group" role="group" style="width:100%; display:inline-block;">
                 <button id="btn-calc-fire" type="button" class="btn btn-sm btn-default" style="width:49%; float:left;" tabindex="-1"></button>
-                <button id="btn-calc-rate" type="button" class="btn btn-sm btn-default" style="width:49%; float:right;" tabindex="-1"></button>
+                <button id="btn-calc-rate" type="button" class="btn btn-sm btn-default" style="width:49%; float:right;" tabindex="-1" onClick="btn_showModal(3);"></button>
             </div>
         </div>
 
@@ -219,6 +219,16 @@
         <div class="modal-content">
             <div class="modal-body" style="position:relative;">
                 <img id="help_pic_buff" src="img/zas/help_buff_en.png" style="width:100%; align:middle;" onClick="btn_hideModal(2);">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="help3" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" style="position:relative; text-align:center;">
+                <img id="help_pic_danger" src="img/zas/help_danger_en.png" style="align:middle;" onClick="btn_hideModal(3);">
             </div>
         </div>
     </div>

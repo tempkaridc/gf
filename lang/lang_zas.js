@@ -36,7 +36,7 @@ var languagepack_zas =
                 "rate":{
                     "fail":"계산 불가",
                     "impossible":"불가능",
-                    "warning":"주의, 자스 4번 필수",
+                    "warning":"주의, 상세조건 클릭",
                     "safe":"안전"
                 }
             },
@@ -96,7 +96,7 @@ var languagepack_zas =
                 "rate":{
                     "fail":"計算不能",
                     "impossible":"実行不可",
-                    "warning":"注意: 4番に配置必須",
+                    "warning":"注意, クリック",
                     "safe":"安全"
                 }
             },
@@ -156,7 +156,7 @@ var languagepack_zas =
                 "rate":{
                     "fail":"Incalculable",
                     "impossible":"Impossible",
-                    "warning":"Caution, Set on Num:4",
+                    "warning":"Caution, Click here",
                     "safe":"Safe"
                 }
             },
