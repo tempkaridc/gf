@@ -27,7 +27,7 @@ var languagepack_vec =
                 "t4":"격양계"
             },
             "rare":{
-                "title":"요정 레어도: "
+                "title":"요정 레어도(3.0): "
             },
             "result":{
                 "title":"계산 결과: ",
@@ -70,14 +70,14 @@ var languagepack_vec =
                 "title":"乗客 : "
             },
             "talent":{
-                "title":"妖精天賦: ",
+                "title":"妖精天賦: <small>(★5推薦 = 100% 発動)</small>",
                 "t1":"殺傷型 I",
                 "t2":"殺傷型 II",
                 "t3":"先鋒型",
                 "t4":"激昂型"
             },
             "rare":{
-                "title":"妖精ランク: "
+                "title":"妖精ランク(3.0): <small>(★5推薦 = 100% 発動)</small>"
             },
             "result":{
                 "title":"計算結果: ",
@@ -119,14 +119,14 @@ var languagepack_vec =
                 "title":"Passengers: "
             },
             "talent":{
-                "title":"Fairy Talent: ",
+                "title":"Fairy Talent: <small>(Recommend 5-Star, active rate 100%)</small>",
                 "t1":"Damage I",
                 "t2":"Damage II",
                 "t3":"Charge",
                 "t4":"Fervor"
             },
             "rare":{
-                "title":"Fairy Rarity: "
+                "title":"Fairy Rarity(3.0): <small>(Recommend 5-Star, active rate 100%)</small>"
             },
             "result":{
                 "title":"Result: ",

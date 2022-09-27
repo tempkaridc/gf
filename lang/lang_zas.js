@@ -27,7 +27,7 @@ var languagepack_zas =
                 "t4":"격양계"
             },
             "rare":{
-                "title":"요정 레어도: "
+                "title":"요정 레어도(3.0): "
             },
             "result":{
                 "title":"계산 결과: ",
@@ -83,14 +83,14 @@ var languagepack_zas =
                 "rate":"射速バフ合計(%)"
             },
             "talent":{
-                "title":"妖精天賦: ",
+                "title":"妖精天賦: <small>(★5推薦 = 100% 発動)</small>",
                 "t1":"殺傷型 I",
                 "t2":"殺傷型 II",
                 "t3":"突撃型",
                 "t4":"激昂型"
             },
             "rare":{
-                "title":"妖精ランク: "
+                "title":"妖精ランク(3.0): <small>(★5推薦 = 100% 発動)</small>"
             },
             "result":{
                 "title":"計算結果: ",
@@ -146,14 +146,14 @@ var languagepack_zas =
                 "rate":"RoF. Buff (%)"
             },
             "talent":{
-                "title":"Fairy Talent: ",
+                "title":"Fairy Talent: <small>(Recommend 5-Star, active rate 100%)</small>",
                 "t1":"Damage I",
                 "t2":"Damage II",
                 "t3":"Assualt",
                 "t4":"Fervor"
             },
             "rare":{
-                "title":"Fairy Rarity: "
+                "title":"Fairy Rarity(3.0): <small>(Recommend 5-Star, active rate 100%)</small>"
             },
             "result":{
                 "title":"Result: ",
