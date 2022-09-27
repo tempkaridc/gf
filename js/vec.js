@@ -322,6 +322,7 @@ function setLanguage(){
         $('#btn-talent-'+(i-1)).text(langPack.talent['t'+ i]);
     }
 
+    $('#text-rare-title').html(langPack.rare.title);
     for (let i = 1; i <= 5; i++) {
         $('#btn-rare-'+(i-1)).text( "★".repeat(i) );
     }
