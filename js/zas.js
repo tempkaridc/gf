@@ -40,10 +40,22 @@ var dangerZone = 0;
 
 //                      살상1   살상2    돌격     격양
 var selected_talent     = [ 0,      0,      0,      0   ];
-var fairy_talent_fire   = [ 12,     15,     10,     8  ];
-var fairy_talent_rate   = [ 0,      0,      8,      0  ];
+//var fairy_talent_fire   = [ 12,     15,     10,     8  ];
+//var fairy_talent_rate   = [ 0,      0,      8,      0  ];
 var buff_talent_fire    = 0;
 var buff_talent_rate    = 0;
+
+var fairy_talent_fire   = [[5,    7,    9,    10,    12 ],
+                           [6,    8,   11,    13,    15 ],
+                           [4,    6,    7,     9,    10 ],
+                           [3,    6,    7,     9,    10 ]];
+
+var fairy_talent_rate   = [[0,    0,    0,     0,     0 ],
+                           [0,    0,    0,     0,     0 ],
+                           [3,    4,    6,     7,     8 ],
+                           [0,    0,    0,     0,     0 ]];
+
+var selected_rare       = [ 0,    0,    0,    0,    0   ];
 
 var selLang         = 'ko';
 var langPack;
@@ -110,17 +122,42 @@ function disp_selTalent(){
 function btn_selTalent(id){
     if(selected_talent[id] == 1){
         selected_talent[id] = 0;
-        buff_talent_fire = 0;
-        buff_talent_rate = 0;
+        //buff_talent_fire = 0;
+        //buff_talent_rate = 0;
     }else{
         for(var i = 0; i < selected_talent.length; i++){
             selected_talent[i] = 0;
         }
         selected_talent[id] = 1;
-        buff_talent_fire = fairy_talent_fire[id];
-        buff_talent_rate = fairy_talent_rate[id];
+        //buff_talent_fire = fairy_talent_fire[id];
+        //buff_talent_rate = fairy_talent_rate[id];
     }
     disp_selTalent();
+    reCalc();
+}
+
+function disp_selRare(){
+    for(var i = 0; i < 5; i++){
+        if(selected_rare[i] == 1){
+            $('#btn-rare-' + i).removeClass('btn-default');
+            $('#btn-rare-' + i).addClass('btn-success');
+        }else{
+            $('#btn-rare-' + i).removeClass('btn-success');
+            $('#btn-rare-' + i).addClass('btn-default');
+        }
+    }
+}
+
+function btn_selRare(id){
+    if(selected_rare[id] == 1){
+        selected_rare[id] = 0;
+    }else{
+        for(var i = 0; i < 5; i++){
+            selected_rare[i] = 0;
+        }
+        selected_rare[id] = 1;
+    }
+    disp_selRare();
     reCalc();
 }
 
@@ -217,7 +254,21 @@ function reCalc(){
         buffRate = 100;
         $('#buff_rate').val(100);
     }
+    
+    var talent_id=-1;
+    var rare_id=-1;
+    for(var i = 0; i < 5; i++){
+        if(selected_rare[i]==1)
+            rare_id=i;
+    }
+    for(var i = 0; i < 4; i++){
+        if(selected_talent[i]==1)
+            talent_id=i;
+    }
 
+    buff_talent_fire=(talent_id != -1 && rare_id != -1) ? (fairy_talent_fire[talent_id][rare_id]) : 0;
+    buff_talent_rate=(talent_id != -1 && rare_id != -1) ? (fairy_talent_rate[talent_id][rare_id]) : 0;
+    
     var finalFire = Math.floor(Math.floor(dollFire * (1 + (fairyFire / 100))) * (1 + (buffFire / 100)) * (1 + (buff_talent_fire / 100)) + 1); // * (0.85)
     var finalRate = Math.floor(dollRate * (1 + (buffRate / 100)) * (1 + (buff_talent_rate / 100)));
 
@@ -364,6 +415,11 @@ function setLanguage(){
     $('#text-talent-title').html(langPack.talent.title);
     for (let i = 1; i <= 4; i++) {
         $('#btn-talent-'+(i-1)).text(langPack.talent['t'+ i]);
+    }
+
+    $('#text-rare-title').html(langPack.rare.title);
+    for (let i = 1; i <= 5; i++) {
+        $('#btn-rare-'+(i-1)).text( "★".repeat(i) );
     }
 
     $('#text-result-title').text(langPack.result.title);

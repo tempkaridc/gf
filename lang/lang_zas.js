@@ -20,11 +20,14 @@ var languagepack_zas =
                 "rate":"사속버프 합계(%) 입력"
             },
             "talent":{
-                "title":"요정 특성: <small>(★5 필수 = 100% 발동)</small>",
+                "title":"요정 특성: ",
                 "t1":"살상계 I",
                 "t2":"살상계 II",
                 "t3":"돌격계",
                 "t4":"격양계"
+            },
+            "rare":{
+                "title":"요정 레어도(3.0): "
             },
             "result":{
                 "title":"계산 결과: ",
@@ -86,6 +89,9 @@ var languagepack_zas =
                 "t3":"突撃型",
                 "t4":"激昂型"
             },
+            "rare":{
+                "title":"妖精ランク(3.0): <small>(★5推薦 = 100% 発動)</small>"
+            },
             "result":{
                 "title":"計算結果: ",
                 "fire":{
@@ -140,11 +146,14 @@ var languagepack_zas =
                 "rate":"RoF. Buff (%)"
             },
             "talent":{
-                "title":"Fairy Talent: <small>(Recommend ★5 = active rate 100%)</small>",
+                "title":"Fairy Talent: <small>(Recommend 5-Star, active rate 100%)</small>",
                 "t1":"Damage I",
                 "t2":"Damage II",
                 "t3":"Assualt",
                 "t4":"Fervor"
+            },
+            "rare":{
+                "title":"Fairy Rarity(3.0): <small>(Recommend 5-Star, active rate 100%)</small>"
             },
             "result":{
                 "title":"Result: ",
